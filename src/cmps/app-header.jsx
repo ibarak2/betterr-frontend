@@ -1,15 +1,12 @@
-import React from 'react'
-import { connect } from 'react-redux'
+
 import { Link, NavLink } from 'react-router-dom'
-
+import { useSelector } from "react-redux"
 import routes from '../routes'
-
-
-import { onLogin, onLogout, onSignup, loadUsers, removeUser } from '../store/user.actions.js'
+import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 
-function _AppHeader({ onLogin, onSignup, onLogout, user }) {
-
+export function AppHeader() {
+    const user = useSelector((state) => state.userModule.user)
     return (
         <header className="app-header">
             <nav>
@@ -38,23 +35,3 @@ function _AppHeader({ onLogin, onSignup, onLogout, user }) {
         </header>
     )
 }
-
-function mapStateToProps(state) {
-    return {
-        users: state.userModule.users,
-        user: state.userModule.user,
-        count: state.userModule.count,
-        isLoading: state.systemModule.isLoading
-    }
-}
-const mapDispatchToProps = {
-    onLogin,
-    onSignup,
-    onLogout,
-    loadUsers,
-    removeUser
-}
-
-
-
-export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)
