@@ -1,79 +1,79 @@
-import { carService } from "../services/car.service.js"
+import { gigService } from "../services/gig.service.js"
 import { userService } from "../services/user.service.js"
 import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 // Action Creators:
 
-export function loadCars() {
+export function loadGigs() {
   console.log("Getting to Dispatch")
   return async (dispatch) => {
     try {
-      const cars = await carService.query()
+      const gigs = await gigService.query()
       dispatch({
         type: "SET_CARS",
-        cars,
+        gigs,
       })
-      console.log("Cars from DB:", cars)
+      console.log("Gigs from DB:", gigs)
     } catch (err) {
-      showErrorMsg("Cannot load cars")
-      console.log("Cannot load cars", err)
+      showErrorMsg("Cannot load gigs")
+      console.log("Cannot load gigs", err)
     }
   }
 }
 
-export function removeCar(carId) {
+export function removeGig(gigId) {
   return async (dispatch) => {
     try {
-      await carService.remove(carId)
+      await gigService.remove(gigId)
       console.log("Deleted Succesfully!")
-      dispatch(removeCar(carId))
-      showSuccessMsg("Car removed")
+      dispatch(removeGig(gigId))
+      showSuccessMsg("Gig removed")
     } catch (err) {
-      showErrorMsg("Cannot remove car")
-      console.log("Cannot remove car", err)
+      showErrorMsg("Cannot remove gig")
+      console.log("Cannot remove gig", err)
     }
   }
 }
 
-export function addCar(car) {
+export function addGig(gig) {
   return async (dispatch) => {
     try {
-      const savedCar = await carService.save(car)
-      console.log("savedCar", savedCar)
-      dispatch({ type: "ADD_CAR", car: savedCar })
-      const newCar = undefined
-      return newCar
+      const savedGig = await gigService.save(gig)
+      console.log("savedGig", savedGig)
+      dispatch({ type: "ADD_CAR", gig: savedGig })
+      const newGig = undefined
+      return newGig
     } catch (err) {
       console.log("err:", err)
     }
   }
 }
 
-export function updateCar(car) {
-  console.log("log from UPDATE_TOY dispatch", car)
+export function updateGig(gig) {
+  console.log("log from UPDATE_TOY dispatch", gig)
   return async (dispatch) => {
     try {
-      const savedCar = await carService.save(car)
-      dispatch({ type: "UPDATE_TOY", car: savedCar })
+      const savedGig = await gigService.save(gig)
+      dispatch({ type: "UPDATE_TOY", gig: savedGig })
     } catch (err) {
       console.log("err:", err)
     }
   }
 }
 
-export function addToCart(car) {
+export function addToCart(gig) {
   return (dispatch) => {
     dispatch({
       type: "ADD_TO_CART",
-      car,
+      gig,
     })
   }
 }
-export function removeFromCart(carId) {
+export function removeFromCart(gigId) {
   return (dispatch) => {
     dispatch({
       type: "REMOVE_FROM_CART",
-      carId,
+      gigId,
     })
   }
 }
@@ -81,8 +81,8 @@ export function checkout() {
   return async (dispatch, getState) => {
     try {
       const state = getState()
-      const total = state.carModule.cart.reduce(
-        (acc, car) => acc + car.price,
+      const total = state.gigModule.cart.reduce(
+        (acc, gig) => acc + gig.price,
         0
       )
       const score = await userService.changeScore(-total)
@@ -91,29 +91,29 @@ export function checkout() {
       showSuccessMsg("Charged you: $" + total.toLocaleString())
     } catch (err) {
       showErrorMsg("Cannot checkout, login first")
-      console.log("CarActions: err in checkout", err)
+      console.log("GigActions: err in checkout", err)
     }
   }
 }
 
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
-export function onRemoveCarOptimistic(carId) {
+export function onRemoveGigOptimistic(gigId) {
   return (dispatch, getState) => {
     dispatch({
       type: "REMOVE_CAR",
-      carId,
+      gigId,
     })
-    showSuccessMsg("Car removed")
+    showSuccessMsg("Gig removed")
 
-    carService
-      .remove(carId)
+    gigService
+      .remove(gigId)
       .then(() => {
         console.log("Server Reported - Deleted Succesfully")
       })
       .catch((err) => {
-        showErrorMsg("Cannot remove car")
-        console.log("Cannot load cars", err)
+        showErrorMsg("Cannot remove gig")
+        console.log("Cannot load gigs", err)
         dispatch({
           type: "UNDO_REMOVE_CAR",
         })

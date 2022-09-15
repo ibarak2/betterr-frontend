@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { removeFromCart, checkout } from '../store/car.actions'
+import { removeFromCart, checkout } from '../store/gig.actions'
 import { UserMsg } from './user-msg.jsx'
 
 function _AppFooter({ count, cart, removeFromCart, checkout }) {
@@ -10,7 +10,7 @@ function _AppFooter({ count, cart, removeFromCart, checkout }) {
 
 
     function getCartTotal() {
-        return cart.reduce((acc, car) => acc + car.price, 0)
+        return cart.reduce((acc, gig) => acc + gig.price, 0)
     }
 
     return (
@@ -34,11 +34,11 @@ function _AppFooter({ count, cart, removeFromCart, checkout }) {
                 <h5>Your Cart</h5>
                 <ul>
                     {
-                        cart.map((car, idx) => <li key={idx}>
+                        cart.map((gig, idx) => <li key={idx}>
                             <button onClick={() => {
-                                removeFromCart(car._id)
+                                removeFromCart(gig._id)
                             }}>x</button>
-                            {car.vendor}
+                            {gig.vendor}
                         </li>)
                     }
                 </ul>
@@ -54,7 +54,7 @@ function _AppFooter({ count, cart, removeFromCart, checkout }) {
 function mapStateToProps(state) {
     return {
         count: state.userModule.count,
-        cart: state.carModule.cart
+        cart: state.gigModule.cart
     }
 }
 
