@@ -17,7 +17,6 @@ export function RootCmp() {
           {routes.map((route) => (
             <Route
               key={route.path}
-              exact={true}
               element={route.component}
               path={route.path}
             />
@@ -25,7 +24,6 @@ export function RootCmp() {
         </Routes>
       </main>
       <AppFooter />
-      <GigPreview />
     </div>
   )
 }

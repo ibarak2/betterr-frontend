@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
-// import { GigCarousel } from "./gig-carousel"
+import { Link } from "react-router-dom"
 
 export const GigPreview = () => {
   // let slideIndex = 1;
@@ -36,20 +36,19 @@ export const GigPreview = () => {
     "1",
     // , "2", "3"
   ]
+  const dots = [1,2,3,4]
   return (
     <div className="gig-preview">
-      <div className="slideshow-container">
-        <img
-          className="img-preview"
-          key={1}
-          src={`https://picsum.photos/200/300?random=${1}`}
-        />
+      <div className="slideshow-container" style={{backgroundImage: `url("https://picsum.photos/200/300?random=${1}")`}}>
       <button className="btn-preview prev">
         <ArrowBackIosIcon />
       </button>
       <button className="btn-preview next">
         <ArrowForwardIosIcon />
       </button>
+      <div className="preview-dots">
+        {dots.map(dot=><span className="preview-dot"></span>)}
+      </div>
       </div>
     </div>
   )
