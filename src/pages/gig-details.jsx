@@ -7,6 +7,9 @@ import { UserInfo } from "../cmps/user-info"
 import { ReviewList } from "../cmps/review-list"
 import { GigImgsCarousel } from "../cmps/gig-imgs-carousel"
 import { SellerOverview } from "../cmps/seller-overview"
+import { CssVarsProvider } from '@mui/joy/styles';
+
+
 
 
 
@@ -36,24 +39,28 @@ export const GigDetails = () => {
 
     if (!gig) return <div>Loading</div>
     return (
-        <div className='gig-details'>
-            <section className="gig-description">
-                <h1>{gig.title}</h1>
+        <CssVarsProvider>
 
-                <SellerOverview seller={gig.owner} />
-                <GigImgsCarousel imgList={gig.imgUrls} />
-                <h2>About this Gig</h2>
-                <p>{gig.description}</p>
-                <hr />
-                <h2>About the Seller</h2>
-                <UserInfo />
-                <h2>Reviews</h2>
-                <ReviewList />
+            <div className='gig-details'>
+                <section className="gig-description">
+                    <h1>{gig.title}</h1>
 
-            </section>
-            <section className="plans">
-                <GigPlans />
-            </section>
-        </div>
+                    <SellerOverview seller={gig.owner} />
+                    <GigImgsCarousel imgList={gig.imgUrls} />
+                    <h2>About this Gig</h2>
+                    <p>{gig.description}</p>
+                    <hr />
+                    <h2>About the Seller</h2>
+                    <UserInfo />
+                    <h2>Reviews</h2>
+                    <ReviewList />
+
+                </section>
+                <section className="plans">
+                    <GigPlans />
+                </section>
+            </div>
+        </CssVarsProvider>
+
     )
 }
