@@ -7,6 +7,7 @@ import { removeGig, addGig, updateGig } from "../store/gig.actions.js"
 // This file demonstrates how to use a BroadcastChannel to notify other browser tabs
 
 const STORAGE_KEY = "gig"
+loadDemoData()
 
 
 export const gigService = {
@@ -62,12 +63,12 @@ const gigsDemoData = [
     owner: {
       _id: "u101",
       fullname: "Dudu Da",
-      imgUrl: "url",
+      imgUrl: "https://robohash.org/g101",
       level: "basic",
       rate: 4,
     },
     daysToMake: 3,
-    description: "Make unique logo...",
+    description: "Make unique logo... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
     imgUrls: ["https://robohash.org/g101"],
     tags: ["logo-design", "artisitic", "proffesional"],
     likedByUsers: ["mini-user"],
@@ -79,7 +80,7 @@ const gigsDemoData = [
     owner: {
       _id: "u101",
       fullname: "Dudu Da",
-      imgUrl: "url",
+      imgUrl: "https://robohash.org/g101",
       level: "basic",
       rate: 4,
     },
@@ -96,7 +97,7 @@ const gigsDemoData = [
     owner: {
       _id: "u101",
       fullname: "Dudu Da",
-      imgUrl: "url",
+      imgUrl: "https://robohash.org/g101",
       level: "basic",
       rate: 4,
     },
@@ -108,7 +109,13 @@ const gigsDemoData = [
   },
 
 ]
-const gGigs = storageService.query(STORAGE_KEY) || []
-if (!gGigs || !gGigs.length) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(gigsDemoData))
+async function loadDemoData() {
+
+  const gGigs = await storageService.query(STORAGE_KEY) || []
+  if (!gGigs || !gGigs.length) {
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(gigsDemoData))
+    console.log("Loaded New Demo data");
+  }
 }
+
