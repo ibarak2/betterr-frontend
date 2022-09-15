@@ -5,7 +5,11 @@ import { getActionSetWatchedUser } from '../store/review.actions'
 import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
 import { showSuccessMsg } from '../services/event-bus.service'
 
+
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const STORAGE_KEY = 'users'
+
+loadDemoData()
 
 export const userService = {
     login,
@@ -33,12 +37,12 @@ function onUserUpdate(user) {
 }
 
 async function getById(userId) {
-    const user = await storageService.get('user', userId)
+    const user = await storageService.get(STORAGE_KEY, userId)
     // const user = await httpService.get(`user/${userId}`)
 
-    socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
-    socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
-    socketService.on(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
+    // socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
+    // socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
+    // socketService.on(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
 
     return user
 }
@@ -95,6 +99,89 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
+const reviewsDemoData = [
+
+    {
+        _id: "a1001",
+        fullname: "admin",
+        imgUrl: "/img/img1.jpg",
+        username: "Admin",
+        password: "admin",
+        isAdmin: true,
+    },
+    {
+        _id: "u101",
+        fullname: "User 1",
+        imgUrl: "/img/img1.jpg",
+        username: "user",
+        password: "user",
+        reviews: [
+            {
+                id: "madeIdByUtil",
+                txt: "Very kind and works fast",
+                rate: 4,
+                by: {
+                    _id: "u102",
+                    fullname: "User 1",
+                    imgUrl: "/img/img2.jpg",
+                },
+            },
+        ],
+        likedSellers: [{ _id: "u102" }],
+    },
+    {
+        _id: "u102",
+        fullname: "seller",
+        imgUrl: "/img/img1.jpg",
+        username: "seller",
+        password: "seller",
+        level: "basic/premium",
+        reviews: [
+            {
+                id: "madeIdByUtil",
+                txt: "Very kind and works fast",
+                rate: 4,
+                by: {
+                    _id: "a1001",
+                    fullname: "Admin",
+                    imgUrl: "/img/img1.jpg",
+                },
+            },
+            {
+                id: "madeIdByUtil",
+                txt: "Best work never dissapointed",
+                rate: 5,
+                by: {
+                    _id: "u101",
+                    fullname: "User 1",
+                    imgUrl: "/img/img2.jpg",
+                },
+            },
+            {
+                id: "madeIdByUtil",
+                txt: "not my first time with this guy, great work!",
+                rate: 5,
+                by: {
+                    _id: "u101",
+                    fullname: "User 1",
+                    imgUrl: "/img/img2.jpg",
+                },
+            },
+        ],
+        likedSellers: [{ _id: "u101" }],
+    },
+
+
+]
+
+async function loadDemoData() {
+    const gUsers = await storageService.query(STORAGE_KEY) || []
+    if (!gUsers || !gUsers.length) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(reviewsDemoData))
+        console.log("Loaded New reviews Demo data");
+
+    }
+}
 
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'user1', password:'123',score: 10000, isAdmin: false})

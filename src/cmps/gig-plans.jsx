@@ -4,8 +4,21 @@ import TabList from '@mui/joy/TabList';
 import Tab, { tabClasses } from '@mui/joy/Tab';
 import TabPanel from '@mui/joy/TabPanel';
 import Typography from '@mui/joy/Typography';
+import { useState } from 'react';
 
-export const GigPlans = () => {
+export const GigPlans = ({ plans }) => {
+
+    const [plan, setPlan] = useState('Basic')
+
+    const handleChange = (ev) => {
+        console.log(ev.target.textContent)
+        setPlan(ev.target.textContent)
+    }
+
+    const onSelect = (ev) => {
+        console.log(plan)
+    }
+
     return (
         <Tabs
             size="sm"
@@ -16,14 +29,17 @@ export const GigPlans = () => {
             <TabList
                 variant="outlined"
                 sx={(theme) => ({
+
                     borderRadius: 0,
                     [`& .${tabClasses.root}`]: {
                         fontWeight: "lg",
                         flex: 1,
                         bgcolor: "background.body",
                         position: "relative",
+
+
                         [`&.${tabClasses.selected}`]: {
-                            color: "primary.500"
+                            color: "success.500"
                         },
                         [`&.${tabClasses.selected}:before`]: {
                             content: '""',
@@ -32,85 +48,73 @@ export const GigPlans = () => {
                             bottom: -1,
                             width: "100%",
                             height: 2,
-                            bgcolor: "primary.400"
+                            bgcolor: "success.400",
                         },
                         "&:not(:first-of-type)": {
-                            borderLeft: `1px solid ${theme.vars.palette.divider}`
+                            borderLeft: `1px solid ${theme.vars.palette.divider}`,
+
                         },
                         [`&.${tabClasses.focusVisible}`]: {
-                            outlineOffset: "-3px"
+                            outlineOffset: "-3px",
+
                         }
                     }
                 })}
             >
-                <Tab sx={{ py: 1.5 }}>Basic</Tab>
-                <Tab>Standard</Tab>
-                <Tab>Premium</Tab>
+                <Tab sx={{ py: 1.5 }} onChange={(ev) => { handleChange(ev) }}>Basic</Tab>
+                <Tab onChange={(ev) => { handleChange(ev) }}>Standard</Tab>
+                <Tab onChange={(ev) => { handleChange(ev) }}>Premium</Tab>
             </TabList>
-            <TabPanel value={0}>
+            <TabPanel value={0} >
                 <Typography level="inherit" mt={2}>
-                    Get started with the industry-standard React UI library, MIT-licensed.
+                    {plans.basicDescription}
                 </Typography>
                 <Typography
-                    textColor="success.400"
+                    textColor="black.400"
                     fontSize="xl3"
                     fontWeight="xl"
                     my={1}
                 >
-                    $0{" "}
+                    ${plans.basicPrice}{" "}
                     <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
-                        － Free forever
+                        USD
                     </Typography>
                 </Typography>
             </TabPanel>
             <TabPanel value={1}>
                 <Typography level="inherit" mt={2}>
-                    Best for professional developers building enterprise or data-rich
-                    applications.
+                    {plans.standardDescription}
                 </Typography>
                 <Typography
-                    textColor="primary.400"
+                    textColor="black.400"
                     fontSize="xl3"
                     fontWeight="xl"
                     my={1}
                 >
-                    $15{" "}
+                    ${plans.standardPrice}{" "}
                     <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
-                        / dev / month
+                        USD
                     </Typography>
                 </Typography>
             </TabPanel>
             <TabPanel value={2}>
                 <Typography level="inherit" mt={2}>
-                    The most advanced features for data-rich applications, as well as the
-                    highest priority for support.
+                    {plans.premiumDescription}
                 </Typography>
                 <Typography
-                    textColor="primary.400"
+                    textColor="black.400"
                     fontSize="xl3"
                     fontWeight="xl"
                     my={1}
                 >
-                    <Typography
-                        fontSize="xl"
-                        borderRadius="sm"
-                        px={0.5}
-                        mr={0.5}
-                        sx={(theme) => ({
-                            ...theme.variants.soft.danger,
-                            color: "danger.400",
-                            verticalAlign: "text-top",
-                            textDecoration: "line-through"
-                        })}
-                    >
-                        $49
-                    </Typography>
-                    $37*{" "}
+
+                    ${plans.premiumPrice}{" "}
                     <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
-                        / dev / month
+                        USD
                     </Typography>
                 </Typography>
             </TabPanel>
-        </Tabs>
+            <button onClick={() => onSelect()}>Continue <span>→</span></button>
+        </Tabs >
     );
 }

@@ -14,8 +14,9 @@ export const GigImgsCarousel = ({ imgList }) => {
         <div className="gig-imgs-carousel">
             <Carousel
                 autoPlay={false}
+                showIndicators={false}
                 infiniteLoop
-                width={"45%"}
+                width={"80%"}
                 renderArrowPrev={(onClickHandler, label) => (
                     <button
                         type="button"
