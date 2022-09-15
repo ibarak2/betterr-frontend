@@ -1,115 +1,90 @@
 import { useEffect, useState } from "react"
-import Slider from "react-slick";
+import Slider from "react-slick"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
 import { Link } from "react-router-dom"
 
+// for getting random pics
+import { utilService } from "../services/util.service"
+
 export const GigPreview = () => {
-  // let slideIndex = 1;
-  // showSlides(slideIndex);
-
-  // function plusSlides(n) {
-  //   showSlides(slideIndex += n);
-  // }
-
-  // function currentSlide(n) {
-  //   showSlides(slideIndex = n);
-  // }
-
-  // function showSlides(n) {
-  //   let i;
-  //   let slides = document.getElementsByClassName("mySlides");
-  //   let dots = document.getElementsByClassName("demo");
-  //   let captionText = document.getElementById("caption");
-  //   if (n > slides.length) {slideIndex = 1}
-  //   if (n < 1) {slideIndex = slides.length}
-  //   for (i = 0; i < slides.length; i++) {
-  //     slides[i].style.display = "none";
-  //   }
-  //   for (i = 0; i < dots.length; i++) {
-  //     dots[i].className = dots[i].className.replace(" active", "");
-  //   }
-  //   slides[slideIndex-1].style.display = "block";
-  //   dots[slideIndex-1].className += " active";
-  //   captionText.innerHTML = dots[slideIndex-1].alt;
-  // }
-  const imgs = [
-    "1",
-    // , "2", "3"
-  ]
-  const dots = [1,2,3,4]
-  return <SimpleSlider />
-    // <div className="gig-preview">
-      {/* <div className="slideshow-container" style={{backgroundImage: `url("https://picsum.photos/200/300?random=${1}")`}}>
-      <button className="btn-preview prev">
-        <ArrowBackIosIcon />
-      </button>
-      <button className="btn-preview next">
-        <ArrowForwardIosIcon />
-      </button>
-      <div className="preview-dots">
-        {dots.map(dot=><span className="c"></span>)}
-      </div>
-      </div> */}
-    // </div>
-  
+  return (
+    <div className="gig-preview">
+      <SimpleSlider />
+    </div>
+  )
 }
-
-
-
 
 function SimpleSlider() {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 250,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
-  };
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    appendDots: (dots) => (
+      <div
+        style={{
+          position: "absolute",
+          bottom: "0",
+          paddingBottom: "0.8rem",
+        }}
+      >
+        <ul className="dots" style={{ margin: "0px" }}>
+          {" "}
+          {dots}{" "}
+        </ul>
+      </div>
+    ),
+  }
+
+  const imgs = ["1", "2", "3", "4", "5", "6"]
   return (
     <Slider {...settings}>
-      <div>
-        <h3>1</h3>
-      </div>
-      <div>
-        <h3>2</h3>
-      </div>
-      <div>
-        <h3>3</h3>
-      </div>
-      <div>
-        <h3>4</h3>
-      </div>
-      <div>
-        <h3>5</h3>
-      </div>
-      <div>
-        <h3>6</h3>
-      </div>
+      {imgs.map((img) => (
+        <div>
+          <img
+            src={`https://picsum.photos/200/300?random=${utilService.getRandomIntInclusive(
+              1,
+              30
+            )}`}
+          />
+        </div>
+      ))}
     </Slider>
-  );
+  )
 }
 
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
+function NextArrow(props) {
+  const { className, onClick } = props
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "red" }}
+      style={{
+        display: "block",
+        backgroundColor: "transperent",
+        zIndex: "10",
+        right: "0",
+      }}
       onClick={onClick}
     />
-  );
+  )
 }
 
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
+function PrevArrow(props) {
+  const { className, onClick } = props
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "green" }}
+      style={{
+        display: "block",
+        backgroundColor: "transperent",
+        zIndex: "10",
+        left: "0",
+      }}
       onClick={onClick}
     />
-  );
+  )
 }
