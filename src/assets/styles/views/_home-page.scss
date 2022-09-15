@@ -1,6 +1,16 @@
-.home-page {
-    border: 1px $clr2 solid;
-    .home-logo {
-        width: 30%;
+.homepage {
+  border: 1px $clr2 solid;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: $clr1;
+  .home-logo {
+    width: 30%;
+  }
+
+  .hero {
+    span {
+      font-family: lobster;
     }
+  }
 }
