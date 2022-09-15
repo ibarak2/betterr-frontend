@@ -1,31 +1,33 @@
 .gig-preview {
   max-width: rem(320px);
+  height: rem(184.8px);
 
-  .slideshow-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: rem(184.8px);
-    width: rem(320px);
-    position: relative;
-    margin: auto;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    .prev,
-    .next {
-      cursor: pointer;
-    }
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-    .preview-dots {
-      order: 1;
-    //   justify-items: center;
-      align-self: end;
-      width: 50px;
-      height: 50px;
-    }
-  }
+//   .slideshow-container {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     height: rem(184.8px);
+//     width: rem(320px);
+//     position: relative;
+//     margin: auto;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     .prev,
+//     .next {
+//       order: 2;
+//       cursor: pointer;
+//     }
+//     .next {
+//       right: 0;
+//       border-radius: 3px 0 0 3px;
+//     }
+//     .preview-dots {
+//         order: 1;
+//       //   justify-items: center;
+//       align-self: end;
+//       width: 50px;
+//       height: 50px;
+//     }
+//   }
 }
