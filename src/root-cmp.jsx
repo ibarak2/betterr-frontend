@@ -4,7 +4,7 @@ import routes from "./routes"
 
 import { AppHeader } from "./cmps/app-header"
 import { AppFooter } from "./cmps/app-footer"
-import { UserDetails } from "./pages/user-details"
+import { UserProfile } from "./pages/user-profile"
 import { GigPreview } from "./cmps/gig-preview"
 
 // export class RootCmp extends React.Component {
