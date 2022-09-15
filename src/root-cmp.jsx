@@ -17,15 +17,17 @@ export function RootCmp() {
           {routes.map((route) => (
             <Route
               key={route.path}
-              exact={true}
               element={route.component}
               path={route.path}
             />
           ))}
         </Routes>
       </main>
-      <GigPreview />
       <AppFooter />
     </div>
   )
 }
+<<<<<<< HEAD
+<GigPreview />
+=======
+>>>>>>> a92dcd4d3817a8d18a3b0b6a29b32566c867ffae
