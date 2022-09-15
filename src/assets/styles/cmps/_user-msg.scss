@@ -1,18 +1,18 @@
 .user-msg {
-    color:white;
+    color:$clr2;
     padding: 10px;
     font-size: 1.4em;
     position: fixed;
     top:0;
     right:0;
-    background-color: grey;
+    background-color: $clr2;
 }
 .user-msg button {
     float:right;
     border:0;
     border-radius: 50%;
     margin: 5px;
-    background-color: #222;
+    background-color: $clr2;
 }
 
 .user-msg.success {
