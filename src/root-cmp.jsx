@@ -4,8 +4,7 @@ import routes from "./routes"
 
 import { AppHeader } from "./cmps/app-header"
 import { AppFooter } from "./cmps/app-footer"
-import { UserProfile } from "./pages/user-profile"
-import { GigPreview } from "./cmps/gig-preview"
+
 
 // export class RootCmp extends React.Component {
 export function RootCmp() {
@@ -27,7 +26,3 @@ export function RootCmp() {
     </div>
   )
 }
-<<<<<<< HEAD
-<GigPreview />
-=======
->>>>>>> a92dcd4d3817a8d18a3b0b6a29b32566c867ffae

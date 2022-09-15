@@ -8,6 +8,7 @@ import { ReviewList } from "../cmps/review-list"
 import { GigImgsCarousel } from "../cmps/gig-imgs-carousel"
 import { SellerOverview } from "../cmps/seller-overview"
 import { CssVarsProvider } from '@mui/joy/styles';
+import { userService } from "../services/user.service"
 
 
 
@@ -17,6 +18,7 @@ import { CssVarsProvider } from '@mui/joy/styles';
 export const GigDetails = () => {
 
     const [gig, setGig] = useState(null)
+    const [reviews, setReviews] = useState([null])
     const params = useParams()
     const navigate = useNavigate()
 
@@ -31,13 +33,25 @@ export const GigDetails = () => {
         try {
             const gig = await gigService.getById(gigId)
             setGig(gig)
-            console.log(gig);
+            loadReviews(gig.owner._id)
+            console.log("gig", gig);
         } catch (err) {
             console.log('Failed to load gig');
         }
     }
 
-    if (!gig) return <div>Loading</div>
+    const loadReviews = async (userId) => {
+        try {
+            const user = await userService.getById(userId)
+            setReviews(user.reviews)
+
+            console.log("review", user.reviews);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    if (!gig || !reviews) return <div>Loading</div>
     return (
         <CssVarsProvider>
 
@@ -53,7 +67,7 @@ export const GigDetails = () => {
                     <h2>About the Seller</h2>
                     <UserInfo />
                     <h2>Reviews</h2>
-                    <ReviewList />
+                    <ReviewList reviews={reviews} />
 
                 </section>
                 <section className="plans">

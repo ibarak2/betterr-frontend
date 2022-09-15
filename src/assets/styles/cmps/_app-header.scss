@@ -5,6 +5,8 @@
   position: sticky;
   top: 0;
   transition: background-color 0.2s ease-in;
+  z-index: 10;
+  border-bottom: 2px solid $clr4;
 
   .main-header {
     align-items: center;

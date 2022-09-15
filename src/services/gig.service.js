@@ -69,7 +69,7 @@ const gigsDemoData = [
       premiumDescription: 'Premium logo design'
     },
     owner: {
-      _id: "u101",
+      _id: "u102",
       fullname: "Dudu Da",
       imgUrl: "https://robohash.org/g101",
       level: "basic",
@@ -94,7 +94,7 @@ const gigsDemoData = [
       premiumDescription: 'Premium paint logo design'
     },
     owner: {
-      _id: "u101",
+      _id: "u102",
       fullname: "Dudu Da",
       imgUrl: "https://robohash.org/g101",
       level: "basic",
@@ -119,7 +119,7 @@ const gigsDemoData = [
       premiumDescription: 'Premium destroy logo design'
     },
     owner: {
-      _id: "u101",
+      _id: "u102",
       fullname: "Dudu Da",
       imgUrl: "https://robohash.org/g101",
       level: "basic",
@@ -139,7 +139,7 @@ async function loadDemoData() {
   if (!gGigs || !gGigs.length) {
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(gigsDemoData))
-    console.log("Loaded New Demo data");
+    console.log("Loaded New gigs Demo data");
   }
 }
 

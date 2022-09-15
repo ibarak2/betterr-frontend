@@ -5,6 +5,7 @@ import { socketService, SOCKET_EVENT_REVIEW_ADDED, SOCKET_EVENT_REVIEW_ABOUT_YOU
 import { getActionRemoveReview, getActionAddReview } from '../store/review.actions'
 import { showSuccessMsg } from '../services/event-bus.service'
 
+
 export const reviewService = {
   add,
   query,
@@ -36,6 +37,8 @@ async function add(review) {
 
   return addedReview
 }
+
+
 
 // This way, we can also subscribe to none-store data change
 // function subscribe(listener) {
