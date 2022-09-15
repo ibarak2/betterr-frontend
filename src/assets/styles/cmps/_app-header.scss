@@ -1,86 +1,94 @@
 .app-header {
-    background-color: $clr1;
-    padding: 10px;
+  background-color: transparent;
+  width: 100%;
+  padding: 2rem;
+  position: sticky;
+  top: 0;
+  transition: background-color 0.2s ease-in;
 
-    .main-header {
-        align-items: center;
-        justify-content: space-between;
-        .sticky {
-            position: fixed;
-            width: 100%;
-            z-index: 9999;
-        } 
+  .main-header {
+    align-items: center;
+    justify-content: space-between;
+    .sticky {
+      position: fixed;
+      width: 100%;
+      z-index: 9999;
     }
+  }
 
-    .site-logo {
-        min-width: 121px; 
-        img {
-            width: 7rem;
-        }
+  .site-logo {
+    min-width: 121px;
+    img {
+      width: 7rem;
     }
-    
-    .header-search {
-        form {
-            height: 3.5rem;
-            .header-search-input {
-                width: 130%;
-                min-width: 100px;
-                padding: 0 10px;
-                outline: $clr4;
-                border-radius: 5px 0 0 5px;
-                border: 1px $clr4 solid;
-            }
-            .header-search-input:hover {
-                outline: none;
-            }
-            .header-search-input:focus {
-                border: 1px $clr5 solid;
-                outline: none;
-            }
-            .btn {
-                width: 50px;
-                background-color: #222325;
-                border-radius: 0 5px 5px 0;
-                span .search-svg {
-                    width: 90%;
-                    color: $clr1;
-                    fill: currentColor;
-                }
-            }
-            .btn:hover {
-                background-color: #404145;
-            }
-        }
-    }
+  }
 
-    .nav {
-        font-weight: 500;
-        .nav-list {
-            li {
-                margin-right: 1rem;
-            }
-            a {
-                color: $clr5;
-            }
-            a:hover {
-                color: $clr2;
-            }
-            .nav-join {
-                color: $clr2;
-                border: 1px $clr2 solid;
-                border-radius: 5px;
-                padding: 5px 15px;
-                transition: all 0.2s ease-in;
-            }
-            .nav-join:hover {
-                color: $clr1;
-                background-color: $clr2;
-            }
+  .header-search {
+    display: none;
+    margin: 0;
+    form {
+      .header-search-input {
+        width: 130%;
+        min-width: 100px;
+        padding: 0 10px;
+        outline: $clr4;
+        border-radius: 5px 0 0 5px;
+        border: 1px $clr4 solid;
+        margin: 0;
+      }
+      .header-search-input:hover {
+        outline: none;
+      }
+      .header-search-input:focus {
+        border: 1px $clr5 solid;
+        outline: none;
+      }
+      .btn {
+        width: 50px;
+        background-color: #222325;
+        border-radius: 0 5px 5px 0;
+        span .search-svg {
+          width: 90%;
+          color: $clr1;
+          fill: currentColor;
         }
+        margin: 0;
+      }
+      .btn:hover {
+        background-color: #404145;
+      }
     }
+  }
+
+  .nav {
+    font-weight: 500;
+    .nav-list {
+      li a {
+        margin-right: 1rem;
+        color: $clr5;
+      }
+      a:hover {
+        color: $clr2;
+      }
+      .nav-join {
+        color: $clr2;
+        border: 1px $clr2 solid;
+        border-radius: 5px;
+        padding: 5px 15px;
+        transition: all 0.2s ease-in;
+      }
+      .nav-join:hover {
+        color: $clr1;
+        background-color: $clr2;
+      }
+    }
+  }
 }
 
-// .header-transparent {
-//     background-color: transparent;
-// }
+.header-bgc {
+  background-color: white;
+}
 
+.header-search-shown {
+  display: block !important;
+}
