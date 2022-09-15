@@ -2,14 +2,14 @@
 
 
 
-export const GigList = () => {
+export const List = () => {
 
 
 
 
     return (
-        <div className='gig-list'>
-            Hello from gig list cmp
+        <div className='list'>
+            Hello from list cmp
 
         </div>
     )

@@ -1,5 +1,5 @@
 import React from "react"
-import { loadCars } from "../store/car.actions.js"
+import { loadGigs } from "../store/gig.actions.js"
 import { useDispatch, useSelector } from "react-redux"
 // import logo from "../assets/img/logo.png"
 
@@ -8,7 +8,7 @@ export function HomePage() {
   const dispatch = useDispatch()
 
   const changeCount = (diff) => {
-    dispatch(loadCars())
+    dispatch(loadGigs())
   }
   return (
     <section>
