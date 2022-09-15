@@ -15,16 +15,17 @@ export function AppHeader() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
+  
   console.log(offset)
+
   return (
-    <header className="app-header header-transparent">
+    <header className={offset > 0 ? "app-header header-bgc" : "app-header"}>
       <div className="flex main-header">
         <a href="/" className="site-logo">
           <img className="logo" src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png" alt="betterr." />
         </a>
 
-        <div className="header-search">
+        <div className={offset >= 200 ? "header-search header-search-shown" : "header-search"}>
           <form className="flex">
             <input type="search" className="header-search-input" autoComplete='off' placeholder='What service are you looking for today?'/>
             <button className="btn btn-header-search">
@@ -37,37 +38,41 @@ export function AppHeader() {
 
         <nav className='flex nav'>
           <ul className='flex clean-list nav-list'>
-            <li><a href="/">Explore</a></li>
+            <li className='nav-routes'>
+              {routes.map((route) => (
+                <NavLink key={route.path} to={route.path}>
+                {route.label}
+                </NavLink>
+              ))}
+            </li>
             <li><a href="/">Sign In</a></li>
             <li><a href="/" className="nav-join">Join</a></li>
           </ul>
         </nav>
       </div>
+
+      <div>
+
+      </div>
     </header>
   )
 }
 
-  //     <nav>
-  //       {routes.map((route) => (
-  //         <NavLink key={route.path} to={route.path}>
-  //           {route.label}
-  //         </NavLink>
-  //       ))}
+      // <nav>
+      //   {user && (
+      //     <span className="user-info">
+      //       <Link to={`user/${user._id}`}>
+      //         {user.imgUrl && <img src={user.imgUrl} />}
+      //         {user.fullname}
+      //       </Link>
+      //       <span className="score">{user.score?.toLocaleString()}</span>
+      //       <button onClick={onLogout}>Logout</button>
+      //     </span>
+      //   )}
 
-  //       {user && (
-  //         <span className="user-info">
-  //           <Link to={`user/${user._id}`}>
-  //             {user.imgUrl && <img src={user.imgUrl} />}
-  //             {user.fullname}
-  //           </Link>
-  //           <span className="score">{user.score?.toLocaleString()}</span>
-  //           <button onClick={onLogout}>Logout</button>
-  //         </span>
-  //       )}
-
-  //       {!user && (
-  //         <section className="user-info">
-  //           <LoginSignup onLogin={onLogin} onSignup={onSignup} />
-  //         </section>
-  //       )}
-  //     </nav>
+      //   {!user && (
+      //     <section className="user-info">
+      //       <LoginSignup onLogin={onLogin} onSignup={onSignup} />
+      //     </section>
+      //   )}
+      // </nav>
