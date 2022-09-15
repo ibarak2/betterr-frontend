@@ -60,8 +60,16 @@ const gigsDemoData = [
     _id: "g101",
     title: "I will design your logo",
     price: 12,
+    plans: {
+      basicPrice: 12,
+      basicDescription: 'Standad logo design',
+      standardPrice: 29,
+      standardDescription: 'Standad logo design',
+      premiumPrice: 39,
+      premiumDescription: 'Premium logo design'
+    },
     owner: {
-      _id: "u101",
+      _id: "u102",
       fullname: "Dudu Da",
       imgUrl: "https://robohash.org/g101",
       level: "basic",
@@ -77,8 +85,16 @@ const gigsDemoData = [
     _id: "g102",
     title: "I will paint your logo",
     price: 79,
+    plans: {
+      basicPrice: 79,
+      basicDescription: 'Standad paint logo design',
+      standardPrice: 111,
+      standardDescription: 'Standad paint logo design',
+      premiumPrice: 149,
+      premiumDescription: 'Premium paint logo design'
+    },
     owner: {
-      _id: "u101",
+      _id: "u102",
       fullname: "Dudu Da",
       imgUrl: "https://robohash.org/g101",
       level: "basic",
@@ -94,8 +110,16 @@ const gigsDemoData = [
     _id: "g103",
     title: "I will destroy your logo",
     price: 39,
+    plans: {
+      basicPrice: 39,
+      basicDescription: 'Standad destroy logo design',
+      standardPrice: 89,
+      standardDescription: 'Standad destroy logo design',
+      premiumPrice: 199,
+      premiumDescription: 'Premium destroy logo design'
+    },
     owner: {
-      _id: "u101",
+      _id: "u102",
       fullname: "Dudu Da",
       imgUrl: "https://robohash.org/g101",
       level: "basic",
@@ -115,7 +139,7 @@ async function loadDemoData() {
   if (!gGigs || !gGigs.length) {
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(gigsDemoData))
-    console.log("Loaded New Demo data");
+    console.log("Loaded New gigs Demo data");
   }
 }
 
