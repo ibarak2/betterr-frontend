@@ -2,10 +2,10 @@
 // const thunk = ReduxThunk.default
 
 // import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
-import {applyMiddleware, combineReducers, compose, legacy_createStore as createStore} from 'redux'
+import { applyMiddleware, combineReducers, compose, legacy_createStore as createStore } from 'redux'
 import thunk from 'redux-thunk'
 
-import { carReducer } from './car.reducer.js'
+import { gigReducer } from './gig.reducer.js'
 import { userReducer } from './user.reducer.js'
 import { reviewReducer } from './review.reducer'
 import { systemReducer } from './system.reducer'
@@ -13,7 +13,7 @@ import { systemReducer } from './system.reducer'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const rootReducer = combineReducers({
-    carModule: carReducer,
+    gigModule: gigReducer,
     userModule: userReducer,
     systemModule: systemReducer,
     reviewModule: reviewReducer,
