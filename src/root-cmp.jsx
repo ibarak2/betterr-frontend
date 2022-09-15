@@ -24,8 +24,8 @@ export function RootCmp() {
           ))}
         </Routes>
       </main>
-      <AppFooter />
       <GigPreview />
+      <AppFooter />
     </div>
   )
 }

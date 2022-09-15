@@ -57,7 +57,7 @@ export const GigDetails = () => {
 
                 </section>
                 <section className="plans">
-                    <GigPlans />
+                    <GigPlans plans={gig.plans} />
                 </section>
             </div>
         </CssVarsProvider>
