@@ -3,7 +3,8 @@ import Slider from "react-slick"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
 import { Link } from "react-router-dom"
-
+import FavoriteIcon from "@mui/icons-material/Favorite"
+import StarIcon from "@mui/icons-material/Star"
 // for getting random pics
 import { utilService } from "../services/util.service"
 
@@ -13,22 +14,31 @@ export const GigPreview = () => {
       <SimpleSlider />
       <div className="preview-details">
         <div className="seller-details">
-          <span className="prerview-avatar"></span>
-          <p className="preview-seller-name">Ad by {`${"seller name"}`}</p>
-          <p>Level {`${"seller level"}`} Seller</p>
+          <img className="prerview-avatar" />
+          <div className="seller-details-text">
+            <p>
+              Ad by {/* <Link>{`${"seller name"}`}</Link> */}
+              <a className="preview-seller-name">{`${"seller name"}`}</a>
+            </p>
+            <span className="preview-seller-level">
+              Level {`${"2"}`} Seller
+            </span>
+          </div>
         </div>
-        <div className="preview-offer">
-          <p className="preview-title">{`${"title"}`}</p>
-          <p className="stars">
-            <span>⭐</span>rate <span>(likedByUsers)</span>
-          </p>
+        <div className="preview-title">
+          <a>{`${"title"}`}</a>
         </div>
-        <div>
-          <span>♥</span>
-          <span>
+        <div className="stars">
+          {/* ⭐rate */}
+          <StarIcon />
+          {`likedByUsers`}
+        </div>
+        <div className="preview-footer">
+          <FavoriteIcon className="heart" />
+          <div className="preview-offer">
             <p className="start-at">starting at</p>
-            <p>${`${100.00}`}</p>
-          </span>
+            <p className="price">${`${100.0}`}</p>
+          </div>
         </div>
         {/* {
       _id: "i101",
@@ -80,7 +90,7 @@ function SimpleSlider() {
   const imgs = ["1", "2", "3", "4", "5", "6"]
   return (
     <Slider {...settings}>
-      {imgs.map((img) => (
+      {imgs.map((img, idx) => (
         <div>
           <img
             src={`https://picsum.photos/200/300?random=${utilService.getRandomIntInclusive(
