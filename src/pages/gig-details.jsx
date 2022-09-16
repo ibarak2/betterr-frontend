@@ -7,8 +7,10 @@ import { UserInfo } from "../cmps/user-info"
 import { ReviewList } from "../cmps/review-list"
 import { GigImgsCarousel } from "../cmps/gig-imgs-carousel"
 import { SellerOverview } from "../cmps/seller-overview"
-import { CssVarsProvider } from '@mui/joy/styles';
+import { CssVarsProvider } from '@mui/joy/styles'
 import { userService } from "../services/user.service"
+import ReactStars from 'react-stars'
+import { utilService } from "../services/util.service"
 
 
 
@@ -69,9 +71,19 @@ export const GigDetails = () => {
                     <h2>About the Seller</h2>
                     <UserInfo />
                     <section className="reviews-container">
-                        <h2>Reviews</h2>
-                        <ReviewList reviews={reviews} />
+                        <div className="flex align-center reviews-title" >
 
+                            <h2><span>{reviews.length}</span> Reviews </h2>
+                            <ReactStars
+                                value={utilService.averageRating(reviews)}
+                                count={5}
+                                size={24}
+                                color2={'#ffd700'}
+                                edit={false}
+                            />
+                            <b>{utilService.averageRating(reviews)}</b>
+                        </div>
+                        <ReviewList reviews={reviews} />
                     </section>
 
                 </section>
