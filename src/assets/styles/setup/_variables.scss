@@ -10,3 +10,20 @@ $clr6: #222325; // (dark grey)
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
+
+$grid_gutters: (
+    xs: 6px,
+    sm: 8px,
+    md: 8px,
+    lg: 16px,
+    xl: 16px
+);
+
+$grid_layouts: 12, 15;
+$grid_breakpoints: 'sm', 'md', 'lg', 'xl';
+
+$page_max_width: 1400px;
+$padding_min: 24px;
+$padding_min_double: 48px;
+$padding_max: 32px;
+$padding_max_double: 64px;
