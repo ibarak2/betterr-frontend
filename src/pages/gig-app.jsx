@@ -41,52 +41,5 @@ export function GigApp() {
   // if (!gigs) return <h1>Loading..</h1>
   return (
     <GigList />
-
-    // <div>
-    //   {console.log(gigs)}
-    //   <h3>Gigs App</h3>
-    //   <main>
-    //     <button onClick={onAddGig}>Add Gig ⛐</button>
-    //     <ul className="gig-list">
-    //       {gigs.map((gig) => (
-    //         <li className="gig-preview" key={gig._id}>
-    //           <h4>{gig.vendor}</h4>
-    //           <h1>⛐</h1>
-    //           <p>
-    //             Price: <span>${gig.price.toLocaleString()}</span>
-    //           </p>
-    //           <p>
-    //             Owner: <span>{gig.owner && gig.owner.fullname}</span>
-    //           </p>
-    //           <div>
-    //             <button
-    //               onClick={() => {
-    //                 onRemoveGig(gig._id)
-    //               }}
-    //             >
-    //               x
-    //             </button>
-    //             <button
-    //               onClick={() => {
-    //                 onUpdateGig(gig)
-    //               }}
-    //             >
-    //               Edit
-    //             </button>
-    //           </div>
-    //           <button
-    //             className="buy"
-    //             onClick={() => {
-    //               onAddToCart(gig)
-    //             }}
-    //           >
-    //             Add to Cart
-    //           </button>
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   </main>
-    // </div>
-    
   )
 }

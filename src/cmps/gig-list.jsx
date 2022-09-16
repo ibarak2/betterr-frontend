@@ -11,11 +11,6 @@ export const GigList = () => {
     dispatch(loadGigs())
     console.log("GIGS", gigs)
   }, [])
-  const gigsArr = [
-    "1",
-    "2",
-    // "3", "4", "5", "6"
-  ]
   if (!gigs) return <h1>Loading...</h1>
   return (
     <div className="gig-list" style={{ display: "flex" }}>
