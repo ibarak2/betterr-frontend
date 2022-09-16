@@ -2,7 +2,8 @@ export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
-    delay
+    delay,
+    averageRating
 }
 
 function makeId(length = 6) {
@@ -38,3 +39,7 @@ function delay(ms = 1500) {
     })
 }
 
+function averageRating(reviews) {
+    let maxRating = reviews.reduce((total, review) => review.rate + total, 0)
+    return (maxRating / reviews.length).toFixed(1)
+}
