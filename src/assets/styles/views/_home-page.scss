@@ -1,19 +1,24 @@
 .homepage {
-  border: 1px $clr2 solid;
-  margin: 0;
+  // border: 1px $clr2 solid;
+  margin: auto;
   padding: 0;
   color: $clr1;
-  height: 680px;
-  display: flex;
-  // align-items: center;
+  height: 100vh;
+  border: 1px gold solid;
+
+
   .home-logo {
     width: 30%;
   }
 
   .hero-wrapper {
     align-self: center;
+    padding-left: 0;
+    padding-right: 0;
+    
     .hero-main {
       width: 660px;
+      padding-left: 0;
       .hero-title {
         font-size: rem(48px);
         font-weight: 600;

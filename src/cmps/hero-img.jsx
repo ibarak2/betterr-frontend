@@ -1,13 +1,13 @@
 import { useRef, useEffect, useState } from 'react'
 
 export const HeroImg = () => {
-  const [counter, setCounter] = useState(0)
+  const [counter, setCounter] = useState(1)
   let myInterval = useRef()
 
   useEffect(() => {
     myInterval.current = setInterval(() => {
       setCounter((prevState) => prevState + 1)
-    }, 2000)
+    }, 7500)
     return () => {
       clearInterval(myInterval.current)
     }
@@ -19,26 +19,41 @@ export const HeroImg = () => {
     }
   }, [counter])
 
-  const interval = () => {
-    myInterval.current = setInterval(() => {
-      setCounter((prevState) => prevState + 1)
-    }, 2000)
-  }
-
   return (
     <div className="hero-img">
 
-      <div className="hero-andrea" style={{ opacity: `${counter === 1 ? '1' : '0'}` }}>
+      <div className="animate-fade hero-andrea" style={{ opacity: `${counter === 1 ? '1' : '0'}` }}>
         <div className="seller-name">
           <p>
             Andrea, <b>Fashion Designer</b>
           </p>
         </div>
       </div>
-      <div className="hero-moon" style={{ opacity: `${counter === 1 ? '0' : '1'}` }}>
+      <div className="animate-fade hero-moon" style={{ opacity: `${counter === 2 ? '1' : '0'}` }}>
         <div className="seller-name">
           <p>
             Moon, <b>Marketing Expert</b>
+          </p>
+        </div>
+      </div>
+      <div className="animate-fade hero-ritika" style={{ opacity: `${counter === 3 ? '1' : '0'}` }}>
+        <div className="seller-name">
+          <p>
+            Rikita, <b>Shoemaker and Designer</b>
+          </p>
+        </div>
+      </div>
+      <div className="animate-fade hero-zach" style={{ opacity: `${counter === 4 ? '1' : '0'}` }}>
+        <div className="seller-name">
+          <p>
+            Zach, <b>Bar Owner</b>
+          </p>
+        </div>
+      </div>
+      <div className="animate-fade hero-gabrielle" style={{ opacity: `${counter === 5 ? '1' : '0'}` }}>
+        <div className="seller-name">
+          <p>
+          Gabrielle, <b>Video Editor</b>
           </p>
         </div>
       </div>

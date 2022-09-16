@@ -1,62 +1,62 @@
-@mixin column($layout, $size) {
-  @for $i from 1 through $layout {
-    > .col-#{$i}-#{$size} {
-      $percent: percentage($i/$layout);
-      flex-basis: $percent;
-      max-width: $percent;
-    }
-  }
-}
+// @mixin column($layout, $size) {
+//   @for $i from 1 through $layout {
+//     > .col-#{$i}-#{$size} {
+//       $percent: percentage($i/$layout);
+//       flex-basis: $percent;
+//       max-width: $percent;
+//     }
+//   }
+// }
 
-@mixin offset($layout, $size) {
-  @for $i from 1 through $layout {
-    > .offset-col-#{$i}-#{$size} {
-      $percent: percentage($i/$layout);
-      margin-left: $percent;
-    }
-  }
-}
+// @mixin offset($layout, $size) {
+//   @for $i from 1 through $layout {
+//     > .offset-col-#{$i}-#{$size} {
+//       $percent: percentage($i/$layout);
+//       margin-left: $percent;
+//     }
+//   }
+// }
 
-@mixin center($size) {
-  &.center-#{$size} {
-    justify-content: center;
-    text-align: center;
-  }
-}
+// @mixin center($size) {
+//   &.center-#{$size} {
+//     justify-content: center;
+//     text-align: center;
+//   }
+// }
 
-@mixin gutter($size) {
-  padding: 0 map-get($grid_gutters, $size);
-}
+// @mixin gutter($size) {
+//   padding: 0 map-get($grid_gutters, $size);
+// }
 
-@mixin gutter-compensation($size) {
-  margin-left: -(map-get($grid_gutters, $size));
-  margin-right: -(map-get($grid_gutters, $size));
-}
+// @mixin gutter-compensation($size) {
+//   margin-left: -(map-get($grid_gutters, $size));
+//   margin-right: -(map-get($grid_gutters, $size));
+// }
 
-@each $layout in $grid_layouts {
-  .grid-#{$layout} {
-    position: relative;
-    box-sizing: border-box;
-    display: flex;
-    flex: 0 1 auto;
-    flex-flow: row wrap;
+// @each $layout in $grid_layouts {
+//   .grid-#{$layout} {
+//     position: relative;
+//     box-sizing: border-box;
+//     display: flex;
+//     flex: 0 1 auto;
+//     flex-flow: row wrap;
 
-    > [class*='col-'] {
-      box-sizing: border-box;
-      flex: 0 0 auto;
-      flex-basis: 100%;
-      max-width: 100%;
-      @include gutter(xs);
-    }
+//     > [class*='col-'] {
+//       box-sizing: border-box;
+//       flex: 0 0 auto;
+//       flex-basis: 100%;
+//       max-width: 100%;
+//       @include gutter(xs);
+//     }
 
-    // The reason xs gets a custom treatment is due to the fact that the grid is `xs` by default
-    // and it does not correspond to any breakpoint, but instead, to the lack thereof
-    @include gutter-compensation(xs);
-    @include column($layout, xs);
-    @include center(xs);
-    @include offset($layout, xs);
-  }
-}
+//     // The reason xs gets a custom treatment is due to the fact that the grid is `xs` by default
+//     // and it does not correspond to any breakpoint, but instead, to the lack thereof
+//     @include gutter-compensation(xs);
+//     @include column($layout, xs);
+//     @include center(xs);
+//     @include offset($layout, xs);
+//   }
+// }
 
 // @each $breakpoint in $grid_breakpoints {
 //   @include media-query-grid($breakpoint) {
@@ -67,7 +67,9 @@
 //         @include offset($layout, $breakpoint);
 //         @include center($breakpoint);
 
-        
+//         > [class*='col-'] {
+//           @include gutter($breakpoint);
+//         }
 //       }
 //     }
 //   }

@@ -5,8 +5,12 @@
   top: 0;
   transition: background-color 0.2s ease-in;
   z-index: 10;
-
+  
   .main-header {
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+    margin: auto;
     align-items: center;
     justify-content: space-between;
     .sticky {
@@ -65,7 +69,7 @@
     .nav-list {
       li a {
         margin-right: 1rem;
-        color: $clr5;
+        color: $clr1;
       }
       a:hover {
         color: $clr2;
@@ -76,6 +80,7 @@
         border-radius: 5px;
         padding: 5px 15px;
         transition: all 0.2s ease-in;
+        margin: 0;
       }
       .nav-join:hover {
         color: $clr1;
@@ -85,8 +90,14 @@
   }
 }
 
-.header-bgc {
+.header-white {
   background-color: white;
+
+  .nav .nav-list {
+    li a {
+      color: $clr5;
+    }
+  }
 }
 
 .header-search-shown {

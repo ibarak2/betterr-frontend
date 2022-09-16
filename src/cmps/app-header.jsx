@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import routes from '../routes'
 import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
@@ -7,6 +7,10 @@ import { useEffect, useState } from 'react'
 
 export function AppHeader() {
   const [offset, setOffset] = useState(0)
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  console.log('searchParams', searchParams);
 
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
@@ -18,8 +22,9 @@ export function AppHeader() {
   
   console.log(offset)
 
+
   return (
-    <header className={offset > 0 ? "app-header header-bgc" : "app-header"}>
+    <header className={offset > 0 ? "app-header header-white" : "app-header"}>
       <div className="flex max-width-container main-header">
         <a href="/" className="site-logo">
           <img className="logo" src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png" alt="betterr." />
