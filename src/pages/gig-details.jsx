@@ -45,7 +45,12 @@ export const GigDetails = () => {
     const loadReviews = async (userId) => {
         try {
             const user = await userService.getById(userId)
+            if (!reviews) {
+                console.log("here")
+                return
+            }
             setReviews(user.reviews)
+            console.log("here1")
 
             console.log("review", user.reviews);
         } catch (err) {
@@ -53,7 +58,7 @@ export const GigDetails = () => {
         }
     }
 
-    if (!gig || !reviews) return <div>Loading</div>
+    if (!gig) return <div>Loading</div>
     return (
         <CssVarsProvider>
 
@@ -70,21 +75,23 @@ export const GigDetails = () => {
                     <hr />
                     <h2>About the Seller</h2>
                     <UserInfo />
-                    <section className="reviews-container">
-                        <div className="flex align-center reviews-title" >
+                    {!reviews ? <div>0 Reviews</div> :
+                        <section className="reviews-container">
+                            <div className="flex align-center reviews-title" >
 
-                            <h2><span>{reviews.length}</span> Reviews </h2>
-                            <ReactStars
-                                value={utilService.averageRating(reviews)}
-                                count={5}
-                                size={24}
-                                color2={'#ffd700'}
-                                edit={false}
-                            />
-                            <b>{utilService.averageRating(reviews)}</b>
-                        </div>
-                        <ReviewList reviews={reviews} />
-                    </section>
+                                <h2><span>{reviews.length}</span> Reviews </h2>
+                                <ReactStars
+                                    value={utilService.averageRating(reviews)}
+                                    count={5}
+                                    size={24}
+                                    color2={'#ffd700'}
+                                    edit={false}
+                                />
+                                <b>{utilService.averageRating(reviews)}</b>
+                            </div>
+                            <ReviewList reviews={reviews} />
+                        </section>
+                    }
 
                 </section>
                 <section className="plans">
