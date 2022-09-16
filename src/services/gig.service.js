@@ -135,6 +135,8 @@ const gigsDemoData = [
   },
 
 ]
+
+
 async function loadDemoData() {
 
   const gGigs = await storageService.query(STORAGE_KEY) || []

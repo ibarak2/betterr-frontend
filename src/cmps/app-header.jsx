@@ -4,6 +4,7 @@ import routes from '../routes'
 import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 import { useEffect, useState } from 'react'
+import { SecondaryNavbar } from './secondary-navbar'
 
 export function AppHeader() {
   const [offset, setOffset] = useState(0)
@@ -59,6 +60,7 @@ export function AppHeader() {
       <div>
 
       </div>
+      <SecondaryNavbar />
     </header>
   )
 }
