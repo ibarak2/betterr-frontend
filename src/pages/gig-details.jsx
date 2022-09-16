@@ -18,7 +18,7 @@ import { userService } from "../services/user.service"
 export const GigDetails = () => {
 
     const [gig, setGig] = useState(null)
-    const [reviews, setReviews] = useState([null])
+    const [reviews, setReviews] = useState([])
     const params = useParams()
     const navigate = useNavigate()
 
@@ -58,16 +58,21 @@ export const GigDetails = () => {
             <div className='gig-details'>
                 <section className="gig-description">
                     <h1>{gig.title}</h1>
-
                     <SellerOverview seller={gig.owner} />
-                    <GigImgsCarousel imgList={gig.imgUrls} />
+
+                    <div className="carousel-container">
+                        <GigImgsCarousel imgList={gig.imgUrls} />
+                    </div>
                     <h2>About this Gig</h2>
                     <p>{gig.description}</p>
                     <hr />
                     <h2>About the Seller</h2>
                     <UserInfo />
-                    <h2>Reviews</h2>
-                    <ReviewList reviews={reviews} />
+                    <section className="reviews-container">
+                        <h2>Reviews</h2>
+                        <ReviewList reviews={reviews} />
+
+                    </section>
 
                 </section>
                 <section className="plans">

@@ -1,6 +1,7 @@
 import { Carousel } from "react-responsive-carousel"
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
 
@@ -16,64 +17,45 @@ export const GigImgsCarousel = ({ imgList }) => {
                 autoPlay={false}
                 showIndicators={false}
                 infiniteLoop
-                width={"80%"}
+                showStatus={false}
                 renderArrowPrev={(onClickHandler, label) => (
                     <button
+                        className="carousel-btn"
+
                         type="button"
                         onClick={onClickHandler}
                         title={label}
                         style={{
-                            position: "absolute",
-                            zIndex: 2,
-                            top: "calc(50% - 15px)",
-                            width: 30,
-                            height: 30,
-                            cursor: "pointer",
                             left: 15
-
                         }}
                     >
-                        {"<"}
+                        <ArrowBackIosNewIcon />
                     </button>
                 )}
                 renderArrowNext={(onClickHandler, label) => (
                     <button
+                        className="carousel-btn"
+
                         type="button"
                         onClick={onClickHandler}
                         title={label}
                         style={{
-                            position: "absolute",
-                            zIndex: 2,
-                            top: "calc(50% - 15px)",
-                            width: 30,
-                            height: 30,
-                            cursor: "pointer",
                             right: 15
-
                         }}
                     >
-                        {">"}
+                        <ArrowForwardIosIcon />
                     </button>
                 )}
             >
-                <div>
-                    <img
-                        alt=""
-                        src="https://res.cloudinary.com/ibarak/image/upload/v1663222495/test1/hdyi7zhrvzuycrd9pajw.jpg"
-                    />
-                </div>
-                <div>
-                    <img
-                        alt=""
-                        src="https://res.cloudinary.com/ibarak/image/upload/v1663222181/test1/zo7ydzobzs6tswah4lun.jpg"
-                    />
-                </div>
-                <div>
-                    <img
-                        alt=""
-                        src="https://res.cloudinary.com/ibarak/image/upload/v1663222777/test1/vkikk6syk54fp8fewknk.jpg"
-                    />
-                </div>
+                {imgList.map(img => {
+                    return <div>
+                        <img
+                            alt=""
+                            src={img}
+                        />
+                    </div>
+                })}
+
             </Carousel>
         </div>
     )
