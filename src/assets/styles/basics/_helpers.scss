@@ -44,3 +44,7 @@
 // .portrait-ratio {
 //     @include aspect-ratio(9, 16);
 // }
+
+.animate-fade {
+    transition: all 0.7s ease-in-out;
+}
