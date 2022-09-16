@@ -81,6 +81,7 @@ const gigsDemoData = [
     tags: ["logo-design", "artisitic", "proffesional"],
     likedByUsers: ["mini-user"],
   },
+
   {
     _id: "g102",
     title: "I will paint your logo",
@@ -106,6 +107,7 @@ const gigsDemoData = [
     tags: ["logo-design", "artisitic", "proffesional", "accessible"],
     likedByUsers: ["mini-user"],
   },
+
   {
     _id: "g103",
     title: "I will destroy your logo",
@@ -119,7 +121,7 @@ const gigsDemoData = [
       premiumDescription: 'Premium destroy logo design'
     },
     owner: {
-      _id: "u102",
+      _id: "u101",
       fullname: "Dudu Da",
       imgUrl: "https://robohash.org/g101",
       level: "basic",

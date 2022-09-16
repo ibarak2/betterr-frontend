@@ -123,7 +123,7 @@ const reviewsDemoData = [
                 by: {
                     _id: "u102",
                     fullname: "User 1",
-                    imgUrl: "/img/img2.jpg",
+                    imgUrl: "https://robohash.org/u102",
                 },
             },
         ],
@@ -144,7 +144,7 @@ const reviewsDemoData = [
                 by: {
                     _id: "a1001",
                     fullname: "Admin",
-                    imgUrl: "/img/img1.jpg",
+                    imgUrl: 'https://robohash.org/g1201',
                 },
             },
             {
@@ -154,7 +154,7 @@ const reviewsDemoData = [
                 by: {
                     _id: "u101",
                     fullname: "User 1",
-                    imgUrl: "/img/img2.jpg",
+                    imgUrl: 'https://robohash.org/u101',
                 },
             },
             {
@@ -164,7 +164,7 @@ const reviewsDemoData = [
                 by: {
                     _id: "u101",
                     fullname: "User 1",
-                    imgUrl: "/img/img2.jpg",
+                    imgUrl: 'https://robohash.org/u101',
                 },
             },
         ],
