@@ -1,52 +1,54 @@
 import { useEffect, useState } from "react"
 import Slider from "react-slick"
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos"
-import { Link } from "react-router-dom"
-
-// for getting random pics
+import { Link, useNavigate } from "react-router-dom"
+import FavoriteIcon from "@mui/icons-material/Favorite"
+import StarIcon from "@mui/icons-material/Star"
 import { utilService } from "../services/util.service"
 
-export const GigPreview = () => {
+export const GigPreview = ({ owner, _id, title, price, likedByUsers }) => {
+  const [liked, setLiked] = useState()
+  console.log("OWNER", owner)
+  const handleLike = () => {
+    setLiked(!liked)
+  }
   return (
     <div className="gig-preview">
       <SimpleSlider />
       <div className="preview-details">
         <div className="seller-details">
-          <span className="prerview-avatar"></span>
-          <p className="preview-seller-name">Ad by {`${"seller name"}`}</p>
-          <p>Level {`${"seller level"}`} Seller</p>
+          <img className="prerview-avatar" src={`${owner.imgUrl}`} />
+          <div className="seller-details-text">
+            <p>
+              Ad by {""}
+              <Link
+                to={`${owner._id}`}
+                className="preview-seller-name"
+              >{`${owner.fullname}`}</Link>
+            </p>
+            <span className="preview-seller-level">
+              Level {`${owner.level}`} Seller
+            </span>
+          </div>
         </div>
-        <div className="preview-offer">
-          <p className="preview-title">{`${"title"}`}</p>
-          <p className="stars">
-            <span>⭐</span>rate <span>(likedByUsers)</span>
-          </p>
+        <div className="preview-title">
+          <Link to={`${_id}`}>{`${title}`}</Link>
         </div>
-        <div>
-          <span>♥</span>
-          <span>
+        <div className="stars">
+          {/* ⭐rate */}
+          <StarIcon />
+          {owner.rate}
+          <span className="liked-by">({likedByUsers.length})</span>
+        </div>
+        <div className="preview-footer">
+          <FavoriteIcon
+            className={`like ${liked ? "liked" : "heart"}`}
+            onClick={() => handleLike()}
+          />
+          <Link to={`${_id}`} className="preview-offer">
             <p className="start-at">starting at</p>
-            <p>${`${100.00}`}</p>
-          </span>
+            <p className="price">${price}</p>
+          </Link>
         </div>
-        {/* {
-      _id: "i101",
-      title: "I will design your logo",
-      price: 12,
-      owner: {
-        _id: "u101",
-        fullname: "Dudu Da",
-        imgUrl: "url",
-        level: "basic/premium",
-        rate: 4,
-      },
-      daysToMake: 3,
-      description: "Make unique logo...",
-      imgUrl: "",
-      tags: ["logo-design", "artisitic", "proffesional", "accessible"],
-      likedByUsers: ["mini-user"], // for user-wishlist : use $in
-    } */}
       </div>
     </div>
   )
@@ -76,12 +78,11 @@ function SimpleSlider() {
       </div>
     ),
   }
-
   const imgs = ["1", "2", "3", "4", "5", "6"]
   return (
     <Slider {...settings}>
-      {imgs.map((img) => (
-        <div>
+      {imgs.map((img, idx) => (
+        <div key={idx}>
           <img
             src={`https://picsum.photos/200/300?random=${utilService.getRandomIntInclusive(
               1,

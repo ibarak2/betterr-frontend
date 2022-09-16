@@ -3,7 +3,6 @@ import { userService } from "../services/user.service.js"
 import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 // Action Creators:
-
 export function loadGigs() {
   console.log("Getting to Dispatch")
   return async (dispatch) => {
