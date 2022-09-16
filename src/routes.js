@@ -1,10 +1,10 @@
 import { HomePage } from './pages/home-page.jsx'
 import { AboutUs } from './pages/about-us.jsx'
-import { GigApp } from './pages/gig-app.jsx'
 import { ReviewApp } from './pages/review-app.jsx'
 import { ChatApp } from './pages/chat-app.jsx'
 import { AdminApp } from './pages/admin-app.jsx'
 import { GigDetails } from './pages/gig-details.jsx'
+import { Explore } from './pages/explore.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -15,7 +15,7 @@ const routes = [
     },
     {
         path: 'explore',
-        component: <GigApp />,
+        component: <Explore />,
         label: 'Explore'
     },
     // {

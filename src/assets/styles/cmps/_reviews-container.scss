@@ -1,7 +1,15 @@
 .reviews-container {
 
+    & h2 {
+        margin: 0;
+    }
+    & .reviews-title b {
+        color: gold;
+    }
 
-
+    & .review-stars-details {
+        gap: 5px;
+    }
 
     & .review-list {
         display: flex;

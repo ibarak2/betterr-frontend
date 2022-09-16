@@ -72,6 +72,9 @@
     align-items: center;
     padding: rem(10px) rem(12px);
     color: $clr10;
+    .liked-by {
+      color: $clr8;
+    }
   }
   .preview-footer {
     height: 59px;
@@ -79,8 +82,14 @@
     justify-content: space-between;
     align-items: center;
     padding: rem(10px) rem(12px);
+    .like {
+      cursor: pointer;
+    }
     .heart {
       color: $clr8;
+    }
+    .liked {
+      color: $clr9;
     }
     .price {
       margin: 0;
