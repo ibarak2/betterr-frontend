@@ -20,7 +20,7 @@ export function AppHeader() {
 
   return (
     <header className={offset > 0 ? "app-header header-bgc" : "app-header"}>
-      <div className="flex main-header">
+      <div className="flex max-width-container main-header">
         <a href="/" className="site-logo">
           <img className="logo" src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png" alt="betterr." />
         </a>
