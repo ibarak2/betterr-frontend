@@ -21,10 +21,10 @@ export const GigPlans = ({ plans }) => {
 
     return (
         <Tabs
-            size="sm"
+            size="xl"
             aria-label="Pricing plan"
             defaultValue={0}
-            sx={{ width: 343, "--Tabs-gap": "0px" }}
+            sx={{ width: 400, "--Tabs-gap": "0px" }}
         >
             <TabList
                 variant="outlined"
@@ -32,10 +32,12 @@ export const GigPlans = ({ plans }) => {
 
                     borderRadius: 0,
                     [`& .${tabClasses.root}`]: {
-                        fontWeight: "lg",
+                        fontWeight: "xl",
                         flex: 1,
                         bgcolor: "background.body",
                         position: "relative",
+                        height: 55,
+                        color: 'grey',
 
 
                         [`&.${tabClasses.selected}`]: {
@@ -47,7 +49,7 @@ export const GigPlans = ({ plans }) => {
                             position: "absolute",
                             bottom: -1,
                             width: "100%",
-                            height: 2,
+                            height: 3,
                             bgcolor: "success.400",
                         },
                         "&:not(:first-of-type)": {
@@ -71,7 +73,7 @@ export const GigPlans = ({ plans }) => {
                 </Typography>
                 <Typography
                     textColor="black.400"
-                    fontSize="xl3"
+                    fontSize="xl4"
                     fontWeight="xl"
                     my={1}
                 >
@@ -87,7 +89,7 @@ export const GigPlans = ({ plans }) => {
                 </Typography>
                 <Typography
                     textColor="black.400"
-                    fontSize="xl3"
+                    fontSize="xl4"
                     fontWeight="xl"
                     my={1}
                 >
@@ -103,7 +105,7 @@ export const GigPlans = ({ plans }) => {
                 </Typography>
                 <Typography
                     textColor="black.400"
-                    fontSize="xl3"
+                    fontSize="xl4"
                     fontWeight="xl"
                     my={1}
                 >
@@ -114,7 +116,7 @@ export const GigPlans = ({ plans }) => {
                     </Typography>
                 </Typography>
             </TabPanel>
-            <button onClick={() => onSelect()}>Continue <span>→</span></button>
+            <button className='continue-plans-btn' onClick={() => onSelect()}>Continue <span>→</span></button>
         </Tabs >
     );
 }

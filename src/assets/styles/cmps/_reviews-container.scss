@@ -1,0 +1,25 @@
+.reviews-container {
+
+
+
+
+    & .review-list {
+        display: flex;
+        flex-direction: column;
+    }
+    & .user-info {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+    }
+
+    & .user-info img{
+        border: 1px solid black;
+        border-radius: 28px;
+        width: 32px;
+    }
+    & .review-details {
+        margin-left: 44px;
+    }
+}

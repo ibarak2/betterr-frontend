@@ -1,14 +1,17 @@
+import { Review } from "./review"
 
 
 
 
-export const ReviewList = () => {
+export const ReviewList = ({ reviews }) => {
 
 
 
     return (
         <div className="review-list">
-            Hello from review list
+            {reviews.map(review => {
+                return <Review review={review} />
+            })}
         </div>
     )
 }
