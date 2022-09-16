@@ -11,6 +11,43 @@ export const GigPreview = () => {
   return (
     <div className="gig-preview">
       <SimpleSlider />
+      <div className="preview-details">
+        <div className="seller-details">
+          <span className="prerview-avatar"></span>
+          <p className="preview-seller-name">Ad by {`${"seller name"}`}</p>
+          <p>Level {`${"seller level"}`} Seller</p>
+        </div>
+        <div className="preview-offer">
+          <p className="preview-title">{`${"title"}`}</p>
+          <p className="stars">
+            <span>⭐</span>rate <span>(likedByUsers)</span>
+          </p>
+        </div>
+        <div>
+          <span>♥</span>
+          <span>
+            <p className="start-at">starting at</p>
+            <p>${`${100.00}`}</p>
+          </span>
+        </div>
+        {/* {
+      _id: "i101",
+      title: "I will design your logo",
+      price: 12,
+      owner: {
+        _id: "u101",
+        fullname: "Dudu Da",
+        imgUrl: "url",
+        level: "basic/premium",
+        rate: 4,
+      },
+      daysToMake: 3,
+      description: "Make unique logo...",
+      imgUrl: "",
+      tags: ["logo-design", "artisitic", "proffesional", "accessible"],
+      likedByUsers: ["mini-user"], // for user-wishlist : use $in
+    } */}
+      </div>
     </div>
   )
 }
