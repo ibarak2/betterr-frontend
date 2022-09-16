@@ -6,7 +6,7 @@ import { HeroImg } from '../cmps/hero-img'
 
 export function HomePage() {
   return (
-    <section className="main-container homepage">
+    <section className="main-container max-width-container homepage">
       
       <div className="max-width-container hero-wrapper">
         <div className="hero-backgrounds">
