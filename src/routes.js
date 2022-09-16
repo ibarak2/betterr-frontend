@@ -18,31 +18,31 @@ const routes = [
         component: <Explore />,
         label: 'Explore'
     },
-    // {
-    //     path: 'gig/:id',
-    //     component: <GigDetails />,
-    //     label: 'Gig details'
-    // },
-    // {
-    //     path: 'review',
-    //     component: <ReviewApp />,
-    //     label: 'Reviews'
-    // },
-    // {
-    //     path: 'chat',
-    //     component: <ChatApp />,
-    //     label: 'Chat'
-    // },
-    // {
-    //     path: 'about',
-    //     component: <AboutUs />,
-    //     label: 'About us'
-    // },
-    // {
-    //     path: 'admin',
-    //     component: <AdminApp />,
-    //     label: 'Admin Only'
-    // }
+    {
+        path: 'gig/:id',
+        component: <GigDetails />,
+        label: 'Gig details'
+    },
+    {
+        path: 'review',
+        component: <ReviewApp />,
+        label: 'Reviews'
+    },
+    {
+        path: 'chat',
+        component: <ChatApp />,
+        label: 'Chat'
+    },
+    {
+        path: 'about',
+        component: <AboutUs />,
+        label: 'About us'
+    },
+    {
+        path: 'admin',
+        component: <AdminApp />,
+        label: 'Admin Only'
+    }
 ]
 
 export default routes
