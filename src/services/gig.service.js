@@ -72,8 +72,9 @@ const gigsDemoData = [
       _id: "u102",
       fullname: "Dudu Da",
       imgUrl: "https://robohash.org/g101",
-      level: "basic",
-      rate: 4,
+      level: "Level 2 Seller",
+      rate: 4.7,
+      reviewsAmount: 3
     },
     daysToMake: 3,
     description: "Make unique logo... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
@@ -98,8 +99,9 @@ const gigsDemoData = [
       _id: "u102",
       fullname: "Dudu Da",
       imgUrl: "https://robohash.org/g101",
-      level: "basic",
-      rate: 4,
+      level: "Level 2 Seller",
+      rate: 4.7,
+      reviewsAmount: 3
     },
     daysToMake: 5,
     description: "Paint unique logo...",
@@ -122,15 +124,42 @@ const gigsDemoData = [
     },
     owner: {
       _id: "u101",
-      fullname: "Dudu Da",
+      fullname: "User 1",
       imgUrl: "https://robohash.org/g101",
-      level: "basic",
+      level: "Level 1 Seller",
       rate: 4,
+      reviewsAmount: 1
     },
     daysToMake: 7,
     description: "Destroy unique logo...",
     imgUrls: ["https://robohash.org/g103", "https://robohash.org/g102213321"],
     tags: ["proffesional", "accessible"],
+    likedByUsers: ["mini-user"],
+  },
+  {
+    _id: "g104",
+    title: "I will Develop your beautiful website",
+    price: 49,
+    plans: {
+      basicPrice: 49,
+      basicDescription: 'Basic build small 3 pages website',
+      standardPrice: 189,
+      standardDescription: 'Standad build normal 8 pages website with API and Data-Base',
+      premiumPrice: 399,
+      premiumDescription: 'Premium build small +10 pages website with 3 APIs and full 3 Data-Bases'
+    },
+    owner: {
+      _id: "a1001",
+      fullname: "Admin",
+      imgUrl: "https://robohash.org/admin",
+      level: "Top Rated Seller",
+      rate: 5,
+      reviewsAmount: 0
+    },
+    daysToMake: 7,
+    description: "I will develop your own unqiue website with full functionality",
+    imgUrls: ["https://robohash.org/g154503", "https://robohash.org/g1202213321"],
+    tags: ["proffesional", "accessible", "web developer"],
     likedByUsers: ["mini-user"],
   },
 
