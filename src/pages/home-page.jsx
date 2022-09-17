@@ -7,7 +7,7 @@ import { HeroWrapper } from '../cmps/hero-wrapper.jsx'
 import { TrustedBy } from '../cmps/trusted-by.jsx'
 import { GetInspired } from '../cmps/get-inspired.jsx'
 import { PopularServices } from '../cmps/popular-services.jsx'
-import { ExploreMarketplace } from '../cmps/explore-marketplace.jsx'
+import { MainCategories } from '../cmps/main-categories.jsx'
 
 export function HomePage() {
   return (
@@ -15,7 +15,7 @@ export function HomePage() {
       <HeroWrapper />
       <TrustedBy />
       <PopularServices/>
-      <ExploreMarketplace />
+      <MainCategories />
       <GetInspired />
     </section>
   )

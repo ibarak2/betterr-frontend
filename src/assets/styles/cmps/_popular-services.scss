@@ -1,0 +1,76 @@
+.popular-services {
+  .popular-services-title {
+    color: $clr6;
+    font-size: 32px;
+    line-height: 120%;
+  }
+
+  .slick-track {
+    display: flex;
+    gap: rem(18px);
+  }
+
+  .slide-link {
+    outline: none;
+    .slide-title {
+      position: absolute;
+      z-index: 1;
+      color: #fff;
+      padding: 16px;
+      font-size: 24px;
+      line-height: 130%;
+      small {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        display: block;
+      }
+    }
+
+    .slide-img {
+      border-radius: 6px;
+    }
+  }
+
+  .slide-link:hover {
+    background-color: lightness($clr1);
+  }
+
+  .slick-arrow {
+    background-color: #fff;
+    background: $clr1;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    margin-top: -24px;
+    text-align: center;
+    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    border: 0;
+    font-size: 16px;
+    line-height: 100%;
+    border-radius: 28px;
+
+    &:hover {
+      background: $clr1;
+    }
+
+    &::before {
+      color: $clr2;
+      display: flex;
+      margin: auto;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    &.slick-prev::before {
+      content: url($carousel_left_arrow);
+    }
+
+    &.slick-next::before {
+      content: url($carousel_right_arrow);
+    }
+  }
+}
