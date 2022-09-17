@@ -1,61 +1,61 @@
 .explore {
-
-
-
-
+  & .gig-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(245.75px, 1fr));
+    grid-gap: 24px;
+  }
+  @media (max-width: 600px) {
     & .gig-list {
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        gap:32px;
-        padding: 0 32px;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 32px;
     }
+  }
+  @media (min-width: 900px) {
+    & .gig-list {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 32px;
+    }
+  }
 
-    @media (min-width: 900px) {
-        & .gig-list {
-            grid-template-columns: repeat(3,1fr);
-        }
+  @media (min-width: 1160px) {
+    & .gig-list {
+      grid-template-columns: repeat(4, 1fr);
     }
+  }
+  & .slick-next:before,
+  .slick-prev:before {
+    color: rgb(199, 196, 196);
+    right: 20px;
+  }
 
-    @media (min-width: 1160px) {
-        & .gig-list {
-            grid-template-columns: repeat(4,1fr);
-        }
+  & .slider-img:hover {
+    // transform: scale(105%);
+    // transition: transform 0.3s;
+    cursor: pointer;
+  }
+  & .slick-slider:hover {
+    .slick-prev {
+      // transform: translateX(25px);
+      left: 0;
+      display: block !important;
     }
-    & .slick-next:before, .slick-prev:before  {
-        color: rgb(199, 196, 196);
-        right: 20px;
+    .slick-next {
+      // transform: translateX(-25px);
+      right: 0;
+      display: block !important;
     }
+    .simple-slider-btn {
+      // transform:scale(110%);
+    }
+  }
 
-    & .slider-img:hover {
-        // transform: scale(105%);
-        // transition: transform 0.3s;
-        cursor: pointer;
-    }
-    & .slick-slider:hover {
-        .slick-prev{
-            // transform: translateX(25px);
-            left:0;
-            display: block !important;
-        }
-        .slick-next{
-            // transform: translateX(-25px);
-            right: 0;
-            display: block !important;
-        }
-        .simple-slider-btn {
-            // transform:scale(110%);
-        }
-    }
-
-    
-    & .reviews-amount {
-        color: grey;
-        padding-left: 3px;
-        font-size: 0.875em;
-    }
-    & .liked-by {
-        flex: 1;
-        justify-self:left;
-    }
-
-    }
+  & .reviews-amount {
+    color: grey;
+    padding-left: 3px;
+    font-size: 0.875em;
+  }
+  & .liked-by {
+    flex: 1;
+    justify-self: left;
+  }
+}

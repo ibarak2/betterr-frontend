@@ -1,12 +1,12 @@
 .gig-preview {
   border: 1px solid #e4e5e7;
   color: $clr6;
-  max-width: rem(310.6px);
+  // max-width: rem(324px);
   min-width: 245px;
-  max-height: rem(411px);
+  max-height: rem(395px);
   & > .slick-slider,
   img {
-    max-height: rem(208px);
+    max-height: rem(194.39px);
     img {
       height: 100%;
       object-fit: cover;
@@ -68,6 +68,7 @@
     }
   }
   .stars {
+    border-bottom: #e4e5e7 1px solid;
     height: 40px;
     display: flex;
     align-items: center;
