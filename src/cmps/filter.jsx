@@ -1,16 +1,33 @@
 import { useFormRegister } from "../hooks/useFormRegister"
 
 export const Filter = ({ onChangeFilter }) => {
-  const [register, handleChange, filterBy] = useFormRegister(
+  const [register] = useFormRegister(
     {
-      name: "",
-      minPrice: "",
       maxPrice: "",
-      inStock: "available",
-      labels: [],
+      daysToMake: "",
+      rate: "",
     },
     onChangeFilter
   )
-  
-  return <div className="filter">Hello from Filter</div>
+  return (
+    <form className="filter">
+      <section>
+        <label htmlFor="max-price">Max Price</label>
+        <input {...register("maxPrice", "number")} />
+      </section>
+      <section>
+        <label htmlFor="daysToMake">Delivery Time</label>
+        <input {...register("daysToMake", "number")} />
+      </section>
+      <section>
+        <label htmlFor="rate">Rating</label>
+        <input {...register("rate", "number")} />
+      </section>
+      {/* <select {...register("inStock")}>
+        <option value="">All</option>
+        <option value="in-stock">In stock</option>
+        <option value="out-of-stock">Out of stock</option>
+      </select> */}
+    </form>
+  )
 }

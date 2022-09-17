@@ -13,7 +13,7 @@ export function AppHeader() {
   const loggedinUser = null
   const [searchParams, setSearchParams] = useSearchParams()
 
-  console.log('searchParams', searchParams)
+  // console.log('searchParams', searchParams)
 
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
@@ -23,7 +23,7 @@ export function AppHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  console.log(offset)
+  // console.log(offset)
 
   return (
     <header className="app-header">
