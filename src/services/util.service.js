@@ -41,5 +41,5 @@ function delay(ms = 1500) {
 
 function averageRating(reviews) {
     let maxRating = reviews.reduce((total, review) => review.rate + total, 0)
-    return (maxRating / reviews.length).toFixed(1)
+    return +(maxRating / reviews.length).toFixed(1)
 }
