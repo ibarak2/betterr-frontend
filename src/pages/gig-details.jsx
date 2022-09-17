@@ -79,11 +79,9 @@ export const GigDetails = () => {
     if (!gig) return <div>Loading</div>
     return (
         <CssVarsProvider>
-
             <div className='gig-details'>
                 <section className="gig-description">
                     <div className="gig-layout">
-
                         <h1>{gig.title}</h1>
                         <SellerOverview seller={gig.owner} />
                         <hr />
@@ -96,7 +94,6 @@ export const GigDetails = () => {
                         </div>
                         <hr />
                         <div className="about-the-seller">
-
                             <h2>About the Seller</h2>
                             <SellerInfo seller={gig.owner} />
                         </div>
@@ -104,9 +101,7 @@ export const GigDetails = () => {
                         {!reviews ? <div>0 Reviews</div> :
                             <section className="reviews-container">
                                 <div className="flex space-between align-center">
-
                                     <div className="flex align-center reviews-title" >
-
                                         <h2><span>{reviews.length}</span> Reviews </h2>
                                         <ReactStars
                                             value={utilService.averageRating(reviews)}
@@ -127,7 +122,6 @@ export const GigDetails = () => {
                             </section>
                         }
                     </div>
-
                 </section>
                 <section className="plans">
                     <GigPlans plans={gig.plans} />

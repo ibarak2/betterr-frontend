@@ -37,7 +37,7 @@ export function AppHeader() {
         }
       >
         <div className="flex max-width-container main-header-wrapper">
-          <a href="/" className="site-logo">
+          <a href="/?nav=home" className="site-logo">
             <img
               className="logo"
               src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
@@ -117,10 +117,10 @@ export function AppHeader() {
       <section
         className={
           searchParams.get('nav') !== 'home'
-            ? 'second-nav-shown second-nav'
+            ? 'flex second-nav-shown second-nav'
             : offset > 100
-              ? 'second-nav-shown second-nav'
-              : 'max-width-container second-nav'
+              ? 'flex second-nav-shown second-nav'
+              : 'flex max-width-container second-nav'
         }
       >
         <SecondaryNavbar />
