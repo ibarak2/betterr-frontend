@@ -8,6 +8,7 @@ export function loadGigs() {
   return async (dispatch) => {
     try {
       const gigs = await gigService.query()
+      console.log('gigs', gigs);
       dispatch({
         type: "SET_CARS",
         gigs,

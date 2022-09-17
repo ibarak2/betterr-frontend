@@ -38,13 +38,15 @@ export const GigPlans = ({ plans }) => {
                     [`& .${tabClasses.root}`]: {
                         fontWeight: "xl",
                         flex: 1,
-                        bgcolor: "background.body",
+                        bgcolor: "#FAFAFA",
                         position: "relative",
                         height: 55,
                         color: 'grey',
 
 
                         [`&.${tabClasses.selected}`]: {
+                            bgcolor: "white",
+
                             color: "success.500"
                         },
                         [`&.${tabClasses.selected}:before`]: {

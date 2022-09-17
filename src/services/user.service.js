@@ -22,7 +22,7 @@ export const userService = {
     remove,
     update,
     changeScore,
-    getReviewsById
+    getReviewsById,
 }
 
 window.userService = userService
@@ -115,6 +115,20 @@ const reviewsDemoData = [
         username: "Admin",
         password: "admin",
         isAdmin: true,
+        reviews: [
+            {
+                id: "r107",
+                txt: "Trustworthy fellow",
+                rate: 5,
+                createdAt: 1600000332964,
+                by: {
+                    _id: "u102",
+                    fullname: "User 1",
+                    imgUrl: "https://robohash.org/u102",
+                },
+            },
+        ],
+        likedSellers: [{ _id: "u102" }],
     },
     {
         _id: "u101",

@@ -7,7 +7,6 @@ import { removeGig, addGig, updateGig } from "../store/gig.actions.js"
 // This file demonstrates how to use a BroadcastChannel to notify other browser tabs
 
 const STORAGE_KEY = "gig"
-loadDemoData()
 
 
 export const gigService = {
@@ -16,11 +15,17 @@ export const gigService = {
   save,
   remove,
   getEmptyGig,
+  loadDemoData
 }
 window.cs = gigService
 
-function query(filterBy) {
-  return storageService.query(STORAGE_KEY)
+async function query(filterBy) {
+  let gigs = await storageService.query(STORAGE_KEY)
+  if (!gigs.length) {
+    loadDemoData()
+    gigs = gigsDemoData
+  }
+  return gigs
 }
 function getById(gigId) {
   return storageService.get(STORAGE_KEY, gigId)
@@ -77,7 +82,7 @@ const gigsDemoData = [
       reviewsAmount: 3
     },
     daysToMake: 3,
-    description: "Make unique logo... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+    description: "Make unique logo... It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet nec mauris nec accumsan. Sed malesuada iaculis enim, quis dictum orci facilisis a. Phasellus nec massa a leo maximus blandit. Sed suscipit rhoncus fringilla. Suspendisse mattis velit nec scelerisque congue. Sed dictum vulputate massa quis rutrum. Pellentesque lacinia tellus lacus. Aenean ut metus odio.   Maecenas imperdiet mi non est iaculis fermentum. Morbi nec erat at odio hendrerit luctus. Aliquam erat volutpat. Proin id posuere ex. Proin nec lorem ullamcorper est tempor fermentum vel eget leo. Donec luctus nec mauris rhoncus blandit. Quisque ut nisi consectetur, dignissim metus id, imperdiet tellus.   Nunc ullamcorper ornare sem, vel posuere ex mollis ut. Curabitur augue risus, viverra vel ligula id, iaculis laoreet dui. Donec orci elit, auctor nec enim non, congue cursus tellus. Sed pulvinar congue interdum. In vel tortor a est ultrices elementum. In sed massa nec metus fermentum aliquet quis tincidunt ipsum. Sed ultricies felis eget libero mollis, quis elementum turpis hendrerit. Maecenas eget fringilla quam. Quisque molestie metus neque, at rhoncus ligula vestibulum nec. Proin vehicula at mi sed tincidunt.",
     imgUrls: ["https://robohash.org/g101"],
     tags: ["logo-design", "artisitic", "proffesional"],
     likedByUsers: ["mini-user"],
@@ -104,7 +109,7 @@ const gigsDemoData = [
       reviewsAmount: 3
     },
     daysToMake: 5,
-    description: "Paint unique logo...",
+    description: "Paint unique logo... The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet nec mauris nec accumsan. Sed malesuada iaculis enim, quis dictum orci facilisis a. Phasellus nec massa a leo maximus blandit. Sed suscipit rhoncus fringilla. Suspendisse mattis velit nec scelerisque congue. Sed dictum vulputate massa quis rutrum. Pellentesque lacinia tellus lacus. Aenean ut metus odio.   Maecenas imperdiet mi non est iaculis fermentum. Morbi nec erat at odio hendrerit luctus. Aliquam erat volutpat. Proin id posuere ex. Proin nec lorem ullamcorper est tempor fermentum vel eget leo. Donec luctus nec mauris rhoncus blandit. Quisque ut nisi consectetur, dignissim metus id, imperdiet tellus.   Nunc ullamcorper ornare sem, vel posuere ex mollis ut. Curabitur augue risus, viverra vel ligula id, iaculis laoreet dui. Donec orci elit, auctor nec enim non, congue cursus tellus. Sed pulvinar congue interdum. In vel tortor a est ultrices elementum. In sed massa nec metus fermentum aliquet quis tincidunt ipsum. Sed ultricies felis eget libero mollis, quis elementum turpis hendrerit. Maecenas eget fringilla quam. Quisque molestie metus neque, at rhoncus ligula vestibulum nec. Proin vehicula at mi sed tincidunt.",
     imgUrls: ["https://robohash.org/g102", "https://robohash.org/g1025", "https://robohash.org/g102124"],
     tags: ["logo-design", "artisitic", "proffesional", "accessible"],
     likedByUsers: ["mini-user"],
@@ -131,7 +136,7 @@ const gigsDemoData = [
       reviewsAmount: 1
     },
     daysToMake: 7,
-    description: "Destroy unique logo...",
+    description: "Destroy unique logo... The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet nec mauris nec accumsan. Sed malesuada iaculis enim, quis dictum orci facilisis a. Phasellus nec massa a leo maximus blandit. Sed suscipit rhoncus fringilla. Suspendisse mattis velit nec scelerisque congue. Sed dictum vulputate massa quis rutrum. Pellentesque lacinia tellus lacus. Aenean ut metus odio.   Maecenas imperdiet mi non est iaculis fermentum. Morbi nec erat at odio hendrerit luctus. Aliquam erat volutpat. Proin id posuere ex. Proin nec lorem ullamcorper est tempor fermentum vel eget leo. Donec luctus nec mauris rhoncus blandit. Quisque ut nisi consectetur, dignissim metus id, imperdiet tellus.   Nunc ullamcorper ornare sem, vel posuere ex mollis ut. Curabitur augue risus, viverra vel ligula id, iaculis laoreet dui. Donec orci elit, auctor nec enim non, congue cursus tellus. Sed pulvinar congue interdum. In vel tortor a est ultrices elementum. In sed massa nec metus fermentum aliquet quis tincidunt ipsum. Sed ultricies felis eget libero mollis, quis elementum turpis hendrerit. Maecenas eget fringilla quam. Quisque molestie metus neque, at rhoncus ligula vestibulum nec. Proin vehicula at mi sed tincidunt.",
     imgUrls: ["https://robohash.org/g103", "https://robohash.org/g102213321"],
     tags: ["proffesional", "accessible"],
     likedByUsers: ["mini-user"],
@@ -154,10 +159,10 @@ const gigsDemoData = [
       imgUrl: "https://robohash.org/admin",
       level: "Top Rated Seller",
       rate: 5,
-      reviewsAmount: 0
+      reviewsAmount: 1
     },
     daysToMake: 7,
-    description: "I will develop your own unqiue website with full functionality",
+    description: "I will develop your own unqiue website with full functionality  The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent laoreet nec mauris nec accumsan. Sed malesuada iaculis enim, quis dictum orci facilisis a. Phasellus nec massa a leo maximus blandit. Sed suscipit rhoncus fringilla. Suspendisse mattis velit nec scelerisque congue. Sed dictum vulputate massa quis rutrum. Pellentesque lacinia tellus lacus. Aenean ut metus odio.   Maecenas imperdiet mi non est iaculis fermentum. Morbi nec erat at odio hendrerit luctus. Aliquam erat volutpat. Proin id posuere ex. Proin nec lorem ullamcorper est tempor fermentum vel eget leo. Donec luctus nec mauris rhoncus blandit. Quisque ut nisi consectetur, dignissim metus id, imperdiet tellus.   Nunc ullamcorper ornare sem, vel posuere ex mollis ut. Curabitur augue risus, viverra vel ligula id, iaculis laoreet dui. Donec orci elit, auctor nec enim non, congue cursus tellus. Sed pulvinar congue interdum. In vel tortor a est ultrices elementum. In sed massa nec metus fermentum aliquet quis tincidunt ipsum. Sed ultricies felis eget libero mollis, quis elementum turpis hendrerit. Maecenas eget fringilla quam. Quisque molestie metus neque, at rhoncus ligula vestibulum nec. Proin vehicula at mi sed tincidunt.",
     imgUrls: ["https://robohash.org/g154503", "https://robohash.org/g1202213321"],
     tags: ["proffesional", "accessible", "web developer"],
     likedByUsers: ["mini-user"],
