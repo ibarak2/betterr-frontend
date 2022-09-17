@@ -7,6 +7,7 @@ import { Provider } from "react-redux"
 
 import { store } from "./store/store"
 import { RootCmp } from "./root-cmp"
+import 'animate.css';
 
 ReactDOM.render(
   <React.StrictMode>

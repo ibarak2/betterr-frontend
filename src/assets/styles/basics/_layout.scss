@@ -1,7 +1,7 @@
 .max-width-container {
   box-sizing: border-box;
-  width: $page_max_width;
-  padding: $padding_min $padding_min $padding_min_double;
+  max-width: 1400px;
+  padding: 24px 0;
 
   &.full {
     width: 100%;
