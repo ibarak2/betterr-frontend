@@ -5,7 +5,7 @@ import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 import { useEffect, useState } from 'react'
 import { SecondaryNavbar } from './secondary-navbar'
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import MailOutlineIcon from '@mui/icons-material/MailOutline'
 
 export function AppHeader() {
   const [offset, setOffset] = useState(0)
@@ -24,11 +24,16 @@ export function AppHeader() {
 
   console.log(offset)
 
-
   return (
     <header className="app-header">
       <div
-        className={(searchParams.get('nav') !== "home") ? "app-header header-white" : (offset > 0) ? "app-header header-white" : "app-header"}
+        className={
+          searchParams.get('nav') !== 'home'
+            ? 'main-header header-white'
+            : offset > 0
+            ? 'main-header header-white'
+            : 'main-header'
+        }
       >
         <div className="flex max-width-container main-header-wrapper">
           <a href="/" className="site-logo">
@@ -69,44 +74,58 @@ export function AppHeader() {
             </form>
           </div>
 
-          <nav className='flex nav'>
-            <ul className='flex clean-list nav-list'>
-              <li className='nav-routes'>
-                <div className='basic-nav-routes'>
-                  <NavLink to='/?nav=home'>Home</NavLink>
-                  <NavLink to='/explore'>Explore</NavLink>
-                  <NavLink to='/about'>About Us</NavLink>
+          <nav className="flex nav">
+            <ul className="flex clean-list nav-list">
+              <li className="nav-routes">
+                <div className="basic-nav-routes">
+                  <NavLink to="/?nav=home">Home</NavLink>
+                  <NavLink to="/explore">Explore</NavLink>
+                  <NavLink to="/about">About Us</NavLink>
                 </div>
               </li>
               {/* {user ?  */}
               <li>
-
-                <div className='flex logged-in'>
-                  <NavLink to='/chat'><MailOutlineIcon /></NavLink>
-                  <NavLink to='/back-office'>Orders</NavLink>
+                <div className="flex logged-in">
+                  <NavLink to="/chat">
+                    <MailOutlineIcon />
+                  </NavLink>
+                  <NavLink to="/back-office">Orders</NavLink>
                   <NavLink to={`/profile/u101`}>Profile</NavLink>
                   {/* {user.isAdmin ? */}
-                  <NavLink to='/admin'>Admin</NavLink>
+                  <NavLink to="/admin">Admin</NavLink>
                   {/* : */}
                   {''}
                   {/* } */}
                 </div>
               </li>
               {/* : */}
-              <div className='flex signin-signup'>
-                <li><a href="/">Sign In</a></li>
-                <li><a href="/" className="nav-join">Join</a></li>
+              <div className="flex signin-signup">
+                <li>
+                  <a href="/">Sign In</a>
+                </li>
+                <li>
+                  <a href="/" className="nav-join">
+                    Join
+                  </a>
+                </li>
               </div>
               {/* } */}
             </ul>
           </nav>
         </div>
-
-
-        <section className={offset > 100 ? "second-nav-shown second-nav" : "max-width-container second-nav"}>
-          <SecondaryNavbar />
-        </section>
       </div>
+
+      <section
+        className={
+          searchParams.get('nav') !== 'home'
+            ? 'second-nav-shown second-nav'
+            : offset > 100
+            ? 'second-nav-shown second-nav'
+            : 'max-width-container second-nav'
+        }
+      >
+        <SecondaryNavbar />
+      </section>
     </header>
   )
 }
@@ -122,12 +141,9 @@ export function AppHeader() {
 //     </span>
 //   )}
 
-      //   {!user && (
-      //     <section className="user-info">
-      //       <LoginSignup onLogin={onLogin} onSignup={onSignup} />
-      //     </section>
-      //   )}
-      // </nav>
-
-
-
+//   {!user && (
+//     <section className="user-info">
+//       <LoginSignup onLogin={onLogin} onSignup={onSignup} />
+//     </section>
+//   )}
+// </nav>
