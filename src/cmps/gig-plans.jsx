@@ -11,12 +11,15 @@ export const GigPlans = ({ plans }) => {
     const [plan, setPlan] = useState('Basic')
 
     const handleChange = (ev) => {
-        console.log(ev.target.textContent)
         setPlan(ev.target.textContent)
     }
 
     const onSelect = (ev) => {
         console.log(plan)
+    }
+
+    const onContact = () => {
+        console.log("contact!");
     }
 
     return (
@@ -25,6 +28,7 @@ export const GigPlans = ({ plans }) => {
             aria-label="Pricing plan"
             defaultValue={0}
             sx={{ width: 400, "--Tabs-gap": "0px" }}
+            className="pricing"
         >
             <TabList
                 variant="outlined"
@@ -51,6 +55,7 @@ export const GigPlans = ({ plans }) => {
                             width: "100%",
                             height: 3,
                             bgcolor: "success.400",
+                            borderBottom: `1px solid ${theme.vars.palette.divider}`
                         },
                         "&:not(:first-of-type)": {
                             borderLeft: `1px solid ${theme.vars.palette.divider}`,
@@ -67,15 +72,17 @@ export const GigPlans = ({ plans }) => {
                 <Tab onChange={(ev) => { handleChange(ev) }}>Standard</Tab>
                 <Tab onChange={(ev) => { handleChange(ev) }}>Premium</Tab>
             </TabList>
-            <TabPanel value={0} >
-                <Typography level="inherit" mt={2}>
+            <TabPanel value={0} style={{ borderLeft: '1px solid #DBDCDE', borderRight: '1px solid #DBDCDE' }}>
+                <Typography level="inherit" mt={2} padding={1.5}>
                     {plans.basicDescription}
+
                 </Typography>
                 <Typography
                     textColor="black.400"
                     fontSize="xl4"
                     fontWeight="xl"
                     my={1}
+                    padding={1.5}
                 >
                     ${plans.basicPrice}{" "}
                     <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
@@ -83,8 +90,8 @@ export const GigPlans = ({ plans }) => {
                     </Typography>
                 </Typography>
             </TabPanel>
-            <TabPanel value={1}>
-                <Typography level="inherit" mt={2}>
+            <TabPanel value={1} style={{ borderLeft: '1px solid #DBDCDE', borderRight: '1px solid #DBDCDE' }}>
+                <Typography level="inherit" mt={2} padding={1.5}>
                     {plans.standardDescription}
                 </Typography>
                 <Typography
@@ -92,6 +99,7 @@ export const GigPlans = ({ plans }) => {
                     fontSize="xl4"
                     fontWeight="xl"
                     my={1}
+                    padding={1.5}
                 >
                     ${plans.standardPrice}{" "}
                     <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
@@ -99,8 +107,8 @@ export const GigPlans = ({ plans }) => {
                     </Typography>
                 </Typography>
             </TabPanel>
-            <TabPanel value={2}>
-                <Typography level="inherit" mt={2}>
+            <TabPanel value={2} style={{ borderLeft: '1px solid #DBDCDE', borderRight: '1px solid #DBDCDE' }}>
+                <Typography level="inherit" mt={2} padding={1.5}>
                     {plans.premiumDescription}
                 </Typography>
                 <Typography
@@ -108,6 +116,7 @@ export const GigPlans = ({ plans }) => {
                     fontSize="xl4"
                     fontWeight="xl"
                     my={1}
+                    padding={1.5}
                 >
 
                     ${plans.premiumPrice}{" "}
@@ -116,7 +125,10 @@ export const GigPlans = ({ plans }) => {
                     </Typography>
                 </Typography>
             </TabPanel>
-            <button className='continue-plans-btn' onClick={() => onSelect()}>Continue <span>→</span></button>
+            <div className='plans-action-btns'>
+                <button className='continue-plans-btn' onClick={() => onSelect()}>Continue <span>→</span></button>
+                <button className='contact-plans-btn' onClick={() => onContact()}>Contact Seller</button>
+            </div>
         </Tabs >
     );
 }

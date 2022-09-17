@@ -21,7 +21,8 @@ export const userService = {
     getById,
     remove,
     update,
-    changeScore
+    changeScore,
+    getReviewsById
 }
 
 window.userService = userService
@@ -45,6 +46,12 @@ async function getById(userId) {
     // socketService.on(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
 
     return user
+}
+
+async function getReviewsById(userId) {
+    const user = await storageService.get(STORAGE_KEY, userId)
+
+    return user.reviews
 }
 function remove(userId) {
     return storageService.remove('user', userId)
@@ -117,9 +124,10 @@ const reviewsDemoData = [
         password: "user",
         reviews: [
             {
-                id: "madeIdByUtil",
+                id: "r101",
                 txt: "Very kind and works fast",
                 rate: 4,
+                createdAt: 1653368332964,
                 by: {
                     _id: "u102",
                     fullname: "User 1",
@@ -138,9 +146,10 @@ const reviewsDemoData = [
         level: "basic/premium",
         reviews: [
             {
-                id: "madeIdByUtil",
+                id: "r102",
                 txt: "Very kind and works fast",
                 rate: 4,
+                createdAt: 1660368332964,
                 by: {
                     _id: "a1001",
                     fullname: "Admin",
@@ -148,9 +157,10 @@ const reviewsDemoData = [
                 },
             },
             {
-                id: "madeIdByUtil",
+                id: "r103",
                 txt: "Best work never dissapointed",
                 rate: 5,
+                createdAt: 1652368332964,
                 by: {
                     _id: "u101",
                     fullname: "User 1",
@@ -158,9 +168,10 @@ const reviewsDemoData = [
                 },
             },
             {
-                id: "madeIdByUtil",
+                id: "r104",
                 txt: "not my first time with this guy, great work!",
                 rate: 5,
+                createdAt: 1642368332964,
                 by: {
                     _id: "u101",
                     fullname: "User 1",
