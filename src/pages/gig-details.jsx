@@ -91,7 +91,7 @@ export const GigDetails = () => {
                             <GigImgsCarousel imgList={gig.imgUrls} />
                         </div>
                         <div className="about-this-gig">
-                            <h2>About this Gig</h2>
+                            <h2>About This Gig</h2>
                             <p>{gig.description}</p>
                         </div>
                         <hr />
@@ -103,21 +103,23 @@ export const GigDetails = () => {
                         <hr />
                         {!reviews ? <div>0 Reviews</div> :
                             <section className="reviews-container">
+                                <div className="flex space-between align-center">
 
-                                <div className="flex align-center reviews-title" >
+                                    <div className="flex align-center reviews-title" >
 
-                                    <h2><span>{reviews.length}</span> Reviews </h2>
-                                    <ReactStars
-                                        value={utilService.averageRating(reviews)}
-                                        count={5}
-                                        size={24}
-                                        color={'#ffd700'}
-                                        edit={false}
-                                    />
-                                    <b>{`${utilService.averageRating(reviews)}`}</b>
-                                </div>
-                                <div>
-                                    <ReviewsFilter onChangeSortBy={onChangeSortBy} />
+                                        <h2><span>{reviews.length}</span> Reviews </h2>
+                                        <ReactStars
+                                            value={utilService.averageRating(reviews)}
+                                            count={5}
+                                            size={22}
+                                            color2={'#FFB33E'}
+                                            edit={false}
+                                        />
+                                        <b>{`${utilService.averageRating(reviews)}`}</b>
+                                    </div>
+                                    <div>
+                                        <ReviewsFilter onChangeSortBy={onChangeSortBy} />
+                                    </div>
                                 </div>
                                 <div>
                                     <ReviewList reviews={reviews} />

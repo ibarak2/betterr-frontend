@@ -4,7 +4,13 @@
     align-items: center;
 
 
+    & a {
+        color: black;
+        &:hover {
+            text-decoration: underline;
 
+        }
+    }
 
     & img {
         border: 1px solid black;

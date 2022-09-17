@@ -10,15 +10,23 @@ export const SellerOverview = ({ seller }) => {
     return (
         <div className="seller-overview">
             <img src={seller.imgUrl}></img>
-            <div><strong>{seller.fullname}</strong></div>
+            <div>
+                <a href={`/profile/${seller._id}`}>
+                    <strong>{seller.fullname}</strong>
+                </a>
+            </div>
             <div>{seller.level}</div> |
             <div><ReactStars
                 value={seller.rate}
                 count={5}
-                size={24}
-                color2={'#ffd700'}
+                size={22}
+                color2={'#FFB33E'}
                 edit={false}
             /></div>
+            <div style={{ color: '#FFB33E' }}>{seller.rate}</div>
+            <div>{`(${seller.reviewsAmount})`}</div>
+
+
 
         </div>
     )

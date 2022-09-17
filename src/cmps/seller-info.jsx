@@ -19,9 +19,10 @@ export const SellerInfo = ({ seller }) => {
                     <ReactStars
                         value={seller.rate}
                         count={5}
-                        size={24}
-                        color2={'#ffd700'}
+                        size={22}
+                        color2={'#FFB33E'}
                         edit={false}
+                        border
                     />
                     <span>{`(${seller.reviewsAmount})`}</span></div>
                 <button>Contact Me</button>

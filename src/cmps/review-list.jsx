@@ -7,7 +7,6 @@ import { Review } from "./review"
 export const ReviewList = ({ reviews }) => {
     console.log("here1");
     useEffectUpdate(() => {
-        console.log("hereupdate");
 
     }, [reviews])
 
