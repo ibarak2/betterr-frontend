@@ -18,8 +18,7 @@ export const Explore = () => {
 
     if (!gigs) return <h1>Loading...</h1>
     return (
-        <div className='explore'>
-            Hello from Explore page
+        <div className='explore main-container'>
             <GigList gigs={gigs} />
         </div>
     )
