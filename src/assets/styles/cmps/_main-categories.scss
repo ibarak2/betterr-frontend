@@ -33,10 +33,13 @@
           padding: 0 0 8px;
           width: 48px;
           border-bottom: 2px solid #c5c6c9;
-          transition: border-color 0.2s ease-in-out, padding 0.2s ease-in-out;
-
-          &:hover {
-            border-color: $clr2;
+          transition: all 0.2s ease-in-out;
+          
+        }
+        &:hover {
+          &::after {
+            width: 88px;
+            border-bottom: 2px solid #1DBF73;
           }
         }
       }
