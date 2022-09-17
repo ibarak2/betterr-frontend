@@ -108,8 +108,8 @@ export function AppHeader() {
         </section>
       </div>
     </header>
-
-
+  )
+}
 // <nav>
 //   {user && (
 //     <span className="user-info">
@@ -122,7 +122,6 @@ export function AppHeader() {
 //     </span>
 //   )}
 
-<<<<<<< HEAD
       //   {!user && (
       //     <section className="user-info">
       //       <LoginSignup onLogin={onLogin} onSignup={onSignup} />
@@ -132,11 +131,3 @@ export function AppHeader() {
 
 
 
-=======
-//   {!user && (
-//     <section className="user-info">
-//       <LoginSignup onLogin={onLogin} onSignup={onSignup} />
-//     </section>
-//   )}
-// </nav>
->>>>>>> c5e3cd335120982e63bdbac275c33370708b88b7
