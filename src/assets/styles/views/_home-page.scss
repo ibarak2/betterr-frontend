@@ -1,10 +1,8 @@
 .homepage {
-  // border: 1px $clr2 solid;
   margin: auto;
   padding: 0;
   color: $clr1;
-  height: 100%;
-  border: 1px gold solid;
+  // border: 1px gold solid;
 
 
   .home-logo {
@@ -12,9 +10,9 @@
   }
 
   .hero-wrapper {
-    align-self: center;
-    padding-left: 0;
-    padding-right: 0;
+    align-self: flex-start;
+    padding: 0;
+    height: 66.3vh;
     
     .hero-main {
       width: 660px;

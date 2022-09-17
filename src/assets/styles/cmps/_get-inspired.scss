@@ -1,0 +1,97 @@
+.get-inspired {
+  color: $clr6;
+  background-color: #f5f5f5;
+  padding-top: 96px;
+  padding-bottom: 96px;
+
+  .get-inspired-top {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    h1 {
+      font-size: 32px;
+      line-height: 120%;
+      margin: 0;
+    }
+
+    span {
+      color: #446ee7;
+    }
+  }
+
+  .get-inspired-carousel {
+    .slick-slide {
+      div {
+        border-radius: 5px;
+
+        .project-card {
+          background-color: #fff;
+
+          .slide-link {
+            .slide-profile {
+              width: 30%;
+              padding: 16px 0 12px 16px;
+
+              img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+              }
+
+              h4 {
+                color: $clr6;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 21px;
+
+                small {
+                  color: $clr4;
+                  font-weight: 400;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .slick-arrow {
+    background-color: #fff;
+    background: $clr1;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    margin-top: -24px;
+    text-align: center;
+    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    border: 0;
+    font-size: 16px;
+    line-height: 100%;
+    border-radius: 28px;
+
+    &:hover {
+      background: $clr1;
+    }
+
+    &::before {
+      color: $clr2;
+      display: flex;
+      margin: auto;
+      justify-content: center;
+      padding-top: 10px;
+    }
+
+    &.slick-prev::before {
+      content: url($carousel_left_arrow);
+    }
+
+    &.slick-next::before {
+      content: url($carousel_right_arrow);
+    }
+  }
+}

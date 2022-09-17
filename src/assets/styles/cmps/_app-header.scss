@@ -20,6 +20,7 @@
       justify-content: space-between;
       margin: auto;
       padding: 0;
+      align-items: center;
     }
     .sticky {
       position: fixed;
@@ -38,10 +39,11 @@
   .header-search {
     display: none;
     margin: 0;
+    width: 20vw;
+    height: inherit;
 
     animation: fadeIn;
     animation-duration: 0.3s;
-    width: 20vw;
     form {
       .header-search-input {
         width: 100%;
@@ -118,6 +120,8 @@
   display: block !important;
 }
 
+//---- second nav bar ----//
+
 .second-nav {
   background-color: transparent;
   padding: 5px;
@@ -125,10 +129,20 @@
   color: $clr4;
   visibility: hidden;
   height: rem(40px);
-
+  border-bottom: 1px $clr4 solid;
   animation: flipInX;
-  // animation-duration: 1s;
   transition: all 0.2s;
+  
+  .secondary-navbar .secondary-nav-routes {
+
+    a {
+      color: $clr4;
+    
+      &:hover {
+        border-bottom: 2px $clr2 solid;
+      }
+    }
+  } 
 }
 
 .second-nav-shown {

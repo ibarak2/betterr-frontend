@@ -11,7 +11,7 @@ import { MainCategories } from '../cmps/main-categories.jsx'
 
 export function HomePage() {
   return (
-    <section className="max-width-container homepage">
+    <section className="flex column main-container homepage">
       <HeroWrapper />
       <TrustedBy />
       <PopularServices/>

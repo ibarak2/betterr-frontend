@@ -1,76 +1,58 @@
-// @mixin column($layout, $size) {
-//   @for $i from 1 through $layout {
-//     > .col-#{$i}-#{$size} {
-//       $percent: percentage($i/$layout);
-//       flex-basis: $percent;
-//       max-width: $percent;
-//     }
-//   }
-// }
+/* Breakpoint mixins */
 
-// @mixin offset($layout, $size) {
-//   @for $i from 1 through $layout {
-//     > .offset-col-#{$i}-#{$size} {
-//       $percent: percentage($i/$layout);
-//       margin-left: $percent;
-//     }
-//   }
-// }
+@mixin for-mobile-layout {
+  @media (max-width: calc($mobile-breakpoint + 40px)) {
+    @content;
+  }
+}
 
-// @mixin center($size) {
-//   &.center-#{$size} {
-//     justify-content: center;
-//     text-align: center;
-//   }
-// }
+@mixin for-narrow-layout {
+  @media (min-width: calc($mobile-breakpoint + 40px)) {
+    @content;
+  }
+}
 
-// @mixin gutter($size) {
-//   padding: 0 map-get($grid_gutters, $size);
-// }
+@mixin for-normal-layout {
+  @media (min-width: calc($narrow-breakpoint + 40px)) {
+    @content;
+  }
+}
 
-// @mixin gutter-compensation($size) {
-//   margin-left: -(map-get($grid_gutters, $size));
-//   margin-right: -(map-get($grid_gutters, $size));
-// }
+@mixin for-wide-layout {
+  @media (min-width: calc($normal-breakpoint + 40px)) {
+    @content;
+  }
+}
 
-// @each $layout in $grid_layouts {
-//   .grid-#{$layout} {
-//     position: relative;
-//     box-sizing: border-box;
-//     display: flex;
-//     flex: 0 1 auto;
-//     flex-flow: row wrap;
+/* Media  Mixins */
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: calc(($height / $width) * 100%);
+  }
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 
-//     > [class*='col-'] {
-//       box-sizing: border-box;
-//       flex: 0 0 auto;
-//       flex-basis: 100%;
-//       max-width: 100%;
-//       @include gutter(xs);
-//     }
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
 
-//     // The reason xs gets a custom treatment is due to the fact that the grid is `xs` by default
-//     // and it does not correspond to any breakpoint, but instead, to the lack thereof
-//     @include gutter-compensation(xs);
-//     @include column($layout, xs);
-//     @include center(xs);
-//     @include offset($layout, xs);
-//   }
-// }
-
-// @each $breakpoint in $grid_breakpoints {
-//   @include media-query-grid($breakpoint) {
-//     @each $layout in $grid_layouts {
-//       .grid-#{$layout} {
-//         @include gutter-compensation($breakpoint);
-//         @include column($layout, $breakpoint);
-//         @include offset($layout, $breakpoint);
-//         @include center($breakpoint);
-
-//         > [class*='col-'] {
-//           @include gutter($breakpoint);
-//         }
-//       }
-//     }
-//   }
-// }
+// Mixin for removing hover effects on iphone screen
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
+    }
+  }
+}

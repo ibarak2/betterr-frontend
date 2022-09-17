@@ -1,4 +1,6 @@
 .popular-services {
+  margin-bottom: 96px;
+
   .popular-services-title {
     color: $clr6;
     font-size: 32px;
@@ -29,12 +31,12 @@
 
     .slide-img {
       border-radius: 6px;
+      &:hover {
+        opacity: 85%;
+      }
     }
   }
 
-  .slide-link:hover {
-    background-color: lightness($clr1);
-  }
 
   .slick-arrow {
     background-color: #fff;

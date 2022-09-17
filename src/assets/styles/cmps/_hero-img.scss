@@ -1,96 +1,113 @@
-.hero-img {
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -10;
-
-  .hero-andrea {
-    display: flex;
-    background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-1-1792-x1_lkaabk.webp');
-    width: 100%;
-    height: 80%;
-    background-position: center;
+.hero-backgrounds {
+  .hero-img {
     background-repeat: no-repeat;
-    background-size: cover;
-    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
     position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -10;
 
-    .seller-name {
-      color: $clr1;
-      padding: 15px 25px;
-      align-self: flex-end;
+    .hero-andrea {
+      display: flex;
+      background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-1-1792-x1_lkaabk.webp');
+      width: 100%;
+      height: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      justify-content: flex-end;
+      position: absolute;
+
+      .seller-name {
+        color: $clr1;
+        align-self: flex-end;
+        text-align: end;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
     }
-  }
-  .hero-moon {
-    display: flex;
-    background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-2-1792-x1_pipgqp.webp');
-    width: 100%;
-    height: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    justify-content: flex-end;
-    position: absolute;
+    .hero-moon {
+      display: flex;
+      background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-2-1792-x1_pipgqp.webp');
+      width: 100%;
+      height: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      justify-content: flex-end;
+      position: absolute;
 
-    .seller-name {
-      align-self: flex-end;
-      color: $clr1;
-      padding: 15px 25px;
+      .seller-name {
+        color: $clr1;
+        align-self: flex-end;
+        text-align: end;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
     }
-  }
-  .hero-ritika {
-    display: flex;
-    background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-3-1792-x1_shq1po.webp');
-    width: 100%;
-    height: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    justify-content: flex-end;
-    position: absolute;
+    .hero-ritika {
+      display: flex;
+      background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-3-1792-x1_shq1po.webp');
+      width: 100%;
+      height: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      justify-content: flex-end;
+      position: absolute;
 
-    .seller-name {
-      align-self: flex-end;
-      color: $clr1;
-      padding: 15px 25px;
+      .seller-name {
+        color: $clr1;
+        align-self: flex-end;
+        text-align: end;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
     }
-  }
-  .hero-zach {
-    display: flex;
-    background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-4-1792-x1_kyb9cb.webp');
-    width: 100%;
-    height: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    justify-content: flex-end;
-    position: absolute;
+    .hero-zach {
+      display: flex;
+      background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-4-1792-x1_kyb9cb.webp');
+      width: 100%;
+      height: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      justify-content: flex-end;
+      position: absolute;
 
-    .seller-name {
-      align-self: flex-end;
-      color: $clr1;
-      padding: 15px 25px;
+      .seller-name {
+        color: $clr1;
+        align-self: flex-end;
+        text-align: end;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
     }
-  }
-  .hero-gabrielle {
-    display: flex;
-    background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-5-1792-x1_xwg19x.webp');
-    width: 100%;
-    height: 80%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    justify-content: flex-end;
-    position: absolute;
+    .hero-gabrielle {
+      display: flex;
+      background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-5-1792-x1_xwg19x.webp');
+      width: 100%;
+      height: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      justify-content: flex-end;
+      position: absolute;
 
-    .seller-name {
-      align-self: flex-end;
-      color: $clr1;
-      padding: 15px 25px;
+      .seller-name {
+        color: $clr1;
+        align-self: flex-end;
+        text-align: end;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
     }
   }
 }
