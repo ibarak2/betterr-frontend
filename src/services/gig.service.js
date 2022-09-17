@@ -7,7 +7,6 @@ import { removeGig, addGig, updateGig } from "../store/gig.actions.js"
 // This file demonstrates how to use a BroadcastChannel to notify other browser tabs
 
 const STORAGE_KEY = "gig"
-loadDemoData()
 
 
 export const gigService = {
@@ -16,6 +15,7 @@ export const gigService = {
   save,
   remove,
   getEmptyGig,
+  loadDemoData
 }
 window.cs = gigService
 
@@ -154,7 +154,7 @@ const gigsDemoData = [
       imgUrl: "https://robohash.org/admin",
       level: "Top Rated Seller",
       rate: 5,
-      reviewsAmount: 0
+      reviewsAmount: 1
     },
     daysToMake: 7,
     description: "I will develop your own unqiue website with full functionality",
