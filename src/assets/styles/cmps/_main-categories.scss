@@ -1,0 +1,48 @@
+.main-categories {
+  h1 {
+    color: $clr6;
+    margin-top: rem(96px);
+  }
+  .categories-list {
+    flex-wrap: wrap;
+    .categories-list-item {
+      width: 20%;
+      padding-bottom: 55px;
+      text-align: center;
+
+      .categories-link {
+        color: #222325;
+        text-align: center;
+        position: relative;
+        display: inline-block;
+
+        img {
+            display: block;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 15px;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 45px;
+          right: 50%;
+          -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+          padding: 0 0 8px;
+          width: 48px;
+          border-bottom: 2px solid #c5c6c9;
+          transition: all 0.2s ease-in-out;
+          
+        }
+        &:hover {
+          &::after {
+            width: 88px;
+            border-bottom: 2px solid #1DBF73;
+          }
+        }
+      }
+    }
+  }
+}

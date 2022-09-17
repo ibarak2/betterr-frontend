@@ -2,7 +2,7 @@
 export function TrustedBy() {
 
     return (
-        <div className="max-width-container flex trusted-by-wrapper">
+        <div className="max-width-container full flex trusted-by-wrapper">
             <span className="trusted-by-text">Trusted by:</span>
             <ul className="flex clean-list trusted-by-list">
                 <li className="trusted-by-item">
