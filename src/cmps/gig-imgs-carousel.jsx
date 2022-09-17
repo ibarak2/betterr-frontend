@@ -24,7 +24,6 @@ export const GigImgsCarousel = ({ imgList }) => {
 
                         type="button"
                         onClick={onClickHandler}
-                        title={label}
                         style={{
                             left: 15
                         }}
@@ -38,7 +37,6 @@ export const GigImgsCarousel = ({ imgList }) => {
 
                         type="button"
                         onClick={onClickHandler}
-                        title={label}
                         style={{
                             right: 15
                         }}
@@ -47,8 +45,8 @@ export const GigImgsCarousel = ({ imgList }) => {
                     </button>
                 )}
             >
-                {imgList.map(img => {
-                    return <div>
+                {imgList.map((img, idx) => {
+                    return <div key={idx}>
                         <img
                             alt=""
                             src={img}

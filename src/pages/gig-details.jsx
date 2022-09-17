@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { gigService } from "../services/gig.service"
 import { loadGigs } from "../store/gig.actions"
@@ -21,82 +21,62 @@ import { useEffectUpdate } from "../hooks/useEffectUpdate"
 
 export const GigDetails = () => {
 
-    const [gig, setGig] = useState({
-        currGig: undefined,
-        reviews: []
-    })
-    // const [reviews, setReviews] = useState()
+    const [gig, setGig] = useState()
+    const [reviews, setReviews] = useState([])
     const params = useParams()
     const navigate = useNavigate()
-    const loadInterval = useRef()
 
     useEffect(() => {
-        loadData()
         console.log('gig-details page: params.id:', params.id);
+        loadGig()
 
     }, [])
 
-    useEffect(() => {
+    // useEffectUpdate(() => {
 
-    }, [])
+    // }, [reviews])
+    // useEffect(() => {
 
+    // }, [gig])
 
-
-
-    useEffectUpdate(() => {
-        console.log(gig.currGig);
-        if (gig.currGig) {
-            loadReviews()
-            console.log("gigged", gig);
-        }
-        console.log("updated");
-
-    }, [gig.currGig])
-
-    const loadData = () => {
-        gigService.loadDemoData()
-        userService.loadDemoData()
-        loadInterval.current = setTimeout(() => {
-            console.log('loading');
-            loadGig()
-        }, 1000)
-    }
-
-
-    const loadGig = () => {
+    const loadGig = async () => {
         const gigId = params.id
-        gigService.getById(gigId)
-            .then(newGig => {
-                setGig(prevGig => ({ ...prevGig, currGig: newGig }))
-            })
-            .then(() => {
-                console.log(gig);
-                // loadReviews()
-            })
+        try {
+            const gig = await gigService.getById(gigId)
+            console.log("1");
+            setGig(gig)
+            console.log("2");
+            await loadReviews(gig.owner._id)
+            console.log("gig", gig);
+        } catch (err) {
+            console.log('Failed to load gig');
+        }
     }
 
-    const loadReviews = () => {
-        userService.getReviewsById(gig.currGig.owner._id)
-            .then(newReviews => {
-                console.log("newReviews:", newReviews);
-                setGig(prevGig => ({ ...prevGig, reviews: newReviews }))
-            })
+    const loadReviews = async (userId) => {
+        try {
+            const reviews = await userService.getReviewsById(userId)
+            setReviews(reviews)
+
+            console.log("reviews", reviews);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const onChangeSortBy = (sortBy) => {
+        let sortedReviews
+        (sortBy === 'rate') ?
+            sortedReviews = reviews.sort((a, b) => (b.rate > a.rate) ? 1 : ((a.rate > b.rate) ? -1 : 0)) :
+            sortedReviews = reviews.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : ((a.createdAt > b.createdAt) ? -1 : 0));
+
+        setReviews([...sortedReviews])
+        console.log("reviews:", reviews);
 
     }
 
-    // const onChangeSortBy = (sortBy) => {
-    //     let sortedReviews
-    //     (sortBy === 'rate') ?
-    //         sortedReviews = reviews.sort((a, b) => (b.rate > a.rate) ? 1 : ((a.rate > b.rate) ? -1 : 0)) :
-    //         sortedReviews = reviews.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : ((a.createdAt > b.createdAt) ? -1 : 0));
 
-    //     setReviews([...sortedReviews])
-    //     console.log("reviews:", reviews);
-
-    // }
-
-
-    if (!gig.currGig) return <div>Loading</div>
+    if (!gig) return <div>Loading</div>
     return (
         <CssVarsProvider>
 
@@ -104,37 +84,43 @@ export const GigDetails = () => {
                 <section className="gig-description">
                     <div className="gig-layout">
 
-                        <h1>{gig.currGig.title}</h1>
-                        <SellerOverview seller={gig.currGig.owner} />
+                        <h1>{gig.title}</h1>
+                        <SellerOverview seller={gig.owner} />
                         <hr />
                         <div className="carousel-container">
-                            <GigImgsCarousel imgList={gig.currGig.imgUrls} />
+                            <GigImgsCarousel imgList={gig.imgUrls} />
                         </div>
-                        <h2>About this Gig</h2>
-                        <p>{gig.currGig.description}</p>
+                        <div className="about-this-gig">
+                            <h2>About this Gig</h2>
+                            <p>{gig.description}</p>
+                        </div>
                         <hr />
-                        <h2>About the Seller</h2>
-                        <SellerInfo seller={gig.currGig.owner} />
-                        {!gig.reviews ? <div>0 Reviews</div> :
+                        <div className="about-the-seller">
+
+                            <h2>About the Seller</h2>
+                            <SellerInfo seller={gig.owner} />
+                        </div>
+                        <hr />
+                        {!reviews ? <div>0 Reviews</div> :
                             <section className="reviews-container">
 
                                 <div className="flex align-center reviews-title" >
 
-                                    <h2><span>{gig.reviews.length}</span> Reviews </h2>
+                                    <h2><span>{reviews.length}</span> Reviews </h2>
                                     <ReactStars
-                                        value={utilService.averageRating(gig.reviews)}
+                                        value={utilService.averageRating(reviews)}
                                         count={5}
                                         size={24}
                                         color={'#ffd700'}
                                         edit={false}
                                     />
-                                    <b>{utilService.averageRating(gig.reviews)}</b>
+                                    <b>{`${utilService.averageRating(reviews)}`}</b>
                                 </div>
                                 <div>
-                                    {/* <ReviewsFilter onChangeSortBy={onChangeSortBy} /> */}
+                                    <ReviewsFilter onChangeSortBy={onChangeSortBy} />
                                 </div>
                                 <div>
-                                    <ReviewList reviews={gig.reviews} />
+                                    <ReviewList reviews={reviews} />
                                 </div>
                             </section>
                         }
@@ -142,7 +128,7 @@ export const GigDetails = () => {
 
                 </section>
                 <section className="plans">
-                    <GigPlans plans={gig.currGig.plans} />
+                    <GigPlans plans={gig.plans} />
                 </section>
             </div>
         </CssVarsProvider>

@@ -19,8 +19,13 @@ export const gigService = {
 }
 window.cs = gigService
 
-function query(filterBy) {
-  return storageService.query(STORAGE_KEY)
+async function query(filterBy) {
+  let gigs = await storageService.query(STORAGE_KEY)
+  if (!gigs.length) {
+    loadDemoData()
+    gigs = gigsDemoData
+  }
+  return gigs
 }
 function getById(gigId) {
   return storageService.get(STORAGE_KEY, gigId)

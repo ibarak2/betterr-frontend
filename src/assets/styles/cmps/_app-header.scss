@@ -14,11 +14,12 @@
     flex: 1;
     height: rem(80px);
     transition: background-color 0.2s ease-in;
-
+    
     .main-header-wrapper {
       flex: 1;
       justify-content: space-between;
       margin: auto;
+      padding: 0;
     }
     .sticky {
       position: fixed;
@@ -40,10 +41,10 @@
 
     animation: fadeIn;
     animation-duration: 0.3s;
-
+    width: 20vw;
     form {
       .header-search-input {
-        width: 130%;
+        width: 100%;
         min-width: 100px;
         padding: 0 10px;
         outline: $clr4;
@@ -124,6 +125,7 @@
   color: $clr4;
   visibility: hidden;
   height: rem(40px);
+  border-bottom: 1px solid $clr4;
 
   animation: flipInX;
   // animation-duration: 1s;

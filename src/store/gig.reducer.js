@@ -52,7 +52,7 @@ export function gigReducer(state = initialState, action) {
       break
 
     default:
-      return newState
+      return state
   }
   // For debug:
   //   window.gigState = newState

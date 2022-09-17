@@ -9,6 +9,7 @@ import { showSuccessMsg } from '../services/event-bus.service'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const STORAGE_KEY = 'users'
 
+loadDemoData()
 
 export const userService = {
     login,
@@ -22,7 +23,6 @@ export const userService = {
     update,
     changeScore,
     getReviewsById,
-    loadDemoData
 }
 
 window.userService = userService
