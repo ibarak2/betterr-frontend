@@ -19,8 +19,8 @@ export const Review = ({ review }) => {
                     <div><ReactStars
                         value={review.rate}
                         count={5}
-                        size={24}
-                        color2={'#ffd700'}
+                        size={22}
+                        color2={'#FFB33E'}
                         edit={false}
                     /></div>
                     <span> | </span>

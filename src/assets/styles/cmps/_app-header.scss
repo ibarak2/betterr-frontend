@@ -125,6 +125,7 @@
   color: $clr4;
   visibility: hidden;
   height: rem(40px);
+  border-bottom: 1px solid $clr4;
 
   animation: flipInX;
   // animation-duration: 1s;

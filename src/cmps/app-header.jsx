@@ -10,6 +10,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline'
 export function AppHeader() {
   const [offset, setOffset] = useState(0)
 
+  const loggedinUser = null
   const [searchParams, setSearchParams] = useSearchParams()
 
   console.log('searchParams', searchParams)
@@ -31,8 +32,8 @@ export function AppHeader() {
           searchParams.get('nav') !== 'home'
             ? 'main-header header-white'
             : offset > 0
-            ? 'main-header header-white'
-            : 'main-header'
+              ? 'main-header header-white'
+              : 'main-header'
         }
       >
         <div className="flex max-width-container main-header-wrapper">
@@ -83,33 +84,31 @@ export function AppHeader() {
                   <NavLink to="/about">About Us</NavLink>
                 </div>
               </li>
-              {/* {user ?  */}
-              <li>
-                <div className="flex logged-in">
-                  <NavLink to="/chat">
-                    <MailOutlineIcon />
-                  </NavLink>
-                  <NavLink to="/back-office">Orders</NavLink>
-                  <NavLink to={`/profile/u101`}>Profile</NavLink>
-                  {/* {user.isAdmin ? */}
-                  <NavLink to="/admin">Admin</NavLink>
-                  {/* : */}
-                  {''}
-                  {/* } */}
+              {loggedinUser ?
+                <li>
+                  <div className="flex logged-in">
+                    <NavLink to="/chat">
+                      <MailOutlineIcon />
+                    </NavLink>
+                    <NavLink to="/back-office">Orders</NavLink>
+                    <NavLink to={`/profile/u101`}>Profile</NavLink>
+                    {loggedinUser.isAdmin &&
+                      <NavLink to="/admin">Admin</NavLink>
+                    }
+                  </div>
+                </li>
+                :
+                <div className="flex signin-signup">
+                  <li>
+                    <a href="/">Sign In</a>
+                  </li>
+                  <li>
+                    <a href="/" className="nav-join">
+                      Join
+                    </a>
+                  </li>
                 </div>
-              </li>
-              {/* : */}
-              <div className="flex signin-signup">
-                <li>
-                  <a href="/">Sign In</a>
-                </li>
-                <li>
-                  <a href="/" className="nav-join">
-                    Join
-                  </a>
-                </li>
-              </div>
-              {/* } */}
+              }
             </ul>
           </nav>
         </div>
@@ -120,8 +119,8 @@ export function AppHeader() {
           searchParams.get('nav') !== 'home'
             ? 'second-nav-shown second-nav'
             : offset > 100
-            ? 'second-nav-shown second-nav'
-            : 'max-width-container second-nav'
+              ? 'second-nav-shown second-nav'
+              : 'max-width-container second-nav'
         }
       >
         <SecondaryNavbar />
@@ -129,21 +128,5 @@ export function AppHeader() {
     </header>
   )
 }
-// <nav>
-//   {user && (
-//     <span className="user-info">
-//       <Link to={`user/${user._id}`}>
-//         {user.imgUrl && <img src={user.imgUrl} />}
-//         {user.fullname}
-//       </Link>
-//       <span className="score">{user.score?.toLocaleString()}</span>
-//       <button onClick={onLogout}>Logout</button>
-//     </span>
-//   )}
 
-//   {!user && (
-//     <section className="user-info">
-//       <LoginSignup onLogin={onLogin} onSignup={onSignup} />
-//     </section>
-//   )}
-// </nav>
+

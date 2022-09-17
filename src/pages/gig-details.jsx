@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { gigService } from "../services/gig.service"
 import { loadGigs } from "../store/gig.actions"
 import { GigPlans } from "../cmps/gig-plans"
-import { UserInfo } from "../cmps/user-info"
+import { SellerInfo } from "../cmps/seller-info"
 import { ReviewList } from "../cmps/review-list"
 import { GigImgsCarousel } from "../cmps/gig-imgs-carousel"
 import { SellerOverview } from "../cmps/seller-overview"
@@ -21,7 +21,7 @@ import { useEffectUpdate } from "../hooks/useEffectUpdate"
 
 export const GigDetails = () => {
 
-    const [gig, setGig] = useState(null)
+    const [gig, setGig] = useState()
     const [reviews, setReviews] = useState([])
     const params = useParams()
     const navigate = useNavigate()
@@ -32,16 +32,21 @@ export const GigDetails = () => {
 
     }, [])
 
-    useEffectUpdate(() => {
+    // useEffectUpdate(() => {
 
-    }, [reviews])
+    // }, [reviews])
+    // useEffect(() => {
+
+    // }, [gig])
 
     const loadGig = async () => {
         const gigId = params.id
         try {
             const gig = await gigService.getById(gigId)
+            console.log("1");
             setGig(gig)
-            loadReviews(gig.owner._id)
+            console.log("2");
+            await loadReviews(gig.owner._id)
             console.log("gig", gig);
         } catch (err) {
             console.log('Failed to load gig');
@@ -85,28 +90,36 @@ export const GigDetails = () => {
                         <div className="carousel-container">
                             <GigImgsCarousel imgList={gig.imgUrls} />
                         </div>
-                        <h2>About this Gig</h2>
-                        <p>{gig.description}</p>
+                        <div className="about-this-gig">
+                            <h2>About This Gig</h2>
+                            <p>{gig.description}</p>
+                        </div>
                         <hr />
-                        <h2>About the Seller</h2>
-                        <UserInfo />
+                        <div className="about-the-seller">
+
+                            <h2>About the Seller</h2>
+                            <SellerInfo seller={gig.owner} />
+                        </div>
+                        <hr />
                         {!reviews ? <div>0 Reviews</div> :
                             <section className="reviews-container">
+                                <div className="flex space-between align-center">
 
-                                <div className="flex align-center reviews-title" >
+                                    <div className="flex align-center reviews-title" >
 
-                                    <h2><span>{reviews.length}</span> Reviews </h2>
-                                    <ReactStars
-                                        value={utilService.averageRating(reviews)}
-                                        count={5}
-                                        size={24}
-                                        color={'#ffd700'}
-                                        edit={false}
-                                    />
-                                    <b>{utilService.averageRating(reviews)}</b>
-                                </div>
-                                <div>
-                                    <ReviewsFilter onChangeSortBy={onChangeSortBy} />
+                                        <h2><span>{reviews.length}</span> Reviews </h2>
+                                        <ReactStars
+                                            value={utilService.averageRating(reviews)}
+                                            count={5}
+                                            size={22}
+                                            color2={'#FFB33E'}
+                                            edit={false}
+                                        />
+                                        <b>{`${utilService.averageRating(reviews)}`}</b>
+                                    </div>
+                                    <div>
+                                        <ReviewsFilter onChangeSortBy={onChangeSortBy} />
+                                    </div>
                                 </div>
                                 <div>
                                     <ReviewList reviews={reviews} />
