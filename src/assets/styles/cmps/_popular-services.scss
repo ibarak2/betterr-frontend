@@ -12,6 +12,15 @@
     gap: rem(18px);
   }
 
+  @media (max-width: 640px) {
+    .slick-track {
+      width: 20% !important;
+    }
+    .slick-slide {
+      width: 100px !important;
+    }
+  }
+
   .slide-link {
     outline: none;
     .slide-title {
@@ -36,7 +45,6 @@
       }
     }
   }
-
 
   .slick-arrow {
     background-color: #fff;

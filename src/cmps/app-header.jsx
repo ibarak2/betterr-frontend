@@ -116,9 +116,8 @@ export function AppHeader() {
             <ul className="flex clean-list nav-list">
               <li className="nav-routes">
                 <div className="basic-nav-routes">
-                  <NavLink to="/?nav=home">Home</NavLink>
                   <NavLink to="/explore">Explore</NavLink>
-                  <NavLink to="/about">About Us</NavLink>
+                  <a onClick={handleOpenModal}>Become a seller</a>
                 </div>
               </li>
               {loggedinUser ? (
