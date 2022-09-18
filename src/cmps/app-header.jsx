@@ -55,15 +55,15 @@ export function AppHeader() {
     setModalOpen(true)
   }
   return (
-    <header className="app-header">
+    <header className="full app-header">
       <LoginSignup modalOpen={modalOpen} handleCloseModal={handleCloseModal} />
       <div
         className={
           searchParams.get("nav") !== "home"
-            ? "main-header header-white"
+            ? "main-container main-header header-white"
             : offset > 0
-            ? "main-header header-white"
-            : "main-header"
+            ? "main-container main-header header-white"
+            : "main-container main-header"
         }
       >
         <div className="flex max-width-container main-header-wrapper">
@@ -71,11 +71,6 @@ export function AppHeader() {
             <SideDrawer
               setDrawerOpen={setDrawerOpen}
               toggleDrawer={toggleDrawer}
-              // className={
-              //   window.pageYOffset < 1160
-              //     ? 'show-side-nav side-nav-icon'
-              //     : 'side-nav-icon'
-              // }
             />
             <a href="/?nav=home" className="site-logo">
               <img
@@ -157,10 +152,10 @@ export function AppHeader() {
       <section
         className={
           searchParams.get("nav") !== "home"
-            ? "flex second-nav-shown second-nav"
-            : offset > 100
-            ? "flex second-nav-shown second-nav"
-            : "flex max-width-container second-nav"
+            ? "main-container flex second-nav-shown second-nav"
+            : offset >= 150
+            ? "main-container flex second-nav-shown second-nav"
+            : "main-container flex max-width-container second-nav"
         }
       >
         <SecondaryNavbar />
