@@ -1,0 +1,36 @@
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+    width: rem(272px);
+}
+
+.side-nav-divider {
+    width: rem(210px);
+}
+
+.side-nav {
+    padding-left: 2rem;
+    * {
+        color: $clr4;
+        padding-right: 20px;
+    }
+    .side-nav-btn {
+        color: $clr1;
+        position: relative;
+        padding: 12px 24px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 100%;
+        text-decoration: none;
+        text-align: center;
+        margin: 10px 0 25px;
+
+        &:hover {
+            background-color: $clr3;
+        }
+    }
+
+    .side-nav-links *:hover {
+        color: $clr5;
+    }
+}

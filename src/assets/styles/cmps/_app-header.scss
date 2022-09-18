@@ -21,6 +21,20 @@
       margin: auto;
       padding: 0;
       align-items: center;
+
+      .main-header-left {
+        gap: 1rem;
+        align-items: center;
+        cursor: pointer;
+
+        .css-i4bv87-MuiSvgIcon-root {
+          color: transparent;
+
+          .side-nav-burger {
+            color: $clr1;
+          }
+        }
+      }
     }
     .sticky {
       position: fixed;
