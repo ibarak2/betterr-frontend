@@ -4,7 +4,8 @@ import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState, Fragment } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useSearchParams } from 'react-router-dom'
+
 
 export function SideDrawer() {
   const [drawerOpen, setDrawerOpen] = useState({
@@ -45,14 +46,21 @@ export function SideDrawer() {
     </Box>
   )
 
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [offset, setOffset] = useState(0)
+
+
   return (
   
       <Fragment>
-        <div className={
-                window.pageXOffset < 1160
-                  ? 'show-side-nav-burger side-nav-burger'
-                  : 'side-nav-burger'
-              }
+        <div 
+        // className={
+        //   searchParams.get("nav") !== "home"
+        //     ? "side-nav-burder header-white"
+        //     : offset > 0
+        //     ? "side-nav-burder header-white"
+        //     : "side-nav-burder"
+        // }
                onClick={toggleDrawer(anchor, true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
