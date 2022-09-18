@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 
 import Slider from 'react-slick'
 
@@ -12,22 +9,16 @@ export function PopularServices() {
     dots: false,
     infinite: true,
     mobileFirst: true,
+    className: 'inner-slider-div',
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
     responsive: [
       {
-        breakpoint: 1240,
+        breakpoint: 680,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-        },
-      },
-      {
-        breakpoint: 1060,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
       {
@@ -38,10 +29,17 @@ export function PopularServices() {
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 1060,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 1240,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
         },
       },
     ],
@@ -100,8 +98,11 @@ export function PopularServices() {
     },
   ]
 
+
+
   return (
     <div className="popular-services">
+
       <h1 className="popular-services-title">Popular professional services</h1>
       <Slider {...settings}>
         {slideObjs.map((obj) => {
@@ -112,7 +113,14 @@ export function PopularServices() {
                   <small>{obj.small}</small>
                   {obj.h4}
                 </h4>
-                <img className="slide-img" src={obj.url} />
+                <img src={obj.url} />
+                {/* <picture>
+                  <source media="(min-width: 1060px)" srcset="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 1x, https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_2.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 2x"/>
+                  <source media="(min-width: 800px)" srcset="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 1x, https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_2.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 2x"/>
+                  <source media="(min-width: 600px)" srcset="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_360,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 1x, https://fiverr-res.cloudinary.com/q_auto,f_auto,w_360,dpr_2.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 2x"/>
+                  <source media="(max-width: 599px)" srcset="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 1x, https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_2.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 2x"/>
+                  <img alt="Logo Design" src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png"/>
+                </picture> */}
               </a>
             </div>
           )
@@ -167,3 +175,6 @@ export function PopularServices() {
 //       </Carousel>
 //     </div>
 //   )
+
+
+

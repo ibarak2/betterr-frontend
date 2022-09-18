@@ -42,15 +42,14 @@ export const GigPreview = ({
         <div className="stars">
           {/* ⭐rate */}
           <StarIcon />
-          {owner.rate}
-          <span className="reviews-amount">({reviews.length})</span>
+          {Number.parseFloat(owner.rate).toFixed(1)}
+          <span className="reviews-amount">({owner.reviewsAmount})</span>
         </div>
         <div className="preview-footer">
           <FavoriteIcon
             className={`like ${liked ? "liked" : "heart"}`}
             onClick={() => handleLike()}
           />
-          <span className="liked-by">({likedByUsers.length})</span>
           <Link to={`/gig/${_id}`} className="preview-offer">
             <p className="start-at">starting at</p>
             <p className="price">${price}</p>
