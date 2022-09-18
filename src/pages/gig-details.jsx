@@ -34,6 +34,7 @@ export const GigDetails = () => {
     }, [])
 
     useEffect(() => {
+        setScreenWidth(window.innerWidth)
         window.removeEventListener('resize', onResize)
         window.addEventListener('resize', onResize)
         return () => window.removeEventListener('resize', onResize)
