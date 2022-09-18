@@ -24,10 +24,29 @@
   }
   & .slick-next:before,
   .slick-prev:before {
-    color: rgb(199, 196, 196);
-    right: 20px;
+    color: rgb(71, 71, 71);
+    // right: 20px;    
   }
 
+  & .slick-prev:before {
+    background: transparent url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/apps/carousel-arrows.b9dde63.svg) no-repeat;
+    content: "";
+    display: block;
+    width: 25px;
+    height: 30px;
+    cursor: pointer;
+  }
+  & .slick-next:before {
+    background: transparent url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/apps/carousel-arrows.b9dde63.svg) no-repeat;
+    content: "";
+    display: block;
+    width: 25px;
+    height: 30px;
+    left: 0;
+    cursor: pointer;
+    transform: scaleX(-1);
+  }
+  
   & .slider-img:hover {
     // transform: scale(105%);
     // transition: transform 0.3s;
@@ -38,15 +57,17 @@
       // transform: translateX(25px);
       left: 0;
       display: block !important;
+
     }
     .slick-next {
       // transform: translateX(-25px);
-      right: 0;
+      right: 5px;
       display: block !important;
+
     }
-    .simple-slider-btn {
-      // transform:scale(110%);
-    }
+    // .simple-slider-btn {
+    //   transform:scale(110%);
+    // }
   }
 
   & .reviews-amount {
