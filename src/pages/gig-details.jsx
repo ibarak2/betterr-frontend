@@ -21,6 +21,7 @@ import { useEffectUpdate } from "../hooks/useEffectUpdate"
 
 export const GigDetails = () => {
 
+    const [screenWidth, setScreenWidth] = useState()
     const [gig, setGig] = useState()
     const [reviews, setReviews] = useState([])
     const params = useParams()
@@ -32,12 +33,15 @@ export const GigDetails = () => {
 
     }, [])
 
-    // useEffectUpdate(() => {
+    useEffect(() => {
+        window.removeEventListener('resize', onResize)
+        window.addEventListener('resize', onResize)
+        return () => window.removeEventListener('resize', onResize)
+    }, [])
 
-    // }, [reviews])
-    // useEffect(() => {
-
-    // }, [gig])
+    const onResize = () => {
+        setScreenWidth(window.innerWidth)
+    }
 
     const loadGig = async () => {
         const gigId = params.id
@@ -76,57 +80,70 @@ export const GigDetails = () => {
     }
 
 
+    console.log(window.innerWidth);
     if (!gig) return <div>Loading</div>
     return (
         <CssVarsProvider>
-            <div className='gig-details'>
-                <section className="gig-description">
-                    <div className="gig-layout">
-                        <h1>{gig.title}</h1>
-                        <SellerOverview seller={gig.owner} />
-                        <hr />
-                        <div className="carousel-container">
-                            <GigImgsCarousel imgList={gig.imgUrls} />
-                        </div>
-                        <div className="about-this-gig">
-                            <h2>About This Gig</h2>
-                            <p>{gig.description}</p>
-                        </div>
-                        <hr />
-                        <div className="about-the-seller">
-                            <h2>About the Seller</h2>
-                            <SellerInfo seller={gig.owner} />
-                        </div>
-                        <hr />
-                        {!reviews ? <div>0 Reviews</div> :
-                            <section className="reviews-container">
-                                <div className="flex space-between align-center">
-                                    <div className="flex align-center reviews-title" >
-                                        <h2><span>{reviews.length}</span> Reviews </h2>
-                                        <ReactStars
-                                            value={utilService.averageRating(reviews)}
-                                            count={5}
-                                            size={22}
-                                            color2={'#FFB33E'}
-                                            edit={false}
-                                        />
-                                        <b>{`${utilService.averageRating(reviews)}`}</b>
+            <section className="main-gig-details">
+
+                <div className='gig-details'>
+                    <section className="gig-description">
+                        <div className="gig-layout">
+                            <h1>{gig.title}</h1>
+                            <SellerOverview seller={gig.owner} />
+                            <hr />
+                            <div className="carousel-container">
+                                <GigImgsCarousel imgList={gig.imgUrls} />
+                            </div>
+                            <div className="mobile-plans">
+                                {(screenWidth < 900) &&
+                                    <GigPlans plans={gig.plans} />
+
+                                }
+                            </div>
+                            <div className="about-this-gig">
+                                <h2>About This Gig</h2>
+                                <p>{gig.description}</p>
+                            </div>
+                            <hr />
+                            <div className="about-the-seller">
+                                <h2>About the Seller</h2>
+                                <SellerInfo seller={gig.owner} />
+                            </div>
+                            <hr />
+                            {!reviews ? <div>0 Reviews</div> :
+                                <section className="reviews-container">
+                                    <div className="flex space-between align-center">
+                                        <div className="flex align-center reviews-title" >
+                                            <h2><span>{reviews.length}</span> Reviews </h2>
+                                            <ReactStars
+                                                value={utilService.averageRating(reviews)}
+                                                count={5}
+                                                size={22}
+                                                color2={'#FFB33E'}
+                                                edit={false}
+                                            />
+                                            <b>{`${utilService.averageRating(reviews)}`}</b>
+                                        </div>
+                                        <div>
+                                            <ReviewsFilter onChangeSortBy={onChangeSortBy} />
+                                        </div>
                                     </div>
                                     <div>
-                                        <ReviewsFilter onChangeSortBy={onChangeSortBy} />
+                                        <ReviewList reviews={reviews} />
                                     </div>
-                                </div>
-                                <div>
-                                    <ReviewList reviews={reviews} />
-                                </div>
-                            </section>
+                                </section>
+                            }
+                        </div>
+                    </section>
+                    <section className="plans">
+                        {(screenWidth > 900) &&
+                            <GigPlans plans={gig.plans} />
+
                         }
-                    </div>
-                </section>
-                <section className="plans">
-                    <GigPlans plans={gig.plans} />
-                </section>
-            </div>
+                    </section>
+                </div>
+            </section>
         </CssVarsProvider>
 
     )
