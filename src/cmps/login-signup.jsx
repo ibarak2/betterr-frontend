@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { userService } from "../services/user.service"
 import { ImgUploader } from "../cmps/img-uploader"
-
+import CloseIcon from "@mui/icons-material/Close"
 export function LoginSignup({
   onSignup,
   onLogin,
@@ -22,7 +22,12 @@ export function LoginSignup({
   }, [])
 
   const clearState = () => {
-    setCredentials({ username: "", password: "", fullname: "", imgUrl: "" })
+    setCredentials({
+      username: "",
+      password: "",
+      // fullname: "",
+      // imgUrl: "",
+    })
     setIsSignup(false)
   }
 
@@ -62,24 +67,48 @@ export function LoginSignup({
         onClick={(ev) => handleCloseModal(ev)}
       ></div>
       <div className="login-signup-container">
+        <CloseIcon
+          className='close-btn'
+        />
         <h4 className="login-signup-title">
-          {true ? "Join Betterr" : "Sign In to Betterr"}
+          {isSignup ? "Join Betterr" : "Sign In to Betterr"}
         </h4>
-        <form className="login-signup-form">
+        <form
+          className="login-signup-form"
+          onSubmit={isSignup ? handleSubmit : handleLogin}
+        >
           <div>
-            <input type="email" required placeholder="" />
+            <label htmlFor="username"></label>
+            <input
+              name="username"
+              type="email"
+              required
+              placeholder="Email / Username"
+              onChange={handleChange}
+            />
           </div>
-          <div>
-            <input type="password" required placeholder="" />
-          </div>
+          {isSignup && (
+            <div>
+              <label htmlFor="password"></label>
+              <input
+                name="password"
+                type="password"
+                required
+                placeholder="Password"
+                onChange={handleChange}
+              />
+            </div>
+          )}
           <div>
             <button>Continue</button>
           </div>
         </form>
         <div className="login-signup-footer">
           <p>
-            {true ? "Not a member yet?" : "Already a member?"}{" "}
-            <a>{true ? "Join Now" : "Sign In"}</a>
+            {isSignup ? "Not a member yet?" : "Already a member?"}{" "}
+            <a onClick={() => setIsSignup(!isSignup)}>
+              {isSignup ? "Join Now" : "Sign In"}
+            </a>
           </p>
         </div>
       </div>
@@ -108,7 +137,6 @@ export function LoginSignup({
     ))}
   </select>
   {/* <input
-      ////////TODO == border: 1px solid #c5c6c9;
                 type="text"
                 name="username"
                 value={username}
