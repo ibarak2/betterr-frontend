@@ -1,19 +1,23 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { GigList } from "../cmps/gig-list"
-import { loadGigs, setFilterBy } from "../store/gig.actions"
+import { loadGigs, setFilterBy, setCategory } from "../store/gig.actions"
 import { Filter } from "../cmps/filter"
+import { useSearchParams } from "react-router-dom"
 
 export const Explore = () => {
   const gigs = useSelector((state) => state.gigModule.gigs)
+  const [searchParams, setSearchParams] = useSearchParams()
   const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(setCategory(searchParams.get('category')))
     dispatch(loadGigs())
     console.log("GIGS", gigs)
   }, [])
 
   const onChangeFilter = (filterBy) => {
+    console.log("changed");
     dispatch(setFilterBy(filterBy))
     dispatch(loadGigs())
   }

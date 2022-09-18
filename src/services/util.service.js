@@ -3,7 +3,8 @@ export const utilService = {
     makeLorem,
     getRandomIntInclusive,
     delay,
-    averageRating
+    averageRating,
+    getReviewDate
 }
 
 function makeId(length = 6) {
@@ -42,4 +43,15 @@ function delay(ms = 1500) {
 function averageRating(reviews) {
     let maxRating = reviews.reduce((total, review) => review.rate + total, 0)
     return +(maxRating / reviews.length).toFixed(1)
+}
+
+function getReviewDate(createdAt) {
+    const currDate = Date.now()
+    if (currDate - createdAt <= 1000 * 60 * 60 * 24) return 'today'
+    if (currDate - createdAt <= 1000 * 60 * 60 * 24 * 7) return '1 week ago'
+    if (currDate - createdAt <= 1000 * 60 * 60 * 24 * 30) return '1 month ago'
+    if (currDate - createdAt <= 1000 * 60 * 60 * 24 * 60) return '2 months ago'
+    if (currDate - createdAt <= 1000 * 60 * 60 * 24 * 90) return '3 months ago'
+    if (currDate - createdAt <= 1000 * 60 * 60 * 24 * 180) return '6 months ago'
+    if (currDate - createdAt > 1000 * 60 * 60 * 24 * 180) return '1 year ago'
 }

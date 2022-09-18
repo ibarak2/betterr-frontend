@@ -1,4 +1,5 @@
 import ReactStars from 'react-stars'
+import { utilService } from '../services/util.service'
 
 
 
@@ -11,8 +12,8 @@ export const Review = ({ review }) => {
     return (
         <div className='review'>
             <div className="user-info">
-                <img src={review.by.imgUrl}></img>
-                <b>{review.by.fullname}</b>
+                <img src={review.imgUrl}></img>
+                <b>{review.fullname}</b>
             </div>
             <div className="review-details">
                 <div className='review-stars-details flex align-center'>
@@ -24,7 +25,7 @@ export const Review = ({ review }) => {
                         edit={false}
                     /></div>
                     <span> | </span>
-                    <time>1 month ago</time>
+                    <time>{utilService.getReviewDate(review.createdAt)}</time>
                 </div>
                 <p>{review.txt}</p>
             </div>

@@ -1,82 +1,82 @@
+import { storageService } from "./async-storage.service.js"
 import { utilService } from "./util.service.js"
 import { userService } from "./user.service.js"
-import { httpService } from './http.service.js'
+import { removeGig, addGig, updateGig, filterBy } from "../store/gig.actions.js"
+
 // This file demonstrates how to use a BroadcastChannel to notify other browser tabs
 
-const BASE_URL = `gig/`
+const STORAGE_KEY = "gig"
 
 export const gigService = {
   query,
   getById,
   save,
   remove,
+  getEmptyGig,
+  // loadDemoData
 }
+window.cs = gigService
 
+async function query(filterBy) {
+  console.log("FILTER", filterBy)
 
-async function query(filterBy = {}) {
-  try {
-    const gigs = await httpService.get(BASE_URL, { params: filterBy })
-    return gigs
-  } catch (err) {
-    console.log('gig.service: cannot get gigs', err);
+  let gigs = await storageService.query(filterBy)
+  console.log("GIGS", gigs)
+  if (!gigs.length || !gigs) {
+    loadDemoData()
+    gigs = gigsDemoData
   }
+  // if (filterBy) {
+  const { maxPrice, daysToMake, rate } = filterBy
 
-  // console.log("GIGS", gigs)
-  // if (!gigs.length || !gigs) {
-  //   loadDemoData()
-  //   gigs = gigsDemoData
+  // if (name) {
+  //   const regex = new RegExp(name, 'i')
+  //   toys = toys.filter((toy) => regex.test(toy.name))
   // }
-  // // if (filterBy) {
-  // const { maxPrice, daysToMake, rate } = filterBy
 
-  // // if (name) {
-  // //   const regex = new RegExp(name, 'i')
-  // //   toys = toys.filter((toy) => regex.test(toy.name))
-  // // }
+  if (maxPrice) {
+    console.log("MAX PRICE", maxPrice)
 
-  // if (maxPrice) {
-  //   console.log("MAX PRICE", maxPrice)
-
-  //   gigs = gigs.filter((gig) => gig.price <= maxPrice)
-  // }
-  // if (daysToMake) {
-  //   return (gigs = gigs.filter((gig) => gig.daysToMake <= daysToMake))
-  // }
-  // if (rate) {
-  //   gigs = gigs.filter((gig) => gig.owner.rate >= rate)
-  // }
-  // return gigs
+    gigs = gigs.filter((gig) => gig.price <= maxPrice)
+  }
+  if (daysToMake) {
+    return (gigs = gigs.filter((gig) => gig.daysToMake <= daysToMake))
+  }
+  if (rate) {
+    gigs = gigs.filter((gig) => gig.owner.rate >= rate)
+  }
+  return gigs
 }
 // }
 
-async function getById(gigId) {
-  try {
-    const gig = await httpService.get(BASE_URL + gigId)
-    return gig
-  } catch (err) {
-    console.log('gig.service: cannot get gig', err);
-  }
+function getById(gigId) {
+  return storageService.get(STORAGE_KEY, gigId)
+  // return axios.get(`/api/gig/${gigId}`)
+}
+async function remove(gigId) {
+  await storageService.remove(STORAGE_KEY, gigId)
 }
 async function save(gig) {
   var savedGig
   if (gig._id) {
-    savedGig = await httpService.put(BASE_URL + gig._id, gig)
+    savedGig = await storageService.put(STORAGE_KEY, gig)
   } else {
     // Later, owner is set by the backend
-    // gig.owner = userService.getLoggedinUser()
-    savedGig = await httpService.post(BASE_URL, gig)
+    gig.owner = userService.getLoggedinUser()
+    savedGig = await storageService.post(STORAGE_KEY, gig)
   }
   return savedGig
 }
 
-async function remove(gigId) {
-  try {
-    const removedGig = await httpService.delete(BASE_URL, gigId)
-    return removedGig
-  } catch (err) {
-    console.log('gig.service: cannot remove gig', err);
+function getEmptyGig() {
+  return {
+    vendor: "Susita-" + (Date.now() % 1000),
+    price: utilService.getRandomIntInclusive(1000, 9000),
   }
 }
+
+// TEST DATA
+// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
 
 const gigsDemoData = [
   {
@@ -200,10 +200,10 @@ const gigsDemoData = [
   },
 ]
 
-// async function loadDemoData() {
-//   const gGigs = (await storageService.query(STORAGE_KEY)) || []
-//   if (!gGigs || !gGigs.length) {
-//     localStorage.setItem(STORAGE_KEY, JSON.stringify(gigsDemoData))
-//     console.log("Loaded New gigs Demo data")
-//   }
-// }
+async function loadDemoData() {
+  const gGigs = (await storageService.query(STORAGE_KEY)) || []
+  if (!gGigs || !gGigs.length) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(gigsDemoData))
+    console.log("Loaded New gigs Demo data")
+  }
+}

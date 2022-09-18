@@ -11,6 +11,7 @@ export const GigPreview = ({
   price,
   likedByUsers,
   imgUrls,
+  reviews
 }) => {
   const [liked, setLiked] = useState()
   const handleLike = () => {
@@ -42,7 +43,7 @@ export const GigPreview = ({
           {/* ⭐rate */}
           <StarIcon />
           {owner.rate}
-          <span className="reviews-amount">({owner.reviewsAmount})</span>
+          <span className="reviews-amount">({reviews.length})</span>
         </div>
         <div className="preview-footer">
           <FavoriteIcon

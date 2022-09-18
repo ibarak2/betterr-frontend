@@ -23,7 +23,6 @@ export const GigDetails = () => {
 
     const [screenWidth, setScreenWidth] = useState()
     const [gig, setGig] = useState()
-    const [reviews, setReviews] = useState([])
     const params = useParams()
     const navigate = useNavigate()
 
@@ -48,35 +47,21 @@ export const GigDetails = () => {
         const gigId = params.id
         try {
             const gig = await gigService.getById(gigId)
-            console.log("1");
             setGig(gig)
-            console.log("2");
-            await loadReviews(gig.owner._id)
-            console.log("gig", gig);
         } catch (err) {
             console.log('Failed to load gig');
         }
     }
 
-    const loadReviews = async (userId) => {
-        try {
-            const reviews = await userService.getReviewsById(userId)
-            setReviews(reviews)
-
-            console.log("reviews", reviews);
-        } catch (err) {
-            console.log(err);
-        }
-    }
 
     const onChangeSortBy = (sortBy) => {
         let sortedReviews
         (sortBy === 'rate') ?
-            sortedReviews = reviews.sort((a, b) => (b.rate > a.rate) ? 1 : ((a.rate > b.rate) ? -1 : 0)) :
-            sortedReviews = reviews.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : ((a.createdAt > b.createdAt) ? -1 : 0));
+            sortedReviews = gig.reviews.sort((a, b) => (b.rate > a.rate) ? 1 : ((a.rate > b.rate) ? -1 : 0)) :
+            sortedReviews = gig.reviews.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : ((a.createdAt > b.createdAt) ? -1 : 0));
 
-        setReviews([...sortedReviews])
-        console.log("reviews:", reviews);
+        setGig({ ...gig, reviews: sortedReviews })
+        console.log(gig.reviews);
 
     }
 
@@ -112,26 +97,26 @@ export const GigDetails = () => {
                                 <SellerInfo seller={gig.owner} />
                             </div>
                             <hr />
-                            {!reviews ? <div>0 Reviews</div> :
+                            {!gig.reviews ? <div>0 Reviews</div> :
                                 <section className="reviews-container">
                                     <div className="flex space-between align-center">
                                         <div className="flex align-center reviews-title" >
-                                            <h2><span>{reviews.length}</span> Reviews </h2>
+                                            <h2><span>{gig.reviews.length}</span> Reviews </h2>
                                             <ReactStars
-                                                value={utilService.averageRating(reviews)}
+                                                value={utilService.averageRating(gig.reviews)}
                                                 count={5}
                                                 size={22}
                                                 color2={'#FFB33E'}
                                                 edit={false}
                                             />
-                                            <b>{`${utilService.averageRating(reviews)}`}</b>
+                                            <b>{`${utilService.averageRating(gig.reviews)}`}</b>
                                         </div>
                                         <div>
                                             <ReviewsFilter onChangeSortBy={onChangeSortBy} />
                                         </div>
                                     </div>
                                     <div>
-                                        <ReviewList reviews={reviews} />
+                                        <ReviewList reviews={gig.reviews} />
                                     </div>
                                 </section>
                             }
