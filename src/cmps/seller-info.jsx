@@ -3,7 +3,7 @@ import ReactStars from 'react-stars'
 
 
 
-export const SellerInfo = ({ seller }) => {
+export const SellerInfo = ({ seller, reviewsAmount }) => {
 
 
 
@@ -24,7 +24,7 @@ export const SellerInfo = ({ seller }) => {
                         edit={false}
                         border
                     />
-                    <span>{`(${seller.reviewsAmount})`}</span></div>
+                    <span>{`(${reviewsAmount})`}</span></div>
                 <button>Contact Me</button>
             </div>
         </div>

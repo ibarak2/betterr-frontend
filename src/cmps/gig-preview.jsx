@@ -43,7 +43,7 @@ export const GigPreview = ({
           {/* ⭐rate */}
           <StarIcon />
           {Number.parseFloat(owner.rate).toFixed(1)}
-          <span className="reviews-amount">({owner.reviewsAmount})</span>
+          <span className="reviews-amount">({reviews.length})</span>
         </div>
         <div className="preview-footer">
           <FavoriteIcon
