@@ -11,6 +11,7 @@ export function PopularServices() {
   var settings = {
     dots: false,
     infinite: true,
+    mobileFirst: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
@@ -37,7 +38,7 @@ export function PopularServices() {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 640,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

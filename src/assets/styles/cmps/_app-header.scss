@@ -50,7 +50,7 @@
   .header-search {
     display: none;
     margin: 0;
-    width: 20vw;
+    width: 384px;
     height: inherit;
 
     animation: fadeIn;
@@ -92,9 +92,8 @@
   .nav {
     font-weight: 600;
     .nav-list {
-      // gap: 1vw;
       li a {
-        margin-right: 1vw;
+        margin-right: 20px;
         color: $clr1;
         font-size: rem(18px);
       }
@@ -110,7 +109,7 @@
           color: $clr2;
           border: 1px $clr2 solid;
           border-radius: 5px;
-          padding: 0.65vh 1vw;
+          padding: 0.65vh 20px;
           transition: all 0.2s ease-in;
           margin: 0;
           font-size: rem(16px);

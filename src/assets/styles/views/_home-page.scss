@@ -13,36 +13,36 @@
     height: 58.5vh;
 
     .hero-main {
-      width: 35vw;
+      width: 672px;
       padding-left: 0;
       .hero-title {
         font-size: rem(61px);
         font-weight: 600;
         margin: 7vh 1vh 1.7vh 0;
-        letter-spacing: -0.2vw;
-        word-spacing: 0.09vw;
+        letter-spacing: -3.84px;
+        word-spacing: 1.7px;
         span {
           font-family: lobster;
           font-size: rem(61px);
           font-weight: 300;
-          margin-left: 0.5vw;
-          letter-spacing: 0vw;
-          word-spacing: 0.025vw;
+          margin-left:  0.96px;
+          letter-spacing: 0;
+          word-spacing: 0.5px;
         }
       }
       .hero-form {
         height: 7vh;
-        margin: 0.4vh 0.1vw 0.8vw;
+        margin: 0.4vh 1.92px 15.36px;
         span {
           width: inherit;
           border-radius: 3px 0 0 3px;
           background-color: $clr1;
-          padding-left: 0.9vw;
+          padding-left: 17.28px;
           .hero-search-icon {
             margin: auto;
             color: $clr4;
             fill: currentColor;
-            width: 0.9vw;
+            width: 17.28px;
           }
         }
         &:focus {
@@ -55,7 +55,7 @@
           border-radius: 0;
           border: 0;
           padding: rem(15px) rem(12px) rem(10px);
-          width: 26.7vw;
+          width: 512.64px;
           // align-self: center;
           // justify-content: center;
         }
@@ -70,7 +70,7 @@
           border-radius: 0 3px 3px 0;
           font-weight: bold;
           font-size: rem(19px);
-          width: 5.4vw;
+          width: 103.68px;
         }
         .btn-hero:hover {
           background-color: $clr3;
@@ -80,17 +80,17 @@
       .popular {
         font-size: rem(16px);
         font-weight: 600;
-        margin: 0 0.1vw;
+        margin: 0 1.92px;
         flex-wrap: wrap;
         align-content: center;
 
         .popular-list {
-          margin-left: 0.5vw;
-          gap: 0.7vw;
+          margin-left: 9.6px;
+          gap: 13.44px;
 
           .popular-filters a {
             font-size: rem(16px);
-            padding: 0 0.5vw;
+            padding: 0 9.6px;
             border: 1px $clr1 solid;
             border-radius: 28px;
             transition: all 0.4s ease-in-out;
