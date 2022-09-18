@@ -11,6 +11,7 @@ export const GigPreview = ({
   price,
   likedByUsers,
   imgUrls,
+  reviews
 }) => {
   const [liked, setLiked] = useState()
   const handleLike = () => {

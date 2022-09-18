@@ -30,8 +30,8 @@ export function SimpleSlider({ imgUrls, gigId }) {
     const imgs = ["1", "2", "3", "4", "5", "6"]
     return (
         <Slider {...settings}>
-            {imgUrls.map((imgUrl) => (
-                <div>
+            {imgUrls.map((imgUrl, idx) => (
+                <div key={idx}>
                     <Link to={`/gig/${gigId}`}>
                         <img className="slider-img"
                             src={imgUrl}

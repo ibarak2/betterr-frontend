@@ -17,28 +17,31 @@ export const SecondaryNavbar = () => {
     <nav className="main-container secondary-navbar">
       <ul className="flex clean-list secondary-nav-routes">
         <li>
-          <NavLink to="/?nav=graphics-design">Graphics & Design</NavLink>
+          <NavLink to="/explore?category=graphics-and-design">Graphics & Design</NavLink>
         </li>
         <li>
-          <NavLink to="/?nav=Writing & Translation">Writing & Translation</NavLink>
+          <NavLink to="/explore?category=digital-marketing">Digital Marketing</NavLink>
         </li>
         <li>
-          <NavLink to="/?nav=Video & Animation">Video & Animation</NavLink>
+          <NavLink to="/explore?category=writing-and-translation">Writing & Translation</NavLink>
         </li>
         <li>
-          <NavLink to="/?nav=Music & Audio">Music & Audio</NavLink>
+          <NavLink to="/explore?category=video-and-animation">Video & Animation</NavLink>
         </li>
         <li>
-          <NavLink to="/?nav=Programming & Tech">Programming & Tech</NavLink>
+          <NavLink to="/explore?category=music-and-audio">Music & Audio</NavLink>
         </li>
         <li>
-          <NavLink to="/?nav=Business">Business</NavLink>
+          <NavLink to="/explore?category=programming-and-tech">Programming & Tech</NavLink>
         </li>
         <li>
-          <NavLink to="/?nav=Lifestyle">Lifestyle</NavLink>
+          <NavLink to="/explore?category=business">Business</NavLink>
         </li>
         <li>
-          <NavLink to="/?nav=Trending">Trending</NavLink>
+          <NavLink to="/explore?category=lifestyle">Lifestyle</NavLink>
+        </li>
+        <li>
+          <NavLink to="/explore?category=trending">Trending</NavLink>
         </li>
       </ul>
     </nav>

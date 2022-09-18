@@ -5,9 +5,11 @@ import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 // Action Creators:
 export function loadGigs() {
   // console.log("Getting to Dispatch")
-  return async (dispatch , getState) => {
+  return async (dispatch, getState) => {
     try {
+
       const { filterBy } = getState().gigModule
+      console.log("filterBy", filterBy);
       const gigs = await gigService.query(filterBy)
       console.log("gigs", gigs)
       dispatch({
@@ -65,6 +67,12 @@ export function updateGig(gig) {
 export function setFilterBy(filterBy) {
   return (dispatch) => {
     dispatch({ type: "SET_FILTER_BY", filterBy })
+  }
+}
+
+export function setCategory(category) {
+  return (dispatch) => {
+    dispatch({ type: "SET_CATEGORY", category })
   }
 }
 

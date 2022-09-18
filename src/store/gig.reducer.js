@@ -2,7 +2,7 @@ const initialState = {
   gigs: [],
   cart: [],
   lastRemovedGig: null,
-  filterBy: { maxPrice: "", daysToMake: "", rate: "" },
+  filterBy: { maxPrice: "", daysToMake: "", rate: "", category: "" },
 }
 
 export function gigReducer(state = initialState, action) {
@@ -10,6 +10,7 @@ export function gigReducer(state = initialState, action) {
   var gigs
   var cart
   var filterBy
+  var category
 
   switch (action.type) {
     case "SET_GIGS":
@@ -44,7 +45,13 @@ export function gigReducer(state = initialState, action) {
 
     case "SET_FILTER_BY":
       // NOT SURE
+      category = state.filterBy.category
       filterBy = action.filterBy
+      filterBy.category = category
+      return { ...state, filterBy }
+
+    case "SET_CATEGORY":
+      filterBy = { ...state.filterBy, category: action.category }
       return { ...state, filterBy }
 
     case "UNDO_REMOVE_CAR":
