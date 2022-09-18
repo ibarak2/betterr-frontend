@@ -100,7 +100,7 @@ export function PopularServices() {
   ]
 
   return (
-    <div className=" popular-services">
+    <div className="popular-services">
       <h1 className="popular-services-title">Popular professional services</h1>
       <Slider {...settings}>
         {slideObjs.map((obj) => {

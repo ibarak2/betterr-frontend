@@ -1,13 +1,13 @@
-import { Link, NavLink, useParams, useSearchParams } from "react-router-dom"
-import { useSelector } from "react-redux"
-import routes from "../routes"
-import { onLogin, onLogout, onSignup } from "../store/user.actions.js"
-import { LoginSignup } from "./login-signup.jsx"
-import { useEffect, useState } from "react"
-import { SecondaryNavbar } from "./secondary-navbar"
-import MailOutlineIcon from "@mui/icons-material/MailOutline"
-import { SideDrawer } from "./side-drawer"
-import MenuIcon from "@mui/icons-material/Menu"
+import { Link, NavLink, useParams, useSearchParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import routes from '../routes'
+import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
+import { LoginSignup } from './login-signup.jsx'
+import { useEffect, useState } from 'react'
+import { SecondaryNavbar } from './secondary-navbar'
+import MailOutlineIcon from '@mui/icons-material/MailOutline'
+import { SideDrawer } from './side-drawer'
+import MenuIcon from '@mui/icons-material/Menu'
 
 export function AppHeader() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -17,15 +17,15 @@ export function AppHeader() {
   })
 
   const toggleDrawer = (open) => (event) => {
-    console.log("CLICKED")
+    console.log('CLICKED')
     if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
     ) {
       return
     }
 
-    setDrawerOpen({ ...drawerOpen, ["left"]: open })
+    setDrawerOpen({ ...drawerOpen, ['left']: open })
   }
   const [offset, setOffset] = useState(0)
 
@@ -37,32 +37,32 @@ export function AppHeader() {
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
     //-- clean up code
-    window.removeEventListener("scroll", onScroll)
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
+    window.removeEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   // console.log(offset)
   const handleCloseModal = (ev) => {
-    if (!ev.target.className.includes("login-signup-close-modal-div")) return
+    if (!ev.target.className.includes('login-signup-close-modal-div')) return
     setModalOpen(false)
   }
   const handleOpenModal = () => {
     setModalOpen(true)
   }
   return (
-    <header className="app-header">
+    <header className="full app-header">
       <LoginSignup modalOpen={modalOpen} handleCloseModal={handleCloseModal} />
       <div
         className={
-          searchParams.get("nav") !== "home"
-            ? "main-header header-white"
+          searchParams.get('nav') !== 'home'
+            ? 'main-container main-header header-white'
             : offset > 0
-            ? "main-header header-white"
-            : "main-header"
+            ? 'main-container main-header header-white'
+            : 'main-container main-header'
         }
       >
-        <div className="flex max-width-container main-header-wrapper">
+        <div className="flex main-header-wrapper">
           <div className="flex main-header-left">
             <SideDrawer
               setDrawerOpen={setDrawerOpen}
@@ -85,8 +85,8 @@ export function AppHeader() {
           <div
             className={
               offset >= 200
-                ? "header-search header-search-shown"
-                : "header-search"
+                ? 'header-search header-search-shown'
+                : 'header-search'
             }
           >
             <form className="flex" onSubmit="/explore">
@@ -153,11 +153,11 @@ export function AppHeader() {
 
       <section
         className={
-          searchParams.get("nav") !== "home"
-            ? "flex second-nav-shown second-nav"
+          searchParams.get('nav') !== 'home'
+            ? 'full flex second-nav-shown second-nav'
             : offset > 100
-            ? "flex second-nav-shown second-nav"
-            : "flex max-width-container second-nav"
+            ? 'full flex second-nav-shown second-nav'
+            : 'flex second-nav'
         }
       >
         <SecondaryNavbar />

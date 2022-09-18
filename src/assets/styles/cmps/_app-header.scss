@@ -8,8 +8,8 @@
   .main-header {
     padding-left: 0;
     padding-right: 0;
-    display: flex;
-    margin: auto;
+    // display: flex;
+    // margin: auto;
     align-items: center;
     flex: 1;
     height: 8.9vh;
@@ -18,7 +18,7 @@
     .main-header-wrapper {
       flex: 1;
       justify-content: space-between;
-      margin: auto;
+      // margin: auto;
       padding: 0;
       align-items: center;
 
@@ -103,19 +103,22 @@
       }
       .signin-signup {
         align-items: center;
-      }
-      .nav-join {
-        color: $clr2;
-        border: 1px $clr2 solid;
-        border-radius: 5px;
-        padding: 0.65vh 1vw;
-        transition: all 0.2s ease-in;
-        margin: 0;
-        font-size: rem(16px);
-      }
-      .nav-join:hover {
-        color: $clr1;
-        background-color: $clr2;
+        li {
+          cursor: pointer;
+        }
+        .nav-join {
+          color: $clr2;
+          border: 1px $clr2 solid;
+          border-radius: 5px;
+          padding: 0.65vh 1vw;
+          transition: all 0.2s ease-in;
+          margin: 0;
+          font-size: rem(16px);
+        }
+        .nav-join:hover {
+          color: $clr1;
+          background-color: $clr2;
+        }
       }
     }
   }
@@ -139,13 +142,18 @@
 //---- second nav bar ----//
 .side-nav-burger {
   color: $clr1;
-  // display: none;
+  display: inline-block;
+}
+
+@media (min-width: 1160px) {
+  .side-nav-burger {
+    display: none;
+  }
 }
 
 .second-nav {
   background-color: transparent;
   // padding: 5px;
-  margin: auto;
   color: $clr4;
   visibility: hidden;
   height: rem(40px);
@@ -157,8 +165,8 @@
 
   .secondary-navbar {
     flex: 1;
-    margin: auto;
     height: 100%;
+    margin: 0;
     .secondary-nav-routes {
       height: 100%;
       justify-content: space-between;

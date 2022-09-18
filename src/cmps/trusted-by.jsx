@@ -1,6 +1,6 @@
 export function TrustedBy() {
   return (
-    <section className="trusted-by">
+    <section className="main-container full trusted-by">
       <div className="flex trusted-by-wrapper">
             <span className="trusted-by-text">Trusted by:</span>
         <ul className="flex clean-list trusted-by-list">

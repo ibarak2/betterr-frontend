@@ -121,8 +121,8 @@ export function GetInspired() {
   ]
 
   return (
-    <section className="flex get-inspired">
-      <div className="max-width-container get-inspired-wrapper">
+    <section className="full flex get-inspired">
+      <div className="main-container get-inspired-wrapper">
         <div className="flex get-inspired-top">
           <h1>Get inspired with projects made by our freelancers</h1>
           <NavLink to="/explore">
