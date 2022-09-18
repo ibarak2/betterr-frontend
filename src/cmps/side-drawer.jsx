@@ -48,7 +48,12 @@ export function SideDrawer() {
   return (
   
       <Fragment>
-        <div className='side-nav-burger' onClick={toggleDrawer(anchor, true)}>
+        <div className={
+                window.pageXOffset < 1160
+                  ? 'show-side-nav-burger side-nav-burger'
+                  : 'side-nav-burger'
+              }
+               onClick={toggleDrawer(anchor, true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="23"

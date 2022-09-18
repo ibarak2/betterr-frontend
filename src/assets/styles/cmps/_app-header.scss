@@ -12,7 +12,7 @@
     margin: auto;
     align-items: center;
     flex: 1;
-    height: rem(80px);
+    height: 8.9vh;
     transition: background-color 0.2s ease-in;
 
     .main-header-wrapper {
@@ -23,18 +23,15 @@
       align-items: center;
 
       .main-header-left {
-        gap: 1rem;
+        gap: 1vh;
         align-items: center;
         cursor: pointer;
 
         .css-i4bv87-MuiSvgIcon-root {
           color: transparent;
-
-          .side-nav-burger {
-            color: $clr1;
-          }
         }
       }
+
     }
     .sticky {
       position: fixed;
@@ -93,22 +90,28 @@
   }
 
   .nav {
-    font-weight: 500;
+    font-weight: 600;
     .nav-list {
+      // gap: 1vw;
       li a {
-        margin-right: 1rem;
+        margin-right: 1vw;
         color: $clr1;
+        font-size: rem(18px);
       }
       a:hover {
         color: $clr2;
+      }
+      .signin-signup {
+        align-items: center;
       }
       .nav-join {
         color: $clr2;
         border: 1px $clr2 solid;
         border-radius: 5px;
-        padding: 5px 15px;
+        padding: 0.65vh 1vw;
         transition: all 0.2s ease-in;
         margin: 0;
+        font-size: rem(16px);
       }
       .nav-join:hover {
         color: $clr1;
@@ -134,6 +137,10 @@
 }
 
 //---- second nav bar ----//
+.side-nav-burger {
+  color: $clr1;
+  // display: none;
+}
 
 .second-nav {
   background-color: transparent;

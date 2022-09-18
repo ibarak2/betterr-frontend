@@ -1,7 +1,7 @@
 .max-width-container {
   box-sizing: border-box;
-  max-width: 1400px;
-  padding: 24px 0;
+  max-width: 72.91666666666667vw;
+  padding: 1.25vw 0;
 
   &.full {
     width: 100%;
@@ -22,21 +22,21 @@
 
   @include for-narrow-layout {
       grid-template-columns: 
-          minmax(32px, 1fr)
+          minmax(32px, 13vw)
           minmax(auto, $mobile-breakpoint)
-          minmax(32px, 1fr);
+          minmax(32px, 13vw);
   }
   @include for-normal-layout {
       grid-template-columns: 
-          minmax(32px, 1fr)
+          minmax(32px, 13vw)
           minmax(auto, $narrow-breakpoint)
-          minmax(32px, 1fr);
+          minmax(32px, 13vw);
   }
   @include for-wide-layout {
       grid-template-columns: 
-          minmax(32px, 1fr)
+          minmax(32px, 13vw)
           minmax(auto, $normal-breakpoint)
-          minmax(32px, 1fr);
+          minmax(32px, 13vw);
   }
 }
 

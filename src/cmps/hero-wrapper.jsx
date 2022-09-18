@@ -36,7 +36,7 @@ export function HeroWrapper() {
         <div className="flex popular">
           Popular:
           <ul className="flex clean-list popular-list">
-            <li className="popular-filters">
+            <li className="flex popular-filters">
               <NavLink
                 key="/explore?filter=tags:Website-design"
                 to="/explore?filter=tags:Website-design"
@@ -45,7 +45,7 @@ export function HeroWrapper() {
                 Website Design
               </NavLink>
             </li>
-            <li className="popular-filters">
+            <li className="flex popular-filters">
               <NavLink
                 key="/explore?filter=tags:WordPress"
                 to="/explore?filter=tags:WordPress"
@@ -54,7 +54,7 @@ export function HeroWrapper() {
                 WordPress
               </NavLink>
             </li>
-            <li className="popular-filters">
+            <li className="flex popular-filters">
               <NavLink
                 key="/explore?filter=tags:Logo-Design"
                 to="/explore?filter=tags:Logo-Design"
@@ -63,7 +63,7 @@ export function HeroWrapper() {
                 Logo Design
               </NavLink>
             </li>
-            <li className="popular-filters">
+            <li className="flex popular-filters">
               <NavLink
                 key="/explore?filter=tags:Video-Editing"
                 to="/explore?filter=tags:Video-Editing"

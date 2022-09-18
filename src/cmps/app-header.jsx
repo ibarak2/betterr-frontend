@@ -40,7 +40,7 @@ export function AppHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // console.log(offset)
+  console.log(offset)
 
   return (
     <header className="app-header">
@@ -58,12 +58,6 @@ export function AppHeader() {
             <SideDrawer
               setDrawerOpen={setDrawerOpen}
               toggleDrawer={toggleDrawer}
-              // className={
-              //   window.pageYOffset < 1160
-              //     ? 'show-side-nav side-nav-icon'
-              //     : 'side-nav-icon'
-              // }
-              
             />
             <a href="/?nav=home" className="site-logo">
               <img
@@ -81,7 +75,7 @@ export function AppHeader() {
                 : 'header-search'
             }
           >
-            <form className="flex">
+            <form className="flex" onSubmit="/explore">
               <input
                 type="search"
                 className="header-search-input"
@@ -129,10 +123,10 @@ export function AppHeader() {
               ) : (
                 <div className="flex signin-signup">
                   <li>
-                    <a href="/">Sign In</a>
+                    <a href="/?nav=home">Sign In</a>
                   </li>
                   <li>
-                    <a href="/" className="nav-join">
+                    <a href="/?nav=home" className="nav-join">
                       Join
                     </a>
                   </li>
@@ -147,7 +141,7 @@ export function AppHeader() {
         className={
           searchParams.get('nav') !== 'home'
             ? 'flex second-nav-shown second-nav'
-            : offset > 100
+            : offset > 200
             ? 'flex second-nav-shown second-nav'
             : 'flex max-width-container second-nav'
         }
