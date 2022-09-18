@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
@@ -10,12 +9,35 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import Slider from 'react-slick'
 
 export function GetInspired() {
-  const settings = {
+  var settings = {
     dots: false,
-    infinity: true,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1060,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   }
 
   const slideObjs = [
@@ -101,40 +123,34 @@ export function GetInspired() {
   return (
     <section className="flex get-inspired">
       <div className="max-width-container get-inspired-wrapper">
+        <div className="flex get-inspired-top">
+          <h1>Get inspired with projects made by our freelancers</h1>
+          <NavLink to="/explore">
+            <span>See More Projects &gt;</span>
+          </NavLink>
+        </div>
 
-      <div className="flex get-inspired-top">
-        <h1>Get inspired with projects made by our freelancers</h1>
-        <NavLink to="/explore">
-          <span>See More Projects &gt;</span>
-        </NavLink>
+        <div className="get-inspired-carousel">
+          <Slider {...settings}>
+            {slideObjs.map((obj) => {
+              return (
+                <div className="project-card">
+                  <a className="slide-link" href={'/explore'} target="_blank">
+                    <img className="slide-img" src={obj.url} />
+                    <div className="flex slide-profile">
+                      <img className="slide-profile-img" src={obj.profilePic} />
+                      <h4 className="flex slide-title">
+                        {obj.h4}
+                        <small>{obj.small}</small>
+                      </h4>
+                    </div>
+                  </a>
+                </div>
+              )
+            })}
+          </Slider>
+        </div>
       </div>
-
-      <div className="get-inspired-carousel">
-        <Slider {...settings}>
-          {slideObjs.map((obj) => {
-            return (
-              <div className="project-card">
-                <a
-                  className="slide-link"
-                  href={`/explore/${obj.h4}`}
-                  target="_blank"
-                  >
-                  <img className="slide-img" src={obj.url} />
-                  <div className="flex slide-profile">
-                    <img className="slide-profile-img" src={obj.profilePic} />
-                    <h4 className="flex slide-title">
-                      {obj.h4}
-                      <small>{obj.small}</small>
-                    </h4>
-                  </div>
-                </a>
-              </div>
-            )
-          })}
-        </Slider>
-      </div>
-          </div>
     </section>
   )
 }
-

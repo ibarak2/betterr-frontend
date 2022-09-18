@@ -1,13 +1,13 @@
-import { Link, NavLink, useParams, useSearchParams } from "react-router-dom"
-import { useSelector } from "react-redux"
-import routes from "../routes"
-import { onLogin, onLogout, onSignup } from "../store/user.actions.js"
-import { LoginSignup } from "./login-signup.jsx"
-import { useEffect, useState } from "react"
-import { SecondaryNavbar } from "./secondary-navbar"
-import MailOutlineIcon from "@mui/icons-material/MailOutline"
-import { SideDrawer } from "./side-drawer"
-import MenuIcon from "@mui/icons-material/Menu"
+import { Link, NavLink, useParams, useSearchParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import routes from '../routes'
+import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
+import { LoginSignup } from './login-signup.jsx'
+import { useEffect, useState } from 'react'
+import { SecondaryNavbar } from './secondary-navbar'
+import MailOutlineIcon from '@mui/icons-material/MailOutline'
+import { SideDrawer } from './side-drawer'
+import MenuIcon from '@mui/icons-material/Menu'
 
 export function AppHeader() {
   const [drawerOpen, setDrawerOpen] = useState({
@@ -15,15 +15,15 @@ export function AppHeader() {
   })
 
   const toggleDrawer = (open) => (event) => {
-    console.log("CLICKED")
+    console.log('CLICKED')
     if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
     ) {
       return
     }
 
-    setDrawerOpen({ ...drawerOpen, ["left"]: open })
+    setDrawerOpen({ ...drawerOpen, ['left']: open })
   }
   const [offset, setOffset] = useState(0)
 
@@ -35,9 +35,9 @@ export function AppHeader() {
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
     //-- clean up code
-    window.removeEventListener("scroll", onScroll)
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
+    window.removeEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   // console.log(offset)
@@ -46,28 +46,39 @@ export function AppHeader() {
     <header className="app-header">
       <div
         className={
-          searchParams.get("nav") !== "home"
-            ? "main-header header-white"
+          searchParams.get('nav') !== 'home'
+            ? 'main-header header-white'
             : offset > 0
-            ? "main-header header-white"
-            : "main-header"
+            ? 'main-header header-white'
+            : 'main-header'
         }
       >
-        <SideDrawer setDrawerOpen={setDrawerOpen} toggleDrawer={toggleDrawer} />
         <div className="flex max-width-container main-header-wrapper">
-          <a href="/?nav=home" className="site-logo">
-            <img
-              className="logo"
-              src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
-              alt="betterr."
+          <div className='flex main-header-left'>
+            <SideDrawer
+              setDrawerOpen={setDrawerOpen}
+              toggleDrawer={toggleDrawer}
+              // className={
+              //   window.pageYOffset < 1160
+              //     ? 'show-side-nav side-nav-icon'
+              //     : 'side-nav-icon'
+              // }
+              
             />
-          </a>
+            <a href="/?nav=home" className="site-logo">
+              <img
+                className="logo"
+                src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
+                alt="betterr."
+              />
+            </a>
+          </div>
 
           <div
             className={
               offset >= 200
-                ? "header-search header-search-shown"
-                : "header-search"
+                ? 'header-search header-search-shown'
+                : 'header-search'
             }
           >
             <form className="flex">
@@ -134,11 +145,11 @@ export function AppHeader() {
 
       <section
         className={
-          searchParams.get("nav") !== "home"
-            ? "flex second-nav-shown second-nav"
+          searchParams.get('nav') !== 'home'
+            ? 'flex second-nav-shown second-nav'
             : offset > 100
-            ? "flex second-nav-shown second-nav"
-            : "flex max-width-container second-nav"
+            ? 'flex second-nav-shown second-nav'
+            : 'flex max-width-container second-nav'
         }
       >
         <SecondaryNavbar />
