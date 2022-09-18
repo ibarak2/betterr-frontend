@@ -69,6 +69,7 @@ export function LoginSignup({
       <div className="login-signup-container">
         <CloseIcon
           className='close-btn'
+          onClick={() => handleCloseModal("close-btn")}
         />
         <h4 className="login-signup-title">
           {isSignup ? "Join Betterr" : "Sign In to Betterr"}
