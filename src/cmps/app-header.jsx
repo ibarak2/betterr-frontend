@@ -118,7 +118,7 @@ export function AppHeader() {
               ) : (
                 <div className="flex signin-signup">
                   <li>
-                    <a href="/">Sign In</a>
+                    <a onclick>Sign In</a>
                   </li>
                   <li>
                     <a href="/" className="nav-join">
