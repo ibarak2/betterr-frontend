@@ -2,6 +2,9 @@
     margin-bottom: rem(96px);
     width: 100%;
     background-color: #fafafa;
+    grid-area: 2 / 1 / 3 / 4;
+    padding: 5px;
+
   .trusted-by-wrapper {
     color: $clr4;
     margin: auto;

@@ -1,17 +1,16 @@
 .app-footer {
   margin: auto;
-  padding: 0;
+  padding-top: 40px;
   flex: 1;
   flex-wrap: wrap;
   max-width: 1400px;
-
   .footer-wrapper {
     // width: 100%;
     position: relative;
     bottom: 0;
     color: $clr4;
     background-color: $clr1;
-    border-top: 1px $clr4 solid;
+    border-top: 1px #E4E5E7 solid;
     text-align: center;
     justify-content: space-between;
     padding: 24px 0;

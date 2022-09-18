@@ -4,9 +4,15 @@ import FavoriteIcon from "@mui/icons-material/Favorite"
 import StarIcon from "@mui/icons-material/Star"
 import { SimpleSlider } from "./simple-slider"
 
-export const GigPreview = ({ owner, _id, title, price, likedByUsers, imgUrls }) => {
+export const GigPreview = ({
+  owner,
+  _id,
+  title,
+  price,
+  likedByUsers,
+  imgUrls,
+}) => {
   const [liked, setLiked] = useState()
-  console.log("OWNER", owner)
   const handleLike = () => {
     setLiked(!liked)
   }
@@ -53,4 +59,3 @@ export const GigPreview = ({ owner, _id, title, price, likedByUsers, imgUrls }) 
     </div>
   )
 }
-

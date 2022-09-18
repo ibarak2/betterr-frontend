@@ -4,13 +4,14 @@ import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 // Action Creators:
 export function loadGigs() {
-  console.log("Getting to Dispatch")
-  return async (dispatch) => {
+  // console.log("Getting to Dispatch")
+  return async (dispatch , getState) => {
     try {
-      const gigs = await gigService.query()
-      console.log('gigs', gigs);
+      const { filterBy } = getState().gigModule
+      const gigs = await gigService.query(filterBy)
+      console.log("gigs", gigs)
       dispatch({
-        type: "SET_CARS",
+        type: "SET_GIGS",
         gigs,
       })
       console.log("Gigs from DB:", gigs)
@@ -58,6 +59,12 @@ export function updateGig(gig) {
     } catch (err) {
       console.log("err:", err)
     }
+  }
+}
+
+export function setFilterBy(filterBy) {
+  return (dispatch) => {
+    dispatch({ type: "SET_FILTER_BY", filterBy })
   }
 }
 

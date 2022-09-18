@@ -3,51 +3,71 @@
   background-color: #f5f5f5;
   padding-top: 96px;
   padding-bottom: 96px;
+  grid-area: 5 / 1 / 6 / 4;
 
-  .get-inspired-top {
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
+  .get-inspired-wrapper {
+    margin: auto;
 
-    h1 {
-      font-size: 32px;
-      line-height: 120%;
-      margin: 0;
+    .get-inspired-top {
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+
+      h1 {
+        font-size: 32px;
+        line-height: 120%;
+        margin: 0;
+      }
+
+      span {
+        color: #446ee7;
+      }
     }
 
-    span {
-      color: #446ee7;
-    }
-  }
+    .get-inspired-carousel {
+      .slick-slide {
+        padding: rem(18px);
 
-  .get-inspired-carousel {
-    .slick-slide {
-      div {
-        border-radius: 5px;
+        div {
+          border-radius: 5px;
 
-        .project-card {
-          background-color: #fff;
-
-          .slide-link {
-            .slide-profile {
-              width: 30%;
-              padding: 16px 0 12px 16px;
+          .project-card {
+            background-color: #fff;
+            box-shadow: 0 0.14px 2.29266px rgb(0 0 0 / 3%), 0 0.37px 4.42626px rgb(0 0 0 / 5%), 0 3px 7px rgb(0 0 0 / 9%);
+            .slide-link {
 
               img {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
+                border-radius: 5px 5px 0 0;
+                transition: opacity 0.2s ease-in-out;
+                aspect-ratio: 4 / 3;
+                object-fit: cover;
+                &:hover {
+                  opacity: 80%;
+                }
               }
+              .slide-profile {
+                width: 100%;
+                padding: 16px 0 12px 16px;
 
-              h4 {
-                color: $clr6;
-                font-weight: 600;
-                font-size: 14px;
-                line-height: 21px;
+                img {
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                }
 
-                small {
-                  color: $clr4;
-                  font-weight: 400;
+                h4 {
+                  color: $clr6;
+                  font-weight: 600;
+                  font-size: 14px;
+                  line-height: 21px;
+                  flex-direction: column;
+                  padding-left: rem(12px);
+                  margin: 0;
+
+                  small {
+                    color: $clr4;
+                    font-weight: 400;
+                  }
                 }
               }
             }

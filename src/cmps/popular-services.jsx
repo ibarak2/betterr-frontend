@@ -76,7 +76,7 @@ const slideObjs = [
       <Slider {...settings}>
         {slideObjs.map((obj) => {
           return (
-            <div>
+            <div key={obj.small}>
                 <a className='slide-link' href={`/explore/${obj.h4}`} target='_blank'>
                 <h4 className='slide-title'>
                     <small>{obj.small}</small>
