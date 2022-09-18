@@ -15,7 +15,6 @@ export const GigList = () => {
 
     <div className="gig-list">
       {gigs.map((gig) => {
-        console.log(gig)
         return <GigPreview key={gig._id} {...gig} />
       })}
       {gigs.map((gig) => {
