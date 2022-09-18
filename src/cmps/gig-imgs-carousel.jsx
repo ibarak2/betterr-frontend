@@ -3,13 +3,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-
-
-
 export const GigImgsCarousel = ({ imgList }) => {
-
-
-    console.log(imgList);
 
     return (
         <div className="gig-imgs-carousel">
@@ -21,7 +15,6 @@ export const GigImgsCarousel = ({ imgList }) => {
                 renderArrowPrev={(onClickHandler, label) => (
                     <button
                         className="carousel-btn"
-
                         type="button"
                         onClick={onClickHandler}
                         style={{
@@ -34,7 +27,6 @@ export const GigImgsCarousel = ({ imgList }) => {
                 renderArrowNext={(onClickHandler, label) => (
                     <button
                         className="carousel-btn"
-
                         type="button"
                         onClick={onClickHandler}
                         style={{
@@ -48,7 +40,6 @@ export const GigImgsCarousel = ({ imgList }) => {
                 {imgList.map((img, idx) => {
                     return <div key={idx} className='img'>
                         <img
-
                             alt=""
                             src={img}
                         />
