@@ -7,9 +7,16 @@ import { useState, Fragment } from 'react'
 import { NavLink, useSearchParams } from 'react-router-dom'
 
 export function SideDrawer() {
+
+  //---- states and vars ----//
+  let anchor = 'left'
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [offset, setOffset] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState({
     left: false,
   })
+
+  //---- functions ----//
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === 'keydown' &&
@@ -19,7 +26,7 @@ export function SideDrawer() {
     }
     setDrawerOpen({ ...drawerOpen, [anchor]: open })
   }
-  let anchor = 'left'
+
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 272 }}
@@ -45,9 +52,7 @@ export function SideDrawer() {
     </Box>
   )
 
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [offset, setOffset] = useState(0)
-
+  //---- component rendering ----//
   return (
     <Fragment>
       <div

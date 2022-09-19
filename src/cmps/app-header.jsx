@@ -5,12 +5,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 import { SecondaryNavbar } from './secondary-navbar'
-import { SideDrawer } from './side-drawer'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
+import { SideDrawer } from './side-drawer'
 
 export function AppHeader() {
-  const [modalOpen, setModalOpen] = useState(false)
+  //---- States ----//
+  const loggedinUser = null
   const [logSign, setLogSign] = useState()
+  const [modalOpen, setModalOpen] = useState(false)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [offset, setOffset] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState({
     left: false,
   })
@@ -27,6 +31,7 @@ export function AppHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  //---- functions ----//
   const toggleDrawer = (open) => (event) => {
     console.log('CLICKED')
     if (
@@ -36,6 +41,14 @@ export function AppHeader() {
 
     setDrawerOpen({ ...drawerOpen, ['left']: open })
   }
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset)
+    //-- clean up code
+    window.removeEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const handleCloseModal = (ev) => {
     if (
@@ -59,7 +72,11 @@ export function AppHeader() {
 
   return (
     <header className="full app-header">
-      <LoginSignup modalOpen={modalOpen} handleCloseModal={handleCloseModal} logSign={logSign} />
+      <LoginSignup
+        modalOpen={modalOpen}
+        handleCloseModal={handleCloseModal}
+        logSign={logSign}
+      />
       <div
         className={
           searchParams.get('nav') !== 'home'
@@ -86,9 +103,11 @@ export function AppHeader() {
 
           <div
             className={
-              offset >= 190
-                ? 'header-search .header-search-shown'
-                : 'header-search'
+              searchParams.get('nav') !== 'home'
+                ? 'header-search header-search-shown'
+                : offset >= 190
+                  ? 'header-search header-search-shown'
+                  : 'header-search'
             }
           >
             <form className="flex" onSubmit={(ev) => onSearch(ev)}>
@@ -119,6 +138,13 @@ export function AppHeader() {
               <li className="nav-routes">
                 <div className="basic-nav-routes">
                   <NavLink to="/explore">Explore</NavLink>
+                  <a
+                    onClick={() => {
+                      handleOpenModal('sign')
+                    }}
+                  >
+                    Become a seller
+                  </a>
                 </div>
               </li>
               {loggedinUser ? (
