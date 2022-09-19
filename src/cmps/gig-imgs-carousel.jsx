@@ -18,7 +18,7 @@ export const GigImgsCarousel = ({ imgList }) => {
                         type="button"
                         onClick={onClickHandler}
                         style={{
-                            left: 15
+                            left: 5
                         }}
                     >
                         <ArrowBackIosNewIcon />
@@ -30,7 +30,7 @@ export const GigImgsCarousel = ({ imgList }) => {
                         type="button"
                         onClick={onClickHandler}
                         style={{
-                            right: 15
+                            right: 5
                         }}
                     >
                         <ArrowForwardIosIcon />

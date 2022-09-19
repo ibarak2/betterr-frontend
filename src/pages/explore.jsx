@@ -14,7 +14,7 @@ export const Explore = () => {
     dispatch(setCategory(searchParams.get('category')))
     dispatch(loadGigs())
     console.log("GIGS", gigs)
-  }, [])
+  }, [searchParams])
 
   const onChangeFilter = (filterBy) => {
     console.log("changed");

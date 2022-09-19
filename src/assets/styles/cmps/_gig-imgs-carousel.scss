@@ -1,45 +1,46 @@
 .carousel-container {
-    max-height: 500px;
-    width: 100%;
-    // border: 1px solid black;
-    margin-bottom: 100px;
-
+  margin-top: 20px;
+  max-height: 500px;
+  width: 100%;
+  margin-bottom: 100px;
 }
 
 .carousel {
-    & .thumb {
-        border: none !important;
-        opacity: 0.5;
-        cursor: pointer;
+  & .thumb {
+    border: none !important;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  & .selected {
+    opacity: 1 !important;
+  }
+  & .thumbs-wrapper {
+    margin: 0 !important;
+  }
+  & img {
+    object-fit: contain;
+    max-height: 427px;
+    max-width: 712px;
+    transform: scale(110%);
+  }
+  & .img {
+    border: 1px solid #efeff0;
+    width: 100%;
+    &:hover {
+      transform: scale(105%);
+      transition: transform 0.5s;
     }
-    & .selected {
-        opacity: 1 !important;
-    }
-    & .thumbs-wrapper {
-        margin: 0 !important;
-    }
-    & img {
-        object-fit: contain;
-        max-height: 427px;
-        max-width: 712px;
-    }
-    & .img {
-        &:hover {
-            transform: scale(105%);
-        }
-    }
-    & .carousel-btn {
-        position: absolute;
-        z-index: 2;
-        top: calc(50% - 15px);
-        width: 48px;
-        height: 48px;
-        cursor: pointer;
-        border-radius: 28px;
-        background-color: #fff;
-        color: black;
-        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
-        
-    
-    }
+  }
+  & .carousel-btn {
+    position: absolute;
+    z-index: 20;
+    top: calc(50% - 15px);
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    border-radius: 28px;
+    background-color: #fff;
+    color: black;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+  }
 }
