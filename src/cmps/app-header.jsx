@@ -10,11 +10,8 @@ import { SideDrawer } from './side-drawer'
 
 export function AppHeader() {
   //---- States ----//
-  const loggedinUser = null
   const [logSign, setLogSign] = useState()
   const [modalOpen, setModalOpen] = useState(false)
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [offset, setOffset] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState({
     left: false,
   })
