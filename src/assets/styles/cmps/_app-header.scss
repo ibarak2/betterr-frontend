@@ -8,26 +8,21 @@
   .main-header {
     padding-left: 0;
     padding-right: 0;
-    // display: flex;
-    // margin: auto;
     align-items: center;
     flex: 1;
     height: 8.9vh;
     transition: background-color 0.2s ease-in;
-
     .main-header-wrapper {
       flex: 1;
       justify-content: space-between;
-      // margin: auto;
       padding: 0;
       align-items: center;
-
       .main-header-left {
         gap: 1vh;
         align-items: center;
         cursor: pointer;
-
         .css-i4bv87-MuiSvgIcon-root {
+          //--this is the side-nav svg class
           color: transparent;
         }
       }
@@ -54,6 +49,7 @@
 
     animation: fadeIn;
     animation-duration: 0.3s;
+
     form {
       .header-search-input {
         width: 100%;
@@ -97,9 +93,10 @@
     @media (min-width: 900px) {
       .nav-routes .basic-nav-routes {
         display: block;
+        cursor: pointer;
       }
     }
-    
+
     .nav-list {
       li a {
         margin-right: 20px;
@@ -144,10 +141,10 @@
 }
 
 .header-search-shown {
-  display: block !important;
+  display: block;
 }
 
-//---- second nav bar ----//
+//---- side bar ----//
 .side-nav-burger {
   display: inline-block;
 }
@@ -157,20 +154,18 @@
     fill: $clr1;
   }
 }
-
 @media (min-width: 1160px) {
   .side-nav-burger {
     display: none;
   }
 }
 
+//---- second nav bar ----//
 .second-nav {
   background-color: transparent;
-  // padding: 5px;
   color: $clr4;
   visibility: hidden;
   height: rem(40px);
-  // border-bottom: 1px $clr4 solid;
   transition: all 0.2s;
   align-items: center;
   box-shadow: 0 1px 0 $clr4;

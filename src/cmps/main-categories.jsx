@@ -3,8 +3,8 @@
 export function MainCategories() {
 
     return (
-        <div className="main-categories">
-            <h1>Explore the marketplace</h1>
+        <div className="main-container main-categories">
+            <h2>Explore the marketplace</h2>
             <ul className="flex clean-list categories-list">
 
                 <li className="categories-list-item">

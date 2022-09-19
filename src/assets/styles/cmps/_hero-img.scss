@@ -18,22 +18,11 @@
       justify-content: flex-end;
       position: absolute;
       background-color: #023a15;
-      
-      
-      .seller-name {
-        color: $clr1;
-        align-self: flex-end;
-        text-align: end;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        font-size: rem(18px);
-      }
     }
     
     .hero-moon {
+      background-color: #b64762;
       display: flex;
-      background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-2-1792-x1_pipgqp.webp');
       width: 100%;
       height: 80%;
       background-position: center;
@@ -41,20 +30,10 @@
       background-size: cover;
       justify-content: flex-end;
       position: absolute;
-
-      .seller-name {
-        color: $clr1;
-        align-self: flex-end;
-        text-align: end;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        font-size: rem(18px);
-      }
     }
     .hero-ritika {
+      background-color: #540e1f;
       display: flex;
-      background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-3-1792-x1_shq1po.webp');
       width: 100%;
       height: 80%;
       background-position: center;
@@ -62,20 +41,10 @@
       background-size: cover;
       justify-content: flex-end;
       position: absolute;
-
-      .seller-name {
-        color: $clr1;
-        align-self: flex-end;
-        text-align: end;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        font-size: rem(18px);
-      }
     }
     .hero-zach {
+      background-color: #023a15;
       display: flex;
-      background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-4-1792-x1_kyb9cb.webp');
       width: 100%;
       height: 80%;
       background-position: center;
@@ -83,20 +52,10 @@
       background-size: cover;
       justify-content: flex-end;
       position: absolute;
-
-      .seller-name {
-        color: $clr1;
-        align-self: flex-end;
-        text-align: end;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        font-size: rem(18px);
-      }
     }
     .hero-gabrielle {
+      background-color: #7d1a00;
       display: flex;
-      background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-5-1792-x1_xwg19x.webp');
       width: 100%;
       height: 80%;
       background-position: center;
@@ -104,24 +63,47 @@
       background-size: cover;
       justify-content: flex-end;
       position: absolute;
-
-      .seller-name {
-        color: $clr1;
-        align-self: flex-end;
-        text-align: end;
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        font-size: rem(18px);
-      }
     }
   }
 }
 
+@media (max-width: 900px) {
+  .seller-name {
+    display: none;
+  }
+}
 
 @media (min-width: 900px) {
   .hero-andrea {
     background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-1-1792-x1_lkaabk.webp');
-    // background-position: 100% 100%;
+    background-position: 100% 100%;
+  }
+  .hero-moon {
+    background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-2-1792-x1_pipgqp.webp');
+    background-position: 100% 100%;
+  }
+  .hero-ritika {
+    background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-3-1792-x1_shq1po.webp');
+    background-position: 100% 100%;
+  }
+  .hero-zach {
+    background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-4-1792-x1_kyb9cb.webp');
+    background-position: 100% 100%;
+  }
+  .hero-gabrielle {
+    background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-5-1792-x1_xwg19x.webp');
+    background-position: 100% 100%;
+  }
+  .seller-name {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 32px 32px 64px;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    white-space: pre-line;
   }
 }

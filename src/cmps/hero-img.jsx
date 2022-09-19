@@ -7,7 +7,7 @@ export const HeroImg = () => {
   useEffect(() => {
     myInterval.current = setInterval(() => {
       setCounter((prevState) => prevState + 1)
-    }, 7500)
+    }, 6000)
     return () => {
       clearInterval(myInterval.current)
     }

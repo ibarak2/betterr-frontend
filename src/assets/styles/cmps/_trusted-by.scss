@@ -15,9 +15,14 @@
     gap: 45px;
 
     span {
+      @media (max-width: 1160px) {
+        display: none;
+      }
+      display: inline-block;
       color: #b5b6ba;
       font-weight: 600;
       font-size: rem(18px);
+
     }
     .trusted-by-list {
       gap: 45px;

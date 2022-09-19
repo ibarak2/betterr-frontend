@@ -6,7 +6,6 @@ import MenuIcon from '@mui/icons-material/Menu'
 import { useState, Fragment } from 'react'
 import { NavLink, useSearchParams } from 'react-router-dom'
 
-
 export function SideDrawer() {
   const [drawerOpen, setDrawerOpen] = useState({
     left: false,
@@ -49,38 +48,36 @@ export function SideDrawer() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [offset, setOffset] = useState(0)
 
-
   return (
-  
-      <Fragment>
-        <div 
-        // className={
-        //   searchParams.get("nav") !== "home"
-        //     ? "side-nav-burder header-white"
-        //     : offset > 0
-        //     ? "side-nav-burder header-white"
-        //     : "side-nav-burder"
-        // }
-               onClick={toggleDrawer(anchor, true)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="23"
-            height="19"
-            viewBox="0 0 23 19"
-          >
-            <rect y="16" width="23" height="3" rx="1.5" fill="#555"></rect>
-            <rect width="23" height="3" rx="1.5" fill="#555"></rect>
-            <rect y="8" width="23" height="3" rx="1.5" fill="#555"></rect>
-          </svg>
-        </div>
-        <Drawer
-          anchor={anchor}
-          open={drawerOpen[anchor]}
-          onClose={toggleDrawer(anchor, false)}
+    <Fragment>
+      <div
+        className={
+          searchParams.get('nav') !== 'home'
+            ? 'side-nav-burger-white'
+            : offset > 0
+            ? 'side-nav-burger-white'
+            : 'side-nav-burger'
+        }
+        onClick={toggleDrawer(anchor, true)}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="23"
+          height="19"
+          viewBox="0 0 23 19"
         >
-          {list(anchor)}
-        </Drawer>
-      </Fragment>
-
+          <rect y="16" width="23" height="3" rx="1.5" fill="#555"></rect>
+          <rect width="23" height="3" rx="1.5" fill="#555"></rect>
+          <rect y="8" width="23" height="3" rx="1.5" fill="#555"></rect>
+        </svg>
+      </div>
+      <Drawer
+        anchor={anchor}
+        open={drawerOpen[anchor]}
+        onClose={toggleDrawer(anchor, false)}
+      >
+        {list(anchor)}
+      </Drawer>
+    </Fragment>
   )
 }

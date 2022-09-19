@@ -123,11 +123,13 @@ export function GetInspired() {
   return (
     <section className="get-inspired">
       <div className="get-inspired-wrapper">
-        <div className="flex get-inspired-top">
-          <h1>Get inspired with projects made by our freelancers</h1>
-          <NavLink to="/explore">
-            <span>See More Projects &gt;</span>
-          </NavLink>
+        <div className="main-container get-inspired-top-wraperr">
+          <div className="flex get-inspired-top">
+            <h1>Get inspired with projects made by our freelancers</h1>
+            <NavLink to="/explore">
+              <span>See More Projects &gt;</span>
+            </NavLink>
+          </div>
         </div>
 
         <div className="get-inspired-carousel">
