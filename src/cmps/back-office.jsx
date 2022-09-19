@@ -1,8 +1,8 @@
 import { Link, Outlet } from "react-router-dom"
 
-export function BackOfficeInterface() {
+export function BackOffice() {
   return (
-    <div className="main-container back-office">
+    <div className="main-container back-office-interface">
       <div className="max-width-container manage-interface">
         <section className="sub-header">
           <h1>Gigs</h1>
@@ -22,10 +22,18 @@ export function BackOfficeInterface() {
             <Link to="gig-pending-approval" className="mini-link">
               pending approval
             </Link>
-            <Link to="gig-requires-modification" className="mini-link">requires modification</Link>
-            <Link to="gig-draft" className="mini-link">draft</Link>
-            <Link to="gig-denied" className="mini-link">denied</Link>
-            <Link to="gig-paused" className="mini-link">paused</Link>
+            <Link to="gig-requires-modification" className="mini-link">
+              requires modification
+            </Link>
+            <Link to="gig-draft" className="mini-link">
+              draft
+            </Link>
+            <Link to="gig-denied" className="mini-link">
+              denied
+            </Link>
+            <Link to="gig-paused" className="mini-link">
+              paused
+            </Link>
           </ul>
           <button className="add-gig-btn">create a new gig</button>
         </nav>

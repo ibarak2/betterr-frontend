@@ -5,7 +5,7 @@ import { ChatApp } from "./pages/chat-app.jsx"
 import { AdminApp } from "./pages/admin-app.jsx"
 import { GigDetails } from "./pages/gig-details.jsx"
 import { Explore } from "./pages/explore.jsx"
-import { BackOffice } from "./pages/back-office.jsx"
+import { BackOfficeApp } from "./pages/back-office-app.jsx"
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
   {
@@ -45,7 +45,7 @@ const routes = [
   },
   {
     path: "/backoffice/*",
-    component: <BackOffice />,
+    component: <BackOfficeApp />,
     label: "Back Office",
   },
 ]
