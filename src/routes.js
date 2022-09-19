@@ -7,6 +7,7 @@ import { GigDetails } from "./pages/gig-details.jsx"
 import { Explore } from "./pages/explore.jsx"
 import { Edit } from "./pages/edit.jsx"
 import { BackOfficeApp } from "./pages/back-office-app.jsx"
+import { UserProfile } from "./pages/user-profile.jsx"
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
@@ -58,6 +59,11 @@ const routes = [
         path: "/backoffice/*",
         component: <BackOfficeApp />,
         label: "Back Office",
+    },
+    {
+        path: "user/profile/",
+        component: <UserProfile />,
+        label: "User Profile",
     },
 ]
 
