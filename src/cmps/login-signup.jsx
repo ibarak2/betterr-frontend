@@ -59,6 +59,7 @@ export function LoginSignup({
       return
     dispatch(onSignup(credentials))
     clearState()
+    handleCloseModal("close-btn")
   }
 
   const toggleSignup = () => {

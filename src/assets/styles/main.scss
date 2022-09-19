@@ -11,7 +11,6 @@
 @import "basics/links";
 @import "basics/forms";
 
-
 // Views
 @import "views/about-us";
 @import "views/home-page";
@@ -20,6 +19,7 @@
 @import "views/gig-details";
 @import "views/explore-page";
 @import "views/back-office";
+@import "views/edit";
 
 // Components
 @import "cmps/login-signup";
@@ -39,9 +39,3 @@
 @import "cmps/get-inspired";
 @import "cmps/side-drawer";
 @import "cmps/hero-wrapper";
-
-
-
-
-
-
