@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import { CSSTransitionGroup } from 'react-transition-group'
+import React from 'react'
 
 export function AboutUs() {
   return (

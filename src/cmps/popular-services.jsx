@@ -5,6 +5,8 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import Slider from 'react-slick'
 
 export function PopularServices() {
+
+  //---- carousels setting and demodata ----//
   var settings = {
     dots: false,
     infinite: true,
@@ -98,8 +100,7 @@ export function PopularServices() {
     },
   ]
 
-
-
+  //---- component rendering ----//
   return (
     <div className="popular-services">
       <div className="main-container title">
@@ -115,13 +116,6 @@ export function PopularServices() {
                   {obj.h4}
                 </h4>
                 <img src={obj.url} />
-                {/* <picture>
-                  <source media="(min-width: 1060px)" srcset="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 1x, https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_2.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 2x"/>
-                  <source media="(min-width: 800px)" srcset="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 1x, https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_2.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 2x"/>
-                  <source media="(min-width: 600px)" srcset="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_360,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 1x, https://fiverr-res.cloudinary.com/q_auto,f_auto,w_360,dpr_2.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 2x"/>
-                  <source media="(max-width: 599px)" srcset="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 1x, https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_2.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png 2x"/>
-                  <img alt="Logo Design" src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png"/>
-                </picture> */}
               </a>
             </div>
           )
@@ -130,52 +124,3 @@ export function PopularServices() {
     </div>
   )
 }
-
-//   return (
-//     <div className="popular-services">
-//         <h1 className="popular-services-title">Popular professional services</h1>
-//   <Carousel
-//     className="popular-services-carousel"
-//     infiniteLoop
-//     autoPlay={false}
-//     showIndicators={false}
-//     showStatus={false}
-//     showThumbs={false}
-//     renderArrowPrev={(onClickHandler, label) => (
-//       <button
-//         className="btn carousel-btn"
-//         type="button"
-//         onClick={onClickHandler}
-//         title={label}
-//         style={{ left: 15 }}
-//       >
-//         <ArrowBackIosNewIcon />
-//       </button>
-//     )}
-//     renderArrowNext={(onClickHandler, label) => (
-//       <button
-//         className="carousel-btn"
-//         type="button"
-//         onClick={onClickHandler}
-//         title={label}
-//         style={{
-//           right: 15,
-//         }}
-//       >
-//         <ArrowForwardIosIcon />
-//       </button>
-//     )}
-//   >
-//         {imgs.map((img) => {
-//           return (
-//             <div>
-//               <img alt="" src={img} />
-//             </div>
-//           )
-//         })}
-//       </Carousel>
-//     </div>
-//   )
-
-
-

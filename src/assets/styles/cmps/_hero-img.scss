@@ -19,7 +19,7 @@
       position: absolute;
       background-color: #023a15;
     }
-    
+
     .hero-moon {
       background-color: #b64762;
       display: flex;
@@ -81,6 +81,14 @@
   .hero-moon {
     background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-2-1792-x1_pipgqp.webp');
     background-position: 100% 100%;
+    .seller-name p::before {
+      background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/five_stars.e5c37f5.svg)
+        no-repeat;
+      background-size: 77px;
+      content: '';
+      display: block;
+      height: 17px;
+    }
   }
   .hero-ritika {
     background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-3-1792-x1_shq1po.webp');
@@ -93,6 +101,14 @@
   .hero-gabrielle {
     background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663277844/Fiverr-Sprint-4/imgs/bg-hero/full/bg-hero-5-1792-x1_xwg19x.webp');
     background-position: 100% 100%;
+    .seller-name p::before {
+      background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/five_stars.e5c37f5.svg)
+        no-repeat;
+      background-size: 77px;
+      content: '';
+      display: block;
+      height: 17px;
+    }
   }
   .seller-name {
     box-sizing: border-box;
@@ -101,9 +117,12 @@
     padding: 32px 32px 64px;
     padding-top: 0;
     padding-bottom: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    white-space: pre-line;
+    display: grid;
+    align-items: end;
+    justify-items: end;
+
+    p {
+      padding-bottom: 1rem;
+    }
   }
 }

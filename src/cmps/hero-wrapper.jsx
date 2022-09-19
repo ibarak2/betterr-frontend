@@ -1,8 +1,10 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { HeroImg } from '../cmps/hero-img'
 
 export function HeroWrapper() {
+
+  //---- component rendering ----//
   return (
     <div className="main-container hero-wrapper">
       <div className="hero-backgrounds">
