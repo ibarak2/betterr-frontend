@@ -1,31 +1,31 @@
-import { Link, NavLink, useParams, useSearchParams } from "react-router-dom"
-import { useSelector } from "react-redux"
-import routes from "../routes"
-import { onLogin, onLogout, onSignup } from "../store/user.actions.js"
-import { LoginSignup } from "./login-signup.jsx"
-import { useEffect, useState } from "react"
-import { SecondaryNavbar } from "./secondary-navbar"
-import MailOutlineIcon from "@mui/icons-material/MailOutline"
-import { SideDrawer } from "./side-drawer"
-import MenuIcon from "@mui/icons-material/Menu"
+import { Link, NavLink, useParams, useSearchParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import routes from '../routes'
+import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
+import { LoginSignup } from './login-signup.jsx'
+import { useEffect, useState } from 'react'
+import { SecondaryNavbar } from './secondary-navbar'
+import MailOutlineIcon from '@mui/icons-material/MailOutline'
+import { SideDrawer } from './side-drawer'
+import MenuIcon from '@mui/icons-material/Menu'
 
 export function AppHeader() {
   const [modalOpen, setModalOpen] = useState(false)
-
+  const [logSign, setLogSign] = useState()
   const [drawerOpen, setDrawerOpen] = useState({
     left: false,
   })
 
   const toggleDrawer = (open) => (event) => {
-    console.log("CLICKED")
+    console.log('CLICKED')
     if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
     ) {
       return
     }
 
-    setDrawerOpen({ ...drawerOpen, ["left"]: open })
+    setDrawerOpen({ ...drawerOpen, ['left']: open })
   }
   const [offset, setOffset] = useState(0)
 
@@ -37,33 +37,35 @@ export function AppHeader() {
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
     //-- clean up code
-    window.removeEventListener("scroll", onScroll)
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
+    window.removeEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   // console.log(offset)
   const handleCloseModal = (ev) => {
     // console.log(ev.target.className)
     if (
-      ev === "close-btn" ||
-      ev.target.className.includes("login-signup-close-modal-div")
+      ev === 'close-btn' ||
+      ev.target.className.includes('login-signup-close-modal-div')
     )
       setModalOpen(false)
+    setLogSign('')
   }
-  const handleOpenModal = () => {
+  const handleOpenModal = (logSign) => {
+    setLogSign(logSign)
     setModalOpen(true)
   }
   return (
     <header className="full app-header">
-      <LoginSignup modalOpen={modalOpen} handleCloseModal={handleCloseModal} />
+      <LoginSignup modalOpen={modalOpen} handleCloseModal={handleCloseModal} logSign={logSign} />
       <div
         className={
-          searchParams.get("nav") !== "home"
-            ? "main-container main-header header-white"
+          searchParams.get('nav') !== 'home'
+            ? 'main-container main-header header-white'
             : offset > 0
-            ? "main-container main-header header-white"
-            : "main-container main-header"
+              ? 'main-container main-header header-white'
+              : 'main-container main-header'
         }
       >
         <div className="flex max-width-container main-header-wrapper">
@@ -83,9 +85,9 @@ export function AppHeader() {
 
           <div
             className={
-              offset >= 200
-                ? "header-search header-search-shown"
-                : "header-search"
+              offset >= 190
+                ? 'header-search .header-search-shown'
+                : 'header-search'
             }
           >
             <form className="flex" onSubmit="/explore">
@@ -116,7 +118,7 @@ export function AppHeader() {
               <li className="nav-routes">
                 <div className="basic-nav-routes">
                   <NavLink to="/explore">Explore</NavLink>
-                  <a onClick={handleOpenModal}>Become a seller</a>
+                  <a onClick={() => { handleOpenModal('sign') }}>Become a seller</a>
                 </div>
               </li>
               {loggedinUser ? (
@@ -135,10 +137,10 @@ export function AppHeader() {
               ) : (
                 <div className="flex signin-signup">
                   <li>
-                    <a onClick={handleOpenModal}>Sign In</a>
+                    <a onClick={() => { handleOpenModal('log') }}>Sign In</a>
                   </li>
                   <li>
-                    <a onClick={handleOpenModal} className="nav-join">
+                    <a onClick={() => { handleOpenModal('sign') }} className="nav-join">
                       Join
                     </a>
                   </li>
@@ -151,11 +153,11 @@ export function AppHeader() {
 
       <section
         className={
-          searchParams.get("nav") !== "home"
-            ? "main-container flex second-nav-shown second-nav"
+          searchParams.get('nav') !== 'home'
+            ? 'main-container flex second-nav-shown second-nav'
             : offset >= 150
-            ? "main-container flex second-nav-shown second-nav"
-            : "main-container flex max-width-container second-nav"
+              ? 'main-container flex second-nav-shown second-nav'
+              : 'main-container flex max-width-container second-nav'
         }
       >
         <SecondaryNavbar />

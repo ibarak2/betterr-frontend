@@ -3,7 +3,7 @@ import ReactStars from 'react-stars'
 
 
 
-export const SellerOverview = ({ seller }) => {
+export const SellerOverview = ({ seller, reviewsAmount }) => {
 
 
 
@@ -24,7 +24,7 @@ export const SellerOverview = ({ seller }) => {
                 edit={false}
             /></div>
             <div style={{ color: '#FFB33E' }}>{seller.rate}</div>
-            <div>{`(${seller.reviewsAmount})`}</div>
+            <div>{`(${reviewsAmount})`}</div>
 
 
 

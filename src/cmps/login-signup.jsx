@@ -7,19 +7,25 @@ export function LoginSignup({
   onLogin,
   modalOpen,
   handleCloseModal,
+  logSign
 }) {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
     fullname: "",
   })
-  const [isSignup, setIsSignup] = useState(false)
+  const [isSignup, setIsSignup] = useState()
   const [users, setUsers] = useState([])
 
-  useEffect(async () => {
-    const users = await userService.getUsers()
-    setUsers(users)
-  }, [])
+  useEffect(() => {
+    if (logSign === 'log') setIsSignup(false)
+    if (logSign === 'sign') setIsSignup(true)
+  }, [logSign])
+
+  // useEffect(async () => {
+  //   const users = await userService.getUsers()
+  //   setUsers(users)
+  // }, [])
 
   const clearState = () => {
     setCredentials({
@@ -82,7 +88,7 @@ export function LoginSignup({
             <label htmlFor="username"></label>
             <input
               name="username"
-              type="email"
+              type="text"
               required
               placeholder="Email / Username"
               onChange={handleChange}
@@ -106,9 +112,9 @@ export function LoginSignup({
         </form>
         <div className="login-signup-footer">
           <p>
-            {isSignup ? "Not a member yet?" : "Already a member?"}{" "}
+            {isSignup ? "Already a member?" : "Not a member yet?"}{" "}
             <a onClick={() => setIsSignup(!isSignup)}>
-              {isSignup ? "Join Now" : "Sign In"}
+              {isSignup ? "Sign In" : "Join Now"}
             </a>
           </p>
         </div>

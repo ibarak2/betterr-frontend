@@ -43,7 +43,7 @@ export function addGig(gig) {
     try {
       const savedGig = await gigService.save(gig)
       console.log("savedGig", savedGig)
-      dispatch({ type: "ADD_CAR", gig: savedGig })
+      dispatch({ type: "ADD_GIG", gig: savedGig })
       const newGig = undefined
       return newGig
     } catch (err) {
@@ -116,7 +116,7 @@ export function checkout() {
 export function onRemoveGigOptimistic(gigId) {
   return (dispatch, getState) => {
     dispatch({
-      type: "REMOVE_CAR",
+      type: "REMOVE_GIG",
       gigId,
     })
     showSuccessMsg("Gig removed")
@@ -130,7 +130,7 @@ export function onRemoveGigOptimistic(gigId) {
         showErrorMsg("Cannot remove gig")
         console.log("Cannot load gigs", err)
         dispatch({
-          type: "UNDO_REMOVE_CAR",
+          type: "UNDO_REMOVE_GIG",
         })
       })
   }

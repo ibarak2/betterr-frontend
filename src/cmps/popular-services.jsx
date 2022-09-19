@@ -15,7 +15,7 @@ export function PopularServices() {
     slidesToScroll: 5,
     responsive: [
       {
-        breakpoint: 680,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -102,8 +102,9 @@ export function PopularServices() {
 
   return (
     <div className="popular-services">
-
+      <div className="main-container title">
       <h1 className="popular-services-title">Popular professional services</h1>
+      </div>
       <Slider {...settings}>
         {slideObjs.map((obj) => {
           return (

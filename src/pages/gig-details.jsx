@@ -76,8 +76,7 @@ export const GigDetails = () => {
                     <section className="gig-description">
                         <div className="gig-layout">
                             <h1>{gig.title}</h1>
-                            <SellerOverview seller={gig.owner} />
-                            <hr />
+                            <SellerOverview seller={gig.owner} reviewsAmount={gig.reviews.length} />
                             <div className="carousel-container">
                                 <GigImgsCarousel imgList={gig.imgUrls} />
                             </div>
@@ -94,7 +93,7 @@ export const GigDetails = () => {
                             <hr />
                             <div className="about-the-seller">
                                 <h2>About the Seller</h2>
-                                <SellerInfo seller={gig.owner} />
+                                <SellerInfo seller={gig.owner} reviewsAmount={gig.reviews.length} />
                             </div>
                             <hr />
                             {!gig.reviews ? <div>0 Reviews</div> :

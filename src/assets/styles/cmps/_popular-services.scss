@@ -1,31 +1,27 @@
 .popular-services {
-  margin-bottom: 96px;
-  max-width: 100px;
-
+  margin: 0 auto 48px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 24px 24px 48px;
+  width: 100%;
   .popular-services-title {
     color: $clr6;
     font-size: 32px;
     line-height: 120%;
   }
-  .inner-slider-div{
+  .slick-slider {
+    max-width: 1436px;
+    margin: auto;
   }
-  
-  .slick-track {
-    width: 100%;
-    max-width: 100vw;
-    display: flex;
-    gap: rem(18px);
-  }
-  
-  @media (max-width: 640px) {
-    .slick-track {
-      height: 100% !important;
-    }
-    .slick-slide {
-      width: 100px !important;
+  .slick-slide {
+    padding: 0 15px;
+    div div {
+      object-fit: cover;
     }
   }
-
+  @media (max-width: 600px) {
+    height: 345px;
+  }
   .slide-link {
     outline: none;
     .slide-title {
@@ -44,16 +40,11 @@
     }
 
     .slide-img {
-      // border-radius: 6px;
-      // object-fit: cover;
-
       object-fit: cover;
       height: 345px;
       width: 100%;
       border-radius: 4px;
-      -webkit-transition: opacity .3s ease-in-out;
-      -o-transition: opacity .3s ease-in-out;
-      transition: opacity .3s ease-in-out;
+      transition: opacity 0.3s ease-in-out;
       position: absolute;
       top: 0;
       &:hover {
@@ -72,7 +63,6 @@
     height: 48px;
     margin-top: -24px;
     text-align: center;
-    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
     border: 0;
     font-size: 16px;
@@ -98,5 +88,16 @@
     &.slick-next::before {
       content: url($carousel_right_arrow);
     }
+  }
+}
+
+@media (min-width: 600px) {
+  .popular-services {
+    margin-bottom: 80px;
+  }
+}
+@media (min-width: 900px) {
+  .popular-services {
+    margin-bottom: 96px;
   }
 }
