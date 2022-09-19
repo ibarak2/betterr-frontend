@@ -4,7 +4,6 @@ import { storageService } from './async-storage.service'
 import { getActionSetWatchedUser } from '../store/review.actions'
 import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
 import { showSuccessMsg } from '../services/event-bus.service'
-import { httpService } from './http.service'
 
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -68,19 +67,19 @@ async function update(user) {
 }
 
 async function login(userCred) {
-    console.log("userCred:", userCred);
-    const user = await httpService.post('auth/login', userCred)
-    // const user = users.find(user => user.username === userCred.username)
-
-    console.log("user.service:user:", user);
+    const users = await storageService.query('user')
+    const user = users.find(user => user.username === userCred.username)
+    // const user = await httpService.post('auth/login', userCred)
     if (user) {
-        // socketService.login(user._id)
+        socketService.login(user._id)
         return saveLocalUser(user)
     }
 }
 async function signup(userCred) {
-    const user = await httpService.post('auth/signup', userCred)
-    // socketService.login(user._id)
+    userCred.score = 10000;
+    const user = await storageService.post('user', userCred)
+    // const user = await httpService.post('auth/signup', userCred)
+    socketService.login(user._id)
     return saveLocalUser(user)
 }
 async function logout() {

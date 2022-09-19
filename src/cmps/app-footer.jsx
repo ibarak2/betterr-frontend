@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 
 export function AppFooter() {
   return (

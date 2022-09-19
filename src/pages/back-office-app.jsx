@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import { BackOffice } from "../cmps/back-office"
 import backofficeRoutes from "../backoffice.routes"
+
 export const BackOfficeApp = () => {
   return (
     <Routes>

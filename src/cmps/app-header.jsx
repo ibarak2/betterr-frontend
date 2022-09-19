@@ -1,38 +1,43 @@
+import { useEffect, useState } from 'react'
 import { Link, NavLink, useParams, useSearchParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import routes from '../routes'
+import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
 import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
-import { useEffect, useState } from 'react'
 import { SecondaryNavbar } from './secondary-navbar'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import { SideDrawer } from './side-drawer'
-import MenuIcon from '@mui/icons-material/Menu'
 
 export function AppHeader() {
-  const [modalOpen, setModalOpen] = useState(false)
+  //---- States ----//
   const [logSign, setLogSign] = useState()
+  const [modalOpen, setModalOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState({
     left: false,
   })
+  const [offset, setOffset] = useState(0)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const loggedinUser = useSelector(state => state.userModule.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset)
+    window.removeEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  //---- functions ----//
   const toggleDrawer = (open) => (event) => {
     console.log('CLICKED')
     if (
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return
-    }
+    ) return
 
     setDrawerOpen({ ...drawerOpen, ['left']: open })
   }
-  const [offset, setOffset] = useState(0)
-
-  const loggedinUser = null
-  const [searchParams, setSearchParams] = useSearchParams()
-
-  // console.log('searchParams', searchParams)
 
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
@@ -42,23 +47,33 @@ export function AppHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // console.log(offset)
   const handleCloseModal = (ev) => {
-    // console.log(ev.target.className)
     if (
       ev === 'close-btn' ||
       ev.target.className.includes('login-signup-close-modal-div')
-    )
+    ) {
       setModalOpen(false)
-    setLogSign('')
+      setLogSign('')
+    }
   }
+
   const handleOpenModal = (logSign) => {
     setLogSign(logSign)
     setModalOpen(true)
   }
+
+  const onSearch = (ev) => {
+    ev.preventDefault()
+    console.log(ev);
+  }
+
   return (
     <header className="full app-header">
-      <LoginSignup modalOpen={modalOpen} handleCloseModal={handleCloseModal} logSign={logSign} />
+      <LoginSignup
+        modalOpen={modalOpen}
+        handleCloseModal={handleCloseModal}
+        logSign={logSign}
+      />
       <div
         className={
           searchParams.get('nav') !== 'home'
@@ -85,12 +100,14 @@ export function AppHeader() {
 
           <div
             className={
-              offset >= 190
-                ? 'header-search .header-search-shown'
-                : 'header-search'
+              searchParams.get('nav') !== 'home'
+                ? 'header-search header-search-shown'
+                : offset >= 190
+                  ? 'header-search header-search-shown'
+                  : 'header-search'
             }
           >
-            <form className="flex" onSubmit="/explore">
+            <form className="flex" onSubmit={(ev) => onSearch(ev)}>
               <input
                 type="search"
                 className="header-search-input"
@@ -118,7 +135,13 @@ export function AppHeader() {
               <li className="nav-routes">
                 <div className="basic-nav-routes">
                   <NavLink to="/explore">Explore</NavLink>
-                  <a onClick={() => { handleOpenModal('sign') }}>Become a seller</a>
+                  <a
+                    onClick={() => {
+                      handleOpenModal('sign')
+                    }}
+                  >
+                    Become a seller
+                  </a>
                 </div>
               </li>
               {loggedinUser ? (
@@ -129,6 +152,7 @@ export function AppHeader() {
                     </NavLink>
                     <NavLink to="/back-office">Orders</NavLink>
                     <NavLink to={`/profile/u101`}>Profile</NavLink>
+                    <a onClick={() => dispatch(onLogout())}>Logout</a>
                     {loggedinUser.isAdmin && (
                       <NavLink to="/admin">Admin</NavLink>
                     )}
@@ -137,9 +161,8 @@ export function AppHeader() {
               ) : (
                 <div className="flex signin-signup">
                   <li>
+                    <a onClick={() => { handleOpenModal('sign') }}>Become a seller</a>
                     <a onClick={() => { handleOpenModal('log') }}>Sign In</a>
-                  </li>
-                  <li>
                     <a onClick={() => { handleOpenModal('sign') }} className="nav-join">
                       Join
                     </a>

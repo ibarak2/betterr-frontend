@@ -1,14 +1,11 @@
 import { NavLink } from 'react-router-dom'
-import React, { Component } from 'react'
-import { render } from 'react-dom'
-
+import React from 'react'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
-
 import Slider from 'react-slick'
 
 export function GetInspired() {
+
+ //---- carousel settings and demodata ----//
   var settings = {
     dots: false,
     infinite: true,
@@ -120,6 +117,7 @@ export function GetInspired() {
     },
   ]
 
+  //---- component rendering ----//
   return (
     <section className="get-inspired">
       <div className="get-inspired-wrapper">

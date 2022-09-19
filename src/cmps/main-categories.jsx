@@ -2,6 +2,7 @@
 
 export function MainCategories() {
 
+    //---- component rendering ----//
     return (
         <div className="main-container main-categories">
             <h2>Explore the marketplace</h2>
