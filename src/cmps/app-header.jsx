@@ -1,23 +1,32 @@
+import { useEffect, useState } from 'react'
 import { Link, NavLink, useParams, useSearchParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import routes from '../routes'
+import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
 import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
-import { useEffect, useState } from 'react'
 import { SecondaryNavbar } from './secondary-navbar'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import { SideDrawer } from './side-drawer'
 
 export function AppHeader() {
   //---- States ----//
-  const loggedinUser = null
   const [logSign, setLogSign] = useState()
   const [modalOpen, setModalOpen] = useState(false)
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [offset, setOffset] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState({
     left: false,
   })
+  const [offset, setOffset] = useState(0)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const loggedinUser = useSelector(state => state.userModule.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset)
+    window.removeEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   //---- functions ----//
   const toggleDrawer = (open) => (event) => {
@@ -25,9 +34,8 @@ export function AppHeader() {
     if (
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return
-    }
+    ) return
+
     setDrawerOpen({ ...drawerOpen, ['left']: open })
   }
 
@@ -40,13 +48,13 @@ export function AppHeader() {
   }, [])
 
   const handleCloseModal = (ev) => {
-    // console.log(ev.target.className)
     if (
       ev === 'close-btn' ||
       ev.target.className.includes('login-signup-close-modal-div')
-    )
+    ) {
       setModalOpen(false)
-    setLogSign('')
+      setLogSign('')
+    }
   }
 
   const handleOpenModal = (logSign) => {
@@ -54,7 +62,11 @@ export function AppHeader() {
     setModalOpen(true)
   }
 
-  //---- component rendering ----//
+  const onSearch = (ev) => {
+    ev.preventDefault()
+    console.log(ev);
+  }
+
   return (
     <header className="full app-header">
       <LoginSignup
@@ -67,8 +79,8 @@ export function AppHeader() {
           searchParams.get('nav') !== 'home'
             ? 'main-container main-header header-white'
             : offset > 0
-            ? 'main-container main-header header-white'
-            : 'main-container main-header'
+              ? 'main-container main-header header-white'
+              : 'main-container main-header'
         }
       >
         <div className="flex max-width-container main-header-wrapper">
@@ -91,11 +103,11 @@ export function AppHeader() {
               searchParams.get('nav') !== 'home'
                 ? 'header-search header-search-shown'
                 : offset >= 190
-                ? 'header-search header-search-shown'
-                : 'header-search'
+                  ? 'header-search header-search-shown'
+                  : 'header-search'
             }
           >
-            <form className="flex" onSubmit="/explore">
+            <form className="flex" onSubmit={(ev) => onSearch(ev)}>
               <input
                 type="search"
                 className="header-search-input"
@@ -140,6 +152,7 @@ export function AppHeader() {
                     </NavLink>
                     <NavLink to="/back-office">Orders</NavLink>
                     <NavLink to={`/profile/u101`}>Profile</NavLink>
+                    <a onClick={() => dispatch(onLogout())}>Logout</a>
                     {loggedinUser.isAdmin && (
                       <NavLink to="/admin">Admin</NavLink>
                     )}
@@ -148,16 +161,9 @@ export function AppHeader() {
               ) : (
                 <div className="flex signin-signup">
                   <li>
-                    <a
-                      onClick={() => {
-                        handleOpenModal('log')
-                      }}
-                    >
-                      Sign In
-                    </a>
-                  </li>
-                  <li>
-                    <a onClick={() => {handleOpenModal('sign')}} className="nav-join">
+                    <a onClick={() => { handleOpenModal('sign') }}>Become a seller</a>
+                    <a onClick={() => { handleOpenModal('log') }}>Sign In</a>
+                    <a onClick={() => { handleOpenModal('sign') }} className="nav-join">
                       Join
                     </a>
                   </li>
@@ -173,8 +179,8 @@ export function AppHeader() {
           searchParams.get('nav') !== 'home'
             ? 'main-container flex second-nav-shown second-nav'
             : offset >= 150
-            ? 'main-container flex second-nav-shown second-nav'
-            : 'main-container flex max-width-container second-nav'
+              ? 'main-container flex second-nav-shown second-nav'
+              : 'main-container flex max-width-container second-nav'
         }
       >
         <SecondaryNavbar />

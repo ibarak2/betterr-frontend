@@ -1,6 +1,4 @@
-
+import { GigDataTable } from "./gig-data-table"
 export function ActiveGigs() {
-  return (
-    <div>ActiveGigs</div>
-  )
+  return <GigDataTable />
 }

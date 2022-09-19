@@ -2,9 +2,10 @@ import { useState, useEffect } from "react"
 import { userService } from "../services/user.service"
 import { ImgUploader } from "../cmps/img-uploader"
 import CloseIcon from "@mui/icons-material/Close"
+import { useDispatch } from "react-redux"
+import { onLogin, onSignup } from "../store/user.actions"
+
 export function LoginSignup({
-  onSignup,
-  onLogin,
   modalOpen,
   handleCloseModal,
   logSign
@@ -16,6 +17,7 @@ export function LoginSignup({
   })
   const [isSignup, setIsSignup] = useState()
   const [users, setUsers] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (logSign === 'log') setIsSignup(false)
@@ -46,15 +48,16 @@ export function LoginSignup({
   const handleLogin = (ev = null) => {
     if (ev) ev.preventDefault()
     if (!credentials.username) return
-    onLogin(credentials)
+    dispatch(onLogin(credentials))
     clearState()
+    handleCloseModal("close-btn")
   }
 
   const handleSubmit = (ev = null) => {
     if (ev) ev.preventDefault()
     if (!credentials.username || !credentials.password || !credentials.fullname)
       return
-    onSignup(credentials)
+    dispatch(onSignup(credentials))
     clearState()
   }
 
@@ -96,16 +99,28 @@ export function LoginSignup({
           </div>
           {isSignup && (
             <div>
-              <label htmlFor="password"></label>
+              <label htmlFor="fullname"></label>
               <input
-                name="password"
-                type="password"
+                name="fullname"
+                type="text"
                 required
-                placeholder="Password"
+                placeholder="Full Name"
                 onChange={handleChange}
               />
             </div>
           )}
+          <div>
+            <label htmlFor="password"></label>
+            <input
+              name="password"
+              type="password"
+              required
+              placeholder="Password"
+              onChange={handleChange}
+            />
+          </div>
+
+
           <div>
             <button>Continue</button>
           </div>
