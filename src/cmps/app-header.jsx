@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 
 export function AppHeader() {
   const [modalOpen, setModalOpen] = useState(false)
-
+  const [logSign, setLogSign] = useState()
   const [drawerOpen, setDrawerOpen] = useState({
     left: false,
   })
@@ -50,20 +50,22 @@ export function AppHeader() {
       ev.target.className.includes('login-signup-close-modal-div')
     )
       setModalOpen(false)
+    setLogSign('')
   }
-  const handleOpenModal = () => {
+  const handleOpenModal = (logSign) => {
+    setLogSign(logSign)
     setModalOpen(true)
   }
   return (
     <header className="full app-header">
-      <LoginSignup modalOpen={modalOpen} handleCloseModal={handleCloseModal} />
+      <LoginSignup modalOpen={modalOpen} handleCloseModal={handleCloseModal} logSign={logSign} />
       <div
         className={
           searchParams.get('nav') !== 'home'
             ? 'main-container main-header header-white'
             : offset > 0
-            ? 'main-container main-header header-white'
-            : 'main-container main-header'
+              ? 'main-container main-header header-white'
+              : 'main-container main-header'
         }
       >
         <div className="flex max-width-container main-header-wrapper">
@@ -116,7 +118,7 @@ export function AppHeader() {
               <li className="nav-routes">
                 <div className="basic-nav-routes">
                   <NavLink to="/explore">Explore</NavLink>
-                  <a onClick={handleOpenModal}>Become a seller</a>
+                  <a onClick={() => { handleOpenModal('sign') }}>Become a seller</a>
                 </div>
               </li>
               {loggedinUser ? (
@@ -135,10 +137,10 @@ export function AppHeader() {
               ) : (
                 <div className="flex signin-signup">
                   <li>
-                    <a onClick={handleOpenModal}>Sign In</a>
+                    <a onClick={() => { handleOpenModal('log') }}>Sign In</a>
                   </li>
                   <li>
-                    <a onClick={handleOpenModal} className="nav-join">
+                    <a onClick={() => { handleOpenModal('sign') }} className="nav-join">
                       Join
                     </a>
                   </li>
@@ -154,8 +156,8 @@ export function AppHeader() {
           searchParams.get('nav') !== 'home'
             ? 'main-container flex second-nav-shown second-nav'
             : offset >= 150
-            ? 'main-container flex second-nav-shown second-nav'
-            : 'main-container flex max-width-container second-nav'
+              ? 'main-container flex second-nav-shown second-nav'
+              : 'main-container flex max-width-container second-nav'
         }
       >
         <SecondaryNavbar />
