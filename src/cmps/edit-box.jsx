@@ -1,41 +1,16 @@
 import { useState } from "react"
 import { useForm } from "../hooks/useForm"
 import { uploadService } from "../services/upload.service"
-import { OpenModalBtn } from "./open-modal-btn"
-import { SmallModal } from "./small-modal"
 
 
 
 
-export const EditBox = ({ onSubmitEdit }) => {
 
-    const [gig, handleChange, setGig] = useForm({
-        title: '',
-        category: '',
-        basicPrice: '',
-        basicTitle: '',
-        basicDescription: '',
-        standardPrice: '',
-        standardTitle: '',
-        standardDescription: '',
-        premiumPrice: '',
-        premiumTitle: '',
-        premiumDescription: '',
-        description: '',
-        img1: '',
-        img2: '',
-        img3: ''
-    })
+export const EditBox = ({ onSubmitEdit, gig, handleChange, setGig, onAddingImg }) => {
 
-    const onAddingImg = async (event) => {
-        const field = event.target.name
-        try {
-            const imgUrl = await uploadService.uploadImg(event)
-            setGig((prevFields) => ({ ...prevFields, [field]: imgUrl.url }))
-        } catch (err) {
-            console.log(err);
-        }
-    }
+
+
+
 
 
     // const [categoryOpen, setCategorysOpen] = useState(false)
@@ -92,7 +67,7 @@ export const EditBox = ({ onSubmitEdit }) => {
                     </div>
                 </div>
                 <div className="input-wrapper">
-                    <select name="category" onChange={handleChange}>
+                    <select name="category" value={gig.category} onChange={handleChange}>
                         <option value="">Choose Category</option>
                         <option value="graphics-and-design">Graphics & Design</option>
                         <option value="digital-marketing">Digital Marketing</option>
@@ -107,7 +82,7 @@ export const EditBox = ({ onSubmitEdit }) => {
             </div>
             <hr />
             <div className="gig-description">
-                <header class="description-header">
+                <header className="description-header">
                     <h3>Description</h3>
                     <p>Briefly Describe Your Gig</p>
                 </header>
@@ -146,7 +121,7 @@ export const EditBox = ({ onSubmitEdit }) => {
                                         <div className="block-container">
                                             <textarea
                                                 name="basicTitle"
-                                                class="block-container-input"
+                                                className="block-container-input"
                                                 placeholder="Name your package"
                                                 value={gig.basicTitle}
                                                 onChange={handleChange}
@@ -157,7 +132,7 @@ export const EditBox = ({ onSubmitEdit }) => {
                                         <div className="block-container">
                                             <textarea
                                                 name="standardTitle"
-                                                class="block-container-input"
+                                                className="block-container-input"
                                                 placeholder="Name your package"
                                                 value={gig.standardTitle}
                                                 onChange={handleChange}
@@ -168,7 +143,7 @@ export const EditBox = ({ onSubmitEdit }) => {
                                         <div className="block-container">
                                             <textarea
                                                 name="premiumTitle"
-                                                class="block-container-input"
+                                                className="block-container-input"
                                                 placeholder="Name your package"
                                                 value={gig.premiumTitle}
                                                 onChange={handleChange}
@@ -184,7 +159,7 @@ export const EditBox = ({ onSubmitEdit }) => {
                                                 name="basicDescription"
                                                 value={gig.basicDescription}
                                                 onChange={handleChange}
-                                                class="block-description-input"
+                                                className="block-description-input"
                                                 placeholder="Describe the details of your offering"
                                             />
                                         </div>
@@ -195,7 +170,7 @@ export const EditBox = ({ onSubmitEdit }) => {
                                                 name="standardDescription"
                                                 value={gig.standardDescription}
                                                 onChange={handleChange}
-                                                class="block-description-input"
+                                                className="block-description-input"
                                                 placeholder="Describe the details of your offering"
                                             />
                                         </div>
@@ -206,7 +181,7 @@ export const EditBox = ({ onSubmitEdit }) => {
                                                 name="premiumDescription"
                                                 value={gig.premiumDescription}
                                                 onChange={handleChange}
-                                                class="block-description-input"
+                                                className="block-description-input"
                                                 placeholder="Describe the details of your offering"
                                             />
                                         </div>
@@ -220,13 +195,12 @@ export const EditBox = ({ onSubmitEdit }) => {
                                                 name="basicPrice"
                                                 value={gig.basicPrice}
                                                 onChange={handleChange}
-                                                class="fit-input"
+                                                className="fit-input"
                                                 type="number"
                                                 step="5"
                                                 min="5"
                                                 max="10000"
-                                            />
-                                            <span>$</span>
+                                            /><span>$</span>
                                         </div>
                                     </td>
                                     <td>
@@ -235,12 +209,12 @@ export const EditBox = ({ onSubmitEdit }) => {
                                                 name="standardPrice"
                                                 value={gig.standardPrice}
                                                 onChange={handleChange}
-                                                class="fit-input"
+                                                className="fit-input"
                                                 type="number"
                                                 step="5"
                                                 min="5"
                                                 max="10000"
-                                            />                                            <span>$</span>
+                                            /><span>$</span>
                                         </div>
                                     </td>
                                     <td>
@@ -249,12 +223,61 @@ export const EditBox = ({ onSubmitEdit }) => {
                                                 name="premiumPrice"
                                                 value={gig.premiumPrice}
                                                 onChange={handleChange}
-                                                class="fit-input"
+                                                className="fit-input"
                                                 type="number"
                                                 step="5"
                                                 min="5"
                                                 max="10000"
-                                            />                                               <span>$</span>
+                                            /><span>$</span>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td className="plans-titles first-table-col">Days To Make</td>
+                                    <td>
+                                        <div className="block-days-cell">
+                                            <input
+                                                name="basicDaysToMake"
+                                                value={gig.basicDaysToMake}
+                                                onChange={handleChange}
+                                                className="fit-input"
+                                                type="number"
+                                                step="1"
+                                                min="1"
+                                                max="31"
+                                            />
+                                            <span>days</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="block-days-cell">
+                                            <input
+                                                name="standardDaysToMake"
+                                                value={gig.standardDaysToMake}
+                                                onChange={handleChange}
+                                                className="fit-input"
+                                                type="number"
+                                                step="1"
+                                                min="1"
+                                                max="31"
+                                            />
+                                            <span>days</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="block-days-cell">
+                                            <input
+                                                name="premiumDaysToMake"
+                                                value={gig.premiumDaysToMake}
+                                                onChange={handleChange}
+                                                className="fit-input"
+                                                type="number"
+                                                step="1"
+                                                min="1"
+                                                max="31"
+                                            />
+                                            <span>days</span>
                                         </div>
                                     </td>
 
@@ -286,6 +309,7 @@ export const EditBox = ({ onSubmitEdit }) => {
                             accept="image/*"
                             onChange={(ev) => onAddingImg(ev)}
                         />
+                        <img className="thumbnail" src={gig.img1} ></img>
                     </div>
 
                     <div className="upload-input-container">
@@ -299,6 +323,8 @@ export const EditBox = ({ onSubmitEdit }) => {
                             accept="image/*"
                             onChange={(ev) => onAddingImg(ev)}
                         />
+                        <img className="thumbnail" src={gig.img2} ></img>
+
                     </div>
 
                     <div className="upload-input-container">
@@ -312,11 +338,13 @@ export const EditBox = ({ onSubmitEdit }) => {
                             accept="image/*"
                             onChange={(ev) => onAddingImg(ev)}
                         />
+                        <img className="thumbnail" src={gig.img3} ></img>
+
                     </div>
 
                 </section>
-            </div>
+            </div >
             <button onClick={() => onSubmitEdit(gig)}>Save</button>
-        </div>
+        </div >
     )
 }

@@ -11,7 +11,8 @@ export const GigPreview = ({
   price,
   likedByUsers,
   imgUrls,
-  reviews
+  reviews,
+  plans
 }) => {
   const [liked, setLiked] = useState()
   const handleLike = () => {
@@ -52,7 +53,7 @@ export const GigPreview = ({
           />
           <Link to={`/gig/${_id}`} className="preview-offer">
             <p className="start-at">starting at</p>
-            <p className="price">${price}</p>
+            <p className="price">${plans.basicPrice}</p>
           </Link>
         </div>
       </div>
