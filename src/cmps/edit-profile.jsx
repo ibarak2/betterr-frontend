@@ -1,4 +1,7 @@
-export function EditProfile() {
+
+
+export function EditProfile({user}) {
+
   return (
     <section className="user-info-wrapper">
       <div className="user-info">
@@ -38,16 +41,16 @@ export function EditProfile() {
                     name="profile[image]"
                   />
                   <img
-                    src="https://fiverr-res.cloudinary.com/image/upload/t_profile_original,q_auto,f_auto/v1/attachments/profile/photo/8ef2237debd02e9e617f692de60a78d9-1663171969496/93a83f8e-884d-4bc8-8979-0c762e4c6da1.png"
+                    src={user.imgUrl}
                     className="profile-pict-img"
-                    alt="zrizony"
+                    alt={user.username}
                   />
                 </label>
               </div>
             </div>
             <div className="profile-username">
               <div className="username-container">
-                <b className="seller-link">zrizony</b>
+                <b className="seller-link">{user.username}</b>
               </div>
               <div className="change-name-wrapper">
                 <div className="pen-wrapper">

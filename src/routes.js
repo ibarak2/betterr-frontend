@@ -66,7 +66,7 @@ const routes = [
     label: "Manage Orders",
   },
   {
-    path: "user/profile/",
+    path: "profile/:id",
     component: <UserProfile />,
     label: "User Profile",
   },

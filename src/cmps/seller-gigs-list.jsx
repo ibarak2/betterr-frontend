@@ -1,4 +1,6 @@
-export function SellerGigsList() {
+export function SellerGigsList({user}) {
+
+  console.log('user', user);
   return (
     <section className="seller-gigs-wrapper">
       <div className="seller-gigs">
@@ -28,7 +30,7 @@ export function SellerGigsList() {
             <ul className="clean-list gig-settings">
               <li>
                 <a
-                  href="/users/zrizony/manage_gigs/never-gonna-give-you-up/edit"
+                  href="/gig/6329dccacf0f8d55e4bf40f6"
                   className="preview"
                   target="_blank"
                 >
@@ -37,7 +39,7 @@ export function SellerGigsList() {
               </li>
               <li>
                 <a
-                  href="/users/zrizony/manage_gigs?current_filter=draft&amp;id=276857166"
+                  href="/gig/6329dccacf0f8d55e4bf40f6"
                   className="edit"
                   target="_blank"
                 >
@@ -46,7 +48,7 @@ export function SellerGigsList() {
               </li>
               <li>
                 <a
-                  href="/users/zrizony/manage_gigs/never-gonna-give-you-up/edit?step=1"
+                  href="/gig/6329dccacf0f8d55e4bf40f6"
                   className="update-pricing"
                   target="_blank"
                 >
@@ -55,7 +57,7 @@ export function SellerGigsList() {
               </li>
               <li>
                 <a
-                  href="/users/zrizony/manage_gigs?current_filter=draft&amp;id=276857166"
+                  href="/gig/6329dccacf0f8d55e4bf40f6"
                   className="remove"
                   target="_blank"
                 >
@@ -97,7 +99,7 @@ export function SellerGigsList() {
                 ></path>
               </svg>
             </a>
-            <a href="/user/gig-title" className="gig-min-price">
+            <a href="/gig/6329dccacf0f8d55e4bf40f6" className="gig-min-price">
               <small>Starting at</small>
               $5
             </a>

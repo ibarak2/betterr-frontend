@@ -1,51 +1,58 @@
 .reviews-container {
-    margin-bottom: 150px;
+  margin-bottom: 150px;
 
-    & h2 {
-        margin: 0;
-    }
-    & .reviews-title b {
-        color: gold;
-    }
+  & h2 {
+    margin: 0;
+  }
+  & .reviews-title b {
+    color: #ffb33e;
+  }
 
-    & .review-stars-details {
-        gap: 5px;
-    }
+  & .review-stars-details {
+    gap: 5px;
+  }
 
-    & .review-list {
-        display: flex;
-        flex-direction: column;
-    }
-    & .user-info {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        align-items: center;
-    }
+  & .review-list {
+    display: flex;
+    flex-direction: column;
+  }
+  & .user-info {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+  }
 
-    & .user-info img{
-        border: 1px solid black;
-        border-radius: 28px;
-        width: 32px;
+  & .user-info img {
+    border: 1px solid black;
+    border-radius: 28px;
+    width: 32px;
+  }
+  & .review-details {
+    margin-left: 44px;
+  }
+  & .reviews {
+    border: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding-left: 8px;
+    color: $clr6;
+    &:hover {
+      cursor: pointer;
     }
-    & .review-details {
-        margin-left: 44px;
+    &:focus {
+      padding: 0 0 0 8px;
+      text-decoration: none;
+      border: none;
+      // background-color: red;
     }
-    & .reviews {
-        border: none;
-        font-size: 1.1em;
-        font-weight: bold;
-        padding-left: 8px;
-        &:hover {
-            cursor: pointer;
-        }
-        &:focus{
-            padding: 8px 0;
-            text-decoration: none;
-            border: none;
-            // background-color: red;
-
-        }
+    &:focus-within {
+        outline: none;
     }
-
+    option {
+      font-size: 1rem;
+      font-family: inherit;
+      border: 1px $clr5 solid;
+    }
+  }
 }

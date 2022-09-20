@@ -20,34 +20,7 @@ async function query(filterBy = {}) {
   } catch (err) {
     console.log('gig.service: cannot get gigs', err);
   }
-
-  // console.log("GIGS", gigs)
-  // if (!gigs.length || !gigs) {
-  //   loadDemoData()
-  //   gigs = gigsDemoData
-  // }
-  // // if (filterBy) {
-  // const { maxPrice, daysToMake, rate } = filterBy
-
-  // // if (name) {
-  // //   const regex = new RegExp(name, 'i')
-  // //   toys = toys.filter((toy) => regex.test(toy.name))
-  // // }
-
-  // if (maxPrice) {
-  //   console.log("MAX PRICE", maxPrice)
-
-  //   gigs = gigs.filter((gig) => gig.price <= maxPrice)
-  // }
-  // if (daysToMake) {
-  //   return (gigs = gigs.filter((gig) => gig.daysToMake <= daysToMake))
-  // }
-  // if (rate) {
-  //   gigs = gigs.filter((gig) => gig.owner.rate >= rate)
-  // }
-  // return gigs
 }
-// }
 
 async function getById(gigId) {
   try {
@@ -60,8 +33,10 @@ async function getById(gigId) {
 async function save(gig) {
   var savedGig
   if (gig._id) {
+    console.log("saveing");
     savedGig = await httpService.put(BASE_URL + gig._id, gig)
   } else {
+    console.log("adding");
     // Later, owner is set by the backend
     // gig.owner = userService.getLoggedinUser()
     savedGig = await httpService.post(BASE_URL, gig)

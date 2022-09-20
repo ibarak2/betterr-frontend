@@ -147,10 +147,10 @@ export function PopularServices() {
                   {obj.h4}
                 </h4>
                 <picture className="slide-pic">
-                  <source media="(min-width: 1060px)" srcset={obj.xl} />
-                  <source media="(min-width: 800px)" srcset={obj.l} />
-                  <source media="(min-width: 600px)" srcset={obj.m} />
-                  <source media="(max-width: 599px)" srcset={obj.s} />
+                  <source media="(min-width: 1060px)" srcSet={obj.xl} />
+                  <source media="(min-width: 800px)" srcSet={obj.l} />
+                  <source media="(min-width: 600px)" srcSet={obj.m} />
+                  <source media="(max-width: 599px)" srcSet={obj.s} />
                   <img className="slide-img" src={obj.s} />
                 </picture>
               </a>
