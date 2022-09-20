@@ -1,90 +1,107 @@
 .get-inspired {
-  color: $clr6;
-  background-color: #f5f5f5;
   margin: 0 auto 48px;
-  width: 100%;
-  padding: 96px 24px 48px;
+  background-color: #f5f5f5;
 
   .get-inspired-wrapper {
-    margin: auto;
+    margin: 0;
+    position: relative;
+    padding: 48px 24px;
 
-    .get-inspired-top {
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-      flex: 1;
-      max-width: 1400px;
-
-      h1 {
-        color: $clr6;
-        font-size: 32px;
-        line-height: 120%;
-        margin: 0;
-      }
-
-      a {
-        display: flex;
-        flex: 1;
-        color: #446ee7;
-        justify-content: flex-end;
-      }
+    h2 {
+      color: $clr6;
+      font-size: 28px;
+      line-height: 130%;
+      padding-bottom: 20px;
     }
 
     .get-inspired-carousel {
-      max-width: 1426px;
-      margin: auto;
+      .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        user-select: none;
+        touch-action: pan-y;
+        margin: 0 -6px;
 
-      // .slick-slider {
-      //   max-width: 1436px;
-      //   margin: auto;
-      // }
-      @media (max-width: 600px) {
-        height: 345px;
-      }
-      .slick-slide {
-        padding: 0 15px;
+        .slick-list {
+          position: relative;
+          display: block;
+          overflow: hidden;
+          margin: 0;
+          padding: 0;
 
-        div {
-          border-radius: 5px;
+          .slick-track {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            min-width: 100%;
 
-          .project-card {
-            background-color: #fff;
-            box-shadow: 0 0.14px 2.29266px rgb(0 0 0 / 3%),
-              0 0.37px 4.42626px rgb(0 0 0 / 5%), 0 3px 7px rgb(0 0 0 / 9%);
-            .slide-link {
-              outline: none;
+            .slick-slide {
+              padding: 8px;
 
-              img {
-                border-radius: 5px 5px 0 0;
-                transition: opacity 0.2s ease-in-out;
-                aspect-ratio: 4 / 3;
-                object-fit: cover;
-                &:hover {
-                  opacity: 80%;
+              @media (min-width: 600px) {
+                .slick-slide {
+                  padding: 0 9px;
                 }
               }
-              .slide-profile {
-                width: 100%;
-                padding: 16px 0 12px 16px;
-
-                img {
-                  width: 40px;
-                  height: 40px;
-                  border-radius: 50%;
+              @media (min-width: 900px) {
+                .slick-slide {
+                  padding: 0 18px;
                 }
+              }
 
-                h4 {
-                  color: $clr6;
-                  font-weight: 600;
-                  font-size: 14px;
-                  line-height: 21px;
-                  flex-direction: column;
-                  padding-left: rem(12px);
-                  margin: 0;
+              .project-card {
+                background-color: #fff;
+                border-radius: 4px;
+                box-shadow: 0 0.14px 2.29266px rgb(0 0 0 / 3%),
+                  0 0.37px 4.42626px rgb(0 0 0 / 5%), 0 3px 7px rgb(0 0 0 / 9%);
 
-                  small {
-                    color: $clr4;
-                    font-weight: 400;
+                .slide-link {
+                  .slide-pic img {
+                    height: 237px;
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 4px 4px 0 0;
+                    transition: opacity 0.3s ease-in-out;
+                    display: block;
+                  }
+
+                  .slide-profile {
+                    padding: 16px 0 12px 16px;
+
+                    .slide-profile-img img {
+                      height: 40px;
+                      width: 40px;
+                      border-radius: 50%;
+                      cursor: pointer;
+                    }
+
+                    .slide-title {
+                      padding-left: 12px;
+                      font-size: 16px;
+                      line-height: 24px;
+                      width: 100%;
+
+                      b {
+                        font-size: 16px;
+                        line-height: 24px;
+                        display: block;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        width: calc(100% - 12px);
+
+                        a {
+                          color: $clr6;
+                        }
+                      }
+                      a {
+                        color: $clr4;
+                      }
+                    }
                   }
                 }
               }
@@ -131,5 +148,11 @@
     &.slick-next::before {
       content: url($carousel_right_arrow);
     }
+  }
+
+  .see-more-projects {
+    color: #446ee7;
+    display: block;
+    padding-top: 16px;
   }
 }

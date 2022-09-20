@@ -10,8 +10,8 @@
   .categories-list {
     flex-wrap: wrap;
     .categories-list-item {
-      width: 20%;
-      padding-bottom: 55px;
+      width: 50%;
+      padding: 0 10px 32px;
       text-align: center;
 
       .categories-link {
@@ -46,6 +46,19 @@
             border-bottom: 2px solid #1DBF73;
           }
         }
+      }
+    }
+
+
+    @media (min-width: 600px) {
+      .categories-list-item {
+        padding-bottom: 55px;
+        width: 33.33%;
+      }
+    }
+    @media (min-width: 900px) {
+      .categories-list-item {
+        width: 20%;
       }
     }
   }
