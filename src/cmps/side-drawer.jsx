@@ -3,11 +3,10 @@ import Drawer from '@mui/material/Drawer'
 import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
 import MenuIcon from '@mui/icons-material/Menu'
-import { useState, Fragment } from 'react'
+import { useState, Fragment, useEffect } from 'react'
 import { NavLink, useSearchParams } from 'react-router-dom'
 
 export function SideDrawer() {
-
   //---- states and vars ----//
   let anchor = 'left'
   const [searchParams, setSearchParams] = useSearchParams()
@@ -17,6 +16,14 @@ export function SideDrawer() {
   })
 
   //---- functions ----//
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset)
+    //-- clean up code
+    window.removeEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === 'keydown' &&
@@ -56,7 +63,7 @@ export function SideDrawer() {
   return (
     <Fragment>
       <div
-        className={
+        className={ window.innerWidth < 1160 ? 'side-nav-burger-white' :
           searchParams.get('nav') !== 'home'
             ? 'side-nav-burger-white'
             : offset > 0

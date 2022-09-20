@@ -22,22 +22,22 @@
 
   @include for-narrow-layout {
       grid-template-columns: 
-          1fr
-          minmax(auto, $mobile-breakpoint)
-          1fr;
+          minmax(32px, 1fr)
+          minmax(auto, 900px)
+          minmax(32px, 1fr);
   }
   @include for-normal-layout {
       grid-template-columns: 
-          1fr
-          minmax(auto, $narrow-breakpoint)
-          1fr;
+          minmax(32px, 1fr)
+          minmax(auto, 1400px)
+          minmax(32px, 1fr);
   }
-  @include for-wide-layout {
-      grid-template-columns: 
-          1fr
-          minmax(auto, $normal-breakpoint)
-          1fr;
-  }
+  // @include for-wide-layout {
+  //     grid-template-columns: 
+  //         1fr
+  //         minmax(auto, $normal-breakpoint)
+  //         1fr;
+  // }
 }
 
 // .card-grid {
