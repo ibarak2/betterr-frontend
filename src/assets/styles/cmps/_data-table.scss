@@ -1,34 +1,72 @@
 .data-table {
-  background-color: #e2e2e2;
-  border-collapse: collapse;
   text-transform: uppercase;
-  font-weight: 600;
   width: 100%;
-  > * {
-    background-color: white;
+  background-color: white;
+  outline: 1px solid #e2e2e2;
+  .table-row-header {
+    height: 59px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-inline-start: 20px;
   }
-  .data-row {
-    outline: #e2e2e2 1px solid;
-  }
-  .data-header {
-    padding: rem(15px) rem(15px) rem(15px) rem(20px);
-    font-size: rem(14px);
-  }
-  .data-header-select {
-    padding: rem(15px) rem(20px) rem(15px) 0;
-
-    .data-select-container {
-      justify-content: flex-end;
-      position: relative;
-      max-height: 26px;
+  .table-header-container {
+    flex-grow: 3;
+    .table-header {
+      font-size: rem(14px);
+      font-weight: 600;
     }
   }
-  .subheader-row {
-    font-size: 12px;
-    color: $clr12;
-    & > td {
-      line-height: 34px;
-      padding: 0 15px 0 0;
+  .data-select-container {
+    flex: 7;
+    justify-content: end;
+    .data-select {
+      border: 1px solid $clr15;
+    }
+    .modal {
+      position: relative;
     }
   }
 }
+
+// data-table
+// table-row flex space between
+// table-row-header
+// table-header-container
+// table-header
+// data-select-container
+// data-select
+
+// .data-table {
+//   background-color: #e2e2e2;
+//   border-collapse: collapse;
+//   text-transform: uppercase;
+//   font-weight: 600;
+//   width: 100%;
+//   > * {
+//     background-color: white;
+//   }
+//   .data-row {
+//     outline: #e2e2e2 1px solid;
+//   }
+//   .data-header {
+//     padding: rem(15px) rem(15px) rem(15px) rem(20px);
+//     font-size: rem(14px);
+//   }
+//   .data-header-select {
+//     padding: rem(15px) rem(20px) rem(15px) 0;
+
+//     .data-select-container {
+//       justify-content: flex-end;
+//       position: relative;
+//       max-height: 26px;
+//     }
+//   }
+//   .subheader-row {
+//     font-size: 12px;
+//     color: $clr12;
+//     & > td {
+//       line-height: 34px;
+//       padding: 0 15px 0 0;
+//     }
+//   }
+// }
