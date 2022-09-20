@@ -21,6 +21,7 @@
         gap: 1vh;
         align-items: center;
         cursor: pointer;
+        margin-right: 32px;
         .css-i4bv87-MuiSvgIcon-root {
           //--this is the side-nav svg class
           color: transparent;
@@ -94,6 +95,7 @@
 
   .nav {
     font-weight: 600;
+    margin-left: 32px;
     .nav-routes .basic-nav-routes {
       display: none;
     }
@@ -158,22 +160,6 @@
 
 .header-search.header-search-shown {
   display: block;
-}
-
-//---- side bar ----//
-.side-nav-burger {
-  display: inline-block;
-}
-.side-nav-burger-white {
-  svg rect {
-    color: $clr1;
-    fill: $clr1;
-  }
-}
-@media (min-width: 1160px) {
-  .side-nav-burger {
-    display: none;
-  }
 }
 
 //---- second nav bar ----//

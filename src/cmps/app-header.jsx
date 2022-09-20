@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useParams, useSearchParams } from 'react-router-dom'
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
@@ -17,16 +17,16 @@ export function AppHeader() {
   })
   const [offset, setOffset] = useState(0)
   const [searchParams, setSearchParams] = useSearchParams()
-  const loggedinUser = useSelector(state => state.userModule.user)
+  const loggedinUser = useSelector((state) => state.userModule.user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const onScroll = () => setOffset(window.pageYOffset)
-    window.removeEventListener('scroll', onScroll)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  // useEffect(() => {
+  //   const onScroll = () => setOffset(window.pageYOffset)
+  //   window.removeEventListener('scroll', onScroll)
+  //   window.addEventListener('scroll', onScroll, { passive: true })
+  //   return () => window.removeEventListener('scroll', onScroll)
+  // }, [])
 
   //---- functions ----//
   const toggleDrawer = (open) => (event) => {
@@ -34,7 +34,8 @@ export function AppHeader() {
     if (
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
-    ) return
+    )
+      return
 
     setDrawerOpen({ ...drawerOpen, ['left']: open })
   }
@@ -64,7 +65,7 @@ export function AppHeader() {
 
   const onSearch = (ev) => {
     ev.preventDefault()
-    console.log(ev);
+    console.log(ev)
   }
 
   return (
@@ -79,8 +80,8 @@ export function AppHeader() {
           searchParams.get('nav') !== 'home'
             ? 'main-container main-header header-white'
             : offset > 0
-              ? 'main-container main-header header-white'
-              : 'main-container main-header'
+            ? 'main-container main-header header-white'
+            : 'main-container main-header'
         }
       >
         <div className="flex max-width-container main-header-wrapper">
@@ -92,7 +93,13 @@ export function AppHeader() {
             <a href="/?nav=home" className="site-logo">
               <img
                 className="logo"
-                src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
+                src={
+                  searchParams.get('nav') !== 'home'
+                    ? 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png'
+                    : offset > 0
+                    ? 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png'
+                    : 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663666624/Fiverr-Sprint-4/imgs/beterr./logo-white_fnqy6y.png'
+                }
                 alt="betterr."
               />
             </a>
@@ -103,8 +110,8 @@ export function AppHeader() {
               searchParams.get('nav') !== 'home'
                 ? 'header-search header-search-shown'
                 : offset >= 190
-                  ? 'header-search header-search-shown'
-                  : 'header-search'
+                ? 'header-search header-search-shown'
+                : 'header-search'
             }
           >
             <form className="flex" onSubmit={(ev) => onSearch(ev)}>
@@ -154,9 +161,26 @@ export function AppHeader() {
               ) : (
                 <div className="flex signin-signup">
                   <li>
-                    <a onClick={() => { handleOpenModal('sign') }}>Become a seller</a>
-                    <a onClick={() => { handleOpenModal('log') }}>Sign In</a>
-                    <a onClick={() => { handleOpenModal('sign') }} className="nav-join">
+                    <a
+                      onClick={() => {
+                        handleOpenModal('sign')
+                      }}
+                    >
+                      Become a seller
+                    </a>
+                    <a
+                      onClick={() => {
+                        handleOpenModal('log')
+                      }}
+                    >
+                      Sign In
+                    </a>
+                    <a
+                      onClick={() => {
+                        handleOpenModal('sign')
+                      }}
+                      className="nav-join"
+                    >
                       Join
                     </a>
                   </li>
@@ -172,8 +196,8 @@ export function AppHeader() {
           searchParams.get('nav') !== 'home'
             ? 'main-container flex second-nav-shown second-nav'
             : offset >= 150
-              ? 'main-container flex second-nav-shown second-nav'
-              : 'main-container flex max-width-container second-nav'
+            ? 'main-container flex second-nav-shown second-nav'
+            : 'main-container flex max-width-container second-nav'
         }
       >
         <SecondaryNavbar />

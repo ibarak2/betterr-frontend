@@ -1,36 +1,59 @@
+.side-nav-burger {
+  display: inline-block;
+  svg rect {
+    color: #404145;
+    fill: #404145;
+  }
+}
+.side-nav-burger-top-homepage {
+  display: inline-block;
+  svg rect {
+    color: $clr1;
+    fill: $clr1;
+  }
+}
+@media (min-width: 1160px) {
+  .side-nav-burger {
+    display: none;
+  }
+  .side-nav-burger-top-homepage {
+    display: none;
+  }
+}
+
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
-    width: rem(272px);
+  width: rem(272px);
 }
 
 .side-nav-divider {
-    width: rem(210px);
+  width: rem(210px);
 }
 
 .side-nav {
-    padding-left: 2rem;
-    * {
-        color: $clr4;
-        padding-right: 20px;
-    }
-    .side-nav-btn {
-        color: $clr1;
-        position: relative;
-        padding: 12px 24px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 100%;
-        text-decoration: none;
-        text-align: center;
-        margin: 10px 0 25px;
+  padding-left: 2rem;
+  * {
+    color: $clr4;
+    padding-right: 20px;
+  }
+  .side-nav-btn {
+    color: $clr1;
+    position: relative;
+    padding: 12px 24px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px 0 25px;
 
-        &:hover {
-            background-color: $clr3;
-        }
+    &:hover {
+      background-color: $clr3;
     }
+  }
 
-    .side-nav-links *:hover {
-        color: $clr5;
-    }
+  .side-nav-links *:hover {
+    color: $clr5;
+  }
 }
