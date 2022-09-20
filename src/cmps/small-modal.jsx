@@ -1,5 +1,3 @@
-import { Fragment } from "react"
-
 export function SmallModal({ list, onSelect, open }) {
   const handleClick = (ev) => {
     onSelect(ev)
@@ -14,7 +12,7 @@ export function SmallModal({ list, onSelect, open }) {
           onClick={(ev) => handleClick(ev)}
           key={option.value}
           value={option.value}
-        >{`LAST ${option.txt}`}</li>
+        >{`${option.txt}`}</li>
       ))}
     </ul>
   )
