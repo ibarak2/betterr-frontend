@@ -1,0 +1,127 @@
+.edit {
+  background-color: #f7f7f7;
+  padding: 80px;
+
+  & .form-input-group {
+    position: relative;
+    display: flex;
+    padding-bottom: 32px;
+  }
+
+  & .edit-first-stage {
+    background-color: $clr1;
+    border: 1px solid #dadbdd;
+    padding: 28px;
+    border-radius: 5px 5px 0 0;
+    & label {
+      font-size: rem(16px);
+      font-weight: 600;
+      color: $clr6;
+    }
+    & .input-label {
+      padding-right: 32px;
+      width: rem(242px);
+      font-size: rem(14px);
+      line-height: rem(21px);
+      color: #7a7d85;
+      & .label-description {
+        margin-top: rem(8px);
+      }
+    }
+  }
+
+  & .gig-description {
+    padding-top: rem(28px);
+    padding-bottom: rem(70px);
+    color: #62646a;
+
+    & h3 {
+      font-size: rem(28px);
+    }
+  }
+
+  & .pricing {
+    padding-top: rem(28px);
+    & h3 {
+      font-size: rem(28px);
+      font-weight: 400;
+    }
+    & .packages-pricing {
+      & header {
+        font-weight: 600;
+        padding-top: 12px;
+        padding-bottom: 16px;
+        color: #62646a;
+      }
+    }
+    & .packages-container {
+      display: table;
+      width: 100%;
+      & table {
+        table-layout: fixed;
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      & th {
+        padding: 20px 16px;
+        background-color: #f5f5f5;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      & .first-table-col {
+        box-sizing: border-box;
+        width: 220px;
+        background-color: #fafafa;
+        position: relative;
+        padding: 20px 15px;
+        font-size: 13px;
+      }
+
+      & .block-container-input {
+        height: 70px;
+        border: none;
+        resize: none;
+        border-radius: 3px;
+        box-sizing: border-box;
+        padding: 7px;
+      }
+
+      & .block-description-input {
+        height: 120px;
+        border: none;
+        resize: none;
+        border-radius: 3px;
+        box-sizing: border-box;
+        padding: 7px;
+      }
+
+      & .block-price-cell {
+        & input {
+          border: none;
+          box-sizing: border-box;
+          width: 100%;
+          padding: 8px 12px;
+          padding-right: 40px;
+          box-shadow: none;
+          &:focus {
+            border: none;
+          }
+        }
+        & span {
+          position: absolute;
+          display: inline-block;
+          transform: translateX(-20px);
+        }
+      }
+
+      & td,
+      th {
+        text-align: left;
+        border: 1px solid #dadbdd;
+      }
+    }
+  }
+}

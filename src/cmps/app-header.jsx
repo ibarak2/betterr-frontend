@@ -135,13 +135,6 @@ export function AppHeader() {
               <li className="nav-routes">
                 <div className="basic-nav-routes">
                   <NavLink to="/explore">Explore</NavLink>
-                  <a
-                    onClick={() => {
-                      handleOpenModal('sign')
-                    }}
-                  >
-                    Become a seller
-                  </a>
                 </div>
               </li>
               {loggedinUser ? (

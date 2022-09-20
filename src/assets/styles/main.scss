@@ -19,6 +19,7 @@
 @import "views/gig-details";
 @import "views/explore-page";
 @import "views/back-office";
+@import "views/edit";
 @import "views/_user-profile.scss";
 
 // Components
@@ -40,5 +41,5 @@
 @import "cmps/side-drawer";
 @import "cmps/hero-wrapper";
 @import "cmps/data-table";
-@import "cmps/small-modal";
-@import "cmps/open-modal-btn";
+@import "cmps/edit-profile";
+@import "cmps/seller-gigs-list.scss";
