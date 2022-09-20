@@ -11,7 +11,6 @@
 @import "basics/links";
 @import "basics/forms";
 
-
 // Views
 @import "views/about-us";
 @import "views/home-page";
@@ -20,6 +19,7 @@
 @import "views/gig-details";
 @import "views/explore-page";
 @import "views/back-office";
+@import "views/edit";
 @import "views/_user-profile.scss";
 
 // Components
@@ -43,9 +43,3 @@
 @import "cmps/data-table";
 @import "cmps/edit-profile";
 @import "cmps/seller-gigs-list.scss";
-
-
-
-
-
-
