@@ -11,7 +11,6 @@
 @import "basics/links";
 @import "basics/forms";
 
-
 // Views
 @import "views/about-us";
 @import "views/home-page";
@@ -41,9 +40,5 @@
 @import "cmps/side-drawer";
 @import "cmps/hero-wrapper";
 @import "cmps/data-table";
-
-
-
-
-
-
+@import "cmps/small-modal";
+@import "cmps/open-modal-btn";

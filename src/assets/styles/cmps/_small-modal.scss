@@ -1,0 +1,21 @@
+.small-modal {
+  position: absolute;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: white;
+  border: solid 1px #e2e2e2;
+  z-index: 100;
+  font-size: 12px;
+  font-weight: 300;
+  top: -2px;
+  right: 10px;
+  li {
+    cursor: pointer;
+    padding: 6px 10px;
+  }
+  li:hover {
+    color: $clr2;
+  }
+}

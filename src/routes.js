@@ -45,7 +45,7 @@ const routes = [
     label: "Admin Only",
   },
   {
-    path: "/backoffice/*",
+    path: "backoffice/*",
     component: <BackOfficeApp />,
     label: "Back Office",
   },
