@@ -13,17 +13,16 @@ export const Filter = ({ onChangeFilter }) => {
   return (
     <form className="filter">
       <section>
-        <label htmlFor="max-price">Max Price</label>
-        <input {...register("maxPrice", "number")} />
+        <input {...register("maxPrice", "number")} placeholder="Max Price" />
       </section>
       <section>
-        <label htmlFor="daysToMake">Delivery Time</label>
-        <input {...register("daysToMake", "number")} />
+        <input {...register("daysToMake", "number")} placeholder="Delivery Time" />
       </section>
       <section>
-        <label htmlFor="rate">Rating</label>
-        <input {...register("rate", "number")} />
+        <input {...register("rate", "number")} placeholder="Rating" />
       </section>
+
+      <button className="btn btn-reset-filter" onClick={register("maxPrice", "")}>reset</button>
       {/* <select {...register("inStock")}>
         <option value="">All</option>
         <option value="in-stock">In stock</option>

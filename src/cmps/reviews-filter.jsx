@@ -20,8 +20,8 @@ export const ReviewsFilter = ({ onChangeSortBy }) => {
         <div className="reviews-filter">
             <label htmlFor="review-filter">Sort By</label>
             <select name="reviews" id="reviews" className="reviews" onChange={handleChange}>
-                <option value="createdAt">Most recent</option>
-                <option value="rate">Rating</option>
+                <option value="createdAt" className="reviews-option">Most recent</option>
+                <option value="rate" className="reviews-option">Rating</option>
             </select>
         </div>
     )

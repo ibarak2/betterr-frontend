@@ -1,0 +1,35 @@
+.filter {
+  display: flex;
+  align-items: center;
+  margin: 2vh 0;
+
+  input {
+    font-family: inherit;
+    border-radius: 4px;
+    height: 3vh;
+    outline: none;
+    border: 1px solid $clr4;
+    padding: 10px;
+
+    &::placeholder {
+      font-family: inherit;
+    }
+
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  .btn-reset-filter {
+    font-family: inherit;
+    font-weight: 600;
+    border-radius: 4px;
+    width: 60px;
+    height: 3vh;
+
+    &:hover {
+      background-color: $clr3;
+    }
+  }
+}

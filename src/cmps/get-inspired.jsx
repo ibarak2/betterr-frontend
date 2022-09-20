@@ -159,13 +159,13 @@ export function GetInspired() {
           <Slider {...settings}>
             {slideObjs.map((obj) => {
               return (
-                <div className="project-card">
+                <div className="project-card" key={obj.small}>
                   <a className="slide-link" href={'/explore'} target="_blank">
                     <picture className="slide-pic">
-                      <source media="(min-width: 1060px)" srcset={obj.xl} />
-                      <source media="(min-width: 800px)" srcset={obj.l} />
-                      <source media="(min-width: 600px)" srcset={obj.m} />
-                      <source media="(max-width: 599px)" srcset={obj.s} />
+                      <source media="(min-width: 1060px)" srcSet={obj.xl} />
+                      <source media="(min-width: 800px)" srcSet={obj.l} />
+                      <source media="(min-width: 600px)" srcSet={obj.m} />
+                      <source media="(max-width: 599px)" srcSet={obj.s} />
                       <img className="slide-img" src={obj.s} />
                     </picture>
                     <div className="flex slide-profile">
@@ -173,7 +173,9 @@ export function GetInspired() {
                         <img src={obj.profilePic} />
                       </a>
                       <span className="slide-title">
-                        <b><a href="/explore">{obj.title}</a></b>
+                        <b>
+                          <a href="/explore">{obj.title}</a>
+                        </b>
                         <a>{obj.small}</a>
                       </span>
                     </div>
@@ -184,7 +186,7 @@ export function GetInspired() {
           </Slider>
         </div>
 
-        <NavLink to="/explore" className='see-more-projects'>
+        <NavLink to="/explore" className="see-more-projects">
           <span>See More Projects &gt;</span>
         </NavLink>
       </div>
