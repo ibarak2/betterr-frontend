@@ -16,7 +16,6 @@ export function BackOffice() {
                 active
               </NavLink>
             </li>
-
             <li>
               <NavLink to="gig-pending-approval" className="mini-link">
                 pending approval

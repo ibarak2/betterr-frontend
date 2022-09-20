@@ -1,42 +1,44 @@
-import React from "react"
+import { useState } from "react"
+import { OpenModalBtn } from "./open-modal-btn"
+import { SmallModal } from "./small-modal"
 
 export function GigDataTable() {
-  const handleSelectChange = () => {
-    console.log("select change")
+  const [daysOpen, setDaysOpen] = useState(false)
+  const list = [
+    { value: 7, txt: "7 DAYS" },
+    { value: 14, txt: "14 DAYS" },
+    { value: 30, txt: "30 DAYS" },
+    { value: 60, txt: "2 MONTHS" },
+    { value: 90, txt: "3 MONTHS" },
+    { value: 180, txt: "6 MONTHS" },
+  ]
+  const showModal = () => {
+    setDaysOpen(true)
+    console.log("showModal")
+  }
+  const handleSelect = (ev) => {
+    setDaysOpen(true)
+    console.log("handleSelect")
   }
   return (
     <table className="data-table">
       <thead>
-        <tr>
+        <tr className="data-row">
           <td colSpan={5} className="data-header">
             Active Gigs
           </td>
-          <td colSpan={6}>
-            <div>
-              <select
-                className="data-select"
-                name="days-filter"
-                id="days-filter"
-                onChange={handleSelectChange}
-              >
-                {[
-                  { value: 7, txt: "7 DAYS" },
-                  { value: 14, txt: "14 DAYS" },
-                  { value: 30, txt: "30 DAYS" },
-                  { value: 60, txt: "2 MONTHS" },
-                  { value: 90, txt: "3 MONTHS" },
-                  { value: 180, txt: "6 MONTHS" },
-                ].map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >{`LAST ${option.txt}`}</option>
-                ))}
-              </select>
+          <td className="data-header data-header-select" colSpan={6}>
+            <div className="flex data-select-container">
+              <OpenModalBtn
+                id={"days-filter"}
+                txt={"LAST 7 DAYS"}
+                handleOpenModal={showModal}
+              />
+              <SmallModal onSelect={handleSelect} list={list} open={daysOpen} />
             </div>
           </td>
         </tr>
-        <tr>
+        <tr className="subheader-row">
           <td>
             <label className="fake-check-black">
               <input type="checkbox" className="data-checkbox" />
@@ -80,7 +82,7 @@ export function GigDataTable() {
           <td colSpan={3}></td>
         </tr>
       </thead>
-      <tbody>
+      {/* <tbody>
         <tr data-id="139302831" className="show-statistics">
           <td>
             <label className="fake-check-black">
@@ -134,11 +136,6 @@ export function GigDataTable() {
           <td className="t-a-right">
             <div className="filter-select cf " style={{ marginTop: "5px" }}>
               <div className="fake-dropdown" style={{ visibility: "visible" }}>
-                {/*//TODO select menu <a
-                  className="dropdown-toggle no-content"
-                  data-toggle="dropdown"
-                  data-autowidth="true"
-                ></a> */}
                 <ul
                   className="dropdown-menu pull-right "
                   role="menu"
@@ -179,7 +176,7 @@ export function GigDataTable() {
             </div>{" "}
           </td>
         </tr>
-      </tbody>
+      </tbody> */}
     </table>
   )
 }
