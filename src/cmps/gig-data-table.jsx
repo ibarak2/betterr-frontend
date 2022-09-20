@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { OpenModalBtn } from "./open-modal-btn"
 import { SmallModal } from "./small-modal"
 
 export function GigDataTable() {
@@ -27,14 +26,14 @@ export function GigDataTable() {
           <h1 className="table-header">Active Gigs</h1>
         </div>
         <div className="flex align-center data-select-container table-cell">
-          <div className="modal">
-            <OpenModalBtn
-              id={"days-filter"}
-              txt={"LAST 7 DAYS"}
-              handleOpenModal={showModal}
-            />
-            <SmallModal onSelect={handleSelect} list={list} open={daysOpen} />
-          </div>
+          <SmallModal
+            onSelect={handleSelect}
+            list={list}
+            open={daysOpen}
+            id={"days-filter"}
+            txt={"LAST 7 DAYS"}
+            handleOpenModal={showModal}
+          />
         </div>
       </div>
       {/* <tr className="subheader-row">
