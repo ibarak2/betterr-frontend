@@ -1,4 +1,19 @@
-.user-profile {
-    background-color: #F7F7F7;
-
+.user-profile-wrapper {
+    background-color: #f7f7f7;
+    padding: 40px 0;
+  .user-profile {
+    color: #62646a;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    overflow-x: hidden;
+  }
 }

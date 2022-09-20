@@ -1,0 +1,213 @@
+.seller-gigs-wrapper {
+  width: 736px;
+  padding-left: 20px;
+  min-height: calc(100vh - 330px);
+
+  .seller-gigs-filter {
+    .seller-gigs-status {
+      background-color: $clr1;
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      padding: 0 25px;
+      margin: 0 0 40px;
+      position: relative;
+
+      li {
+        padding: 23px 0;
+        margin-right: 35px;
+        font-size: 14px;
+        line-height: 130%;
+        font-weight: 600;
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+
+        &.active {
+          color: #0e0e0f;
+        }
+
+        &.active::after {
+          content: '';
+          height: 3px;
+          position: absolute;
+          z-index: 1;
+          bottom: 0;
+          background-color: $clr2;
+          width: 100%;
+          left: 0;
+          transition: width 0.2s ease, background-color 0.2s ease,
+            left 0.2s ease;
+        }
+      }
+    }
+  }
+
+  .gig-card-base {
+    background-color: $clr1;
+    width: 232px;
+    height: 260px;
+    margin: 0 20px 20px 0;
+    float: left;
+    position: relative;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+  }
+  .seller-gig-card {
+    transition: all 1s ease, width 0.7s ease 0.3s, margin-right 0.7s ease 0.3s;
+    span {
+      .btn-share-container {
+        width: 28px;
+        height: 28px;
+        background: $clr1;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 6%);
+        border-radius: 14px;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        z-index: 1;
+      }
+
+      .gig-settings {
+        background-color: $clr1;
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        opacity: 0;
+        // visibility: hidden;
+        transition: opacity 0.3s ease;
+
+        li {
+          cursor: pointer;
+
+          a {
+            color: #555;
+            display: block;
+            padding: 12px 15px;
+
+            &::before {
+              display: inline-block;
+              width: 30px;
+            }
+          }
+          .preview::before {
+            content: '\1F441';
+          }
+          .edit::before {
+            content: '\1F589';
+          }
+          .update-pricing::before {
+            content: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663623917/Fiverr-Sprint-4/imgs/icons/icons8-money-13_il7ket.png');
+          }
+          .remove::before {
+            content: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1663630401/Fiverr-Sprint-4/imgs/icons/icons8-trash-13_qwejzk.png');
+          }
+          .settings::before {
+            content: '\2699';
+          }
+
+          .settings {
+            position: absolute;
+            z-index: 10;
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid #ddd;
+
+            &:hover {
+              background-color: #f7f7f7;
+            }
+          }
+
+          &:hover {
+            background-color: #f7f7f7;
+          }
+        }
+      }
+
+      .header-gig-card {
+        position: relative;
+
+        a {
+          div figure {
+            margin: 0;
+            img {
+              width: 100%;
+              height: 142px;
+              overflow: hidden;
+            }
+          }
+          h3 {
+            font-size: 15px;
+            line-height: 140%;
+            font-weight: 400;
+            color: #303030;
+            height: 40px;
+            overflow: hidden;
+            margin: 6px 12px 32px;
+            word-wrap: break-word;
+            word-break: break-word;
+            transition: 0.15s ease-in-out;
+          }
+        }
+      }
+
+      .btn-gig-menu {
+        line-height: 100%;
+        float: left;
+        margin-left: 13px;
+        margin-top: 8px;
+      }
+
+      .gig-min-price {
+        color: $clr2;
+        float: right;
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 700;
+        padding: 6px 12px 0;
+
+        small {
+          font-size: 10px;
+          font-weight: 400;
+          text-transform: uppercase;
+          display: inline-block;
+          vertical-align: top;
+          padding: 1px 5px 0 0;
+        }
+      }
+    }
+  }
+
+  .add-new-gig {
+    &::before {
+      content: '+';
+      background-color: #78cdd2;
+      color: $clr1;
+      font-size: 48px;
+      font-weight: 400;
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      display: block;
+      margin: 80px auto 20px;
+      line-height: 65px;
+    }
+
+    text-align: center;
+    color: #555;
+    font-size: 14px;
+    font-weight: 700;
+    width: 232px;
+    height: 260px;
+    margin: 0 20px 20px 0;
+    float: left;
+    position: relative;
+    color: $clr5;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+  }
+}
