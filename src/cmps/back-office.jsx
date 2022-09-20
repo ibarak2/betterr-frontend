@@ -1,47 +1,32 @@
+import { useEffect } from "react"
 import { NavLink, Outlet } from "react-router-dom"
+import { navLinks } from "../services/back-office.service"
+import { useDispatch, useSelector } from "react-redux"
+import { loadUser } from "../store/user.actions"
 
-export function BackOffice() {
+export function BackOffice({ header }) {
+  const users = useSelector((state) => state.userModule.users)
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(loadUser())
+  },[])
+  if(!users) return <div>Loading...</div>
   return (
     <div className="main-container full back-office">
+      {console.log(users)}
       <div className="manage-interface">
-        {/* <div className="main-container full back-office">
-      <div className="max-width-container manage-interface"> */}
         <section className="sub-header">
-          <h1>Gigs</h1>
+          <h1>{header}</h1>
         </section>
         <nav className="mini-nav">
           <ul className="clean-list dash-nav flex ">
-            <li>
-              <NavLink to="active-gigs" className="mini-link">
-                active
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="gig-pending-approval" className="mini-link">
-                pending approval
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="gig-requires-modification" className="mini-link">
-                requires modification
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="gig-draft" className="mini-link">
-                draft
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="gig-denied" className="mini-link">
-                denied
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="gig-paused" className="mini-link">
-                paused
-              </NavLink>
-            </li>
-            <li className="mini-link active"></li>
+            {navLinks.map((li) => (
+              <li key={li.path}>
+                <NavLink to={li.path} className="mini-link">
+                  {li.txt}
+                </NavLink>
+              </li>
+            ))}
           </ul>
           <a className="add-gig-btn">create a new gig</a>
         </nav>
