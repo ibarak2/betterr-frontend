@@ -162,22 +162,6 @@
   display: block;
 }
 
-//---- side bar ----//
-.side-nav-burger {
-  display: inline-block;
-}
-.side-nav-burger-white {
-  svg rect {
-    color: $clr1;
-    fill: $clr1;
-  }
-}
-@media (min-width: 1160px) {
-  .side-nav-burger {
-    display: none;
-  }
-}
-
 //---- second nav bar ----//
 .second-nav {
   background-color: transparent;

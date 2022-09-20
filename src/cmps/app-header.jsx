@@ -93,7 +93,13 @@ export function AppHeader() {
             <a href="/?nav=home" className="site-logo">
               <img
                 className="logo"
-                src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
+                src={
+                  searchParams.get('nav') !== 'home'
+                    ? 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png'
+                    : offset > 0
+                    ? 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png'
+                    : 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663666624/Fiverr-Sprint-4/imgs/beterr./logo-white_fnqy6y.png'
+                }
                 alt="betterr."
               />
             </a>
@@ -103,8 +109,7 @@ export function AppHeader() {
             className={
               searchParams.get('nav') !== 'home'
                 ? 'header-search header-search-shown'
-                : 
-                offset >= 190
+                : offset >= 190
                 ? 'header-search header-search-shown'
                 : 'header-search'
             }

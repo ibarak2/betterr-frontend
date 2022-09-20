@@ -63,12 +63,12 @@ export function SideDrawer() {
   return (
     <Fragment>
       <div
-        className={ window.innerWidth < 1160 ? 'side-nav-burger-white' :
+        className={
           searchParams.get('nav') !== 'home'
-            ? 'side-nav-burger-white'
+            ? 'side-nav-burger'
             : offset > 0
-            ? 'side-nav-burger-white'
-            : 'side-nav-burger'
+            ? 'side-nav-burger'
+            : 'side-nav-burger-top-homepage'
         }
         onClick={toggleDrawer(anchor, true)}
       >
