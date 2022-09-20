@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useForm } from "../hooks/useForm"
 import { uploadService } from "../services/upload.service"
-import { OpenModalBtn } from "./open-modal-btn"
 import { SmallModal } from "./small-modal"
 
 

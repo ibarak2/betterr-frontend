@@ -61,7 +61,7 @@ const routes = [
         label: "Back Office",
     },
     {
-        path: "user/profile/",
+        path: "profile/:id",
         component: <UserProfile />,
         label: "User Profile",
     },

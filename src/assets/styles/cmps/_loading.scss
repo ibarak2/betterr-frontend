@@ -1,0 +1,12 @@
+.loading-container {
+  width: 300px;
+  height: calc(100vh - 440px);
+  z-index: 1;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.834)
+  url("https://res.cloudinary.com/dalkffrhf/image/upload/v1663697296/Fiverr-Sprint-4/imgs/loadin_gif_xy5lwq.gif") center
+  no-repeat;
+  img {
+    width: 100%;
+  }
+}
