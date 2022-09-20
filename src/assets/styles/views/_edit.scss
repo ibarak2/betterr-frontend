@@ -1,6 +1,9 @@
 .edit {
   background-color: #f7f7f7;
   padding: 80px;
+  & form {
+    width: 100%;
+  }
 
   & .form-input-group {
     position: relative;
@@ -28,6 +31,31 @@
         margin-top: rem(8px);
       }
     }
+
+    & .input-wrapper {
+      flex: 1;
+
+      & .title-prefix {
+        position: absolute;
+        z-index: 10;
+        pointer-events: none;
+        transform: translate(7px, 7px);
+        font-size: rem(18px);
+        font-weight: 700;
+      }
+      & textarea {
+        padding: 8px;
+        text-indent: 48px;
+        height: 84px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 25px;
+        width: 100%;
+        resize: none;
+        outline: 0;
+        border-radius: 4px;
+      }
+    }
   }
 
   & .gig-description {
@@ -36,15 +64,36 @@
     color: #62646a;
 
     & h3 {
-      font-size: rem(28px);
+      font-size: 1em;
+      font-weight: 600;
+      color: $clr6;
+    }
+    & p {
+      font-size: rem(14px);
+      line-height: rem(21px);
+      color: #7a7d85;
+    }
+
+    & .description-editor {
+      & textarea {
+        width: 100%;
+        height: rem(160px);
+        resize: none;
+        padding: 8px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 25px;
+        outline: 0;
+      }
     }
   }
 
   & .pricing {
     padding-top: rem(28px);
     & h3 {
-      font-size: rem(28px);
-      font-weight: 400;
+      font-size: 1em;
+      font-weight: 600;
+      color: $clr6;
     }
     & .packages-pricing {
       & header {
@@ -58,6 +107,7 @@
       display: table;
       width: 100%;
       & table {
+        width: 100%;
         table-layout: fixed;
         border-collapse: collapse;
         border-spacing: 0;
@@ -82,6 +132,7 @@
 
       & .block-container-input {
         height: 70px;
+        width: 100%;
         border: none;
         resize: none;
         border-radius: 3px;
@@ -91,6 +142,8 @@
 
       & .block-description-input {
         height: 120px;
+        width: 100%;
+
         border: none;
         resize: none;
         border-radius: 3px;
@@ -122,6 +175,39 @@
         text-align: left;
         border: 1px solid #dadbdd;
       }
+    }
+  }
+
+  & .upload-container {
+    & h3 {
+      font-size: 1em;
+      font-weight: 600;
+      color: $clr6;
+    }
+    & p {
+      font-size: rem(14px);
+      line-height: rem(21px);
+      color: #7a7d85;
+    }
+
+    & .upload-input-container {
+      margin: 10px;
+      display: inline-block;
+      padding: 7px;
+      box-sizing: border-box;
+      border: 1px solid black;
+      width: 240px;
+      height: 160px;
+    }
+
+    & label {
+      position: relative;
+      left: 40%;
+      top: 60%;
+      color: #4a89ee;
+      font-size: rem(14px);
+      font-weight: 500;
+      cursor: pointer;
     }
   }
 }

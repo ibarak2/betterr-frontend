@@ -15,10 +15,14 @@ export const Edit = () => {
         console.log(gigId);
     }, [])
 
+    const onSubmitEdit = (gig) => {
+        console.log(gig);
+    }
+
 
     return (
         <div className='edit'>
-            <EditBox />
+            <EditBox onSubmitEdit={onSubmitEdit} />
         </div>
     )
 }
