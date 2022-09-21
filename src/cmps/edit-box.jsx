@@ -319,9 +319,10 @@ export const EditBox = ({ onSubmitEdit }) => {
                     <h5>Images (Add at least 3 beautiful images)</h5>
                     <p>Get noticed by the right buyers with visual examples of your services.</p>
                 </header>
-                <section className="uploader-input">
+                <section className="flex uploader-input">
 
                     <div className="upload-input-container">
+                        <img className="thumbnail" src={gig.img1} ></img>
                         <label htmlFor="img1">Browse</label>
                         <input
                             hidden
@@ -332,7 +333,6 @@ export const EditBox = ({ onSubmitEdit }) => {
                             accept="image/*"
                             onChange={(ev) => onAddingImg(ev)}
                         />
-                        <img className="thumbnail" src={gig.img1} ></img>
                     </div>
 
                     <div className="upload-input-container">

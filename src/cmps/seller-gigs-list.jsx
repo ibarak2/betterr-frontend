@@ -30,7 +30,7 @@ export function SellerGigsList({user}) {
             <ul className="clean-list gig-settings">
               <li>
                 <a
-                  href="/gig/6329dccacf0f8d55e4bf40f6"
+                  href="edit/:id"
                   className="preview"
                   target="_blank"
                 >
@@ -39,7 +39,7 @@ export function SellerGigsList({user}) {
               </li>
               <li>
                 <a
-                  href="/gig/6329dccacf0f8d55e4bf40f6"
+                  href="edit/:id"
                   className="edit"
                   target="_blank"
                 >
@@ -48,7 +48,7 @@ export function SellerGigsList({user}) {
               </li>
               <li>
                 <a
-                  href="/gig/6329dccacf0f8d55e4bf40f6"
+                  href="edit/:id"
                   className="update-pricing"
                   target="_blank"
                 >
@@ -57,7 +57,7 @@ export function SellerGigsList({user}) {
               </li>
               <li>
                 <a
-                  href="/gig/6329dccacf0f8d55e4bf40f6"
+                  href="edit/:id"
                   className="remove"
                   target="_blank"
                 >
@@ -99,7 +99,7 @@ export function SellerGigsList({user}) {
                 ></path>
               </svg>
             </a>
-            <a href="/gig/6329dccacf0f8d55e4bf40f6" className="gig-min-price">
+            <a href="edit/:id" className="gig-min-price">
               <small>Starting at</small>
               $5
             </a>
@@ -108,7 +108,7 @@ export function SellerGigsList({user}) {
 
         <a
           className="gig-card-base add-new-gig"
-          href="/users/userId/manage_gigs/new"
+          href="/edit"
         >
           Create a New Gig
         </a>
