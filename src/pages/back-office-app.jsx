@@ -3,6 +3,10 @@ import { BackOffice } from "../cmps/back-office"
 import { GigDataTable } from "../cmps/gig-data-table"
 import { useDispatch, useSelector } from "react-redux"
 import { toggleIsBuyer } from "../store/user.actions"
+import { useEffect } from "react"
+import { httpService } from "../services/http.service"
+import { orderService } from "../services/order.service"
+import { loadOrders } from "../store/order.actions"
 
 export const BackOfficeApp = ({ header }) => {
   const navigate = useNavigate()
@@ -11,6 +15,15 @@ export const BackOfficeApp = ({ header }) => {
     (state) => state.userModule.tableByUserState
   )
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    onLoadOrders()
+  }, [isBuyer])
+
+  const onLoadOrders = () => {
+    dispatch(loadOrders(isBuyer))
+  }
+
   const ToggleUserState = () => {
     console.log("isBuyer", isBuyer)
     dispatch(toggleIsBuyer())

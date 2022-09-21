@@ -144,7 +144,7 @@ export function AppHeader() {
                     <NavLink to="/chat">
                       <MailOutlineIcon />
                     </NavLink>
-                    <NavLink to="/back-office">Orders</NavLink>
+                    <NavLink to="/back-office/active-orders">Orders</NavLink>
                     <NavLink to={`/profile/u101`}>Profile</NavLink>
                     <a onClick={() => dispatch(onLogout())}>Logout</a>
                     {loggedinUser.isAdmin && (

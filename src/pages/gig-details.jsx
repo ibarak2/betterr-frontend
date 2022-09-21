@@ -13,6 +13,7 @@ import ReactStars from 'react-stars'
 import { utilService } from "../services/util.service"
 import { ReviewsFilter } from "../cmps/reviews-filter"
 import { useEffectUpdate } from "../hooks/useEffectUpdate"
+import { orderService } from "../services/order.service"
 
 
 
@@ -58,6 +59,23 @@ export const GigDetails = () => {
 
     }
 
+    const onSelectPlan = (plan, daysToMake, price) => {
+        const loggedinUser = userService.getLoggedinUser()
+        if (!loggedinUser) return
+        const newOrder = {
+            sellerId: gig.owner._id,
+            buyerId: loggedinUser._id,
+            gig: {
+                _id: gig._id,
+                title: gig.title,
+                daysToMake,
+                price,
+                plan
+            }
+        }
+        orderService.save(newOrder)
+    }
+
     console.log(window.innerWidth);
     if (!gig) return <div>Loading</div>
     return (
@@ -74,7 +92,10 @@ export const GigDetails = () => {
                             </div>
                             <div className="mobile-plans">
                                 {(screenWidth < 900) &&
-                                    <GigPlans plans={gig.plans} />
+                                    <GigPlans
+                                        plans={gig.plans}
+                                        onSelectPlan={onSelectPlan}
+                                    />
 
                                 }
                             </div>
@@ -115,7 +136,7 @@ export const GigDetails = () => {
                     </section>
                     <section className="plans">
                         {(screenWidth > 900) &&
-                            <GigPlans plans={gig.plans} />
+                            <GigPlans plans={gig.plans} onSelectPlan={onSelectPlan} />
 
                         }
                     </section>

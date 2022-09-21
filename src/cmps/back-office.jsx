@@ -4,6 +4,7 @@ import { NavLink, Outlet } from "react-router-dom"
 import { loadUsers } from "../store/user.actions"
 
 export function BackOffice({ header, ToggleUserState }) {
+
   const dispatch = useDispatch()
   const users = useSelector((state) => state.userModule.users)
   const isBuyer = useSelector((state) => state.userModule.isBuyer)
@@ -12,7 +13,7 @@ export function BackOffice({ header, ToggleUserState }) {
   )
 
   useEffect(() => {
-    console.log(dispatch(loadUsers()))
+    // console.log(dispatch(loadUsers()))
   }, [])
 
   const handleToggleUserState = () => {
@@ -38,7 +39,7 @@ export function BackOffice({ header, ToggleUserState }) {
               </li>
             ))}
           </ul>
-          {!isBuyer && <a className="add-gig-btn">create a new gig</a>}
+          {/* {!isBuyer && <a className="add-gig-btn">create a new gig</a>} */}
         </nav>
         <Outlet />
       </div>
