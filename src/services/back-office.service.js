@@ -15,3 +15,22 @@ export const navLinks = [
   { txt: "denied", path: "gig-denied" },
   { txt: "paused", path: "gig-paused" },
 ]
+
+export const navLinksBuyerManageOrders = [
+  { txt: "active", path: "active-orders" },
+  { txt: "missing details", path: "missing-details" },
+  { txt: "delivered", path: "delivered-orders" },
+  { txt: "completed", path: "completed-orders" },
+  { txt: "cancelled", path: "cancelled-orders" },
+  { txt: "all", path: "all-orders" },
+]
+
+export const navLinksSellerManageOrders = [
+  { txt: "priority", path: "priority-orders" },
+  { txt: "active", path: "active-orders" },
+  { txt: "late", path: "late-orders" },
+  { txt: "delivered", path: "delivered-orders" },
+  { txt: "completed", path: "completed-orders" },
+  { txt: "cancelled", path: "cancelled-orders" },
+  { txt: "starred", path: "starred-orders" },
+]
