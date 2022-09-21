@@ -1,4 +1,9 @@
 .explore {
+  & .explore-title {
+    font-size: rem(32px);
+    margin-top: rem(24px);
+  }
+
   & .gig-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(245.75px, 1fr));
@@ -25,11 +30,13 @@
   & .slick-next:before,
   .slick-prev:before {
     color: rgb(71, 71, 71);
-    // right: 20px;    
+    // right: 20px;
   }
 
   & .slick-prev:before {
-    background: transparent url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/apps/carousel-arrows.b9dde63.svg) no-repeat;
+    background: transparent
+      url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/apps/carousel-arrows.b9dde63.svg)
+      no-repeat;
     content: "";
     display: block;
     width: 25px;
@@ -37,7 +44,9 @@
     cursor: pointer;
   }
   & .slick-next:before {
-    background: transparent url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/apps/carousel-arrows.b9dde63.svg) no-repeat;
+    background: transparent
+      url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/apps/carousel-arrows.b9dde63.svg)
+      no-repeat;
     content: "";
     display: block;
     width: 25px;
@@ -46,7 +55,7 @@
     cursor: pointer;
     transform: scaleX(-1);
   }
-  
+
   & .slider-img:hover {
     cursor: pointer;
   }
@@ -54,14 +63,11 @@
     .slick-prev {
       left: 0;
       display: block !important;
-
     }
     .slick-next {
       right: 5px;
       display: block !important;
-
     }
-
   }
 
   & .reviews-amount {

@@ -1,121 +1,120 @@
-import {
-  StarredOrders,
-  CompletedOrders,
-  MissingDetails,
-  CancelledOrders,
-  OrderPriority,
-  ActiveGigs,
-  GigDenied,
-  GigPaused,
-  GigDraft,
-  GigRequiresModification,
-  GigPendingApproval,
-  ActiveOrders,
-  LateOrders,
-  DeliveredOrders,
-  AllOrders,
-} from "./cmps/dynamic-table-routes.jsx"
-
 export const backofficeGigRoutes = [
   {
     path: "active-gigs",
-    component: <ActiveGigs />,
-    label: "ActiveGigs",
+    label: "Active Gigs",
+    txt: "Active",
   },
   {
     path: "gig-pending-approval",
-    component: <GigPendingApproval />,
-    label: "GigPendingApproval",
+    label: "Gigs Pending Approval",
+    txt: "Pending Approval",
   },
   {
     path: "gig-requires-modification",
-    component: <GigRequiresModification />,
-    label: "GigRequiresModification",
+    label: "Gigs That Require Modification",
+    txt: "Require Modification",
   },
   {
     path: "gig-draft",
-    component: <GigDraft />,
-    label: "GigDraft",
+    label: "Gig Drafts",
+    txt: "Draft",
   },
   {
     path: "gig-denied",
-    component: <GigDenied />,
-    label: "GigDenied",
+    label: "Gigs Denied",
+    txt: "Denied",
   },
   {
     path: "gig-paused",
-    component: <GigPaused />,
-    label: "GigPaused",
+    label: "Gigs Paused",
+    txt: "Paused",
   },
 ]
 
-export const backofficeBuyerOrderRoutes = [
-  {
-    path: "active-orders",
-    component: <ActiveOrders />,
-    label: "ActiveOrders",
-  },
-  {
-    path: "missing-details",
-    component: <MissingDetails />,
-    label: "MissingDetails",
-  },
-  {
-    path: "delivered-orders",
-    component: <DeliveredOrders />,
-    label: "DeliveredOrders",
-  },
-  {
-    path: "completed-orders",
-    component: <CompletedOrders />,
-    label: "CompletedOrders",
-  },
-  {
-    path: "cancelled-orders",
-    component: <CancelledOrders />,
-    label: "CancelledOrders",
-  },
-  {
-    path: "all-orders",
-    component: <AllOrders />,
-    label: "AllOrders",
-  },
-]
-
-export const backofficeSellerOrderRoutes = [
-  {
-    path: "priority-orders",
-    component: <OrderPriority />,
-    label: "OrderPriority",
-  },
-  {
-    path: "active-orders",
-    component: <ActiveOrders />,
-    label: "ActiveOrders",
-  },
-  {
-    path: "late-orders",
-    component: <LateOrders />,
-    label: "LateOrders",
-  },
-  {
-    path: "delivered-orders",
-    component: <DeliveredOrders />,
-    label: "DeliveredOrders",
-  },
-  {
-    path: "completed-orders",
-    component: <CompletedOrders />,
-    label: "CompletedOrders",
-  },
-  {
-    path: "cancelled-orders",
-    component: <CancelledOrders />,
-    label: "CancelledOrders",
-  },
-  {
-    path: "starred-orders",
-    component: <StarredOrders />,
-    label: "StarredOrders",
-  },
-]
+export const backofficeBuyerOrderRoutes = {
+  routes: [
+    {
+      path: "active-orders",
+      label: "Active Orders",
+      txt: "Active",
+    },
+    {
+      path: "missing-details",
+      label: "Missing Details",
+      txt: "Missing Details",
+    },
+    {
+      path: "delivered-orders",
+      label: "Delivered Orders",
+      txt: "Delivered",
+    },
+    {
+      path: "completed-orders",
+      label: "Completed Orders",
+      txt: "Completed",
+    },
+    {
+      path: "cancelled-orders",
+      label: "Cancelled Orders",
+      txt: "Cancelled",
+    },
+    {
+      path: "all-orders",
+      label: "All Orders",
+      txt: "All",
+    },
+  ],
+  subheaders: [
+    { class: "subheader-one", txt: "" },
+    { txt: "ORDER DATE" },
+    { txt: "DUE ON" },
+    { txt: "TOTAL" },
+    { txt: "STATUS" },
+  ],
+}
+export const backofficeSellerOrderRoutes = {
+  routes: [
+    {
+      path: "priority-orders",
+      label: "Order Priority",
+      txt: "Priority",
+    },
+    {
+      path: "active-orders",
+      label: "Active Orders",
+      txt: "Active",
+    },
+    {
+      path: "late-orders",
+      label: "Late Orders",
+      txt: "Late",
+    },
+    {
+      path: "delivered-orders",
+      label: "Delivered Orders",
+      txt: "Delivered",
+    },
+    {
+      path: "completed-orders",
+      label: "Completed Orders",
+      txt: "Completed",
+    },
+    {
+      path: "cancelled-orders",
+      label: "Cancelled Orders",
+      txt: "Cancelled",
+    },
+    {
+      path: "starred-orders",
+      label: "Starred Orders",
+      txt: "Starred",
+    },
+  ],
+  subheaders: [
+    { txt: "GIGS", class: "subheader-one" },
+    { txt: "IMPRESSIONS" },
+    { txt: "CLICKS" },
+    { txt: "ORDERS" },
+    { txt: "CANCELLATIONS" },
+  ],
+}

@@ -4,7 +4,8 @@ export const utilService = {
     getRandomIntInclusive,
     delay,
     averageRating,
-    getReviewDate
+    getReviewDate,
+    getExploreTitle
 }
 
 function makeId(length = 6) {
@@ -54,4 +55,27 @@ function getReviewDate(createdAt) {
     if (currDate - createdAt <= 1000 * 60 * 60 * 24 * 90) return '3 months ago'
     if (currDate - createdAt <= 1000 * 60 * 60 * 24 * 180) return '6 months ago'
     if (currDate - createdAt > 1000 * 60 * 60 * 24 * 180) return '1 year ago'
+}
+const categories = [
+    'Digital Marketing',
+    'Writing & Translation',
+    'Video & Animation',
+    'Music & Audio',
+    'Programming & Tech',
+    'Business',
+    'Lifestyle',
+    'Trending',
+]
+function getExploreTitle(category) {
+    var title = (category === 'graphics-and-design') ? 'Graphics and Design' :
+        (category === 'digital-marketing') ? 'Digital Marketing' :
+            (category === 'writing-and-translation') ? 'Writing and Translation' :
+                (category === 'video-and-animation') ? 'Video and Animation' :
+                    (category === 'music-and-audio') ? 'Music and Audio' :
+                        (category === 'business') ? 'Business' :
+                            (category === 'lifestyle') ? 'Lifestyle' :
+                                'Trending'
+
+
+    return title
 }
