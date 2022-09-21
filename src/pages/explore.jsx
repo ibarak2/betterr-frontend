@@ -22,7 +22,6 @@ export const Explore = () => {
     dispatch(setFilterBy(filterBy))
     dispatch(loadGigs())
   }
-  // if (!gigs) return <h1>Loading...</h1>
   return (
     <div className="explore main-container">
       {!gigs ? (

@@ -32,12 +32,6 @@
           minmax(auto, 1400px)
           minmax(32px, 1fr);
   }
-  // @include for-wide-layout {
-  //     grid-template-columns: 
-  //         1fr
-  //         minmax(auto, $normal-breakpoint)
-  //         1fr;
-  // }
 }
 
 // .card-grid {

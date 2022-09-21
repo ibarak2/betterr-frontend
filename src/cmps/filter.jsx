@@ -23,11 +23,6 @@ export const Filter = ({ onChangeFilter }) => {
       </section>
 
       <button className="btn btn-reset-filter" onClick={register("maxPrice", "")}>reset</button>
-      {/* <select {...register("inStock")}>
-        <option value="">All</option>
-        <option value="in-stock">In stock</option>
-        <option value="out-of-stock">Out of stock</option>
-      </select> */}
     </form>
   )
 }

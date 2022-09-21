@@ -198,7 +198,6 @@
       @media (min-width: 1450px) {
         > * {
           font-size: rem(16px);
-          // display: none;
         }
       }
       li {
@@ -221,7 +220,6 @@
 .second-nav-shown {
   visibility: unset;
   background-color: $clr1;
-  // width: 100%;
 }
 @media (max-width: 650px) {
   .second-nav-shown {
