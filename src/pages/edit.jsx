@@ -5,7 +5,6 @@ import { EditBox } from "../cmps/edit-box"
 import { useForm } from "../hooks/useForm"
 import { gigService } from "../services/gig.service"
 import { uploadService } from "../services/upload.service"
-import { addGig } from "../store/gig.actions"
 
 
 

@@ -41,7 +41,7 @@ export const SecondaryNavbar = () => {
           <NavLink to="/explore?category=lifestyle">Lifestyle</NavLink>
         </li>
         <li>
-          <NavLink to="/explore?category=trending">Trending</NavLink>
+          <NavLink to="/explore">Trending</NavLink>
         </li>
       </ul>
     </nav>
