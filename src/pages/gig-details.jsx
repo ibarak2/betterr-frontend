@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { gigService } from "../services/gig.service"
-import { loadGigs } from "../store/gig.actions"
 import { GigPlans } from "../cmps/gig-plans"
 import { SellerInfo } from "../cmps/seller-info"
 import { ReviewList } from "../cmps/review-list"
 import { GigImgsCarousel } from "../cmps/gig-imgs-carousel"
 import { SellerOverview } from "../cmps/seller-overview"
 import { CssVarsProvider } from '@mui/joy/styles'
-import { userService } from "../services/user.service"
 import ReactStars from 'react-stars'
 import { utilService } from "../services/util.service"
 import { ReviewsFilter } from "../cmps/reviews-filter"
-import { useEffectUpdate } from "../hooks/useEffectUpdate"
 import { orderService } from "../services/order.service"
 import { showErrorMsg } from "../services/event-bus.service"
+import { useSelector } from "react-redux"
 
 
 
@@ -25,6 +23,7 @@ export const GigDetails = () => {
 
     const [screenWidth, setScreenWidth] = useState()
     const [gig, setGig] = useState()
+    const loggedinUser = useSelector(state => state.userModule.user)
     const params = useParams()
     const navigate = useNavigate()
 
@@ -57,11 +56,11 @@ export const GigDetails = () => {
 
         setGig({ ...gig, reviews: sortedReviews })
         console.log(gig.reviews);
+        onAddReview()
 
     }
 
     const onSelectPlan = (plan, daysToMake, price) => {
-        const loggedinUser = userService.getLoggedinUser()
         if (!loggedinUser) {
             showErrorMsg("Log in First.")
             return
@@ -86,7 +85,7 @@ export const GigDetails = () => {
         orderService.save(newOrder)
     }
 
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
     if (!gig) return <div>Loading</div>
     return (
         <CssVarsProvider>

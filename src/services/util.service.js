@@ -48,7 +48,7 @@ function averageRating(reviews) {
 
 function getReviewDate(createdAt) {
     const currDate = Date.now()
-    if (currDate - createdAt <= 1000 * 60 * 60 * 24) return 'today'
+    if (currDate - createdAt <= 1000 * 60 * 60 * 24) return 'now'
     if (currDate - createdAt <= 1000 * 60 * 60 * 24 * 7) return '1 week ago'
     if (currDate - createdAt <= 1000 * 60 * 60 * 24 * 30) return '1 month ago'
     if (currDate - createdAt <= 1000 * 60 * 60 * 24 * 60) return '2 months ago'
