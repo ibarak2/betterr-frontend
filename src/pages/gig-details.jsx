@@ -13,6 +13,7 @@ import ReactStars from 'react-stars'
 import { utilService } from "../services/util.service"
 import { ReviewsFilter } from "../cmps/reviews-filter"
 import { useEffectUpdate } from "../hooks/useEffectUpdate"
+import { AddReview } from "../cmps/add-review"
 
 
 
@@ -107,6 +108,7 @@ export const GigDetails = () => {
                                         </div>
                                     </div>
                                     <div>
+                                        <AddReview />
                                         <ReviewList reviews={gig.reviews} />
                                     </div>
                                 </section>
