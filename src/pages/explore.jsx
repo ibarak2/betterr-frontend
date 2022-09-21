@@ -22,20 +22,10 @@ export const Explore = () => {
     dispatch(setFilterBy(filterBy))
     dispatch(loadGigs())
   }
-  // if (!gigs) return <h1>Loading...</h1>
   return (
     <div className="explore main-container">
-      {!gigs ? (
-        <div>
-          <Filter onChangeFilter={onChangeFilter} />
-          <Loading />
-        </div>
-      ) : (
-        <div>
-          <Filter onChangeFilter={onChangeFilter} />
-          <GigList gigs={gigs} />
-        </div>
-      )}
+      <Filter onChangeFilter={onChangeFilter} />
+      {!gigs ? <Loading /> : <GigList gigs={gigs} />}
     </div>
   )
 }

@@ -4,7 +4,6 @@
   height: 58.5vh;
 
   .hero-main {
-    width: 672px;
     padding-left: 0;
 
     .hero-title {
@@ -32,9 +31,9 @@
           span {
             width: 16px;
             height: 16px;
-            top: 4.3vh;
-            left: -33.5vh;
-            position: relative;
+            top: 2.5vh;
+            left: 1rem;
+            position: absolute;
             z-index: 5;
             fill: #74767e;
             background: none;
@@ -89,6 +88,10 @@
     }
 
     @media (min-width: 900px) {
+      .hero-title {
+        max-width: rem(690px);
+      }
+
       .hero-form {
         height: 7vh;
         margin: 0.4vh 1.92px 15.36px;

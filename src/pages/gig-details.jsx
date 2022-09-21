@@ -30,9 +30,6 @@ export const GigDetails = () => {
         console.log('gig-details page: params.id:', params.id);
         loadGig()
 
-    }, [])
-
-    useEffect(() => {
         setScreenWidth(window.innerWidth)
         window.removeEventListener('resize', onResize)
         window.addEventListener('resize', onResize)
@@ -53,18 +50,13 @@ export const GigDetails = () => {
         }
     }
 
-
     const onChangeSortBy = (sortBy) => {
-        let sortedReviews
-        (sortBy === 'rate') ?
-            sortedReviews = gig.reviews.sort((a, b) => (b.rate > a.rate) ? 1 : ((a.rate > b.rate) ? -1 : 0)) :
-            sortedReviews = gig.reviews.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : ((a.createdAt > b.createdAt) ? -1 : 0));
+        const sortedReviews = gigService.sortReviews(gig.reviews, sortBy)
 
         setGig({ ...gig, reviews: sortedReviews })
         console.log(gig.reviews);
 
     }
-
 
     console.log(window.innerWidth);
     if (!gig) return <div>Loading</div>
@@ -96,7 +88,7 @@ export const GigDetails = () => {
                                 <SellerInfo seller={gig.owner} reviewsAmount={gig.reviews.length} />
                             </div>
                             <hr />
-                            {!gig.reviews ? <div>0 Reviews</div> :
+                            {!gig.reviews.length ? <div>0 Reviews</div> :
                                 <section className="reviews-container">
                                     <div className="flex space-between align-center">
                                         <div className="flex align-center reviews-title" >

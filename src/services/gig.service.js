@@ -10,6 +10,7 @@ export const gigService = {
   getById,
   save,
   remove,
+  sortReviews
 }
 
 
@@ -51,6 +52,13 @@ async function remove(gigId) {
   } catch (err) {
     console.log('gig.service: cannot remove gig', err);
   }
+}
+
+function sortReviews(reviews, sortBy) {
+  var sortedReviews = (sortBy === 'rate') ?
+    reviews.sort((a, b) => (b.rate > a.rate) ? 1 : ((a.rate > b.rate) ? -1 : 0)) :
+    reviews.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : ((a.createdAt > b.createdAt) ? -1 : 0));
+  return sortedReviews
 }
 
 const gigsDemoData = [

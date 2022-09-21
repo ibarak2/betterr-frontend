@@ -26,7 +26,6 @@
     width: 100%;
     margin-top: 35px;
     .gig-layout {
-      // width: 100%;
       max-width: 100%;
     }
   }
@@ -44,7 +43,6 @@
   }
 
   & .mobile-plans {
-    // width: 100%;
     .pricing {
       width: 100%;
     }
@@ -58,7 +56,6 @@
     border-radius: 4px;
     font-weight: bold;
     margin-bottom: 10px;
-    // border: 1px solid black;
     &:hover {
       background-color: darken($color: $clr2, $amount: 7%);
     }
@@ -74,7 +71,6 @@
     border-radius: 4px;
     font-weight: bold;
     margin-bottom: 10px;
-    // border: 1px solid black;
     &:hover {
       background-color: $clr5;
       color: #fff;

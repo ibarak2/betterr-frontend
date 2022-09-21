@@ -75,53 +75,125 @@ export const GigPlans = ({ plans }) => {
                 <Tab onChange={(ev) => { handleChange(ev) }}>Premium</Tab>
             </TabList>
             <TabPanel value={0} style={{ borderLeft: '1px solid #DBDCDE', borderRight: '1px solid #DBDCDE' }}>
-                <Typography level="inherit" mt={2} padding={1.5}>
-                    {plans.basicDescription}
+                <Typography
+                    fontSize="xl4"
+                    fontWeight="xl"
+                    level="inherit"
+                    mt={1}
+                    padding={1.5}>
 
+                    {plans.basicTitle}
+                </Typography>
+                <Typography
+                    level="inherit"
+                    mt={2}
+                    padding={1.5}
+                >
+
+                    {plans.basicDescription}
+                </Typography>
+                <Typography
+                    level="inherit"
+                    padding={1.5}
+                    pb={0}
+                >
+                    {plans.basicDaysToMake}{(plans.basicDaysToMake <= 1) ? " Day Delivery" : " Days Delivery"}
                 </Typography>
                 <Typography
                     textColor="black.400"
                     fontSize="xl4"
                     fontWeight="xl"
-                    my={1}
                     padding={1.5}
+                    pt={0}
                 >
                     ${plans.basicPrice}{" "}
-                    <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
+
+                    <Typography
+                        fontSize="sm"
+                        textColor="text.secondary"
+                        fontWeight="md">
                         USD
                     </Typography>
                 </Typography>
             </TabPanel>
+
             <TabPanel value={1} style={{ borderLeft: '1px solid #DBDCDE', borderRight: '1px solid #DBDCDE' }}>
-                <Typography level="inherit" mt={2} padding={1.5}>
+                <Typography
+                    fontSize="xl4"
+                    fontWeight="xl"
+                    level="inherit"
+                    mt={1}
+                    padding={1.5}>
+
+                    {plans.standardTitle}
+                </Typography>
+                <Typography
+                    level="inherit"
+                    mt={2}
+                    padding={1.5}
+                >
+
                     {plans.standardDescription}
+                </Typography>
+                <Typography
+                    level="inherit"
+                    padding={1.5}
+                    pb={0}
+
+                >
+                    {plans.standardDaysToMake}{(plans.standardDaysToMake <= 1) ? " Day Delivery" : " Days Delivery"}
                 </Typography>
                 <Typography
                     textColor="black.400"
                     fontSize="xl4"
                     fontWeight="xl"
-                    my={1}
                     padding={1.5}
+                    pt={0}
+
                 >
                     ${plans.standardPrice}{" "}
+
                     <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
                         USD
                     </Typography>
                 </Typography>
             </TabPanel>
             <TabPanel value={2} style={{ borderLeft: '1px solid #DBDCDE', borderRight: '1px solid #DBDCDE' }}>
-                <Typography level="inherit" mt={2} padding={1.5}>
+                <Typography
+                    fontSize="xl4"
+                    fontWeight="xl"
+                    level="inherit"
+                    mt={1}
+                    padding={1.5}>
+
+                    {plans.premiumTitle}
+                </Typography>
+                <Typography
+                    level="inherit"
+                    mt={2}
+                    padding={1.5}
+                >
+
                     {plans.premiumDescription}
+                </Typography>
+                <Typography
+                    level="inherit"
+                    padding={1.5}
+                    pb={0}
+
+                >
+                    {plans.premiumDaysToMake}{(plans.premiumDaysToMake <= 1) ? " Day Delivery" : " Days Delivery"}
                 </Typography>
                 <Typography
                     textColor="black.400"
                     fontSize="xl4"
                     fontWeight="xl"
-                    my={1}
                     padding={1.5}
-                >
+                    pt={0}
 
+                >
                     ${plans.premiumPrice}{" "}
+
                     <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
                         USD
                     </Typography>
@@ -131,6 +203,6 @@ export const GigPlans = ({ plans }) => {
                 <button className='continue-plans-btn' onClick={() => onSelect()}>Continue <span>→</span></button>
                 <button className='contact-plans-btn' onClick={() => onContact()}>Contact Seller</button>
             </div>
-        </Tabs >
+        </Tabs>
     );
 }

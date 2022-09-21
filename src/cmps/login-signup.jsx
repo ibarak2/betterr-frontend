@@ -5,11 +5,7 @@ import CloseIcon from "@mui/icons-material/Close"
 import { useDispatch } from "react-redux"
 import { onLogin, onSignup } from "../store/user.actions"
 
-export function LoginSignup({
-  modalOpen,
-  handleCloseModal,
-  logSign
-}) {
+export function LoginSignup({ modalOpen, handleCloseModal, logSign }) {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -24,17 +20,12 @@ export function LoginSignup({
     if (logSign === 'sign') setIsSignup(true)
   }, [logSign])
 
-  // useEffect(async () => {
-  //   const users = await userService.getUsers()
-  //   setUsers(users)
-  // }, [])
+
 
   const clearState = () => {
     setCredentials({
       username: "",
       password: "",
-      // fullname: "",
-      // imgUrl: "",
     })
     setIsSignup(false)
   }

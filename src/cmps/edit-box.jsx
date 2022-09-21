@@ -2,62 +2,13 @@ import { useState } from "react"
 import { useForm } from "../hooks/useForm"
 import { uploadService } from "../services/upload.service"
 
+export const EditBox = ({ onSubmitEdit, gig, handleChange, onAddingImg }) => {
 
 
 
-export const EditBox = ({ onSubmitEdit }) => {
-
-    const [gig, handleChange, setGig] = useForm({
-        title: '',
-        category: '',
-        basicPrice: '',
-        basicTitle: '',
-        basicDescription: '',
-        standardPrice: '',
-        standardTitle: '',
-        standardDescription: '',
-        premiumPrice: '',
-        premiumTitle: '',
-        premiumDescription: '',
-        description: '',
-        img1: '',
-        img2: '',
-        img3: ''
-    })
-
-    const onAddingImg = async (event) => {
-        const field = event.target.name
-        try {
-            const imgUrl = await uploadService.uploadImg(event)
-            setGig((prevFields) => ({ ...prevFields, [field]: imgUrl.url }))
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
-
-    // const [categoryOpen, setCategorysOpen] = useState(false)
-    // const categories = [
-    //     { value: "graphics-and-design", txt: "Graphics & Design" },
-    //     { value: "digital-marketing", txt: "Digital Marketing" },
-    //     { value: "writing-and-translation", txt: "Writing & Translation" },
-    //     { value: "video-and-animation", txt: "Video & Animation" },
-    //     { value: "music-and-audio", txt: "Music & Audio" },
-    //     { value: "programming-and-tech", txt: "Programming & Tech" },
-    //     { value: "business", txt: "Business" },
-    //     { value: "lifestyle", txt: "Lifestyle" }
-    // ]
-    // const showModal = () => {
-    //     setCategorysOpen(!categoryOpen)
-    // }
-    // const handleSelect = (ev) => {
-    //     setCategorysOpen(!categoryOpen)
-    //     handleChange({ value: ev, name: "category" })
-    // }
 
     return (
         <div className="edit-first-stage">
-
             <div className="gig-title form-input-group">
                 <div className="input-label">
                     <label><span>Gig title</span></label>
@@ -77,7 +28,6 @@ export const EditBox = ({ onSubmitEdit }) => {
                             value={gig.title}
                             onChange={handleChange}
                         />
-
                     </div>
                 </div>
 
@@ -319,9 +269,10 @@ export const EditBox = ({ onSubmitEdit }) => {
                     <h5>Images (Add at least 3 beautiful images)</h5>
                     <p>Get noticed by the right buyers with visual examples of your services.</p>
                 </header>
-                <section className="uploader-input">
+                <section className="flex uploader-input">
 
                     <div className="upload-input-container">
+                        <img className="thumbnail" src={gig.img1} ></img>
                         <label htmlFor="img1">Browse</label>
                         <input
                             hidden
@@ -332,7 +283,6 @@ export const EditBox = ({ onSubmitEdit }) => {
                             accept="image/*"
                             onChange={(ev) => onAddingImg(ev)}
                         />
-                        <img className="thumbnail" src={gig.img1} ></img>
                     </div>
 
                     <div className="upload-input-container">
