@@ -2,39 +2,13 @@ import { useState } from "react"
 import { useForm } from "../hooks/useForm"
 import { uploadService } from "../services/upload.service"
 
-export const EditBox = ({ onSubmitEdit }) => {
+export const EditBox = ({ onSubmitEdit, gig, handleChange, onAddingImg }) => {
 
-    const [gig, handleChange, setGig] = useForm({
-        title: '',
-        category: '',
-        basicPrice: '',
-        basicTitle: '',
-        basicDescription: '',
-        standardPrice: '',
-        standardTitle: '',
-        standardDescription: '',
-        premiumPrice: '',
-        premiumTitle: '',
-        premiumDescription: '',
-        description: '',
-        img1: '',
-        img2: '',
-        img3: ''
-    })
 
-    const onAddingImg = async (event) => {
-        const field = event.target.name
-        try {
-            const imgUrl = await uploadService.uploadImg(event)
-            setGig((prevFields) => ({ ...prevFields, [field]: imgUrl.url }))
-        } catch (err) {
-            console.log(err);
-        }
-    }
+
 
     return (
         <div className="edit-first-stage">
-
             <div className="gig-title form-input-group">
                 <div className="input-label">
                     <label><span>Gig title</span></label>
@@ -54,7 +28,6 @@ export const EditBox = ({ onSubmitEdit }) => {
                             value={gig.title}
                             onChange={handleChange}
                         />
-
                     </div>
                 </div>
 

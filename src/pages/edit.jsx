@@ -106,7 +106,6 @@ export const Edit = () => {
                 gig.img3
             ]
         }
-        console.log(gig._id);
         if (gig._id) {
             gigToAdd._id = gig._id
         }
