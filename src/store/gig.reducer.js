@@ -1,6 +1,7 @@
 const initialState = {
   gigs: [],
   cart: [],
+  gigsByOwner: [],
   lastRemovedGig: null,
   filterBy: { maxPrice: "", daysToMake: "", rate: "", category: "" },
 }
@@ -8,6 +9,7 @@ const initialState = {
 export function gigReducer(state = initialState, action) {
   var newState = state
   var gigs
+  var gigsByOwner
   var cart
   var filterBy
   var category
@@ -15,6 +17,9 @@ export function gigReducer(state = initialState, action) {
   switch (action.type) {
     case "SET_GIGS":
       return { ...state, gigs: action.gigs }
+    
+    case "SET_GIGS_BY_OWNER":
+      return { ...state, gigsByOwner: action.gigsByOwner }
 
     case "REMOVE_GIG":
       const lastRemovedGig = state.gigs.find((gig) => gig._id === action.gigId)

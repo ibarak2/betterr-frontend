@@ -1,4 +1,5 @@
 import React from 'react'
+import { UserMsg } from './user-msg'
 
 export function AppFooter() {
   return (
@@ -95,6 +96,8 @@ export function AppFooter() {
           </ul>
         </div>
       </div>
+
+      <UserMsg />
     </footer>
   )
 }

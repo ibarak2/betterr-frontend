@@ -1,19 +1,33 @@
-export function SellerGigsList({user}) {
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useSearchParams } from "react-router-dom"
+import { loadGigsByOwner } from "../store/gig.actions"
+import { SellerGigs } from "./sellerGigs"
 
-  console.log('user', user);
+export function SellerGigsList() {
+
+  const gigsByOwner = useSelector((state) => state.gigModule.gigsByOwner)
+  const loggedInUser = useSelector((state) => state.userModule.user.fullname)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(loadGigsByOwner(loggedInUser))
+  }, [searchParams])
+
   return (
     <section className="seller-gigs-wrapper">
       <div className="seller-gigs">
         <div className="seller-gigs-filter">
           <ul className="seller-gigs-status">
             <li className="active">ACTIVE GIGS</li>
-            <li className="">DRAFTS</li>
+            {/* <li className="">DRAFTS</li> */}
           </ul>
         </div>
 
         <div className="gig-card-base seller-gig-card">
           <span>
-            <div className="flex btn-share-container">
+            {/* <div className="flex btn-share-container">
               <svg
                 width="12"
                 height="14"
@@ -26,41 +40,20 @@ export function SellerGigsList({user}) {
                   fill="#1DBF73"
                 ></path>
               </svg>
-            </div>
+            </div> */}
             <ul className="clean-list gig-settings">
               <li>
-                <a
-                  href="edit/:id"
-                  className="preview"
-                  target="_blank"
-                >
+                <a href="edit/:id" className="preview" target="_blank">
                   Preview
                 </a>
               </li>
               <li>
-                <a
-                  href="edit/:id"
-                  className="edit"
-                  target="_blank"
-                >
+                <a href="edit/:id" className="edit" target="_blank">
                   Edit
                 </a>
               </li>
               <li>
-                <a
-                  href="edit/:id"
-                  className="update-pricing"
-                  target="_blank"
-                >
-                  Update Pricing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="edit/:id"
-                  className="remove"
-                  target="_blank"
-                >
+                <a href="edit/:id" className="remove" target="_blank">
                   Remove Gig
                 </a>
               </li>
@@ -83,10 +76,7 @@ export function SellerGigsList({user}) {
                 <h3>I will never gonna give you up</h3>
               </a>
             </div>
-            <a
-              href="#!"
-              className="btn-gig-menu"
-            >
+            <a href="#!" className="btn-gig-menu">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="23"
@@ -106,10 +96,13 @@ export function SellerGigsList({user}) {
           </span>
         </div>
 
-        <a
-          className="gig-card-base add-new-gig"
-          href="/edit"
-        >
+        <div className="gig-list">
+          {gigsByOwner.map((gig) => {
+            return <SellerGigs key={gig._id} {...gig} />
+          })}
+        </div>
+
+        <a className="gig-card-base add-new-gig" href="/edit">
           Create a New Gig
         </a>
       </div>

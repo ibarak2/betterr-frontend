@@ -7,13 +7,14 @@ import { LoginSignup } from './login-signup.jsx'
 import { SecondaryNavbar } from './secondary-navbar'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import { SideDrawer } from './side-drawer'
+import { userService } from '../services/user.service.js'
 
 export function AppHeader() {
 
   //---- States ----//
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  
   const [logSign, setLogSign] = useState()
   const [modalOpen, setModalOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState({
@@ -144,8 +145,8 @@ export function AppHeader() {
                     <NavLink to="/chat">
                       <MailOutlineIcon />
                     </NavLink>
-                    <NavLink to="/back-office">Orders</NavLink>
-                    <NavLink to={`/profile/u101`}>Profile</NavLink>
+                    <NavLink to="/backoffice">Orders</NavLink>
+                    <NavLink to={`/profile/${loggedinUser._id}`}>Profile</NavLink>
                     <a onClick={() => dispatch(onLogout())}>Logout</a>
                     {loggedinUser.isAdmin && (
                       <NavLink to="/admin">Admin</NavLink>

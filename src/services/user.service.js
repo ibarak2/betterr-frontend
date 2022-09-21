@@ -54,6 +54,7 @@ async function getReviewsById(userId) {
 
     return user.reviews
 }
+
 function remove(userId) {
     return storageService.remove('user', userId)
     // return httpService.delete(`user/${userId}`)
