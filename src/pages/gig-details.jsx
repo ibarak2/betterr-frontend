@@ -30,9 +30,6 @@ export const GigDetails = () => {
         console.log('gig-details page: params.id:', params.id);
         loadGig()
 
-    }, [])
-
-    useEffect(() => {
         setScreenWidth(window.innerWidth)
         window.removeEventListener('resize', onResize)
         window.addEventListener('resize', onResize)
