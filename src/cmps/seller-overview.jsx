@@ -2,7 +2,6 @@ import ReactStars from 'react-stars'
 
 
 
-
 export const SellerOverview = ({ seller, reviewsAmount }) => {
 
 

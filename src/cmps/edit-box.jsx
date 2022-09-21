@@ -2,9 +2,6 @@ import { useState } from "react"
 import { useForm } from "../hooks/useForm"
 import { uploadService } from "../services/upload.service"
 
-
-
-
 export const EditBox = ({ onSubmitEdit }) => {
 
     const [gig, handleChange, setGig] = useForm({
@@ -34,26 +31,6 @@ export const EditBox = ({ onSubmitEdit }) => {
             console.log(err);
         }
     }
-
-
-    // const [categoryOpen, setCategorysOpen] = useState(false)
-    // const categories = [
-    //     { value: "graphics-and-design", txt: "Graphics & Design" },
-    //     { value: "digital-marketing", txt: "Digital Marketing" },
-    //     { value: "writing-and-translation", txt: "Writing & Translation" },
-    //     { value: "video-and-animation", txt: "Video & Animation" },
-    //     { value: "music-and-audio", txt: "Music & Audio" },
-    //     { value: "programming-and-tech", txt: "Programming & Tech" },
-    //     { value: "business", txt: "Business" },
-    //     { value: "lifestyle", txt: "Lifestyle" }
-    // ]
-    // const showModal = () => {
-    //     setCategorysOpen(!categoryOpen)
-    // }
-    // const handleSelect = (ev) => {
-    //     setCategorysOpen(!categoryOpen)
-    //     handleChange({ value: ev, name: "category" })
-    // }
 
     return (
         <div className="edit-first-stage">

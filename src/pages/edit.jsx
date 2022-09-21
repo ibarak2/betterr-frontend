@@ -108,7 +108,6 @@ export const Edit = () => {
         }
         console.log(gig._id);
         if (gig._id) {
-            console.log("good");
             gigToAdd._id = gig._id
         }
         console.log(gigToAdd);
@@ -132,7 +131,6 @@ export const Edit = () => {
             console.log(err);
         }
     }
-
 
     return (
         <div className='edit'>

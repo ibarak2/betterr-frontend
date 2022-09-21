@@ -53,7 +53,6 @@ export const GigDetails = () => {
         }
     }
 
-
     const onChangeSortBy = (sortBy) => {
         let sortedReviews
         (sortBy === 'rate') ?
@@ -64,7 +63,6 @@ export const GigDetails = () => {
         console.log(gig.reviews);
 
     }
-
 
     console.log(window.innerWidth);
     if (!gig) return <div>Loading</div>
@@ -96,7 +94,7 @@ export const GigDetails = () => {
                                 <SellerInfo seller={gig.owner} reviewsAmount={gig.reviews.length} />
                             </div>
                             <hr />
-                            {!gig.reviews ? <div>0 Reviews</div> :
+                            {!gig.reviews.length ? <div>0 Reviews</div> :
                                 <section className="reviews-container">
                                     <div className="flex space-between align-center">
                                         <div className="flex align-center reviews-title" >
