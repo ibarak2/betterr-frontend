@@ -6,16 +6,34 @@ import TabPanel from '@mui/joy/TabPanel';
 import Typography from '@mui/joy/Typography';
 import { useState } from 'react';
 
-export const GigPlans = ({ plans }) => {
+export const GigPlans = ({ plans, onSelectPlan }) => {
 
     const [plan, setPlan] = useState('Basic')
 
     const handleChange = (ev) => {
         setPlan(ev.target.textContent)
+        console.log(ev.target.textContent);
     }
 
-    const onSelect = (ev) => {
-        console.log(plan)
+    const onSelect = () => {
+        let rank
+        let daysToMake
+        let price
+        if (plan === 'Basic') {
+            rank = plans.basicTitle
+            daysToMake = plans.basicDaysToMake
+            price = plans.basicPrice
+        } else if (plan === "Standard") {
+            rank = plans.standardTitle
+            daysToMake = plans.standardDaysToMake
+            price = plans.standardPrice
+        } else {
+            rank = plans.premiumTitle
+            daysToMake = plans.premiumDaysToMake
+            price = plans.premiumPrice
+        }
+
+        onSelectPlan(rank, daysToMake, price)
     }
 
     const onContact = () => {

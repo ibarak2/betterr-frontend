@@ -13,6 +13,8 @@ import ReactStars from 'react-stars'
 import { utilService } from "../services/util.service"
 import { ReviewsFilter } from "../cmps/reviews-filter"
 import { useEffectUpdate } from "../hooks/useEffectUpdate"
+import { orderService } from "../services/order.service"
+import { showErrorMsg } from "../services/event-bus.service"
 
 
 
@@ -58,12 +60,37 @@ export const GigDetails = () => {
 
     }
 
+    const onSelectPlan = (plan, daysToMake, price) => {
+        const loggedinUser = userService.getLoggedinUser()
+        if (!loggedinUser) {
+            showErrorMsg("Log in First.")
+            return
+        }
+        const newOrder = {
+            seller: {
+                _id: gig.owner._id,
+                fullname: gig.owner.fullname
+            },
+            buyer: {
+                _id: loggedinUser._id,
+                fullname: loggedinUser.fullname
+            },
+            gig: {
+                _id: gig._id,
+                title: gig.title,
+                daysToMake,
+                price,
+                plan
+            }
+        }
+        orderService.save(newOrder)
+    }
+
     console.log(window.innerWidth);
     if (!gig) return <div>Loading</div>
     return (
         <CssVarsProvider>
             <section className="main-gig-details">
-
                 <div className='gig-details'>
                     <section className="gig-description">
                         <div className="gig-layout">
@@ -74,7 +101,10 @@ export const GigDetails = () => {
                             </div>
                             <div className="mobile-plans">
                                 {(screenWidth < 900) &&
-                                    <GigPlans plans={gig.plans} />
+                                    <GigPlans
+                                        plans={gig.plans}
+                                        onSelectPlan={onSelectPlan}
+                                    />
 
                                 }
                             </div>
@@ -115,7 +145,7 @@ export const GigDetails = () => {
                     </section>
                     <section className="plans">
                         {(screenWidth > 900) &&
-                            <GigPlans plans={gig.plans} />
+                            <GigPlans plans={gig.plans} onSelectPlan={onSelectPlan} />
 
                         }
                     </section>

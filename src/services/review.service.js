@@ -2,7 +2,7 @@
 import { storageService } from './async-storage.service'
 import { userService } from './user.service'
 import { socketService, SOCKET_EVENT_REVIEW_ADDED, SOCKET_EVENT_REVIEW_ABOUT_YOU } from './socket.service'
-import { getActionRemoveReview, getActionAddReview } from '../store/review.actions'
+import { getActionRemoveReview, getActionAddReview } from '../store/order.actions'
 import { showSuccessMsg } from '../services/event-bus.service'
 
 

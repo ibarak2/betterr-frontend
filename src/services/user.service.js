@@ -1,7 +1,6 @@
 import { storageService } from "./async-storage.service"
 // import { httpService } from './http.service'
 
-import { getActionSetWatchedUser } from "../store/review.actions"
 import {
     socketService,
     SOCKET_EVENT_USER_UPDATED,
@@ -59,6 +58,7 @@ async function getReviewsById(userId) {
 
     return user.reviews
 }
+
 function remove(userId) {
     return storageService.remove("user", userId)
     // return httpService.delete(`user/${userId}`)

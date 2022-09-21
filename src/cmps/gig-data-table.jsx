@@ -3,8 +3,10 @@ import { GigTableSubheader } from "./gig-table-subheader"
 import { SmallModal } from "./small-modal"
 import { GigTableDetails } from "./gig-table-details"
 import { sortListByDays } from "../services/back-office.service"
-export function GigDataTable({ title }) {
+import { useSelector } from "react-redux"
+export function GigDataTable({ title, subheaders, isBuyer }) {
   const [daysOpen, setDaysOpen] = useState(false)
+  const orders = useSelector(state => state.orderModule.orders)
 
   const showModal = () => {
     setDaysOpen(true)
@@ -32,9 +34,9 @@ export function GigDataTable({ title }) {
         </div>
       </div>
       <GigTableSubheader />
-      <GigTableDetails />
-      <GigTableDetails />
-      <GigTableDetails />
+      {orders.map(order => {
+        return <GigTableDetails gigDetails={order} />
+      })}
     </div>
   )
 }

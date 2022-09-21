@@ -59,7 +59,6 @@ export function SideDrawer() {
     </Box>
   )
 
-  //---- component rendering ----//
   return (
     <Fragment>
       <div

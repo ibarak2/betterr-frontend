@@ -2,8 +2,31 @@
 
 export function EditProfile({user}) {
 
+  // const [modalOpen, setModalOpen] = userState(false)
+  // const [username, setUserName] = userState()
+
+  // const handleOpenModal = (username) => {
+  //   setUserName(username)
+  //   setModalOpen(true)
+  // }
+
+  // const handleCloseModal = (ev) => {
+  //   if (
+  //     ev === 'close-btn' ||
+  //     ev.target.className.includes('change-username-modal')
+  //   ) {
+  //     setUserName(user.username)
+  //     setModalOpen(false)
+  //   }
+  // }
+
   return (
     <section className="user-info-wrapper">
+      {/* <UserInfoModal 
+        modalOpen={modalOpen}
+        handleCloseModal={handleCloseModal}
+        username={username}
+      /> */}
       <div className="user-info">
         <div className="seller-card seller_card-package" data-reactroot="">
           <div className="user-online">
@@ -54,7 +77,11 @@ export function EditProfile({user}) {
               </div>
               <div className="change-name-wrapper">
                 <div className="pen-wrapper">
-                  <button className="change-username-btn">
+                  <button className="change-username-btn"
+                  // onClick={() => {
+                  //   handleOpenModal()
+                  // }}
+                  >
                     <svg
                       width="16"
                       height="16"
@@ -73,9 +100,9 @@ export function EditProfile({user}) {
               <a
                 className="user-profile-btn"
                 text="seller_card.view_as_buyer"
-                href="/zrizony?public_mode=true"
+                
               >
-                Preview Fiverr Profile
+                Switch to buyer
               </a>
             </div>
           </div>

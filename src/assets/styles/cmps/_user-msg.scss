@@ -1,23 +1,20 @@
 .user-msg {
-    color:$clr2;
-    padding: 10px;
-    font-size: 1.4em;
-    position: fixed;
-    top:0;
-    right:0;
-    background-color: $clr2;
-}
-.user-msg button {
-    float:right;
-    border:0;
-    border-radius: 50%;
-    margin: 5px;
-    background-color: $clr2;
+  color: $clr5;
+  padding: 10px;
+  font-weight: 500;
+  border-radius: 10px;
+  position: fixed;
+  top: 14vh;
+  right: 0.5rem;
+  background-color: $clr2;
+  z-index: 999;
 }
 
 .user-msg.success {
-    background-color: rgb(41, 189, 73);
+  background-color: #ebf7ee;
+  border: 2px #bde4c7 solid;
 }
 .user-msg.danger {
-    background-color: rgb(216, 59, 59);
+  background-color: #fcedea;
+  border: 2px #f4c4ba solid;
 }
