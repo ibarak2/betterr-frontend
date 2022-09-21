@@ -1,7 +1,8 @@
-export function GigTableDetails() {
+export function GigTableDetails({ gigDetails }) {
+  console.log('gigDetails', gigDetails);
   return (
     <div className="table-details table-row-header">
-      No active gigs to show.
+      {gigDetails.gig.title}
     </div>
   )
 }
