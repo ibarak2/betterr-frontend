@@ -1,5 +1,4 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 export function GigTableSubheader() {
   const isBuyer = useSelector((state) => state.userModule.isBuyer)

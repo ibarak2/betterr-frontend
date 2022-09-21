@@ -14,7 +14,7 @@ export function AppHeader() {
   //---- States ----//
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  
+
   const [logSign, setLogSign] = useState()
   const [modalOpen, setModalOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState({
@@ -145,7 +145,7 @@ export function AppHeader() {
                     <NavLink to="/chat">
                       <MailOutlineIcon />
                     </NavLink>
-                    <NavLink to="/backoffice">Orders</NavLink>
+                    <NavLink to="/back-office/active-orders">Orders</NavLink>
                     <NavLink to={`/profile/${loggedinUser._id}`}>Profile</NavLink>
                     <a onClick={() => dispatch(onLogout())}>Logout</a>
                     {loggedinUser.isAdmin && (

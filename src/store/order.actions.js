@@ -1,4 +1,5 @@
 import { showSuccessMsg } from '../services/event-bus.service'
+import { orderService } from '../services/order.service'
 import { reviewService } from '../services/review.service'
 import { userService } from '../services/user.service'
 
@@ -13,14 +14,14 @@ export function getActionSetWatchedUser(user) {
   return { type: 'SET_WATCHED_USER', user }
 }
 
-export function loadReviews() {
+export function loadOrders(isBuyer) {
   return async dispatch => {
     try {
-      const reviews = await reviewService.query()
-      dispatch({ type: 'SET_REVIEWS', reviews })
-
+      const orders = await orderService.query(isBuyer)
+      console.log(orders);
+      dispatch({ type: 'SET_ORDERS', orders })
     } catch (err) {
-      console.log('ReviewActions: err in loadReviews', err)
+      console.log('OrderActions: err in loadOrders', err)
     }
   }
 }

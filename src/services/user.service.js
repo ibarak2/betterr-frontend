@@ -1,7 +1,6 @@
 import { storageService } from "./async-storage.service"
 // import { httpService } from './http.service'
 
-import { getActionSetWatchedUser } from "../store/review.actions"
 import {
     socketService,
     SOCKET_EVENT_USER_UPDATED,
