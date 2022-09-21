@@ -51,10 +51,7 @@ export const GigDetails = () => {
     }
 
     const onChangeSortBy = (sortBy) => {
-        let sortedReviews
-        (sortBy === 'rate') ?
-            sortedReviews = gig.reviews.sort((a, b) => (b.rate > a.rate) ? 1 : ((a.rate > b.rate) ? -1 : 0)) :
-            sortedReviews = gig.reviews.sort((a, b) => (b.createdAt > a.createdAt) ? 1 : ((a.createdAt > b.createdAt) ? -1 : 0));
+        const sortedReviews = gigService.sortReviews(gig.reviews, sortBy)
 
         setGig({ ...gig, reviews: sortedReviews })
         console.log(gig.reviews);
