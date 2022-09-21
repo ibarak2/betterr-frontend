@@ -48,26 +48,20 @@
   }
   
   & .slider-img:hover {
-    // transform: scale(105%);
-    // transition: transform 0.3s;
     cursor: pointer;
   }
   & .slick-slider:hover {
     .slick-prev {
-      // transform: translateX(25px);
       left: 0;
       display: block !important;
 
     }
     .slick-next {
-      // transform: translateX(-25px);
       right: 5px;
       display: block !important;
 
     }
-    // .simple-slider-btn {
-    //  transform:scale(110%);
-    // }
+
   }
 
   & .reviews-amount {
