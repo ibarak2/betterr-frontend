@@ -3,7 +3,7 @@ import { GigTableSubheader } from "./gig-table-subheader"
 import { SmallModal } from "./small-modal"
 import { GigTableDetails } from "./gig-table-details"
 import { sortListByDays } from "../services/back-office.service"
-export function GigDataTable({ title, subheaders, isBuyer }) {
+export function GigDataTable({ title }) {
   const [daysOpen, setDaysOpen] = useState(false)
 
   const showModal = () => {
@@ -32,7 +32,9 @@ export function GigDataTable({ title, subheaders, isBuyer }) {
         </div>
       </div>
       <GigTableSubheader />
-      <GigTableDetails gigDetails />
+      <GigTableDetails />
+      <GigTableDetails />
+      <GigTableDetails />
     </div>
   )
 }
