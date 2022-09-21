@@ -111,6 +111,28 @@ export function checkout() {
   }
 }
 
+export function loadGigsByOwner(owner) {
+  console.log('owner', owner)
+
+  return async (dispatch, getState) => {
+    try {
+      const gigsByOwner = await gigService.query({ owner })
+      console.log("gigsByOwner", gigsByOwner)
+      
+      dispatch({
+        type: "SET_GIGS_BY_OWNER",
+        gigsByOwner,
+      })
+      console.log("Gigs by owner:", gigsByOwner)
+
+    } catch (err) {
+      showErrorMsg("Cannot load gigs")
+      console.log("Cannot load gigs", err)
+    }
+  }
+}
+
+
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
 export function onRemoveGigOptimistic(gigId) {

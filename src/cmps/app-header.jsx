@@ -7,6 +7,7 @@ import { LoginSignup } from './login-signup.jsx'
 import { SecondaryNavbar } from './secondary-navbar'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import { SideDrawer } from './side-drawer'
+import { userService } from '../services/user.service.js'
 
 export function AppHeader() {
 
@@ -145,7 +146,7 @@ export function AppHeader() {
                       <MailOutlineIcon />
                     </NavLink>
                     <NavLink to="/back-office/active-orders">Orders</NavLink>
-                    <NavLink to={`/profile/u101`}>Profile</NavLink>
+                    <NavLink to={`/profile/${loggedinUser._id}`}>Profile</NavLink>
                     <a onClick={() => dispatch(onLogout())}>Logout</a>
                     {loggedinUser.isAdmin && (
                       <NavLink to="/admin">Admin</NavLink>
