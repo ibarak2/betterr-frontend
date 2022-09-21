@@ -20,17 +20,12 @@ export function LoginSignup({ modalOpen, handleCloseModal, logSign }) {
     if (logSign === 'sign') setIsSignup(true)
   }, [logSign])
 
-  // useEffect(async () => {
-  //   const users = await userService.getUsers()
-  //   setUsers(users)
-  // }, [])
+
 
   const clearState = () => {
     setCredentials({
       username: "",
       password: "",
-      // fullname: "",
-      // imgUrl: "",
     })
     setIsSignup(false)
   }
