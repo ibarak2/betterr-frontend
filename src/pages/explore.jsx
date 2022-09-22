@@ -15,11 +15,9 @@ export const Explore = () => {
   useEffect(() => {
     dispatch(setCategory(searchParams.get('category')))
     dispatch(loadGigs())
-    console.log('GIGS', gigs)
   }, [searchParams])
 
   const onChangeFilter = (filterBy) => {
-    console.log('changed')
     dispatch(setFilterBy(filterBy))
     dispatch(loadGigs())
   }

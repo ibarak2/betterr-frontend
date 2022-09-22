@@ -28,32 +28,27 @@ export const BackOfficeApp = ({ header }) => {
   }
 
   const ToggleUserState = () => {
-    console.log("isBuyer", isBuyer)
     //dispatch(toggleIsBuyer())
     setIsBuyer(!isBuyer)
     // navigate("active-orders")
   }
 
   const onAccept = (orderId) => {
-    console.log("Acc");
     dispatch(setOrderStatus(orderId, 'in-progress'))
     showSuccessMsg('Order Accepted')
   }
 
   const onCancel = (orderId) => {
-    console.log(orderId, 'cancelllllllll')
     dispatch(setOrderStatus(orderId, 'canceled'))
     showErrorMsg('Order Canceled')
   }
 
   const onReady = (orderId) => {
-    console.log("rea");
 
 
   }
 
   const onDelivered = (orderId) => {
-    console.log("deli");
     dispatch(setOrderStatus(orderId, 'completed'))
     showSuccessMsg('Order Delivered')
 

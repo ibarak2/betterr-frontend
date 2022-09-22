@@ -6,7 +6,7 @@ import { useForm } from '../hooks/useForm'
 import { gigService } from '../services/gig.service'
 import { uploadService } from '../services/upload.service'
 import { addGig } from '../store/gig.actions'
-import { showSuccessMsg } from '../services/event-bus.service'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { UserMsg } from '../cmps/user-msg'
 
 export const Edit = () => {
@@ -100,17 +100,16 @@ export const Edit = () => {
       gigToAdd._id = gig._id
       showSuccessMsg('Your gig has been updated')
     }
-    // console.log(gigToAdd)
     onAddGig(gigToAdd)
     showSuccessMsg('Your gig has been uploaded')
-    
+
   }
 
   const onAddGig = async (gigToAdd) => {
     try {
       await gigService.save(gigToAdd)
     } catch (err) {
-      // console.log(err)
+      showErrorMsg('Cannot add gig')
     }
   }
 
@@ -120,7 +119,7 @@ export const Edit = () => {
       const imgUrl = await uploadService.uploadImg(event)
       setGig((prevFields) => ({ ...prevFields, [field]: imgUrl.url }))
     } catch (err) {
-      // console.log(err)
+      showErrorMsg('Cannot add gig')
     }
   }
 

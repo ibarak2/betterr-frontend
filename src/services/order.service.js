@@ -13,11 +13,10 @@ export const orderService = {
 
 async function query(isBuyer = {}) {
     try {
-        console.log(isBuyer);
         const orders = await httpService.get(BASE_URL, { params: isBuyer })
         return orders
     } catch (err) {
-        console.log('order.service: cannot get orders');
+        return ('order.service: cannot get orders');
     }
 }
 
@@ -30,17 +29,15 @@ async function save(order) {
             saveOrder = await httpService.post(BASE_URL, order)
         }
     } catch (err) {
-        console.log(err);
+        return (err);
     }
 }
 
 async function updateStatus(orderId, status) {
-    console.log("orderId", orderId);
-    console.log("status", status);
     try {
         const savedOrder = await httpService.put(BASE_URL + `status/${orderId}`, { status })
         return savedOrder
     } catch (err) {
-        console.log(err);
+        return (err);
     }
 }

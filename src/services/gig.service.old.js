@@ -18,10 +18,8 @@ export const gigService = {
 window.cs = gigService
 
 async function query(filterBy) {
-  console.log("FILTER", filterBy)
 
   let gigs = await storageService.query(filterBy)
-  console.log("GIGS", gigs)
   if (!gigs.length || !gigs) {
     loadDemoData()
     gigs = gigsDemoData
@@ -35,7 +33,6 @@ async function query(filterBy) {
   // }
 
   if (maxPrice) {
-    console.log("MAX PRICE", maxPrice)
 
     gigs = gigs.filter((gig) => gig.price <= maxPrice)
   }
@@ -75,8 +72,6 @@ function getEmptyGig() {
   }
 }
 
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
 
 const gigsDemoData = [
   {
@@ -204,6 +199,5 @@ async function loadDemoData() {
   const gGigs = (await storageService.query(STORAGE_KEY)) || []
   if (!gGigs || !gGigs.length) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(gigsDemoData))
-    console.log("Loaded New gigs Demo data")
   }
 }

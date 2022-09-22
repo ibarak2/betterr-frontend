@@ -8,7 +8,6 @@ export const storageService = {
 }
 
 function query(entityType, delay = 600) {
-  console.log("FILTER ENTITY", entityType)
   var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
   return new Promise((resolve, reject) => {
