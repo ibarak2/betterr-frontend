@@ -35,6 +35,7 @@ export function GigDataTable({ orders, title, subheaders, isBuyer, onAccept, onC
       <GigTableSubheader />
 
       {orders && orders.map(order => {
+        console.log('Order ' , order);
         return <GigTableDetails
           order={order}
           isBuyer={isBuyer}
