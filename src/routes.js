@@ -49,11 +49,11 @@ const routes = [
         component: <AdminApp />,
         label: "Admin Only",
     },
-    {
-        path: "back-office/*",
-        component: <BackOfficeApp header={"Gigs"} />,
-        label: "Back Office",
-    },
+    // {
+    //     path: "back-office/*",
+    //     component: <BackOfficeApp header={"Gigs"} />,
+    //     label: "Back Office",
+    // },
     {
         path: "manage-orders/*",
         component: <BackOfficeApp header={"Manage Orders"} />,

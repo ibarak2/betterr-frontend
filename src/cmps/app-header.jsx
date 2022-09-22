@@ -61,6 +61,11 @@ export function AppHeader() {
     console.log(ev)
   }
 
+  const logout = () => {
+    dispatch(onLogout())
+    navigate('/')
+  }
+
   return (
     <header className="full app-header">
       <LoginSignup
@@ -143,6 +148,9 @@ export function AppHeader() {
                     <NavLink to="/chat">
                       <MailOutlineIcon />
                     </NavLink>
+                    <NavLink to="/manage-orders/active-orders">Orders</NavLink>
+                    <NavLink to={`/profile/${loggedinUser._id}`}>Profile</NavLink>
+                    <a onClick={logout}>Logout</a>
                     <NavLink to="/back-office/active-orders">
                       <svg
                         className="header-notification-bell"

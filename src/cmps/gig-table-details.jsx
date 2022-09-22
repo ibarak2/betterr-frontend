@@ -49,10 +49,10 @@ export function GigTableDetails({ order, isBuyer, onAccept, onCancel, onReady, o
           open={open}
           handleOpenModal={handleOpenModal}
         /> */}
-        {order.status !== 'canceled' || order.status !== 'completed' && <button className="cancel-btn" onClick={() => onCancel(order._id)}>Cancel</button>}
-        {!isBuyer && order.status === 'pending' && <button onClick={() => onAccept()}>Accept</button>}
+        {!isBuyer && order.status === 'pending' && <button onClick={() => onAccept(order._id)}>Accept</button>}
         {/* {isBuyer && order.status === '' &&<button onClick={onReady}>Ready</button>} */}
-        {isBuyer && order.status === 'in-progress' && <button onClick={onDelivered}>Delivered</button>}
+        {isBuyer && order.status === 'in-progress' && <button onClick={() => onDelivered(order._id)}>Delivered</button>}
+        {!(order.status === 'canceled' || order.status === 'completed') && <button className="cancel-btn" onClick={() => onCancel(order._id)}>Cancel</button>}
       </div>
     </div>
   )

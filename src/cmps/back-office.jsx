@@ -1,10 +1,8 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { NavLink, Outlet } from "react-router-dom"
 
-export function BackOffice({ header, ToggleUserState }) {
+export function BackOffice({ header, ToggleUserState, isBuyer }) {
   const users = useSelector((state) => state.userModule.users)
-  const isBuyer = useSelector((state) => state.userModule.isBuyer)
   const tableByUserState = useSelector(
     (state) => state.userModule.tableByUserState
   )

@@ -12,7 +12,7 @@ import { utilService } from "../services/util.service"
 import { ReviewsFilter } from "../cmps/reviews-filter"
 import { AddReview } from "../cmps/add-review"
 import { orderService } from "../services/order.service"
-import { showErrorMsg } from "../services/event-bus.service"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { useSelector } from "react-redux"
 
 
@@ -76,6 +76,7 @@ export const GigDetails = () => {
             }
         }
         orderService.save(newOrder)
+        showSuccessMsg("Order Recieved")
     }
 
     const onChangeSortBy = (sortBy) => {
