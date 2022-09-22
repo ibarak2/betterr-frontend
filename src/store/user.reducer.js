@@ -27,11 +27,9 @@ export function userReducer(state = initialState, action) {
           ? backofficeSellerOrderRoutes
           : backofficeBuyerOrderRoutes,
       }
-      console.log("GETTING HERE ", newState)
       break
 
     case "GET_BACKOFFICE_NAVLINKS":
-      console.log("GETTING HERE ", action)
       newState = { ...state, isBuyer: !state.isBuyer }
       break
 
@@ -63,6 +61,5 @@ export function userReducer(state = initialState, action) {
   }
   // For debug:
   window.userState = newState
-  //   console.log("State:", newState)
   return newState
 }

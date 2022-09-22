@@ -29,7 +29,6 @@ export const GigDetails = () => {
     const params = useParams()
 
     useEffect(() => {
-        console.log('gig-details page: params.id:', params.id);
         loadGig()
 
         setScreenWidth(window.innerWidth)
@@ -49,7 +48,6 @@ export const GigDetails = () => {
             setGig(gig)
             setReviews([...gig.reviews])
         } catch (err) {
-            console.log('Failed to load gig');
         }
     }
 
@@ -102,12 +100,10 @@ export const GigDetails = () => {
             setReviews([review, ...reviews])
 
         } catch (err) {
-            console.log(err);
         }
 
     }
 
-    // console.log(window.innerWidth);
     if (!gig) return <div>Loading</div>
     return (
         <CssVarsProvider>

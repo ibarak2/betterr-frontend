@@ -29,7 +29,6 @@ export function loadOrders(isBuyer) {
   return async dispatch => {
     try {
       const orders = await orderService.query(isBuyer)
-      console.log(orders);
       dispatch({ type: 'SET_ORDERS', orders })
     } catch (err) {
       console.log('OrderActions: err in loadOrders', err)

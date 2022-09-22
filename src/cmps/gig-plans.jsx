@@ -5,6 +5,7 @@ import Tab, { tabClasses } from '@mui/joy/Tab';
 import TabPanel from '@mui/joy/TabPanel';
 import Typography from '@mui/joy/Typography';
 import { useState } from 'react';
+import { showErrorMsg } from '../services/event-bus.service'
 
 export const GigPlans = ({ plans, onSelectPlan }) => {
 
@@ -12,7 +13,6 @@ export const GigPlans = ({ plans, onSelectPlan }) => {
 
     const handleChange = (ev) => {
         setPlan(ev.target.textContent)
-        console.log(ev.target.textContent);
     }
 
     const onSelect = () => {
@@ -37,7 +37,7 @@ export const GigPlans = ({ plans, onSelectPlan }) => {
     }
 
     const onContact = () => {
-        console.log("contact!");
+        showErrorMsg('still in development...')
     }
 
     return (

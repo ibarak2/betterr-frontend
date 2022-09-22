@@ -5,7 +5,6 @@ export function GigTableSubheader() {
   const subheaders = useSelector(
     (state) => state.userModule.tableByUserState.subheaders
   )
-  console.log("subheaders", subheaders, isBuyer)
   return (
     <div className="flex align-center subheader table-subheader">
       <div className="flex subheader-one">

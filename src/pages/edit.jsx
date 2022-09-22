@@ -100,7 +100,6 @@ export const Edit = () => {
       gigToAdd._id = gig._id
       showSuccessMsg('Your gig has been updated')
     }
-    // console.log(gigToAdd)
     onAddGig(gigToAdd)
     showSuccessMsg('Your gig has been uploaded')
     
@@ -110,7 +109,6 @@ export const Edit = () => {
     try {
       await gigService.save(gigToAdd)
     } catch (err) {
-      // console.log(err)
     }
   }
 
@@ -120,7 +118,6 @@ export const Edit = () => {
       const imgUrl = await uploadService.uploadImg(event)
       setGig((prevFields) => ({ ...prevFields, [field]: imgUrl.url }))
     } catch (err) {
-      // console.log(err)
     }
   }
 

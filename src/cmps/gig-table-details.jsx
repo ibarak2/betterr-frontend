@@ -4,7 +4,6 @@ import { UserAvatar } from "./user-avatar"
 
 export function GigTableDetails({ order, isBuyer, onAccept, onCancel, onReady, onDelivered }) {
   const onSelect = () => {
-    console.log("onSelect")
     setOpen(false)
   }
 
