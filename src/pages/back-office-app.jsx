@@ -28,9 +28,7 @@ export const BackOfficeApp = ({ header }) => {
   }
 
   const ToggleUserState = () => {
-    //dispatch(toggleIsBuyer())
     setIsBuyer(!isBuyer)
-    // navigate("active-orders")
   }
 
   const onAccept = (orderId) => {
