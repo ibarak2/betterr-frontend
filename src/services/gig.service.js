@@ -20,6 +20,7 @@ async function query(filterBy = {}) {
     const gigs = await httpService.get(BASE_URL, { params: filterBy })
     return gigs
   } catch (err) {
+    return ('gig.service: cannot get gigs', err);
   }
 }
 
@@ -28,6 +29,7 @@ async function getById(gigId) {
     const gig = await httpService.get(BASE_URL + gigId)
     return gig
   } catch (err) {
+    return ('gig.service: cannot get gig', err);
   }
 }
 async function save(gig) {
@@ -47,6 +49,7 @@ async function remove(gigId) {
     const removedGig = await httpService.delete(BASE_URL, gigId)
     return removedGig
   } catch (err) {
+    return ('gig.service: cannot remove gig', err);
   }
 }
 
@@ -55,6 +58,7 @@ async function addReview(gigId, review) {
     const updatedReview = await httpService.put(BASE_URL + `review/${gigId}`, review)
     return updatedReview
   } catch (err) {
+    return (err);
   }
 }
 

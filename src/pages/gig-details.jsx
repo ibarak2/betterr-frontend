@@ -48,6 +48,7 @@ export const GigDetails = () => {
             setGig(gig)
             setReviews([...gig.reviews])
         } catch (err) {
+            showErrorMsg('failed to load gigs')
         }
     }
 
@@ -79,15 +80,15 @@ export const GigDetails = () => {
 
     const onChangeSortBy = (sortBy) => {
         const sortedReviews = gigService.sortReviews(reviews, sortBy)
-
         setReviews([...sortedReviews])
-
     }
 
     const onAddReview = async (userReview) => {
-
         try {
-            if (!loggedinUser) return
+            if (!loggedinUser || gig.owner._id === loggedinUser._id) {
+                showErrorMsg('Log in first')
+                return
+            }
 
             const newReview = {
                 fullname: loggedinUser.fullname,
@@ -100,8 +101,8 @@ export const GigDetails = () => {
             setReviews([review, ...reviews])
 
         } catch (err) {
+            showErrorMsg('failed to add review')
         }
-
     }
 
     if (!gig) return <div>Loading</div>
@@ -137,7 +138,7 @@ export const GigDetails = () => {
                             <hr />
                             {!reviews.length ? <div>
                                 0 Reviews
-                                {loggedinUser && <AddReview onAddReview={onAddReview} imgUrl={loggedinUser.imgUrl} />}
+                                <AddReview onAddReview={onAddReview} imgUrl={(loggedinUser) ? loggedinUser.imgUrl : "https://cvhrma.org/wp-content/uploads/2015/07/default-profile-photo.jpg"} />
                             </div> :
                                 <section className="reviews-container">
                                     <div className="flex space-between align-center">
@@ -157,7 +158,7 @@ export const GigDetails = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        {loggedinUser && <AddReview onAddReview={onAddReview} imgUrl={loggedinUser.imgUrl} />}
+                                        <AddReview onAddReview={onAddReview} imgUrl={(loggedinUser) ? loggedinUser.imgUrl : "https://cvhrma.org/wp-content/uploads/2015/07/default-profile-photo.jpg"} />
                                         <ReviewList reviews={reviews} />
                                     </div>
                                 </section>

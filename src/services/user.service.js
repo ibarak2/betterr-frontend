@@ -12,7 +12,6 @@ import { httpService } from "./http.service"
 const STORAGE_KEY_LOGGEDIN_USER = "loggedinUser"
 const STORAGE_KEY = "users"
 
-loadDemoData()
 
 export const userService = {
     login,
@@ -73,11 +72,9 @@ async function update(user) {
 }
 
 async function login(userCred) {
-    console.log("userCred:", userCred)
     const user = await httpService.post("auth/login", userCred)
     // const user = users.find(user => user.username === userCred.username)
 
-    console.log("user.service:user:", user)
     if (user) {
         // socketService.login(user._id)
         return saveLocalUser(user)
