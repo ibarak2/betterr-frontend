@@ -11,7 +11,6 @@ import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 
 export const BackOfficeApp = ({ header }) => {
   const navigate = useNavigate()
-  //const isBuyer = useSelector((state) => state.userModule.isBuyer)
   const [isBuyer, setIsBuyer] = useState(false)
   const tableByUserState = useSelector(
     (state) => state.userModule.tableByUserState
