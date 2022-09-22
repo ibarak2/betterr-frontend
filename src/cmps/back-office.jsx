@@ -1,20 +1,13 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, Outlet } from "react-router-dom"
-import { loadUsers } from "../store/user.actions"
 
 export function BackOffice({ header, ToggleUserState }) {
-
-  const dispatch = useDispatch()
   const users = useSelector((state) => state.userModule.users)
   const isBuyer = useSelector((state) => state.userModule.isBuyer)
   const tableByUserState = useSelector(
     (state) => state.userModule.tableByUserState
   )
-
-  useEffect(() => {
-    // console.log(dispatch(loadUsers()))
-  }, [])
 
   const handleToggleUserState = () => {
     ToggleUserState()
