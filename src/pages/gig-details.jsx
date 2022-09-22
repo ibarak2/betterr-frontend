@@ -140,7 +140,10 @@ export const GigDetails = () => {
                                 <SellerInfo seller={gig.owner} reviewsAmount={reviews.length} />
                             </div>
                             <hr />
-                            {!reviews.length ? <div>0 Reviews</div> :
+                            {!reviews.length ? <div>
+                                0 Reviews
+                                {loggedinUser && <AddReview onAddReview={onAddReview} imgUrl={loggedinUser.imgUrl} />}
+                            </div> :
                                 <section className="reviews-container">
                                     <div className="flex space-between align-center">
                                         <div className="flex align-center reviews-title" >
