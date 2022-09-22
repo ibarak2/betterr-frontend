@@ -58,7 +58,6 @@ export function AppHeader() {
 
   const onSearch = (ev) => {
     ev.preventDefault()
-    console.log(ev)
   }
 
   const logout = () => {

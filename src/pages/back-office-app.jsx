@@ -27,6 +27,7 @@ export const BackOfficeApp = ({ header }) => {
   }
 
   const ToggleUserState = () => {
+    //dispatch(toggleIsBuyer())
     setIsBuyer(!isBuyer)
   }
 

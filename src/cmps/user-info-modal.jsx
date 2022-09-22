@@ -11,7 +11,6 @@ export function UserInfoModal({ onChangeUserName, modalOpen, handleCloseModal })
 
   const onSubmitUserName = (ev) => {
     ev.preventDefault()
-    console.log('new name', userName)
     onChangeUserName(userName)
   }
 

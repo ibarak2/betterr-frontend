@@ -8,12 +8,10 @@ export const SellerGigs = ({ title, imgUrls, plans, _id }) => {
 
   const onOpenModal = () => {
     setGigSettings('active')
-    console.log('gigSetting', gigSetting);
   }
 
   const onCloseModal = () => {
     setGigSettings('hidden')
-    console.log('gigSetting', gigSetting);
   }
 
   return (
