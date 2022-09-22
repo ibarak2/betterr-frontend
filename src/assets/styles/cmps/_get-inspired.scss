@@ -11,6 +11,10 @@
       font-size: 28px;
       line-height: 130%;
       padding-bottom: 20px;
+
+      @media (min-width: 900px) {
+        padding-right: 180px;
+      }
     }
 
     .get-inspired-carousel {
@@ -154,5 +158,11 @@
     color: #446ee7;
     display: block;
     padding-top: 16px;
+
+    @media (min-width: 951px) {
+      position: absolute;
+      top: -1vh;
+      right: 32px;
+    }
   }
 }

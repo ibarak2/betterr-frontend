@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom'
 export const UserProfile = () => {
 
   const user = userService.getLoggedinUser()
-  // const params = useParams()
 
   return (
     <div className="user-profile-wrapper">

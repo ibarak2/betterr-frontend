@@ -214,15 +214,51 @@
         }
 
         .monthley-revenue {
-            margin-bottom: 0;
-            border-top: 1px solid #dadbdd;
-            padding: 20px 0;
+          margin-bottom: 0;
+          border-top: 1px solid #dadbdd;
+          padding: 20px 0;
 
-            .revenue-status img {
-                width: 13px;
-                margin-right: 12px;
-            }
+          .revenue-status img {
+            width: 13px;
+            margin-right: 12px;
+          }
         }
+      }
+    }
+  }
+
+  div.login-signup {
+    height: 9vh;
+    width: rem(210px);
+    top: 22vh;
+    left: 7.6%;
+    background-color: #86a1944b;
+    border-radius: 4px;
+    position: absolute;
+    .change-username-form {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      > * {
+        width: 100%;
+        text-align: center;
+        font-family: inherit;
+      }
+      input {
+        padding: 5px;
+      }
+      input:focus {
+        outline: 0;
+      }
+      button {
+        text-transform: uppercase;
+        font-weight: 600;
+        border-radius: 4px;
+        width: rem(50px);
+        align-self: center;
+      }
+      button:hover {
+        background-color: $clr3;
       }
     }
   }

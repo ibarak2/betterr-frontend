@@ -1,32 +1,10 @@
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { userService } from '../services/user.service'
 
-
-export function EditProfile({user}) {
-
-  // const [modalOpen, setModalOpen] = userState(false)
-  // const [username, setUserName] = userState()
-
-  // const handleOpenModal = (username) => {
-  //   setUserName(username)
-  //   setModalOpen(true)
-  // }
-
-  // const handleCloseModal = (ev) => {
-  //   if (
-  //     ev === 'close-btn' ||
-  //     ev.target.className.includes('change-username-modal')
-  //   ) {
-  //     setUserName(user.username)
-  //     setModalOpen(false)
-  //   }
-  // }
-
+export function EditProfile({ user }) {
   return (
     <section className="user-info-wrapper">
-      {/* <UserInfoModal 
-        modalOpen={modalOpen}
-        handleCloseModal={handleCloseModal}
-        username={username}
-      /> */}
       <div className="user-info">
         <div className="seller-card seller_card-package" data-reactroot="">
           <div className="user-online">
@@ -77,11 +55,7 @@ export function EditProfile({user}) {
               </div>
               <div className="change-name-wrapper">
                 <div className="pen-wrapper">
-                  <button className="change-username-btn"
-                  // onClick={() => {
-                  //   handleOpenModal()
-                  // }}
-                  >
+                  <button className="change-username-btn">
                     <svg
                       width="16"
                       height="16"
@@ -93,17 +67,6 @@ export function EditProfile({user}) {
                   </button>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="flex user-profile-btn-wrapper">
-            <div className="flex column preview-profile-btn">
-              <a
-                className="user-profile-btn"
-                text="seller_card.view_as_buyer"
-                
-              >
-                Switch to buyer
-              </a>
             </div>
           </div>
           <div className="user-stats-wrapper">
@@ -145,17 +108,21 @@ export function EditProfile({user}) {
                   </span>
                   Member since
                 </span>
-                <b>Jun 2020</b>
+                <b>Sept 2022</b>
               </li>
-                <li className="flex monthley-revenue">
-                    <span className="revenue-status">
-                        <img className="dollar-sign" src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663623917/Fiverr-Sprint-4/imgs/icons/icons8-money-13_il7ket.png" alt="" />
-                    Earned this month
-                    </span>
-                    <span className="current-revenue">
-                        <b>$420</b>
-                    </span>
-                </li>
+              <li className="flex monthley-revenue">
+                <span className="revenue-status">
+                  <img
+                    className="dollar-sign"
+                    src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663623917/Fiverr-Sprint-4/imgs/icons/icons8-money-13_il7ket.png"
+                    alt=""
+                  />
+                  Earned this month
+                </span>
+                <span className="current-revenue">
+                  <b>$420</b>
+                </span>
+              </li>
             </ul>
           </div>
         </div>

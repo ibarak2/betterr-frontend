@@ -71,13 +71,13 @@
       }
 
       .gig-settings {
+        display: none;
         background-color: $clr1;
         position: absolute;
         z-index: 10;
         width: 100%;
         height: 100%;
         font-size: 14px;
-        opacity: 0;
         transition: opacity 0.3s ease;
 
         li {
@@ -96,7 +96,7 @@
           .preview::before {
             content: '\1F441';
           }
-          .edit::before {
+          .edit-gig::before {
             content: '\1F589';
           }
           .update-pricing::before {
@@ -115,7 +115,6 @@
             bottom: 0;
             width: 100%;
             border-top: 1px solid #ddd;
-
             &:hover {
               background-color: #f7f7f7;
             }
@@ -124,6 +123,13 @@
           &:hover {
             background-color: #f7f7f7;
           }
+        }
+
+        &.active {
+          display: block;
+        }
+        &.hidden {
+          display: none;
         }
       }
 
@@ -157,8 +163,9 @@
       .btn-gig-menu {
         line-height: 100%;
         float: left;
-        margin-left: 13px;
+        margin-left: 0px;
         margin-top: 8px;
+        background-color: transparent;
       }
 
       .gig-min-price {

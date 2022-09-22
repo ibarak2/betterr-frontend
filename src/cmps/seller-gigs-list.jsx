@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useSearchParams } from "react-router-dom"
 import { loadGigsByOwner } from "../store/gig.actions"
-import { SellerGigs } from "./sellerGigs"
+import { SellerGigs } from "./seller-gigs"
 
 export function SellerGigsList() {
 

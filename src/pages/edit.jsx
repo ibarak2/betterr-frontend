@@ -44,12 +44,9 @@ export const Edit = () => {
     const gigId = params.id
     if (!gigId) return
     try {
-      // console.log(gigId)
       const gig = await gigService.getById(gigId)
-      // console.log(gig)
       onSetGig(gig)
     } catch (err) {
-      // console.log(err)
     }
   }, [])
 

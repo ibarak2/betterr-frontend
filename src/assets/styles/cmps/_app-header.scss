@@ -137,6 +137,17 @@
           border: 1px $clr2 solid;
         }
       }
+      .logged-in {
+        a .header-avatar {
+          height: 3vh;
+          border-radius: 50%;
+        }
+        .header-notification-bell {
+          path {
+            stroke: $clr1;
+          }
+        }
+      }
     }
   }
 }
@@ -153,6 +164,17 @@
       .nav-join {
         color: $clr2;
         border: 1px $clr2 solid;
+      }
+    }
+    .logged-in {
+      a .header-avatar {
+        height: 3vh;
+        border-radius: 50%;
+      }
+      .header-notification-bell {
+        path {
+          stroke: #62646A;
+        }
       }
     }
   }

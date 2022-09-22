@@ -1,24 +1,33 @@
+import { useState } from "react"
 
-// export function UserInfoModal({ modalOpen, handleCloseModal }) {
-//   const [name, setName] = userState('')
+export function UserInfoModal({ onChangeUserName, modalOpen, handleCloseModal }) {
+  const [userName, setUserName] = useState('')
 
-//   const handleChange = (ev) => {
-//     setName(ev.target.value)
-//   }
+  const handleChange = (ev) => {
+    const value = ev.target.value
 
-//   if (!modalOpen) return <span></span>
-//   return (
-//     <div className="login-signup">
-//       <form className="change-username-form" onSubmit={handleSubmit}>
-//         <input
-//           type="text"
-//           name="name"
-//           onChange={handleChange}
-//           value={name}
-//           placeholder="insert new username"
-//         />
-//         <button>ok</button>
-//       </form>
-//     </div>
-//   )
-// }
+    setUserName(value)
+  }
+
+  const onSubmitUserName = (ev) => {
+    ev.preventDefault()
+    console.log('new name', userName)
+    onChangeUserName(userName)
+  }
+
+  if (!modalOpen) return <span></span>
+  return (
+    <div className="login-signup">
+      <form className="change-username-form" onSubmit={onSubmitUserName} handleChange={handleCloseModal}>
+        <input
+          type="text"
+          name="name"
+          onChange={handleChange}
+          value={userName}
+          placeholder="insert new username"
+        />
+        <button className="btn btn-close-modal" >ok</button>
+      </form>
+    </div>
+  )
+}
