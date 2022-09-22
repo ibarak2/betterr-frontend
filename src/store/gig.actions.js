@@ -4,19 +4,15 @@ import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 // Action Creators:
 export function loadGigs() {
-  // console.log("Getting to Dispatch")
   return async (dispatch, getState) => {
     try {
 
       const { filterBy } = getState().gigModule
-      console.log("filterBy", filterBy);
       const gigs = await gigService.query(filterBy)
-      console.log("gigs", gigs)
       dispatch({
         type: "SET_GIGS",
         gigs,
       })
-      console.log("Gigs from DB:", gigs)
     } catch (err) {
       showErrorMsg("Cannot load gigs")
       console.log("Cannot load gigs", err)
@@ -28,7 +24,6 @@ export function removeGig(gigId) {
   return async (dispatch) => {
     try {
       await gigService.remove(gigId)
-      console.log("Deleted Succesfully!")
       dispatch(removeGig(gigId))
       showSuccessMsg("Gig removed")
     } catch (err) {
@@ -42,7 +37,6 @@ export function addGig(gig) {
   return async (dispatch) => {
     try {
       const savedGig = await gigService.save(gig)
-      console.log("savedGig", savedGig)
       dispatch({ type: "ADD_GIG", gig: savedGig })
       const newGig = undefined
       return newGig
@@ -53,7 +47,6 @@ export function addGig(gig) {
 }
 
 export function updateGig(gig) {
-  console.log("log from UPDATE_TOY dispatch", gig)
   return async (dispatch) => {
     try {
       const savedGig = await gigService.save(gig)
@@ -112,18 +105,15 @@ export function checkout() {
 }
 
 export function loadGigsByOwner(owner) {
-  console.log('owner', owner)
 
   return async (dispatch, getState) => {
     try {
       const gigsByOwner = await gigService.query({ owner })
-      console.log("gigsByOwner", gigsByOwner)
       
       dispatch({
         type: "SET_GIGS_BY_OWNER",
         gigsByOwner,
       })
-      console.log("Gigs by owner:", gigsByOwner)
 
     } catch (err) {
       showErrorMsg("Cannot load gigs")

@@ -9,11 +9,9 @@ export function GigDataTable({ orders, title, subheaders, isBuyer, onAccept, onC
 
   const showModal = () => {
     setDaysOpen(true)
-    console.log("showModal")
   }
   const handleSelect = (ev) => {
     setDaysOpen(false)
-    console.log("handleSelect")
   }
   return (
     <div className="data-table">

@@ -58,12 +58,11 @@ export function AppHeader() {
 
   const onSearch = (ev) => {
     ev.preventDefault()
-    console.log(ev)
   }
 
   const logout = () => {
     dispatch(onLogout())
-    navigate('/')
+    navigate('/?nav=home')
   }
 
   return (
@@ -78,8 +77,8 @@ export function AppHeader() {
           searchParams.get('nav') !== 'home'
             ? 'main-container main-header header-white'
             : offset > 0
-            ? 'main-container main-header header-white'
-            : 'main-container main-header'
+              ? 'main-container main-header header-white'
+              : 'main-container main-header'
         }
       >
         <div className="flex max-width-container main-header-wrapper">
@@ -95,8 +94,8 @@ export function AppHeader() {
                   searchParams.get('nav') !== 'home'
                     ? 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png'
                     : offset > 0
-                    ? 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png'
-                    : 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663666624/Fiverr-Sprint-4/imgs/beterr./logo-white_fnqy6y.png'
+                      ? 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png'
+                      : 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663666624/Fiverr-Sprint-4/imgs/beterr./logo-white_fnqy6y.png'
                 }
                 alt="betterr."
               />
@@ -108,8 +107,8 @@ export function AppHeader() {
               searchParams.get('nav') !== 'home'
                 ? 'header-search header-search-shown'
                 : offset >= 190
-                ? 'header-search header-search-shown'
-                : 'header-search'
+                  ? 'header-search header-search-shown'
+                  : 'header-search'
             }
           >
             <form className="flex" onSubmit={(ev) => onSearch(ev)}>
@@ -200,8 +199,8 @@ export function AppHeader() {
           searchParams.get('nav') !== 'home'
             ? 'main-container flex second-nav-shown second-nav'
             : offset >= 150
-            ? 'main-container flex second-nav-shown second-nav'
-            : 'main-container flex max-width-container second-nav'
+              ? 'main-container flex second-nav-shown second-nav'
+              : 'main-container flex max-width-container second-nav'
         }
       >
         <SecondaryNavbar />

@@ -6,7 +6,6 @@ export function loadUsers() {
     try {
       dispatch({ type: "LOADING_START" })
       const users = await userService.getUsers()
-      // console.log("USERS", users)
 
       dispatch({ type: "SET_USERS", users })
     } catch (err) {
@@ -31,9 +30,7 @@ export function removeUser(userId) {
 export function onLogin(credentials) {
   return async (dispatch) => {
     try {
-      console.log(credentials)
       const user = await userService.login(credentials)
-      console.log("user", user)
       dispatch({
         type: "SET_USER",
         user,
@@ -91,7 +88,6 @@ export function toggleIsBuyer() {
   return async (dispatch) => {
     try {
       // const user = await userService.getById(userId)
-      // console.log('GETTING TO ACTION ');
       
       dispatch({ type: "TOGGLE_IS_BUYER" })
     } catch (err) {

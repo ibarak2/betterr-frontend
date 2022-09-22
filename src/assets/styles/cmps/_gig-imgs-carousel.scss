@@ -5,42 +5,85 @@
   margin-bottom: 100px;
 }
 
-.carousel {
-  & .thumb {
-    border: none !important;
-    opacity: 0.5;
-    cursor: pointer;
+.gig-description {
+  .gig-layout
+    .carousel-container
+    .gig-imgs-carousel
+    .carousel-root
+    .carousel-slider {
+    display: flex;
   }
-  & .selected {
-    opacity: 1 !important;
+  .slider-wrapper {
+    height: 42vh;
   }
-  & .thumbs-wrapper {
-    margin: 0 !important;
-  }
-  & img {
-    object-fit: contain;
-    max-height: 427px;
-    max-width: 712px;
-    transform: scale(110%);
-  }
-  & .img {
-    border: 1px solid #efeff0;
-    width: 100%;
-    &:hover {
-      transform: scale(105%);
-      transition: transform 0.5s;
+
+  // .thumbs-wrapper
+  // .thumb {
+  //   border: none !important;
+  //   opacity: 0.5;
+  //   cursor: pointer;
+  //   width: 80px;
+  //   height: 54px;
+  // }
+  // & .selected {
+  //   opacity: 1 !important;
+  // }
+  // & .thumbs-wrapper {
+  //   margin: 0 !important;
+  // }
+  // .thumb img {
+  //     object-fit: fill;
+  // }
+  .thumbs-wrapper {
+    .thumbs {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      .thumb {
+        width: 80px;
+        height: 50px;
+        opacity: 0.5;
+        display: flex;
+        align-items: center;
+        &.selected {
+          opacity: 1;
+        }
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
     }
   }
-  & .carousel-btn {
+  .slide {
+    display: flex;
+    justify-content: center;
+    height: 42vh;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      scale: 105%;
+    }
+  }
+  .carousel-btn {
+    background-color: #fff;
+    background: $clr1;
     position: absolute;
-    z-index: 20;
-    top: calc(50% - 15px);
+    z-index: 10;
+    top: 50%;
     width: 48px;
     height: 48px;
-    cursor: pointer;
-    border-radius: 28px;
-    background-color: #fff;
-    color: black;
+    margin-top: -24px;
+    text-align: center;
+    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    border: 0;
+    font-size: 16px;
+    line-height: 100%;
+    border-radius: 28px;
+
+    svg {
+      fill: $clr5;
+    }
   }
 }

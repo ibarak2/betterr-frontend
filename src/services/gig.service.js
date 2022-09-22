@@ -37,6 +37,8 @@ async function save(gig) {
   if (gig._id) {
     savedGig = await httpService.put(BASE_URL + gig._id, gig)
   } else {
+    // Later, owner is set by the backend
+    // gig.owner = userService.getLoggedinUser()
     savedGig = await httpService.post(BASE_URL, gig)
   }
   return savedGig
@@ -188,3 +190,10 @@ const gigsDemoData = [
     likedByUsers: ["mini-user"],
   },
 ]
+
+// async function loadDemoData() {
+//   const gGigs = (await storageService.query(STORAGE_KEY)) || []
+//   if (!gGigs || !gGigs.length) {
+//     localStorage.setItem(STORAGE_KEY, JSON.stringify(gigsDemoData))
+//   }
+// }

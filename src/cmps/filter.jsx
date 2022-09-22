@@ -3,8 +3,8 @@ import { useFormRegister } from "../hooks/useFormRegister"
 export const Filter = ({ onChangeFilter }) => {
   const [register] = useFormRegister(
     {
-      maxPrice: "",
-      daysToMake: "",
+      basicPrice: "",
+      basicDaysToMake: "",
       rate: "",
       category: ""
     },
@@ -13,16 +13,16 @@ export const Filter = ({ onChangeFilter }) => {
   return (
     <form className="filter">
       <section>
-        <input {...register("maxPrice", "number")} placeholder="Max Price" />
+        <input {...register("basicPrice", "number")} placeholder="Max Price" />
       </section>
       <section>
-        <input {...register("daysToMake", "number")} placeholder="Delivery Time" />
+        <input {...register("basicDaysToMake", "number")} placeholder="Delivery Time" />
       </section>
       <section>
         <input {...register("rate", "number")} placeholder="Rating" />
       </section>
 
-      <button className="btn btn-reset-filter" onClick={register("maxPrice", "")}>reset</button>
+      <button className="btn btn-reset-filter" onClick={() => register("maxPrice", "")}>reset</button>
     </form>
   )
 }

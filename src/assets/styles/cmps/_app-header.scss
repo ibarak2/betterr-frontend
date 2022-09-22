@@ -118,7 +118,6 @@
         color: $clr2;
       }
       .signin-signup {
-        align-items: center;
         li {
           cursor: pointer;
         }
@@ -138,13 +137,12 @@
         }
       }
       .logged-in {
-        a .header-avatar {
-          border-radius: 50%;
-          width: 28px;
-        }
-        .header-notification-bell {
-          path {
-            stroke: $clr1;
+        a {
+          height: fit-content;
+          .header-avatar {
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
           }
         }
       }
@@ -167,13 +165,12 @@
       }
     }
     .logged-in {
-      a .header-avatar {
-        border-radius: 50%;
-        width: 28px;
-      }
-      .header-notification-bell {
-        path {
-          stroke: #62646A;
+      a {
+        height: fit-content;
+        .header-avatar {
+          border-radius: 50%;
+          width: 28px;
+          height: 28px;
         }
       }
     }

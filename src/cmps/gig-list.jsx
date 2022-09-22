@@ -7,7 +7,6 @@ export const GigList = () => {
   const dispatch = useDispatch()
   // useEffect(() => {
   //   dispatch(loadGigs())
-  //   console.log("GIGS", gigs)
   // }, [])
   if (!gigs) return <h1>Loading...</h1>
   return (
