@@ -68,10 +68,12 @@ export const backofficeBuyerOrderRoutes = {
     { class: "subheader-one", txt: "" },
     { txt: "ORDER DATE" },
     { txt: "DUE ON" },
-    { txt: "TOTAL" },
+    { txt: "price" },
     { txt: "STATUS" },
+    { txt: "Actions" },
   ],
 }
+
 export const backofficeSellerOrderRoutes = {
   routes: [
     {
@@ -112,9 +114,9 @@ export const backofficeSellerOrderRoutes = {
   ],
   subheaders: [
     { txt: "GIGS", class: "subheader-one" },
-    { txt: "IMPRESSIONS" },
-    { txt: "CLICKS" },
-    { txt: "ORDERS" },
-    { txt: "CANCELLATIONS" },
+    { txt: "Due on" },
+    { txt: "Price" },
+    { txt: "status" },
+    { txt: "Actions" },
   ],
 }

@@ -11,8 +11,10 @@
   font-weight: 300;
   top: -2px;
   right: 10px;
-  width: 100%;
+  width: max-content;
+  text-transform: uppercase;
   li {
+    width: 100%;
     cursor: pointer;
     padding: 6px 10px;
   }
@@ -27,6 +29,7 @@
   width: fit-content;
   font-size: 14px;
   font-weight: 300;
+  text-transform: uppercase;
   padding: 0 0 0 rem(10px);
   border: 1px solid $clr14;
   color: $clr15;
