@@ -10,6 +10,7 @@ import { CssVarsProvider } from '@mui/joy/styles'
 import ReactStars from 'react-stars'
 import { utilService } from "../services/util.service"
 import { ReviewsFilter } from "../cmps/reviews-filter"
+import { AddReview } from "../cmps/add-review"
 import { orderService } from "../services/order.service"
 import { showErrorMsg } from "../services/event-bus.service"
 import { useSelector } from "react-redux"
@@ -56,7 +57,6 @@ export const GigDetails = () => {
 
         setGig({ ...gig, reviews: sortedReviews })
         console.log(gig.reviews);
-        onAddReview()
 
     }
 
@@ -136,6 +136,7 @@ export const GigDetails = () => {
                                         </div>
                                     </div>
                                     <div>
+                                        <AddReview />
                                         <ReviewList reviews={gig.reviews} />
                                     </div>
                                 </section>
