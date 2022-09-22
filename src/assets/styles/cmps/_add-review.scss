@@ -39,4 +39,13 @@
       background-color: $clr3;
     }
   }
+
+  div {
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    margin: 0;
+    justify-self: end;
+    align-items: flex-end;
+    height: 3vh;
+  }
 }
