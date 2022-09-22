@@ -4,9 +4,8 @@ import { SmallModal } from "./small-modal"
 import { GigTableDetails } from "./gig-table-details"
 import { sortListByDays } from "../services/back-office.service"
 import { useSelector } from "react-redux"
-export function GigDataTable({ title, subheaders, isBuyer, onAccept, onCancel, onReady, onDelivered }) {
+export function GigDataTable({ orders, title, subheaders, isBuyer, onAccept, onCancel, onReady, onDelivered }) {
   const [daysOpen, setDaysOpen] = useState(false)
-  const orders = useSelector((state) => state.orderModule.orders)
 
   const showModal = () => {
     setDaysOpen(true)

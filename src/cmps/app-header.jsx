@@ -63,6 +63,11 @@ export function AppHeader() {
     console.log(ev)
   }
 
+  const logout = () => {
+    dispatch(onLogout())
+    navigate('/')
+  }
+
   return (
     <header className="full app-header">
       <LoginSignup
@@ -145,9 +150,9 @@ export function AppHeader() {
                     <NavLink to="/chat">
                       <MailOutlineIcon />
                     </NavLink>
-                    <NavLink to="/back-office/active-orders">Orders</NavLink>
+                    <NavLink to="/manage-orders/active-orders">Orders</NavLink>
                     <NavLink to={`/profile/${loggedinUser._id}`}>Profile</NavLink>
-                    <a onClick={() => dispatch(onLogout())}>Logout</a>
+                    <a onClick={logout}>Logout</a>
                     {loggedinUser.isAdmin && (
                       <NavLink to="/admin">Admin</NavLink>
                     )}
