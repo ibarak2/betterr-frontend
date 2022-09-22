@@ -86,19 +86,19 @@ export const GigDetails = () => {
     }
 
     const onAddReview = async (userReview) => {
-        
+
         try {
             if (!loggedinUser) return
-           
+
             const newReview = {
                 fullname: loggedinUser.fullname,
                 txt: userReview.txt,
                 rate: userReview.rate,
                 imgUrl: loggedinUser.imgUrl
             }
-            
-            // const review = await gigService.addReview(gig._id, newReview)
-            // setReviews([review, ...reviews])
+
+            const review = await gigService.addReview(gig._id, newReview)
+            setReviews([review, ...reviews])
 
         } catch (err) {
             console.log(err);

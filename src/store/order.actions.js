@@ -14,6 +14,18 @@ export function getActionSetWatchedUser(user) {
   return { type: 'SET_WATCHED_USER', user }
 }
 
+export function setOrderStatus(orderId, status) {
+  return async dispatch => {
+    try {
+      const order = await orderService.updateStatus(orderId, status)
+      console.log(order);
+      return order
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
 export function loadOrders(isBuyer) {
   return async dispatch => {
     try {

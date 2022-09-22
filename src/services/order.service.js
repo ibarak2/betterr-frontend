@@ -6,7 +6,8 @@ const BASE_URL = 'order/'
 
 export const orderService = {
     query,
-    save
+    save,
+    updateStatus
 }
 
 
@@ -28,6 +29,17 @@ async function save(order) {
         } else {
             saveOrder = await httpService.post(BASE_URL, order)
         }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function updateStatus(orderId, status) {
+    console.log("orderId", orderId);
+    console.log("status", status);
+    try {
+        const savedOrder = await httpService.put(BASE_URL + `status/${orderId}`, { status })
+        return savedOrder
     } catch (err) {
         console.log(err);
     }

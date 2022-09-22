@@ -4,7 +4,7 @@ import { SmallModal } from "./small-modal"
 import { GigTableDetails } from "./gig-table-details"
 import { sortListByDays } from "../services/back-office.service"
 import { useSelector } from "react-redux"
-export function GigDataTable({ title, subheaders, isBuyer }) {
+export function GigDataTable({ title, subheaders, isBuyer, onAccept, onCancel, onReady, onDelivered }) {
   const [daysOpen, setDaysOpen] = useState(false)
   const orders = useSelector((state) => state.orderModule.orders)
 
@@ -34,10 +34,18 @@ export function GigDataTable({ title, subheaders, isBuyer }) {
         </div>
       </div>
       <GigTableSubheader />
-      {/* {orders.map(order => {
-        return <GigTableDetails gigDetails={order} />
-      })} */}
-      <GigTableDetails gigDetails  isBuyer={isBuyer}/>
+
+      {orders && orders.map(order => {
+        return <GigTableDetails
+          order={order}
+          isBuyer={isBuyer}
+          onAccept={onAccept}
+          onCancel={onCancel}
+          onReady={onReady}
+          onDelivered={onDelivered}
+        />
+      })}
+
     </div>
   )
 }

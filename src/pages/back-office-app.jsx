@@ -6,7 +6,7 @@ import { toggleIsBuyer } from "../store/user.actions"
 import { useEffect } from "react"
 import { httpService } from "../services/http.service"
 import { orderService } from "../services/order.service"
-import { loadOrders } from "../store/order.actions"
+import { loadOrders, setOrderStatus } from "../store/order.actions"
 
 export const BackOfficeApp = ({ header }) => {
   const navigate = useNavigate()
@@ -29,19 +29,48 @@ export const BackOfficeApp = ({ header }) => {
     dispatch(toggleIsBuyer())
     navigate("active-orders")
   }
+
+  const onAccept = () => {
+    console.log("Acc");
+  }
+
+  const onCancel = (orderId) => {
+    dispatch(setOrderStatus(orderId, 'canceled'))
+
+  }
+
+  const onReady = () => {
+    console.log("rea");
+
+  }
+
+  const onDelivered = () => {
+    console.log("deli");
+
+  }
   if (!tableByUserState) return <div>Loading...</div>
   return (
     <Routes>
       <Route
         path="/"
         element={
-          <BackOffice header={header} ToggleUserState={ToggleUserState} />
+          <BackOffice
+            header={header}
+            ToggleUserState={ToggleUserState}
+
+          />
         }
       >
         {tableByUserState.routes.map((route) => (
           <Route
             key={route.path}
-            element={<GigDataTable title={route.label} />}
+            element={<GigDataTable
+              title={route.label}
+              onAccept={onAccept}
+              onCancel={onCancel}
+              onReady={onReady}
+              onDelivered={onDelivered}
+            />}
             path={route.path}
           />
         ))}
