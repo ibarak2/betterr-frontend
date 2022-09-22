@@ -14,7 +14,7 @@ export const GigImgsCarousel = ({ imgList }) => {
                 showStatus={false}
                 renderArrowPrev={(onClickHandler, label) => (
                     <button
-                        className="carousel-btn"
+                        className="carousel-btn carousel-btn-left"
                         type="button"
                         onClick={onClickHandler}
                         style={{
@@ -26,7 +26,7 @@ export const GigImgsCarousel = ({ imgList }) => {
                 )}
                 renderArrowNext={(onClickHandler, label) => (
                     <button
-                        className="carousel-btn"
+                        className="carousel-btn carousel-btn-right"
                         type="button"
                         onClick={onClickHandler}
                         style={{
