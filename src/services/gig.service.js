@@ -58,7 +58,7 @@ async function remove(gigId) {
 async function addReview(gigId, review) {
   try {
     const updatedReview = await httpService.put(BASE_URL + `review/${gigId}`, review)
-    console.log(updatedReview);
+    return updatedReview
   } catch (err) {
     console.log(err);
   }
