@@ -22,7 +22,7 @@ export const Filter = ({ onChangeFilter }) => {
         <input {...register("rate", "number")} placeholder="Rating" />
       </section>
 
-      <button className="btn btn-reset-filter" onClick={register("maxPrice", "")}>reset</button>
+      <button className="btn btn-reset-filter" onClick={() => register("maxPrice", "")}>reset</button>
     </form>
   )
 }
