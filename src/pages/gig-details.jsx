@@ -85,22 +85,20 @@ export const GigDetails = () => {
 
     }
 
-    const onAddReview = async (ev) => {
-        ev.preventDefault()
+    const onAddReview = async (userReview) => {
+        
         try {
             if (!loggedinUser) return
-
-            const txt = ev.target[0].value
-            ev.target[0].value = ''
-
+           
             const newReview = {
                 fullname: loggedinUser.fullname,
-                txt,
-                rate: 5,
+                txt: userReview.txt,
+                rate: userReview.rate,
                 imgUrl: loggedinUser.imgUrl
             }
-            const review = await gigService.addReview(gig._id, newReview)
-            setReviews([review, ...reviews])
+            
+            // const review = await gigService.addReview(gig._id, newReview)
+            // setReviews([review, ...reviews])
 
         } catch (err) {
             console.log(err);

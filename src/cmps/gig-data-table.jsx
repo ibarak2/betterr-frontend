@@ -6,7 +6,7 @@ import { sortListByDays } from "../services/back-office.service"
 import { useSelector } from "react-redux"
 export function GigDataTable({ title, subheaders, isBuyer }) {
   const [daysOpen, setDaysOpen] = useState(false)
-  const orders = useSelector(state => state.orderModule.orders)
+  const orders = useSelector((state) => state.orderModule.orders)
 
   const showModal = () => {
     setDaysOpen(true)
@@ -34,9 +34,10 @@ export function GigDataTable({ title, subheaders, isBuyer }) {
         </div>
       </div>
       <GigTableSubheader />
-      {orders.map(order => {
+      {/* {orders.map(order => {
         return <GigTableDetails gigDetails={order} />
-      })}
+      })} */}
+      <GigTableDetails gigDetails  isBuyer={isBuyer}/>
     </div>
   )
 }

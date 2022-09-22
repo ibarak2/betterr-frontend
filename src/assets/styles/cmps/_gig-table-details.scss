@@ -1,5 +1,10 @@
-.gig-table-details{
-    .user-avatar-container{
-        height: 34px;
-    }
+.gig-table-details {
+  .user-details-container {
+    height: 34px;
+    padding-inline-end: 15px;
+    gap: 15px;
+  }
+  .buyer-name {
+    margin: 0;
+  }
 }
