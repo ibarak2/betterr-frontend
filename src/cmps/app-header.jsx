@@ -145,30 +145,11 @@ export function AppHeader() {
               {loggedinUser ? (
                 <li>
                   <div className="flex logged-in">
-                    <NavLink to="/chat">
+                    {/* <NavLink to="/chat">
                       <MailOutlineIcon />
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink to="/manage-orders/active-orders">Orders</NavLink>
-                    <NavLink to={`/profile/${loggedinUser._id}`}>Profile</NavLink>
                     <a onClick={logout}>Logout</a>
-                    <NavLink to="/back-office/active-orders">
-                      <svg
-                        className="header-notification-bell"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="22"
-                        height="22"
-                        viewBox="0 0 22 22"
-                        fill="none"
-                      >
-                        <path
-                          d="M8.5 20.167h5M4.295 11.87l-1.562 1.563a3.07 3.07 0 00-.9 2.171v0c0 .678.55 1.228 1.229 1.228h15.877c.678 0 1.228-.55 1.228-1.228v0a3.07 3.07 0 00-.9-2.171l-1.562-1.563a2.975 2.975 0 01-.872-2.104v-2.1A5.833 5.833 0 0011 1.833v0a5.833 5.833 0 00-5.833 5.834v2.1c0 .79-.314 1.546-.872 2.104z"
-                          stroke="#74767e"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </NavLink>
                     <NavLink to={`/profile/${loggedinUser._id}`}>
                       <img
                         className="header-avatar"
@@ -176,7 +157,6 @@ export function AppHeader() {
                         alt={loggedinUser.fullname}
                       />
                     </NavLink>
-                    <a onClick={() => dispatch(onLogout())}>logout</a>
                     {/* {loggedinUser.isAdmin && (
                       <NavLink to="/admin">Admin</NavLink>
                     )} */}

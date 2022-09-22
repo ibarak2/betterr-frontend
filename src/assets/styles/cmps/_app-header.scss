@@ -139,8 +139,8 @@
       }
       .logged-in {
         a .header-avatar {
-          height: 3vh;
           border-radius: 50%;
+          width: 28px;
         }
         .header-notification-bell {
           path {
@@ -168,8 +168,8 @@
     }
     .logged-in {
       a .header-avatar {
-        height: 3vh;
         border-radius: 50%;
+        width: 28px;
       }
       .header-notification-bell {
         path {

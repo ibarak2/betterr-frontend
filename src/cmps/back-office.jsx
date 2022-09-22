@@ -15,7 +15,7 @@ export function BackOffice({ header, ToggleUserState, isBuyer }) {
     <div className="main-container full back-office">
       <div className="manage-interface">
         <section className="flex space-between sub-header">
-          <h1>{header}</h1>
+          <h1>{isBuyer ? 'Your orders' : 'Manage orders'}</h1>
           <button onClick={handleToggleUserState}>
             {isBuyer ? "Switch To Seller" : "Switch To Buyer"}
           </button>
