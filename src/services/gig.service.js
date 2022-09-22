@@ -10,7 +10,8 @@ export const gigService = {
   getById,
   save,
   remove,
-  sortReviews
+  sortReviews,
+  addReview
 }
 
 
@@ -51,6 +52,15 @@ async function remove(gigId) {
     return removedGig
   } catch (err) {
     console.log('gig.service: cannot remove gig', err);
+  }
+}
+
+async function addReview(gigId, review) {
+  try {
+    const updatedReview = await httpService.put(BASE_URL + `review/${gigId}`, review)
+    return updatedReview
+  } catch (err) {
+    console.log(err);
   }
 }
 

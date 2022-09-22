@@ -44,12 +44,12 @@ export const Edit = () => {
     const gigId = params.id
     if (!gigId) return
     try {
-      console.log(gigId)
+      // console.log(gigId)
       const gig = await gigService.getById(gigId)
-      console.log(gig)
+      // console.log(gig)
       onSetGig(gig)
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     }
   }, [])
 
@@ -103,7 +103,7 @@ export const Edit = () => {
       gigToAdd._id = gig._id
       showSuccessMsg('Your gig has been updated')
     }
-    console.log(gigToAdd)
+    // console.log(gigToAdd)
     onAddGig(gigToAdd)
     showSuccessMsg('Your gig has been uploaded')
     
@@ -113,7 +113,7 @@ export const Edit = () => {
     try {
       await gigService.save(gigToAdd)
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     }
   }
 
@@ -123,7 +123,7 @@ export const Edit = () => {
       const imgUrl = await uploadService.uploadImg(event)
       setGig((prevFields) => ({ ...prevFields, [field]: imgUrl.url }))
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     }
   }
 
