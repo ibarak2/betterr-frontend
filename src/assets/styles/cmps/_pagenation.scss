@@ -1,0 +1,30 @@
+.pagenation {
+  margin-top: rem(32px);
+  margin-bottom: rem(32px);
+  * {
+    color: #222325;
+    font-size: 15px;
+  }
+  .pagenation-btn-wrapper {
+    border: 1px solid #c5c6c9;
+    margin: 5px;
+    height: 30px;
+    width: 34px;
+    text-align: center;
+    vertical-align: baseline;
+    height: 30px;
+    max-width: 34px;
+    &.active,
+    :hover {
+      background-color: #fafafa;
+    }
+    cursor: pointer;
+    .pagenation-btn {
+      svg {
+        vertical-align: middle;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
