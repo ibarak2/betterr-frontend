@@ -1,0 +1,66 @@
+.chat-app {
+  height: calc(100vh - 25vh);
+
+  .chat-wrapper {
+    border: 1px $clr4 solid;
+    border-radius: 4px;
+    margin-top: 40px;
+    flex: 1;
+
+    .chat-left-colmn {
+        width: 25%;
+      flex-direction: column;
+      .chat-filter {
+        border-bottom: 1px $clr4 solid;
+        height: 50px;
+      }
+      .chat-contacts-list {
+        flex: 1;
+      }
+    }
+    .chat-right-column {
+      flex-direction: column;
+      flex: 1;
+      border-left: 1px $clr4 solid;
+      .chat-right-header {
+        border-bottom: 1px $clr4 solid;
+        height: 50px;
+        color: $clr4;
+      }
+      .chat-current-room {
+        flex: 1;
+
+        .chat-msgs-list {
+            height: calc(100% - 10vh);
+        }
+
+        .chat-form {
+            margin: 0;
+            padding: 0 1rem;
+            input {
+                margin: 0;
+                flex: 1;
+                border-radius: 4px 0 0 4px;
+                height: 3vh;
+                padding: 5px;
+                border: 1px $clr4 solid;
+                font-family: inherit;
+                
+                &:focus {
+                    outline: 0;
+                    border: 1px $clr5 solid;
+                }
+            }
+            button {
+                margin: 0;
+                width: 5rem;
+                border-radius: 0 4px 4px 0;
+                height: 3vh;
+                font-family: inherit;
+                font-weight: 500;
+            }
+        }
+      }
+    }
+  }
+}
