@@ -39,7 +39,7 @@ export function GigTableDetails({ order, isBuyer, onAccept, onCancel, onReady, o
       <div className="subheader flex column">
         {!isBuyer && order.status === 'pending' && <button onClick={() => onAccept(order._id)}>Accept</button>}
         {isBuyer && order.status === 'in-progress' && <button onClick={() => onDelivered(order._id)}>Delivered</button>}
-        {!(order.status === 'canceled' || order.status === 'completed') && <button className="cancel-btn" onClick={() => onCancel(order._id)}>Cancel</button>}
+        {!(order.status === 'canceled' || order.status === 'completed') && <button className="cancel-btn" onClick={() => onCancel(order)}>Cancel</button>}
       </div>
     </div>
   )

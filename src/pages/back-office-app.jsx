@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { loadOrders, setOrderStatus } from "../store/order.actions"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
+import { socketService, SOCKET_EVENT_ORDER_CANCELLED } from "../services/socket.service"
 
 export const BackOfficeApp = ({ header }) => {
   const navigate = useNavigate()
@@ -14,9 +15,19 @@ export const BackOfficeApp = ({ header }) => {
   )
   const orders = useSelector((state) => state.orderModule.orders)
   const dispatch = useDispatch()
+
   useEffect(() => {
     onLoadOrders()
   }, [isBuyer])
+
+  useEffect(() => {
+    socketService.on("on-order-cancelled", (data) => {
+      dispatch(setOrderStatus(data.orderId, "canceled"))
+
+      showErrorMsg(data.txt)
+    })
+    return socketService.off("on-order-cancelled")
+  }, [])
 
   const onLoadOrders = () => {
     dispatch(loadOrders(isBuyer))
@@ -32,12 +43,19 @@ export const BackOfficeApp = ({ header }) => {
     showSuccessMsg("Order Accepted")
   }
 
-  const onCancel = (orderId) => {
-    dispatch(setOrderStatus(orderId, "canceled"))
+  const onCancel = (order) => {
+    const miniOrder = {
+      userId: isBuyer ? order.seller._id : order.buyer._id,
+      _id: order._id
+    }
+
+    socketService.emit(SOCKET_EVENT_ORDER_CANCELLED, miniOrder)
+    dispatch(setOrderStatus(order._id, "canceled"))
+
     showErrorMsg("Order Canceled")
   }
 
-  const onReady = (orderId) => {}
+  const onReady = (orderId) => { }
 
   const onDelivered = (orderId) => {
     dispatch(setOrderStatus(orderId, "completed"))

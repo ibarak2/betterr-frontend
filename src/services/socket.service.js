@@ -9,7 +9,8 @@ export const SOCKET_EVENT_USER_UPDATED = "user-updated"
 export const SOCKET_EVENT_REVIEW_ADDED = "review-added"
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = "review-about-you"
 // betterr sockets here 👇
-export const SOCKET_EVENT_HIRE_FOR_GIG_REQUEST = "hire-for-gig-request"
+export const SOCKET_EVENT_NEW_ORDER_REQUEST = "new-order-request"
+export const SOCKET_EVENT_ORDER_CANCELLED = 'order-cancelled'
 
 const SOCKET_EMIT_LOGIN = "set-user-socket"
 const SOCKET_EMIT_LOGOUT = "unset-user-socket"
@@ -60,6 +61,7 @@ function createSocketService() {
 // eslint-disable-next-line
 function createDummySocketService() {
   var listenersMap = {}
+
   const socketService = {
     listenersMap,
     setup() {
@@ -68,8 +70,10 @@ function createDummySocketService() {
     terminate() {
       this.setup()
     },
-    login() {},
-    logout() {},
+    login() { },
+
+    logout() { },
+
     on(eventName, cb) {
       listenersMap[eventName] = [...(listenersMap[eventName] || []), cb]
     },
@@ -91,6 +95,7 @@ function createDummySocketService() {
       this.emit("chat addMsg", { from: "Someone", txt: "Aha it worked!" })
     },
   }
+
   window.listenersMap = listenersMap
   return socketService
 }

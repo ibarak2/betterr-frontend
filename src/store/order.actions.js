@@ -18,6 +18,7 @@ export function setOrderStatus(orderId, status) {
   return async (dispatch) => {
     try {
       const order = await orderService.updateStatus(orderId, status)
+
       dispatch({ type: "SET_ORDER_STATUS", order })
     } catch (err) {
       console.log(err)

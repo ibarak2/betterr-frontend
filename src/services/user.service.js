@@ -76,13 +76,13 @@ async function login(userCred) {
     // const user = users.find(user => user.username === userCred.username)
 
     if (user) {
-        // socketService.login(user._id)
+        socketService.login(user._id)
         return saveLocalUser(user)
     }
 }
 async function signup(userCred) {
     const user = await httpService.post("auth/signup", userCred)
-    // socketService.login(user._id)
+    socketService.login(user._id)
     return saveLocalUser(user)
 }
 async function logout() {
