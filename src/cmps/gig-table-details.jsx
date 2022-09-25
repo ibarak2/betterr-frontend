@@ -37,30 +37,10 @@ export function GigTableDetails({ order, isBuyer, onAccept, onCancel, onReady, o
       </div>
       <div className="subheader">{order.status}</div>
       <div className="subheader flex column">
-        {/* <SmallModal
-          list={[
-            { value: "cancel order", txt: "cancel order" },
-            { value: "contact buyer", txt: "contact buyer" },
-            { value: "accept order", txt: "accept order" },
-            { value: "decline order", txt: "decline order" },
-          ]}
-          onSelect={onSelect}
-          open={open}
-          handleOpenModal={handleOpenModal}
-        /> */}
         {!isBuyer && order.status === 'pending' && <button onClick={() => onAccept(order._id)}>Accept</button>}
-        {/* {isBuyer && order.status === '' &&<button onClick={onReady}>Ready</button>} */}
         {isBuyer && order.status === 'in-progress' && <button onClick={() => onDelivered(order._id)}>Delivered</button>}
         {!(order.status === 'canceled' || order.status === 'completed') && <button className="cancel-btn" onClick={() => onCancel(order._id)}>Cancel</button>}
       </div>
     </div>
   )
 }
-// Title, order.gig.title
-// Buyer name, order.buyer.fullname
-// Seller Name, order.seller.fullname
-// Price, order.gig.price
-// Order Created,
-// Due on, maybe use moment.js for this
-// status, order.gig.status
-// Actions

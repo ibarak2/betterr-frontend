@@ -20,7 +20,8 @@
 @import "views/explore-page";
 @import "views/back-office";
 @import "views/edit";
-@import "views/_user-profile.scss";
+@import "views/user-profile";
+@import "views/chat-app";
 
 // Components
 @import "cmps/login-signup";
@@ -51,3 +52,4 @@
 @import "cmps/add-review";
 @import "cmps/gig-table-details";
 @import "cmps/user-avatar";
+@import "cmps/pagenation";

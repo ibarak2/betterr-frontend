@@ -17,21 +17,53 @@
     height: 42vh;
   }
 
-  & .thumb {
-    border: none !important;
-    opacity: 0.5;
-    cursor: pointer;
-  }
-  & .selected {
-    opacity: 1 !important;
-  }
-  & .thumbs-wrapper {
-    margin: 0 !important;
+  // .thumbs-wrapper
+  // .thumb {
+  //   border: none !important;
+  //   opacity: 0.5;
+  //   cursor: pointer;
+  //   width: 80px;
+  //   height: 54px;
+  // }
+  // & .selected {
+  //   opacity: 1 !important;
+  // }
+  // & .thumbs-wrapper {
+  //   margin: 0 !important;
+  // }
+  // .thumb img {
+  //     object-fit: fill;
+  // }
+  .thumbs-wrapper {
+    .thumbs {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      .thumb {
+        width: 80px;
+        height: 50px;
+        opacity: 0.5;
+        display: flex;
+        align-items: center;
+        &.selected {
+          opacity: 1;
+        }
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
   }
   .slide {
     display: flex;
     justify-content: center;
     height: 42vh;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      scale: 105%;
+    }
   }
   .carousel-btn {
     background-color: #fff;
