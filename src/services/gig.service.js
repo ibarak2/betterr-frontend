@@ -17,6 +17,7 @@ export const gigService = {
 
 async function query(filterBy = {}) {
   try {
+    console.log("filterBy:", filterBy);
     const gigs = await httpService.get(BASE_URL, { params: filterBy })
     return gigs
   } catch (err) {
@@ -46,7 +47,7 @@ async function save(gig) {
 
 async function remove(gigId) {
   try {
-    const removedGig = await httpService.delete(BASE_URL, gigId)
+    const removedGig = await httpService.delete(BASE_URL + `${gigId}`)
     return removedGig
   } catch (err) {
     return ('gig.service: cannot remove gig', err);

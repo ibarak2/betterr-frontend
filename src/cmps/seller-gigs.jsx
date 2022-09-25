@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-export const SellerGigs = ({ title, imgUrls, plans, _id }) => {
+export const SellerGigs = ({ gig, onDeleteGig }) => {
 
 
   const [gigSetting, setGigSettings] = useState('hidden')
@@ -14,27 +14,29 @@ export const SellerGigs = ({ title, imgUrls, plans, _id }) => {
     setGigSettings('hidden')
   }
 
+
+
   return (
     <div className="gig-card-base seller-gig-card">
       <span>
         <ul className={"clean-list gig-settings " + gigSetting}>
           <li>
-            <Link to={`/gig/${_id}`} className="preview" onClick={onCloseModal}>
+            <Link to={`/gig/${gig._id}`} className="preview" onClick={onCloseModal}>
               Preview
             </Link>
           </li>
           <li>
-            <Link to={`/edit/${_id}`} className="edit-gig">
+            <Link to={`/edit/${gig._id}`} className="edit-gig">
               Edit
             </Link>
           </li>
           <li>
-            <a href="edit/:id" className="remove" target="_blank">
+            <a onClick={() => onDeleteGig(gig._id)} className="remove">
               Remove Gig
             </a>
           </li>
           <li>
-          <Link to={`/edit/${_id}`} className="settings">
+            <Link to={`/edit/${gig._id}`} className="settings">
               Setting
             </Link>
           </li>
@@ -44,12 +46,12 @@ export const SellerGigs = ({ title, imgUrls, plans, _id }) => {
             <div>
               <figure className="no-image">
                 <img
-                  src={imgUrls[0]}
+                  src={gig.imgUrls[0]}
                   alt=""
                 />
               </figure>
             </div>
-            <h3>{title}</h3>
+            <h3>{gig.title}</h3>
           </a>
         </div>
         <button onClick={onOpenModal} className="btn-gig-menu">
@@ -66,7 +68,7 @@ export const SellerGigs = ({ title, imgUrls, plans, _id }) => {
           </svg>
         </button>
         <a href="edit/:id" className="gig-min-price">
-          <small>Starting at</small>${plans.basicPrice}
+          <small>Starting at</small>${gig.plans.basicPrice}
         </a>
       </span>
     </div>

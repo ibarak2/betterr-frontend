@@ -1,8 +1,7 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { userService } from '../services/user.service'
+
 
 export function EditProfile({ user }) {
+
   return (
     <section className="user-info-wrapper">
       <div className="user-info">

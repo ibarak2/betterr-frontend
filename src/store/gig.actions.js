@@ -109,7 +109,7 @@ export function loadGigsByOwner(owner) {
   return async (dispatch, getState) => {
     try {
       const gigsByOwner = await gigService.query({ owner })
-      
+
       dispatch({
         type: "SET_GIGS_BY_OWNER",
         gigsByOwner,
@@ -126,24 +126,24 @@ export function loadGigsByOwner(owner) {
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
 export function onRemoveGigOptimistic(gigId) {
-  return (dispatch, getState) => {
-    dispatch({
-      type: "REMOVE_GIG",
-      gigId,
-    })
-    showSuccessMsg("Gig removed")
+  return async (dispatch, getState) => {
+    try {
 
-    gigService
-      .remove(gigId)
-      .then(() => {
-        console.log("Server Reported - Deleted Succesfully")
+      dispatch({
+        type: "REMOVE_GIG",
+        gigId,
       })
-      .catch((err) => {
-        showErrorMsg("Cannot remove gig")
-        console.log("Cannot load gigs", err)
-        dispatch({
-          type: "UNDO_REMOVE_GIG",
-        })
+      showSuccessMsg("Gig removed")
+
+      await gigService.remove(gigId)
+      console.log("Server Reported - Deleted Succesfully")
+
+    } catch (err) {
+      showErrorMsg("Cannot remove gig")
+      console.log("Cannot load gigs", err)
+      dispatch({
+        type: "UNDO_REMOVE_GIG",
       })
+    }
   }
 }

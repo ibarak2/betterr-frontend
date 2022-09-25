@@ -16,7 +16,7 @@
     font-size: rem(28px);
   }
   & .about-this-gig {
-    margin-bottom: 60px;
+    margin-top: rem(200px);
   }
   & .about-the-seller {
     margin-top: 30px;
@@ -24,7 +24,7 @@
 
   & .gig-description {
     width: 100%;
-    margin-top: 35px;
+    // margin-top: 35px;
     .gig-layout {
       max-width: 100%;
     }
@@ -100,4 +100,3 @@
     }
   }
 }
-

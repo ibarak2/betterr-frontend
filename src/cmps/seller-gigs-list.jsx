@@ -1,19 +1,10 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useSearchParams } from "react-router-dom"
-import { loadGigsByOwner } from "../store/gig.actions"
+
 import { SellerGigs } from "./seller-gigs"
 
-export function SellerGigsList() {
+export function SellerGigsList({ gigsByOwner, onDeleteGig }) {
 
-  const gigsByOwner = useSelector((state) => state.gigModule.gigsByOwner)
-  const loggedInUser = useSelector((state) => state.userModule.user.fullname)
-  const [searchParams, setSearchParams] = useSearchParams()
-  const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(loadGigsByOwner(loggedInUser))
-  }, [searchParams])
+
 
   return (
     <section className="seller-gigs-wrapper">
@@ -26,7 +17,7 @@ export function SellerGigsList() {
 
         <div className="gig-list">
           {gigsByOwner.map((gig) => {
-            return <SellerGigs key={gig._id} {...gig} />
+            return <SellerGigs key={gig._id} gig={gig} onDeleteGig={onDeleteGig} />
           })}
         </div>
 
