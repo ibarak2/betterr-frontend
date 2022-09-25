@@ -26,10 +26,10 @@ export function setOrderStatus(orderId, status) {
   }
 }
 
-export function loadOrders(isBuyer) {
+export function loadOrders(filter) {
   return async (dispatch) => {
     try {
-      const orders = await orderService.query(isBuyer)
+      const orders = await orderService.query(filter)
       dispatch({ type: "SET_ORDERS", orders })
     } catch (err) {
       console.log("OrderActions: err in loadOrders", err)

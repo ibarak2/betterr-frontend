@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux"
 import { NavLink, Outlet } from "react-router-dom"
 
-export function BackOffice({ header, ToggleUserState, isBuyer }) {
-  const users = useSelector((state) => state.userModule.users)
+export function BackOffice({ ToggleUserState, isBuyer }) {
+
   const tableByUserState = useSelector(
     (state) => state.userModule.tableByUserState
   )
@@ -10,7 +10,8 @@ export function BackOffice({ header, ToggleUserState, isBuyer }) {
   const handleToggleUserState = () => {
     ToggleUserState()
   }
-  if (!users) return <div>Loading...</div>
+
+
   return (
     <div className="main-container full back-office">
       <div className="manage-interface">

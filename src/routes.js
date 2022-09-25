@@ -56,7 +56,7 @@ const routes = [
     // },
     {
         path: "manage-orders/*",
-        component: <BackOfficeApp header={"Manage Orders"} />,
+        component: <BackOfficeApp />,
         label: "Manage Orders",
     },
     {

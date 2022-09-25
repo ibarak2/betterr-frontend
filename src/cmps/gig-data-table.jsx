@@ -32,9 +32,9 @@ export function GigDataTable({ orders, title, subheaders, isBuyer, onAccept, onC
       </div>
       <GigTableSubheader />
 
-      {orders && orders.map(order => {
-        console.log('Order ' , order);
+      {orders && orders.map((order, idx) => {
         return <GigTableDetails
+          key={idx}
           order={order}
           isBuyer={isBuyer}
           onAccept={onAccept}

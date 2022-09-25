@@ -26,9 +26,9 @@ export const orderService = {
   updateStatus,
 }
 
-async function query(isBuyer = {}) {
+async function query(filter) {
   try {
-    const orders = await httpService.get(BASE_URL, { params: isBuyer })
+    const orders = await httpService.get(BASE_URL, { params: filter })
     return orders
   } catch (err) {
     return "order.service: cannot get orders"
@@ -56,7 +56,6 @@ async function updateStatus(orderId, status) {
     const savedOrder = await httpService.put(BASE_URL + `status/${orderId}`, {
       status,
     })
-    console.log('savedOrder:', savedOrder);
     return savedOrder
   } catch (err) {
     return err

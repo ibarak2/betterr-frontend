@@ -18,8 +18,6 @@ import { useSelector } from "react-redux"
 
 
 
-
-
 export const GigDetails = () => {
 
     const [screenWidth, setScreenWidth] = useState()
