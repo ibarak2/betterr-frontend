@@ -18,6 +18,7 @@ export function setOrderStatus(orderId, status) {
   return async (dispatch) => {
     try {
       const order = await orderService.updateStatus(orderId, status)
+
       dispatch({ type: "SET_ORDER_STATUS", order })
     } catch (err) {
       console.log(err)
@@ -25,10 +26,10 @@ export function setOrderStatus(orderId, status) {
   }
 }
 
-export function loadOrders(isBuyer) {
+export function loadOrders(filter) {
   return async (dispatch) => {
     try {
-      const orders = await orderService.query(isBuyer)
+      const orders = await orderService.query(filter)
       dispatch({ type: "SET_ORDERS", orders })
     } catch (err) {
       console.log("OrderActions: err in loadOrders", err)

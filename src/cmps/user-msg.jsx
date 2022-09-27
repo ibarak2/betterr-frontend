@@ -22,13 +22,13 @@ export class UserMsg extends React.Component {
   }
 
   render() {
-    if (!this.state.msg) return <span></span>
+    if (!this.state.msg) return <></>
     const msgClass = this.state.msg.type || ''
     return (
-        <section className={'user-msg ' + msgClass}>
-          {this.state.msg.txt}
+      <section className={'user-msg ' + msgClass}>
+        {this.state.msg.txt}
 
-        </section>
+      </section>
     )
   }
 }

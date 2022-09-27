@@ -8,6 +8,8 @@ import { SecondaryNavbar } from './secondary-navbar'
 import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import { SideDrawer } from './side-drawer'
 import { userService } from '../services/user.service.js'
+import { socketService } from '../services/socket.service.js'
+import { showSuccessMsg } from '../services/event-bus.service.js'
 
 export function AppHeader() {
   //---- States ----//
@@ -38,7 +40,14 @@ export function AppHeader() {
     const onScroll = () => setOffset(window.pageYOffset)
     window.removeEventListener('scroll', onScroll)
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+
+    socketService.on('new-order-recieved', showSuccessMsg)
+
+
+    return () => {
+      socketService.off('new-order-recieved', showSuccessMsg)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   const handleCloseModal = (ev) => {
