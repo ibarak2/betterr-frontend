@@ -60,13 +60,14 @@ export function ChatApp({ participents }) {
 
   const addMsg = async (ev) => {
     ev.preventDefault()
-    console.log(chatRoom)
+    // console.log(chatRoom)
 
     const newMsg = await chatService.newMsg({
       msg: msg.txt,
       chatRoomId: chatRoom._id,
     })
-    console.log(newMsg)
+    // console.log(newMsg)
+    
     let newMsgs = chatRoom.msgs
     newMsgs.push(newMsg)
     setChatRoom((prevState) => ({ ...prevState, msgs: newMsgs }))
@@ -158,12 +159,7 @@ export function ChatApp({ participents }) {
           <div className="chat-current-room">
             <ul className="clean-list chat-msgs-list">
               {chatRoom.msgs &&
-                chatRoom.msgs.map((txt, idx) => <li key={idx}>{txt.msg}</li>)}
-              {/* {chatRoom.msgs.map((msg, idx) => (
-                <li key={idx}>
-                  {msg.txt}
-                </li>
-              ))} */}
+                chatRoom.msgs.map((txt, idx) => <li key={idx}>{txt.fullname}: {txt.msg}</li>)}
             </ul>
 
             <form onSubmit={addMsg} className="flex chat-form">

@@ -167,7 +167,7 @@ export const GigDetails = () => {
                     </section>
                     <section className="plans">
                         {(screenWidth > 900) &&
-                            <GigPlans plans={gig.plans} onSelectPlan={onSelectPlan} />
+                            <GigPlans gig={gig} plans={gig.plans} onSelectPlan={onSelectPlan} loggedinUser={loggedinUser} />
 
                         }
                     </section>
