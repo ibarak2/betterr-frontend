@@ -44,7 +44,7 @@ export const GigPreview = ({
         <div className="stars">
           {/* ⭐rate */}
           <StarIcon />
-          {Number.parseFloat(utilService.averageRating(reviews)).toFixed(1)}
+          {reviews.length ? (utilService.averageRating(reviews)).toFixed(1) : 0}
           <span className="reviews-amount">({reviews.length})</span>
         </div>
         <div className="preview-footer">

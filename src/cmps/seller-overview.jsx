@@ -23,7 +23,7 @@ export const SellerOverview = ({ seller, reviews }) => {
                 color2={'#FFB33E'}
                 edit={false}
             /></div>
-            <div style={{ color: '#FFB33E' }}>{averageRate}</div>
+            <div style={{ color: '#FFB33E' }}>{reviews.length ? averageRate : 0}</div>
             <div>{`(${reviews.length})`}</div>
 
 

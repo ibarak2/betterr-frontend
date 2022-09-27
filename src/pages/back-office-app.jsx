@@ -26,6 +26,7 @@ export const BackOfficeApp = () => {
       console.log("data", data);
       (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
       dispatch(setOrderStatus(data.orderId, data.status))
+      onLoadOrders()
 
     })
 
@@ -86,7 +87,7 @@ export const BackOfficeApp = () => {
     socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
     dispatch(setOrderStatus(order._id, "completed"))
     showSuccessMsg("Order Delivered")
-    // onLoadOrders()
+    onLoadOrders()
   }
 
   // on cancel order
@@ -103,7 +104,7 @@ export const BackOfficeApp = () => {
       socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
       dispatch(setOrderStatus(order._id, "cancelled"))
       showErrorMsg("Order Canceled")
-      // onLoadOrders()
+      onLoadOrders()
     } catch (err) {
       console.log(err);
     }

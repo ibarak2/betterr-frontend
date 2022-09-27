@@ -14,6 +14,7 @@ import { AddReview } from "../cmps/add-review"
 import { orderService } from "../services/order.service"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { useSelector } from "react-redux"
+import { PurchaseModal } from "../cmps/purchase-modal"
 
 
 
@@ -23,6 +24,12 @@ export const GigDetails = () => {
     const [screenWidth, setScreenWidth] = useState()
     const [gig, setGig] = useState()
     const [reviews, setReviews] = useState([])
+    const [isSelected, setIsSelected] = useState({
+        isOpen: false,
+        plan: '',
+        daysToMake: '',
+        price: ''
+    })
     const loggedinUser = useSelector(state => state.userModule.user)
     const params = useParams()
 
@@ -51,6 +58,16 @@ export const GigDetails = () => {
     }
 
     const onSelectPlan = (plan, daysToMake, price) => {
+        setIsSelected({
+            isOpen: true,
+            plan,
+            daysToMake,
+            price
+        })
+        console.log(plan);
+    }
+
+    const onPurchase = (plan, daysToMake, price) => {
         if (!loggedinUser) {
             showErrorMsg("Log in First.")
             return
@@ -74,6 +91,21 @@ export const GigDetails = () => {
         }
         orderService.save(newOrder)
         showSuccessMsg("Order Recieved")
+        setIsSelected({
+            isOpen: false,
+            plan: '',
+            daysToMake: '',
+            price: ''
+        })
+    }
+
+    const onCancel = () => {
+        setIsSelected({
+            isOpen: false,
+            plan: '',
+            daysToMake: '',
+            price: ''
+        })
     }
 
     const onChangeSortBy = (sortBy) => {
@@ -123,7 +155,6 @@ export const GigDetails = () => {
                                         seller={gig.owner}
                                         loggedinUser={loggedinUser}
                                     />
-
                                 }
                             </div>
                             <div className="about-this-gig">
@@ -136,10 +167,11 @@ export const GigDetails = () => {
                                 <SellerInfo seller={gig.owner} reviews={reviews} />
                             </div>
                             <hr />
-                            {!reviews.length ? <div>
-                                0 Reviews
-                                <AddReview onAddReview={onAddReview} imgUrl={(loggedinUser) ? loggedinUser.imgUrl : "https://cvhrma.org/wp-content/uploads/2015/07/default-profile-photo.jpg"} />
-                            </div> :
+                            {!reviews.length ?
+                                <div>
+                                    0 Reviews
+                                    <AddReview onAddReview={onAddReview} imgUrl={(loggedinUser) ? loggedinUser.imgUrl : "https://cvhrma.org/wp-content/uploads/2015/07/default-profile-photo.jpg"} />
+                                </div> :
                                 <section className="reviews-container">
                                     <div className="flex space-between align-center">
                                         <div className="flex align-center reviews-title" >
@@ -172,6 +204,7 @@ export const GigDetails = () => {
                         }
                     </section>
                 </div>
+                {isSelected.isOpen && <PurchaseModal onPurchase={onPurchase} onCancel={onCancel} isSelected={isSelected} />}
             </section>
         </CssVarsProvider>
 
