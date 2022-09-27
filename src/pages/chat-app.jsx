@@ -1,57 +1,84 @@
 import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
+import { chatService } from '../services/chat.service'
 import {
   socketService,
   SOCKET_EMIT_SEND_MSG,
   SOCKET_EVENT_ADD_MSG,
-  SOCKET_EMIT_SET_TOPIC,
+  //   SOCKET_EMIT_SET_TOPIC,
 } from '../services/socket.service'
 
-function _ChatApp({ loggedInUser }) {
+export function ChatApp({ participents }) {
+  const loggedInUser = useSelector((state) => state.userModule.user)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const dispatch = useDispatch()
+
   const [msg, setMsg] = useState({ txt: '' })
-  const [msgs, setMsgs] = useState([])
-  const [topic, setTopic] = useState('')
-//   const [isBotMode, setIsBotMode] = useState(false)
-//   let botTimeout
+  const [chatRoom, setChatRoom] = useState({
+    _id: '',
+    msgs: [{ txt: '' }],
+  })
+  const [chatRooms, setChatRooms] = useState([])
+  //   var [topic, setTopic] = useState('')
+  //   const [isBotMode, setIsBotMode] = useState(false)
+  //   let botTimeout
 
   useEffect(() => {
     socketService.on(SOCKET_EVENT_ADD_MSG, addMsg)
     return () => {
       socketService.off(SOCKET_EVENT_ADD_MSG, addMsg)
-    //   botTimeout && clearTimeout(botTimeout)
+      //   botTimeout && clearTimeout(botTimeout)
     }
   }, [])
 
   useEffect(() => {
-    socketService.emit(SOCKET_EMIT_SET_TOPIC, topic)
-  }, [topic])
+    loadChats()
+  }, [])
 
-  const addMsg = (newMsg) => {
-    setMsgs((prevMsgs) => [...prevMsgs, newMsg])
+  const loadChats = async () => {
+    try {
+      const chats = await chatService.query(loggedInUser._id)
+      console.log('load chats', chats)
+
+      setChatRooms(chats)
+    } catch (err) {
+      console.log('load chats failed', err)
+    }
   }
 
-    //   const sendBotResponse = () => {
-    //     // Handle case: send single bot response (debounce).
-    //     botTimeout && clearTimeout(botTimeout)
-    //     botTimeout = setTimeout(() => {
-    //       setMsgs((prevMsgs) => [
-    //         ...prevMsgs,
-    //         { from: 'Bot', txt: 'You are amazing!' },
-    //       ])
-    //     }, 1500)
-    //   }
+  //   useEffect(() => {
+  //     socketService.emit(SOCKET_EMIT_SET_TOPIC, addTopic)
+  //     return () => {
+  //         socketService.off(SOCKET_EMIT_SET_TOPIC, addTopic)
+  //     }
+  //   }, [])
 
-  const sendMsg = (ev) => {
+  const addMsg = async (ev) => {
     ev.preventDefault()
-    const from = loggedInUser?.fullname || 'guest'
-    socketService.emit(SOCKET_EMIT_SEND_MSG, { from, txt: msg.txt })
-    // if (isBotMode) sendBotResponse()
+    console.log(chatRoom)
+
+    const newMsg = await chatService.newMsg({msg: msg.txt, chatRoomId: chatRoom._id})
+    console.log(newMsg);
+    let newMsgs = chatRoom.msgs
+    newMsgs.push(newMsg)
+    setChatRoom((prevState) => ({...prevState, msgs: newMsgs}))
+
     setMsg({ txt: '' })
   }
 
   const handleFormChange = (ev) => {
     const { name, value } = ev.target
     setMsg((prevMsg) => ({ ...prevMsg, [name]: value }))
+  }
+
+  const onSetChatRoom = async (chatId) => {
+    console.log('chatId', chatId)
+
+    const newChatRoom = chatRooms.filter((chat) => chatId === chat._id)
+    setChatRoom(newChatRoom[0])
+    // const chatRoom = await chatService.getChatById(chatId)
+    // console.log(chatRoom);
   }
 
   return (
@@ -101,29 +128,13 @@ function _ChatApp({ loggedInUser }) {
           </div>
 
           <ul className="clean-list chat-contacts-list">
-            <li>hard coded</li>
-            <li>hard coded</li>
-            <li>hard coded</li>
-            <li>
-              <input
-                type="radio"
-                name="topic"
-                value="chat1"
-                // checked={ topic === 'order._id' }
-                onChange={({ target }) => setTopic(target.value)}
-              />
-              seller1
-            </li>
-            <li>
-              <input
-                type="radio"
-                name="topic"
-                value="chat2"
-                // checked={ topic === 'order._id2' }
-                onChange={({ target }) => setTopic(target.value)}
-              />
-              seller2
-            </li>
+            {chatRooms.map((chat, idx) => {
+              return (
+                <li key={idx} onClick={() => onSetChatRoom(chat._id)}>
+                  {chat._id}
+                </li>
+              )
+            })}
           </ul>
         </div>
 
@@ -133,14 +144,16 @@ function _ChatApp({ loggedInUser }) {
           </div>
           <div className="chat-current-room">
             <ul className="clean-list chat-msgs-list">
-              {msgs.map((msg, idx) => (
+              {chatRoom.msgs &&
+                chatRoom.msgs.map((txt, idx) => <li key={idx}>{txt.msg}</li>)}
+              {/* {chatRoom.msgs.map((msg, idx) => (
                 <li key={idx}>
-                  {msg.from}: {msg.txt}
+                  {msg.txt}
                 </li>
-              ))}
+              ))} */}
             </ul>
 
-            <form onSubmit={sendMsg} className="flex chat-form">
+            <form onSubmit={addMsg} className="flex chat-form">
               <input
                 type="text"
                 value={msg.txt}
@@ -158,11 +171,11 @@ function _ChatApp({ loggedInUser }) {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    loggedInUser: state.userModule.user,
-  }
-}
-const mapDispatchToProps = {}
+// const mapStateToProps = (state) => {
+//   return {
+//     loggedInUser: state.userModule.user,
+//   }
+// }
+// const mapDispatchToProps = {}
 
-export const ChatApp = connect(mapStateToProps, mapDispatchToProps)(_ChatApp)
+// export const ChatApp = connect(mapStateToProps, mapDispatchToProps)(_ChatApp)
