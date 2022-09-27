@@ -122,6 +122,8 @@ export const GigDetails = () => {
                                     <GigPlans
                                         plans={gig.plans}
                                         onSelectPlan={onSelectPlan}
+                                        seller={gig.owner}
+                                        loggedinUser={loggedinUser}
                                     />
 
                                 }

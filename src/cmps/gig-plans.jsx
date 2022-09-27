@@ -6,8 +6,11 @@ import TabPanel from '@mui/joy/TabPanel';
 import Typography from '@mui/joy/Typography';
 import { useState } from 'react';
 import { showErrorMsg } from '../services/event-bus.service'
+import { Link } from 'react-router-dom';
+import { userService } from '../services/user.service';
+import { chatService } from "../services/chat.service.js";
 
-export const GigPlans = ({ plans, onSelectPlan }) => {
+export const GigPlans = ({ plans, onSelectPlan, seller, loggedinUser }) => {
 
     const [plan, setPlan] = useState('Basic')
 
@@ -36,8 +39,16 @@ export const GigPlans = ({ plans, onSelectPlan }) => {
         onSelectPlan(rank, daysToMake, price)
     }
 
-    const onContact = () => {
-        showErrorMsg('still in development...')
+    
+    const onContact = (seller) => {
+
+        console.log('seller', seller)  
+        console.log('sellerId', seller.id)
+        console.log('buyerId', loggedinUser._id)
+        
+        const newChat = { participents: [seller._id, loggedinUser._id] }
+        chatService.save(newChat)
+
     }
 
     return (
@@ -219,7 +230,11 @@ export const GigPlans = ({ plans, onSelectPlan }) => {
             </TabPanel>
             <div className='plans-action-btns'>
                 <button className='continue-plans-btn' onClick={() => onSelect()}>Continue <span>→</span></button>
-                <button className='contact-plans-btn' onClick={() => onContact()}>Contact Seller</button>
+                <button className='contact-plans-btn' onClick={() => onContact(seller)}>
+                    {/* <Link to="/chat" > */}
+                    Contact Seller
+                    {/* </Link>  */}
+                </button>
             </div>
         </Tabs>
     );

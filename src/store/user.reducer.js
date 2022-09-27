@@ -10,6 +10,10 @@ const initialState = {
   watchedUser: null,
   isBuyer: false,
   tableByUserState: backofficeSellerOrderRoutes,
+  // contacts: [{
+  //   ContactId: '',
+  //   ContactName: '',
+  // }]
 }
 export function userReducer(state = initialState, action) {
   var isBuyer = state.isBuyer
