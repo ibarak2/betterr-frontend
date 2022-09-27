@@ -4,17 +4,21 @@ import { userService } from '../services/user.service'
 import { gigService } from '../services/gig.service'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { loadGigsByOwner, onRemoveGigOptimistic } from '../store/gig.actions'
+import { orderService } from '../services/order.service'
 
 export const UserProfile = () => {
 
+  const [analytics, setAnalytics] = useState()
   const gigsByOwner = useSelector((state) => state.gigModule.gigsByOwner)
   const loggedinUser = useSelector((state) => state.userModule.user)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(loadGigsByOwner(loggedinUser._id))
+    loadAnalytics()
   }, [])
 
   const onDeleteGig = (gigId) => {
@@ -22,12 +26,19 @@ export const UserProfile = () => {
     dispatch(onRemoveGigOptimistic(gigId))
   }
 
-
+  const loadAnalytics = async () => {
+    try {
+      const analytics = await orderService.getAnalytics()
+      setAnalytics(analytics)
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className="user-profile-wrapper">
       <div className="flex user-profile">
-        <EditProfile user={loggedinUser} />
+        {analytics && <EditProfile user={loggedinUser} analytics={analytics} />}
         <SellerGigsList gigsByOwner={gigsByOwner} onDeleteGig={onDeleteGig} />
       </div>
     </div>

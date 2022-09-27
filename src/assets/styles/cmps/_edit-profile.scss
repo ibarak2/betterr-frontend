@@ -186,7 +186,7 @@
     .user-stats-wrapper {
       .user-stats {
         padding-top: 20px;
-        border-top: 1px solid #dadbdd;
+        // border-top: 1px solid #dadbdd;
         margin-top: 24px;
 
         li {
@@ -213,10 +213,19 @@
           }
         }
 
+        .user-location {
+          border-top: 1px solid #dadbdd;
+          padding-top: 20px;
+        }
+
+        .member-since {
+          border-bottom: 1px solid #dadbdd;
+          padding-bottom: 20px;
+        }
+
         .monthley-revenue {
           margin-bottom: 0;
-          border-top: 1px solid #dadbdd;
-          padding: 20px 0;
+          padding: 5px 0;
 
           .revenue-status img {
             width: 13px;

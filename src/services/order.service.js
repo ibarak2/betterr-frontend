@@ -24,6 +24,7 @@ export const orderService = {
   query,
   save,
   updateStatus,
+  getAnalytics
 }
 
 async function query(filter) {
@@ -57,6 +58,15 @@ async function updateStatus(orderId, status) {
       status,
     })
     return savedOrder
+  } catch (err) {
+    return err
+  }
+}
+
+async function getAnalytics() {
+  try {
+    const analytics = await httpService.get(BASE_URL + `analytics/`)
+    return analytics
   } catch (err) {
     return err
   }
