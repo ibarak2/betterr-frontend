@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { userService } from "../services/user.service"
 
 
-export function EditProfile({ user }) {
+export function EditProfile({ user, analytics }) {
 
   const [username, setUsername] = useState('')
 
@@ -147,7 +147,46 @@ export function EditProfile({ user }) {
                   Earned this month
                 </span>
                 <span className="current-revenue">
-                  <b>$420</b>
+                  <b>{analytics.earningsThisMonth}$</b>
+                </span>
+              </li>
+              <li className="flex monthley-revenue">
+                <span className="revenue-status">
+                  <img
+                    className="dollar-sign"
+                    src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663623917/Fiverr-Sprint-4/imgs/icons/icons8-money-13_il7ket.png"
+                    alt=""
+                  />
+                  Orders Completed
+                </span>
+                <span className="current-revenue">
+                  <b>{analytics.ordersCompleted}</b>
+                </span>
+              </li>
+              <li className="flex monthley-revenue">
+                <span className="revenue-status">
+                  <img
+                    className="dollar-sign"
+                    src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663623917/Fiverr-Sprint-4/imgs/icons/icons8-money-13_il7ket.png"
+                    alt=""
+                  />
+                  Avg. selling price
+                </span>
+                <span className="current-revenue">
+                  <b>{analytics.avgSellingPrice}$</b>
+                </span>
+              </li>
+              <li className="flex monthley-revenue">
+                <span className="revenue-status">
+                  <img
+                    className="dollar-sign"
+                    src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663623917/Fiverr-Sprint-4/imgs/icons/icons8-money-13_il7ket.png"
+                    alt=""
+                  />
+                  Earnings to date
+                </span>
+                <span className="current-revenue">
+                  <b>{analytics.allEarnings}$</b>
                 </span>
               </li>
             </ul>
