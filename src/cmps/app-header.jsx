@@ -67,6 +67,8 @@ export function AppHeader() {
 
   const onSearch = (ev) => {
     ev.preventDefault()
+    const value = ev.target[0].value
+    navigate(`/explore?search=${value}`)
   }
 
   const logout = () => {

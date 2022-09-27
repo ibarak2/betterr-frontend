@@ -111,7 +111,7 @@ export const GigDetails = () => {
                     <section className="gig-description">
                         <div className="gig-layout">
                             <h1>{gig.title}</h1>
-                            <SellerOverview seller={gig.owner} reviewsAmount={reviews.length} />
+                            <SellerOverview seller={gig.owner} reviews={reviews} />
                             <div className="carousel-container">
                                 <GigImgsCarousel imgList={gig.imgUrls} />
                             </div>
@@ -133,7 +133,7 @@ export const GigDetails = () => {
                             <hr />
                             <div className="about-the-seller">
                                 <h2>About the Seller</h2>
-                                <SellerInfo seller={gig.owner} reviewsAmount={reviews.length} />
+                                <SellerInfo seller={gig.owner} reviews={reviews} />
                             </div>
                             <hr />
                             {!reviews.length ? <div>

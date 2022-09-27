@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import FavoriteIcon from "@mui/icons-material/Favorite"
 import StarIcon from "@mui/icons-material/Star"
 import { SimpleSlider } from "./simple-slider"
+import { utilService } from "../services/util.service"
 
 export const GigPreview = ({
   owner,
@@ -43,7 +44,7 @@ export const GigPreview = ({
         <div className="stars">
           {/* ⭐rate */}
           <StarIcon />
-          {Number.parseFloat(owner.rate).toFixed(1)}
+          {Number.parseFloat(utilService.averageRating(reviews)).toFixed(1)}
           <span className="reviews-amount">({reviews.length})</span>
         </div>
         <div className="preview-footer">

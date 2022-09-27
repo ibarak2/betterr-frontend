@@ -10,10 +10,8 @@ export const SOCKET_EVENT_REVIEW_ADDED = "review-added"
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = "review-about-you"
 // betterr sockets here 👇
 export const SOCKET_EVENT_NEW_ORDER_REQUEST = "new-order-request"
-export const SOCKET_EVENT_ORDER_CANCELLED = 'order-cancelled'
-export const SOCKET_EVENT_ORDER_ACCEPTED = 'order-accepted'
-export const SOCKET_EVENT_ORDER_READY = 'order-ready'
-export const SOCKET_EVENT_ORDER_DELIVERED = 'order-delivered'
+export const SOCKET_EVENT_ORDER_CHANGE_STATUS = "order-change-status"
+
 
 
 const SOCKET_EMIT_LOGIN = "set-user-socket"
