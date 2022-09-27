@@ -1,6 +1,34 @@
+import { useEffect, useState } from "react"
+import { userService } from "../services/user.service"
 
 
 export function EditProfile({ user, analytics }) {
+
+  const [username, setUsername] = useState('')
+
+  const onOpenModal = () => {
+    console.log('open');
+  }
+
+  const onChangeName = async (ev) => {
+    ev.preventDefault()
+    console.log('username', username)
+
+    const newName = await userService.update({
+      username,
+      userId: user._id
+    })
+
+    console.log('newName', newName)
+
+    setUsername(newName)
+    // return newName
+  }
+
+  const handleFormChange = (ev) => {
+    const { name, value } = ev.target
+    setUsername((prevUsername) => ({ ...prevUsername, [name]: value }))
+  }
 
   return (
     <section className="user-info-wrapper">
@@ -36,7 +64,7 @@ export function EditProfile({ user, analytics }) {
                   <input
                     type="file"
                     accept="image/png,image/jpeg"
-                    id="profile_image_7158927974909"
+                    id="profile_image"
                     className="hidden"
                     name="profile[image]"
                   />
@@ -54,7 +82,7 @@ export function EditProfile({ user, analytics }) {
               </div>
               <div className="change-name-wrapper">
                 <div className="pen-wrapper">
-                  <button className="change-username-btn">
+                  <button className="change-username-btn" onClick={onOpenModal}>
                     <svg
                       width="16"
                       height="16"
@@ -164,7 +192,20 @@ export function EditProfile({ user, analytics }) {
             </ul>
           </div>
         </div>
+      <div className="username-modal">
+        <form onSubmit={onChangeName}>
+        <input
+        type="text"
+        value={username.newName}
+        onChange={handleFormChange}
+        name="fullname"
+        autoComplete="off"
+        placeholder="enter new username"
+        />
+        </form>
       </div>
+      </div>
+
     </section>
   )
 }

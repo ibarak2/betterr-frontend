@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { userService } from '../services/user.service';
 import { chatService } from "../services/chat.service.js";
 
-export const GigPlans = ({ plans, onSelectPlan, seller, loggedinUser }) => {
+export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
 
     const [plan, setPlan] = useState('Basic')
 
@@ -40,13 +40,13 @@ export const GigPlans = ({ plans, onSelectPlan, seller, loggedinUser }) => {
     }
 
     
-    const onContact = (seller) => {
+    const onContact = () => {
 
-        console.log('seller', seller)  
-        console.log('sellerId', seller.id)
+        console.log('gig', gig)  
+        console.log('gigOwnerId', gig.owner._id)
         console.log('buyerId', loggedinUser._id)
         
-        const newChat = { participents: [seller._id, loggedinUser._id] }
+        const newChat = { participents: [gig.owner._id, loggedinUser._id] }
         chatService.save(newChat)
 
     }
@@ -230,11 +230,11 @@ export const GigPlans = ({ plans, onSelectPlan, seller, loggedinUser }) => {
             </TabPanel>
             <div className='plans-action-btns'>
                 <button className='continue-plans-btn' onClick={() => onSelect()}>Continue <span>→</span></button>
-                <button className='contact-plans-btn' onClick={() => onContact(seller)}>
-                    {/* <Link to="/chat" > */}
+                {/* <button > */}
+                    <Link to="/chat" className='contact-plans-btn' onClick={() => onContact()}>
                     Contact Seller
-                    {/* </Link>  */}
-                </button>
+                    </Link> 
+                {/* </button> */}
             </div>
         </Tabs>
     );
