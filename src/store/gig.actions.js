@@ -69,6 +69,12 @@ export function setCategory(category) {
   }
 }
 
+export function setSearch(search) {
+  return (dispatch) => {
+    dispatch({ type: "SET_SEARCH", search })
+  }
+}
+
 export function addToCart(gig) {
   return (dispatch) => {
     dispatch({

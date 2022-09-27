@@ -5,8 +5,7 @@ export const Filter = ({ onChangeFilter }) => {
     {
       basicPrice: "",
       basicDaysToMake: "",
-      rate: "",
-      category: ""
+      rate: ""
     },
     onChangeFilter
   )

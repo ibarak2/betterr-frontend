@@ -44,7 +44,7 @@ export function AddReview({ onAddReview, imgUrl }) {
                 half={false}
             />
             <input name="txt" type="text" placeholder="Add a review" onChange={handleChange} value={review.txt} />
-            <button>REVIEW</button>
+            <button>Add Review</button>
         </form>
     )
 }

@@ -3,7 +3,7 @@ const initialState = {
   cart: [],
   gigsByOwner: [],
   lastRemovedGig: null,
-  filterBy: { maxPrice: "", daysToMake: "", rate: "", category: "" },
+  filterBy: { maxPrice: "", daysToMake: "", rate: "", category: "", search: "" },
 }
 
 export function gigReducer(state = initialState, action) {
@@ -13,6 +13,7 @@ export function gigReducer(state = initialState, action) {
   var cart
   var filterBy
   var category
+  var search
 
   switch (action.type) {
     case "SET_GIGS":
@@ -37,16 +38,7 @@ export function gigReducer(state = initialState, action) {
 
       return { ...state, gigs }
 
-    case "ADD_TO_CART":
-      return { ...state, cart: [...state.cart, action.gig] }
 
-    case "REMOVE_FROM_CART":
-      cart = state.cart.filter((gig) => gig._id !== action.gigId)
-
-      return { ...state, cart }
-
-    case "CLEAR_CART":
-      return { ...state, cart: [] }
 
     case "SET_FILTER_BY":
       // NOT SURE
@@ -57,6 +49,10 @@ export function gigReducer(state = initialState, action) {
 
     case "SET_CATEGORY":
       filterBy = { ...state.filterBy, category: action.category }
+      return { ...state, filterBy }
+
+    case "SET_SEARCH":
+      filterBy = { ...state.filterBy, search: action.search }
       return { ...state, filterBy }
 
     case "UNDO_REMOVE_CAR":

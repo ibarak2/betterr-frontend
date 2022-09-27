@@ -1,9 +1,11 @@
 import ReactStars from 'react-stars'
+import { utilService } from '../services/util.service'
 
 
 
-export const SellerInfo = ({ seller, reviewsAmount }) => {
+export const SellerInfo = ({ seller, reviews }) => {
 
+    const averageRate = utilService.averageRating(reviews)
 
 
 
@@ -16,14 +18,13 @@ export const SellerInfo = ({ seller, reviewsAmount }) => {
                 <a href={`/profile/${seller._id}`}>{seller.fullname}</a>
                 <div className='flex align-center'>
                     <ReactStars
-                        value={seller.rate}
+                        value={averageRate}
                         count={5}
                         size={22}
                         color2={'#FFB33E'}
                         edit={false}
-                        border
                     />
-                    <span>{`(${reviewsAmount})`}</span></div>
+                    <span>{`(${reviews.length})`}</span></div>
                 <button>Contact Me</button>
             </div>
         </div>
