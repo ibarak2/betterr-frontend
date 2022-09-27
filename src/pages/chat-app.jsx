@@ -25,9 +25,13 @@ export function ChatApp({ participents }) {
   //   let botTimeout
 
   useEffect(() => {
-    socketService.on(SOCKET_EVENT_ADD_MSG, addMsg)
+    socketService.on('on-sent-msg', (data) => {
+      let newMsgs = chatRoom.msgs
+      newMsgs.push(data)
+      setChatRoom((prevState) => ({ ...prevState, msgs: newMsgs }))
+    })
     return () => {
-      socketService.off(SOCKET_EVENT_ADD_MSG, addMsg)
+      socketService.off('on-sent-msg')
       //   botTimeout && clearTimeout(botTimeout)
     }
   }, [])
@@ -58,13 +62,22 @@ export function ChatApp({ participents }) {
     ev.preventDefault()
     console.log(chatRoom)
 
-    const newMsg = await chatService.newMsg({msg: msg.txt, chatRoomId: chatRoom._id})
-    console.log(newMsg);
+    const newMsg = await chatService.newMsg({
+      msg: msg.txt,
+      chatRoomId: chatRoom._id,
+    })
+    console.log(newMsg)
     let newMsgs = chatRoom.msgs
     newMsgs.push(newMsg)
-    setChatRoom((prevState) => ({...prevState, msgs: newMsgs}))
+    setChatRoom((prevState) => ({ ...prevState, msgs: newMsgs }))
 
     setMsg({ txt: '' })
+
+    const recieverId = chatRoom.participents.filter(
+      (participent) => participent !== loggedInUser._id
+    )
+    const miniTxt = { userId: recieverId[0], newMsg }
+    socketService.emit(SOCKET_EMIT_SEND_MSG, miniTxt)
   }
 
   const handleFormChange = (ev) => {
