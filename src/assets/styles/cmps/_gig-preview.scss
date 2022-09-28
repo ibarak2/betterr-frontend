@@ -2,12 +2,12 @@
   border: 1px solid #e4e5e7;
   color: $clr6;
   min-width: 245px;
-  max-height: rem(395px);
+  max-height: rem(440px);
   & > .slick-slider,
   img {
     max-height: rem(194.39px);
     img {
-      height: 100%;
+      height: rem(200px);
       object-fit: cover;
     }
   }
@@ -36,7 +36,7 @@
     display: flex;
     align-items: center;
     height: 54px;
-    padding: rem(12px) rem(8px) 0;
+    padding: rem(12px) rem(14px) 0;
     font-size: rem(14px);
     & p {
       margin: 0;
@@ -55,13 +55,13 @@
     }
   }
   .preview-title {
-    height: 43px;
+    height: 60px;
     font-size: rem(16px);
     text-transform: capitalize;
-    margin-top: rem(5px);
-    padding-left: rem(8px);
-    padding-right: rem(8px);
-    padding-bottom: rem(5px);
+    margin-top: rem(10px);
+    margin-bottom: rem(10px);
+    padding-left: rem(16px);
+    padding-right: rem(16px);
     & a:hover {
       color: $clr2;
     }
@@ -82,7 +82,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: rem(10px) rem(12px);
+    padding: rem(10px) rem(14px);
     .like {
       cursor: pointer;
     }

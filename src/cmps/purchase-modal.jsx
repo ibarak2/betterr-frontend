@@ -5,24 +5,18 @@
 export const PurchaseModal = ({ onPurchase, onCancel, isSelected }) => {
 
 
-    const { plan, price, daysToMake } = isSelected
+    const { plan, price, daysToMake, planTitle } = isSelected
     return (
         <div className="purchase-modal">
-            <h3>Price Summery</h3>
-            <div>
-                <p>Plan</p>
-                <span>{plan}</span>
-            </div>
-            <div>
-                <p>Total</p>
-                <span>{price}$</span>
-            </div>
-            <div>
-                <p>Delivery Time</p>
-                <span>{daysToMake} {daysToMake > 1 ? 'days' : 'day'}</span>
-            </div>
-            <button onClick={() => onPurchase(plan, daysToMake, price)}>Checkout</button>
-            <button onClick={() => onCancel()}>Cancel</button>
+            <h3 className="price-summary">Order Gig Summary</h3>
+            <p className="plan-title">{planTitle}</p>
+
+            <p className="price-title">Total</p>
+            <span className="price">{price}$</span>
+            <p className="delivery-title">Delivery Time</p>
+            <span className="delivery-time">{daysToMake} {daysToMake > 1 ? 'days' : 'day'}</span>
+            <button className="purchase-btn" onClick={() => onPurchase(plan, daysToMake, price)}>Checkout</button>
+            <button className="cancel-btn" onClick={() => onCancel()}>Cancel</button>
         </div>
     )
 }

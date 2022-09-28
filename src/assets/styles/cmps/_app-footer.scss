@@ -9,9 +9,9 @@
     bottom: 0;
     color: $clr4;
     background-color: $clr1;
-    border-top: 1px #E4E5E7 solid;
+    border-top: 1px #e4e5e7 solid;
     text-align: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 24px 0;
     flex-wrap: wrap;
     flex: 1;
@@ -51,6 +51,12 @@
           }
         }
       }
+    }
+  }
+
+  @media (min-width: 650px) {
+    .footer-wrapper {
+      justify-content: space-between;
     }
   }
 }
