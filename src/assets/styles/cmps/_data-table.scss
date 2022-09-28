@@ -3,6 +3,11 @@
   background-color: white;
   outline: 1px solid #e2e2e2;
 
+  .table-sort-by-days {
+    justify-content: space-between;
+    padding: 5px 20px;
+  }
+
   .table-cell {
     &.subheader-one {
       justify-content: center;
