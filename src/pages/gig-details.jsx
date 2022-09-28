@@ -147,16 +147,21 @@ export const GigDetails = () => {
                             <div className="carousel-container">
                                 <GigImgsCarousel imgList={gig.imgUrls} />
                             </div>
-                            <div className="mobile-plans">
-                                {(screenWidth < 900) &&
+                            {(screenWidth < 900) &&
+                                <div className="mobile-plans">
                                     <GigPlans
                                         plans={gig.plans}
                                         onSelectPlan={onSelectPlan}
                                         seller={gig.owner}
                                         loggedinUser={loggedinUser}
                                     />
-                                }
-                            </div>
+                                    <div className="contact-container">
+                                        <button className='contact-plans-btn'>
+                                            Contact Seller
+                                        </button>
+                                    </div>
+                                </div>
+                            }
                             <div className="about-this-gig">
                                 <h2>About This Gig</h2>
                                 <p>{gig.description}</p>
@@ -197,12 +202,17 @@ export const GigDetails = () => {
                             }
                         </div>
                     </section>
-                    <section className="plans">
-                        {(screenWidth > 900) &&
-                            <GigPlans gig={gig} plans={gig.plans} onSelectPlan={onSelectPlan} loggedinUser={loggedinUser} />
+                    {(screenWidth > 900) &&
+                        <section className="plans">
 
-                        }
-                    </section>
+                            <GigPlans gig={gig} plans={gig.plans} onSelectPlan={onSelectPlan} loggedinUser={loggedinUser} />
+                            <div className="contact-container">
+                                <button className='contact-plans-btn'>
+                                    Contact Seller
+                                </button>
+                            </div>
+                        </section>
+                    }
                 </div>
                 {isSelected.isOpen && <PurchaseModal onPurchase={onPurchase} onCancel={onCancel} isSelected={isSelected} />}
             </section>

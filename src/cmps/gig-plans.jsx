@@ -9,10 +9,10 @@ import { showErrorMsg } from '../services/event-bus.service'
 import { Link } from 'react-router-dom';
 import { userService } from '../services/user.service';
 import { chatService } from "../services/chat.service.js";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
 
-    console.log('gig.owner', gig.owner)
 
     const [plan, setPlan] = useState('Basic')
 
@@ -41,13 +41,13 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
         onSelectPlan(rank, daysToMake, price)
     }
 
-    
+
     const onContact = () => {
 
-        console.log('gig', gig)  
+        console.log('gig', gig)
         console.log('gigOwnerId', gig.owner._id)
         console.log('buyerId', loggedinUser._id)
-        
+
         const newChat = { participents: [gig.owner._id, loggedinUser._id] }
         chatService.save(newChat)
 
@@ -107,61 +107,88 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
             </TabList>
             <TabPanel value={0} style={{ borderLeft: '1px solid #DBDCDE', borderRight: '1px solid #DBDCDE' }}>
                 <Typography
-                    fontSize="xl4"
+                    fontSize="xl1"
                     fontWeight="xl"
                     level="inherit"
                     mt={1}
+                    ml={1}
                     padding={1.5}>
 
                     {plans.basicTitle}
                 </Typography>
                 <Typography
-                    level="inherit"
-                    mt={2}
-                    padding={1.5}
-                >
-
-                    {plans.basicDescription}
-                </Typography>
-                <Typography
-                    level="inherit"
-                    padding={1.5}
-                    pb={0}
-                >
-                    {plans.basicDaysToMake}{(plans.basicDaysToMake <= 1) ? " Day Delivery" : " Days Delivery"}
-                </Typography>
-                <Typography
                     textColor="black.400"
-                    fontSize="xl4"
+                    fontSize="xl2"
                     fontWeight="xl"
-                    padding={1.5}
-                    pt={0}
-                >
-                    ${plans.basicPrice}{" "}
+                    textAlign={'right'}
+                    mr={2.5}
+                    mt={-6}
 
+                >
                     <Typography
                         fontSize="sm"
                         textColor="text.secondary"
                         fontWeight="md">
                         USD
                     </Typography>
+                    ${plans.basicPrice}{" "}
+
+                </Typography>
+                <Typography
+                    level="inherit"
+                    mb={2}
+                    mt={2.5}
+                    ml={2.5}
+                    mr={2.5}
+
+                >
+                    {plans.basicDescription}
+                </Typography>
+                <Typography
+                    level="inherit"
+                    padding={1.5}
+                    pb={1}
+                    fontWeight="xl"
+
+                >
+                    <span className='delivery-icon'><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path><path d="M9 4H7v5h5V7H9V4z"></path></svg></span>
+                    {plans.basicDaysToMake}{(plans.basicDaysToMake <= 1) ? " Day Delivery" : " Days Delivery"}
                 </Typography>
             </TabPanel>
 
             <TabPanel value={1} style={{ borderLeft: '1px solid #DBDCDE', borderRight: '1px solid #DBDCDE' }}>
                 <Typography
-                    fontSize="xl4"
+                    fontSize="xl1"
                     fontWeight="xl"
                     level="inherit"
                     mt={1}
+                    ml={1}
                     padding={1.5}>
 
                     {plans.standardTitle}
                 </Typography>
                 <Typography
+                    textColor="black.400"
+                    fontSize="xl2"
+                    fontWeight="xl"
+                    textAlign={'right'}
+                    mr={2.5}
+                    mt={-6}
+
+                >
+                    <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
+                        USD
+                    </Typography>
+                    ${plans.standardPrice}{" "}
+
+                </Typography>
+                <Typography
                     level="inherit"
-                    mt={2}
-                    padding={1.5}
+                    mb={2}
+                    mt={2.5}
+                    ml={2.5}
+                    mr={2.5}
+
                 >
 
                     {plans.standardDescription}
@@ -169,74 +196,63 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
                 <Typography
                     level="inherit"
                     padding={1.5}
-                    pb={0}
-
-                >
-                    {plans.standardDaysToMake}{(plans.standardDaysToMake <= 1) ? " Day Delivery" : " Days Delivery"}
-                </Typography>
-                <Typography
-                    textColor="black.400"
-                    fontSize="xl4"
+                    pb={1}
                     fontWeight="xl"
-                    padding={1.5}
-                    pt={0}
-
                 >
-                    ${plans.standardPrice}{" "}
+                    <span className='delivery-icon'><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path><path d="M9 4H7v5h5V7H9V4z"></path></svg></span>
 
-                    <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
-                        USD
-                    </Typography>
+                    {plans.standardDaysToMake}{(plans.standardDaysToMake <= 1) ? " Day Delivery" : " Days Delivery"}
                 </Typography>
             </TabPanel>
             <TabPanel value={2} style={{ borderLeft: '1px solid #DBDCDE', borderRight: '1px solid #DBDCDE' }}>
                 <Typography
-                    fontSize="xl4"
+                    fontSize="xl1"
                     fontWeight="xl"
                     level="inherit"
                     mt={1}
+                    ml={1}
                     padding={1.5}>
 
                     {plans.premiumTitle}
                 </Typography>
                 <Typography
-                    level="inherit"
-                    mt={2}
-                    padding={1.5}
+                    textColor="black.400"
+                    fontSize="xl2"
+                    fontWeight="xl"
+                    textAlign={'right'}
+                    mr={2.5}
+                    mt={-6}
                 >
+                    <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
+                        USD
+                    </Typography>
+                    ${plans.premiumPrice}{" "}
 
+                </Typography>
+                <Typography
+                    level="inherit"
+                    mb={2}
+                    mt={2.5}
+                    ml={2.5}
+                    mr={2.5}
+                >
                     {plans.premiumDescription}
                 </Typography>
                 <Typography
                     level="inherit"
                     padding={1.5}
-                    pb={0}
-
-                >
-                    {plans.premiumDaysToMake}{(plans.premiumDaysToMake <= 1) ? " Day Delivery" : " Days Delivery"}
-                </Typography>
-                <Typography
-                    textColor="black.400"
-                    fontSize="xl4"
+                    pb={1}
                     fontWeight="xl"
-                    padding={1.5}
-                    pt={0}
 
                 >
-                    ${plans.premiumPrice}{" "}
+                    <span className='delivery-icon'><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path><path d="M9 4H7v5h5V7H9V4z"></path></svg></span>
 
-                    <Typography fontSize="sm" textColor="text.secondary" fontWeight="md">
-                        USD
-                    </Typography>
+                    {plans.premiumDaysToMake}{(plans.premiumDaysToMake <= 1) ? " Day Delivery" : " Days Delivery"}
                 </Typography>
             </TabPanel>
             <div className='plans-action-btns'>
                 <button className='continue-plans-btn' onClick={() => onSelect()}>Continue <span>→</span></button>
-                {/* <button > */}
-                    <Link to="/chat" className='contact-plans-btn' onClick={() => onContact()}>
-                    Contact Seller
-                    </Link> 
-                {/* </button> */}
+
             </div>
         </Tabs>
     );

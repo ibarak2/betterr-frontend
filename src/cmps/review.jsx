@@ -13,20 +13,23 @@ export const Review = ({ review }) => {
         <div className='review'>
             <div className="user-info">
                 <img src={review.imgUrl}></img>
-                <b>{review.fullname}</b>
+                <div className='flex column'>
+
+                    <b>{review.fullname}</b>
+                    <div className='review-stars-details flex align-center'>
+                        <div><ReactStars
+                            value={review.rate}
+                            count={5}
+                            size={22}
+                            color2={'#FFB33E'}
+                            edit={false}
+                        /></div>
+                        <span className='seperator'> | </span>
+                        <time>{utilService.getReviewDate(review.createdAt)}</time>
+                    </div>
+                </div>
             </div>
             <div className="review-details">
-                <div className='review-stars-details flex align-center'>
-                    <div><ReactStars
-                        value={review.rate}
-                        count={5}
-                        size={22}
-                        color2={'#FFB33E'}
-                        edit={false}
-                    /></div>
-                    <span> | </span>
-                    <time>{utilService.getReviewDate(review.createdAt)}</time>
-                </div>
                 <p>{review.txt}</p>
             </div>
             <hr />
