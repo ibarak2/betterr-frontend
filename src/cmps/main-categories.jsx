@@ -66,7 +66,9 @@ export function MainCategories() {
 
                 <li className="categories-list-item">
                     <a className="categories-link" href="/explore?category=business">
+                        <div className="data-icon">
                         <img className="categories-img" src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663189945/Fiverr-Sprint-4/imgs/icons/data_xgawq7.svg" alt="" />
+                        </div>
                         Data
                     </a>
                 </li>

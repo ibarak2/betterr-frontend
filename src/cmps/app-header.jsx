@@ -160,7 +160,7 @@ export function AppHeader() {
                     </NavLink> */}
                     <NavLink to="/manage-orders/active-orders">Orders</NavLink>
                     <a onClick={logout}>Logout</a>
-                    <NavLink to={`/profile/${loggedinUser._id}`}>
+                    <NavLink to={`/profile/${loggedinUser._id}`} className="header-avatar-wrapper">
                       <img
                         className="header-avatar"
                         src={loggedinUser.imgUrl}

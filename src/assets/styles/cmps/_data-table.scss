@@ -2,15 +2,16 @@
   width: 100%;
   background-color: white;
   outline: 1px solid #e2e2e2;
-  .table-header {
-    text-transform: uppercase;
-    font-size: rem(14px);
-    font-weight: 600;
+
+  .table-cell {
+    &.subheader-one {
+      justify-content: center;
+      padding: 5px;
+    }
   }
 
   .data-select-container {
     justify-content: end;
-    padding-inline-end: 20px;
     gap: 15px;
     .data-select {
       border: 1px solid $clr15;

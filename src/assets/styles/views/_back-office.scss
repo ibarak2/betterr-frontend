@@ -1,25 +1,25 @@
-.back-office {
-  background-color: #f7f7f7;
-  color: $clr6;
-  margin: auto;
-  min-height: calc(100vh - 330px);
-  .manage-interface {
-    max-width: 1240px;
-    padding: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    width: 100%;
-  }
-  .sub-header {
-    padding-bottom: 30px;
-  }
-  h1 {
-    font-size: rem(42px);
-    font-weight: 400;
-    margin: 0;
-  }
+// .back-office {
+//   background-color: #f7f7f7;
+//   color: $clr6;
+//   margin: auto;
+//   min-height: calc(100vh - 330px);
+//   .manage-interface {
+//     max-width: 1240px;
+//     padding: 0;
+//     margin-left: auto;
+//     margin-right: auto;
+//     margin-top: 30px;
+//     margin-bottom: 20px;
+//     width: 100%;
+//   }
+//   .sub-header {
+//     padding-bottom: 30px;
+//   }
+//   h1 {
+//     font-size: rem(42px);
+//     font-weight: 400;
+//     margin: 0;
+//   }
   .mini-nav {
     margin-bottom: 20px;
     height: 55px;
@@ -64,23 +64,61 @@
         z-index: 1000;
       }
     }
-    .add-gig-btn {
-      align-self: center;
-      height: 32px;
-      border-radius: 4px;
-      padding: 8px 12px;
-      font-size: 12px;
-      transition: background-color 0.3s;
-      background-color: $clr2;
-      font-weight: 600;
-      text-transform: uppercase;
-      cursor: pointer;
-      &:hover {
-        box-shadow: 0 2px 5px 1px rgb(0 0 0 / 30%);
-      }
-    }
+    // .add-gig-btn {
+    //   align-self: center;
+    //   height: 32px;
+    //   border-radius: 4px;
+    //   padding: 8px 12px;
+    //   font-size: 12px;
+    //   transition: background-color 0.3s;
+    //   background-color: $clr2;
+    //   font-weight: 600;
+    //   text-transform: uppercase;
+    //   cursor: pointer;
+    //   &:hover {
+    //     box-shadow: 0 2px 5px 1px rgb(0 0 0 / 30%);
+    //   }
+    // }
   }
-  & .cancel-btn {
-    background-color: red;
+  // & .cancel-btn {
+  //   background-color: red;
+  // }
+// }
+
+.back-office {
+  background-color: #f7f7f7;
+  color: $clr6;
+  margin: auto;
+  min-height: calc(100vh - 330px);
+
+  h1 {
+    margin: 0;
+  }
+  .manage-interface {
+    max-width: 1240px;
+    padding: 0;
+    margin: 30px auto 30px;
+    width: 100%;
+  }
+
+  .data-table {
+    background-color: $clr1;
+    width: 320px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: rem(8px);
+  }
+
+  .table-subheader {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    .subheader {
+      width: 20px;
+    }
   }
 }
