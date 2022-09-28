@@ -42,14 +42,14 @@ export const Filter = ({ onChangeFilter }) => {
   const filters = filterSettings.map((filter) => (
     <div
       className="flex align-center fiverr-style-filter"
-      onClick={filter.handler}
+      onClick={filter.state ? undefined : filter.handler}
     >
       <div className="text">{filter.text}</div>
       <span className={`filter-chevron ${filter.state && "open"}`}>
         <ChevronSvgIcon />
       </span>
       <form
-      className="form-modal"
+        className="form-modal"
         style={{
           display: `${filter.state ? "" : "none"}`,
         }}
@@ -65,36 +65,25 @@ export const Filter = ({ onChangeFilter }) => {
   ))
 
   return (
-    <Fragment>
-      <section className="flex filter-options">
-        {filters}
-        <button
-          className="btn btn-reset-filter"
-          onClick={() =>
-            setFields({ basicPrice: "", basicDaysToMake: "", rate: "" })
-          }
-        >
-          reset
-        </button>
-      </section>
-      {/* <form className="filter">
-        <section>
-          <input
-            {...register("basicPrice", "number")}
-            placeholder="Max Price"
-          />
-        </section>
-        <section>
-          <input
-            {...register("basicDaysToMake", "number")}
-            placeholder="Delivery Time"
-          />
-        </section>
-        <section>
-          <input {...register("rate", "number")} placeholder="Rating" />
-        </section>
-      </form> */}
-    </Fragment>
+    <section className="flex filter-options">
+      {filters}
+      {filterSettings.map((st) => (
+        <div className="open-listner"
+          onClick={st.state ? st.handler : undefined}
+          style={{
+            display: `${!st.state ? "none" : ""}`,
+          }}
+        ></div>
+      ))}
+      <button
+        className="btn btn-reset-filter"
+        onClick={() =>
+          setFields({ basicPrice: "", basicDaysToMake: "", rate: "" })
+        }
+      >
+        reset
+      </button>
+    </section>
   )
 }
 const ChevronSvgIcon = () => {
