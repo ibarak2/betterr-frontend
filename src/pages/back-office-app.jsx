@@ -26,7 +26,7 @@ export const BackOfficeApp = () => {
       console.log("data", data);
       (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
       dispatch(setOrderStatus(data.orderId, data.status))
-      onLoadOrders()
+      // onLoadOrders()
 
     })
 
