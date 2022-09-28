@@ -14,7 +14,7 @@ export function GigTableSubheader() {
           </div>
         )}
         {subheaders.map((sh) => (
-          <div key={sh.txt} className={`subheader ${sh.class && sh.class}`}>
+          <div key={sh.txt} className='subheader'>
             {sh.txt && sh.txt}
           </div>
         ))}

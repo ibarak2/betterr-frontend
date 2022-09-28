@@ -5,6 +5,7 @@
 
   .hero-main {
     padding-left: 0;
+    transform: translateY(-4.4rem);
 
     .hero-title {
       font-size: rem(50px);
@@ -94,7 +95,7 @@
 
       .hero-form {
         height: rem(48px);
-        margin: 0.4vh 1.92px 15.36px;
+        margin: 0.4vh 1.92px 1.5rem;
         span {
           width: inherit;
           border-radius: 4px 0 0 4px;
@@ -148,7 +149,6 @@
       margin: 0 1.92px;
       flex-wrap: wrap;
       align-content: center;
-
       .popular-list {
         margin-left: 9.6px;
         gap: 13.44px;

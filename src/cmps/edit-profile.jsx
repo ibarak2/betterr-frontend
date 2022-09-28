@@ -194,7 +194,7 @@ export function EditProfile({ user, analytics }) {
             </ul>
           </div>
         </div>
-      <div className="username-modal">
+      {/* <div className="username-modal">
         <form onSubmit={onChangeName}>
         <input
         type="text"
@@ -205,7 +205,7 @@ export function EditProfile({ user, analytics }) {
         placeholder="enter new username"
         />
         </form>
-      </div>
+      </div> */}
       </div>
 
     </section>
