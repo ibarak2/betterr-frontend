@@ -1,4 +1,6 @@
 .user-avatar {
   border: 1px solid $clr14;
   border-radius: 50%;
+  object-fit: cover;
+  padding: 0;
 }

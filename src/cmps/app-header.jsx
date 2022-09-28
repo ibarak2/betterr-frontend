@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react'
-import { Link, NavLink, useParams, useSearchParams } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
-import { LoginSignup } from './login-signup.jsx'
-import { SecondaryNavbar } from './secondary-navbar'
-import MailOutlineIcon from '@mui/icons-material/MailOutline'
-import { SideDrawer } from './side-drawer'
-import { userService } from '../services/user.service.js'
-import { socketService } from '../services/socket.service.js'
-import { showSuccessMsg } from '../services/event-bus.service.js'
+import { useEffect, useState } from "react"
+import { Link, NavLink, useParams, useSearchParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { onLogin, onLogout, onSignup } from "../store/user.actions.js"
+import { LoginSignup } from "./login-signup.jsx"
+import { SecondaryNavbar } from "./secondary-navbar"
+import MailOutlineIcon from "@mui/icons-material/MailOutline"
+import { SideDrawer } from "./side-drawer"
+import { userService } from "../services/user.service.js"
+import { socketService } from "../services/socket.service.js"
+import { showSuccessMsg } from "../services/event-bus.service.js"
 
 export function AppHeader() {
   //---- States ----//
@@ -28,35 +28,34 @@ export function AppHeader() {
   //---- functions ----//
   const toggleDrawer = (open) => (event) => {
     if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
     )
       return
 
-    setDrawerOpen({ ...drawerOpen, ['left']: open })
+    setDrawerOpen({ ...drawerOpen, ["left"]: open })
   }
 
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
-    window.removeEventListener('scroll', onScroll)
-    window.addEventListener('scroll', onScroll, { passive: true })
+    window.removeEventListener("scroll", onScroll)
+    window.addEventListener("scroll", onScroll, { passive: true })
 
-    socketService.on('new-order-recieved', showSuccessMsg)
-
+    socketService.on("new-order-recieved", showSuccessMsg)
 
     return () => {
-      socketService.off('new-order-recieved', showSuccessMsg)
-      window.removeEventListener('scroll', onScroll)
+      socketService.off("new-order-recieved", showSuccessMsg)
+      window.removeEventListener("scroll", onScroll)
     }
   }, [])
 
   const handleCloseModal = (ev) => {
     if (
-      ev === 'close-btn' ||
-      ev.target.className.includes('login-signup-close-modal-div')
+      ev === "close-btn" ||
+      ev.target.className.includes("login-signup-close-modal-div")
     ) {
       setModalOpen(false)
-      setLogSign('')
+      setLogSign("")
     }
   }
 
@@ -73,7 +72,7 @@ export function AppHeader() {
 
   const logout = () => {
     dispatch(onLogout())
-    navigate('/?nav=home')
+    navigate("/?nav=home")
   }
 
   return (
@@ -85,16 +84,17 @@ export function AppHeader() {
       />
       <div
         className={
-          searchParams.get('nav') !== 'home'
-            ? 'main-container main-header header-white'
+          searchParams.get("nav") !== "home"
+            ? "main-container main-header header-white"
             : offset > 0
-              ? 'main-container main-header header-white'
-              : 'main-container main-header'
+            ? "main-container main-header header-white"
+            : "main-container main-header"
         }
       >
         <div className="flex max-width-container main-header-wrapper">
           <div className="flex main-header-left">
             <SideDrawer
+              loggedinUser={loggedinUser}
               setDrawerOpen={setDrawerOpen}
               toggleDrawer={toggleDrawer}
             />
@@ -102,11 +102,11 @@ export function AppHeader() {
               <img
                 className="logo"
                 src={
-                  searchParams.get('nav') !== 'home'
-                    ? 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png'
+                  searchParams.get("nav") !== "home"
+                    ? "https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
                     : offset > 0
-                      ? 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png'
-                      : 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663666624/Fiverr-Sprint-4/imgs/beterr./logo-white_fnqy6y.png'
+                    ? "https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
+                    : "https://res.cloudinary.com/dalkffrhf/image/upload/v1663666624/Fiverr-Sprint-4/imgs/beterr./logo-white_fnqy6y.png"
                 }
                 alt="betterr."
               />
@@ -115,11 +115,11 @@ export function AppHeader() {
 
           <div
             className={
-              searchParams.get('nav') !== 'home'
-                ? 'header-search header-search-shown'
+              searchParams.get("nav") !== "home"
+                ? "header-search header-search-shown"
                 : offset >= 190
-                  ? 'header-search header-search-shown'
-                  : 'header-search'
+                ? "header-search header-search-shown"
+                : "header-search"
             }
           >
             <form className="flex" onSubmit={(ev) => onSearch(ev)}>
@@ -160,7 +160,10 @@ export function AppHeader() {
                     </NavLink> */}
                     <NavLink to="/manage-orders/active-orders">Orders</NavLink>
                     <a onClick={logout}>Logout</a>
-                    <NavLink to={`/profile/${loggedinUser._id}`} className="header-avatar-wrapper">
+                    <NavLink
+                      to={`/profile/${loggedinUser._id}`}
+                      className="header-avatar-wrapper"
+                    >
                       <img
                         className="header-avatar"
                         src={loggedinUser.imgUrl}
@@ -177,21 +180,21 @@ export function AppHeader() {
                   <li>
                     <a
                       onClick={() => {
-                        handleOpenModal('sign')
+                        handleOpenModal("sign")
                       }}
                     >
                       Become a seller
                     </a>
                     <a
                       onClick={() => {
-                        handleOpenModal('log')
+                        handleOpenModal("log")
                       }}
                     >
                       Sign In
                     </a>
                     <a
                       onClick={() => {
-                        handleOpenModal('sign')
+                        handleOpenModal("sign")
                       }}
                       className="nav-join"
                     >
@@ -207,11 +210,11 @@ export function AppHeader() {
 
       <section
         className={
-          searchParams.get('nav') !== 'home'
-            ? 'main-container flex second-nav-shown second-nav'
+          searchParams.get("nav") !== "home"
+            ? "main-container flex second-nav-shown second-nav"
             : offset >= 150
-              ? 'main-container flex second-nav-shown second-nav'
-              : 'main-container flex max-width-container second-nav'
+            ? "main-container flex second-nav-shown second-nav"
+            : "main-container flex max-width-container second-nav"
         }
       >
         <SecondaryNavbar />
