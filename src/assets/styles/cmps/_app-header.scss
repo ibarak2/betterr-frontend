@@ -35,6 +35,10 @@
     }
   }
 
+  @media (min-width: 400px) {
+    height: 80px;
+  }
+
   .site-logo {
     min-width: 121px;
     img {

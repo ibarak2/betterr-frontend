@@ -10,20 +10,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  background-color: pink;
   visibility: hidden;
   height: 1px;
   padding: 0;
 
-  .subheader {
-    flex: 1;
-
-    .subheader-one {
-      justify-content: space-between;
-      margin: auto;
-
-
-    }
+  .subheader-one {
+    justify-content: space-around;
+    margin: auto;
   }
 }
 

@@ -37,8 +37,8 @@ export function GigTableDetails({ order, isBuyer, onAccept, onCancel, onReady, o
         <p className="buyer-name">{order.gig.title}</p>
       </div>
       <div className="flex subheader due-on">
-        <p>Due</p>
-        <p>01/10</p>
+        <p className="p-due">Due</p>
+        <p className="p-date">01/10</p>
         </div>
       <div className="subheader backoffice-gig-price">
         {"$"}
