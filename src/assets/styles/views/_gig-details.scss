@@ -11,15 +11,25 @@
   justify-content: center;
   padding: 0 24px;
 
+  hr {
+    margin: 30px 0;
+  }
+
   & h1 {
-    font-weight: bold;
-    font-size: rem(28px);
+    line-height: 130%;
+    font-family: WorkSansBold;
+    font-size: rem(30px);
   }
   & .about-this-gig {
     margin-top: rem(200px);
+    h2 {
+      margin-bottom: 30px;
+    }
   }
   & .about-the-seller {
-    margin-top: 30px;
+    h2 {
+      margin-bottom: 30px;
+    }
   }
 
   & .gig-description {
@@ -29,9 +39,31 @@
       max-width: 100%;
 
       .seller-overview {
-        img {
+        display: flex;
+        // gap: 10px;
+        align-items: center;
+        .fullname {
+          margin-right: 10px;
+        }
+
+        & img {
+          border: 1px solid black;
+          border-radius: 28px;
           width: rem(32px);
           height: rem(32px);
+          margin-right: 20px;
+        }
+
+        .stars {
+          transform: translateY(-2px);
+          margin-right: 3px;
+        }
+        .sperator {
+          margin: 0 10px;
+          color: #d0c6c9;
+        }
+        .reviews-count {
+          margin-left: 5px;
         }
       }
     }
@@ -47,6 +79,12 @@
     .pricing {
       width: 100%;
     }
+    .delivery-icon {
+      margin: 8px;
+    }
+    // .plan-description {
+    //   transform: translate(72%, -90%) !important;
+    // }
   }
 
   & .mobile-plans {
@@ -62,27 +100,32 @@
     font-size: 1em;
     border-radius: 4px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     &:hover {
       background-color: darken($color: $clr2, $amount: 7%);
     }
   }
-  & .contact-plans-btn {
-    background-color: transparent;
-    color: $clr5;
-    margin: auto;
-    height: 40px;
-    width: 90%;
-    font-size: 1em;
+  & .contact-container {
+    margin-top: 15px;
+    width: 100%;
+    background-color: #fafafa;
     border-radius: 4px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    border: 1px $clr5 solid;
-    text-align: center;
-    padding-top: rem(5px);
-    &:hover {
-      background-color: $clr5;
-      color: #fff;
+    & .contact-plans-btn {
+      background-color: transparent;
+      color: $clr5;
+      margin: 20px;
+      height: 40px;
+      width: 90%;
+      font-size: 1em;
+      border-radius: 4px;
+      font-weight: 600;
+      border: 1px $clr5 solid;
+      text-align: center;
+      padding-top: rem(5px);
+      &:hover {
+        background-color: $clr5;
+        color: #fff;
+      }
     }
   }
 

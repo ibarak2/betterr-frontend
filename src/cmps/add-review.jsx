@@ -35,14 +35,16 @@ export function AddReview({ onAddReview, imgUrl }) {
     return (
         <form onSubmit={(ev) => onSubmitReview(ev)} className="add-review-form">
             <img src={`${imgUrl}`} alt='avatar' />
-            <ReactStars
-                value={review.rate}
-                count={5}
-                onChange={ratingChanged}
-                size={24}
-                color2={'#FFB33E'}
-                half={false}
-            />
+            <div className="stars">
+                <ReactStars
+                    value={review.rate}
+                    count={5}
+                    onChange={ratingChanged}
+                    size={24}
+                    color2={'#FFB33E'}
+                    half={false}
+                />
+            </div>
             <input name="txt" type="text" placeholder="Add a review" onChange={handleChange} value={review.txt} />
             <button>Add Review</button>
         </form>

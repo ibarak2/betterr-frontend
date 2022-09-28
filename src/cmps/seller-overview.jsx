@@ -10,13 +10,13 @@ export const SellerOverview = ({ seller, reviews }) => {
     return (
         <div className="seller-overview">
             <img src={seller.imgUrl}></img>
-            <div>
-                <a href={`/profile/${seller._id}`}>
-                    <strong>{seller.fullname}</strong>
-                </a>
+            <div className='fullname'>
+                <strong>{seller.fullname}</strong>
             </div>
-            <div>{seller.level}</div> |
-            <div><ReactStars
+            {(seller.level === 'Top rated Seller')}
+            <div>Level {seller.level} Seller</div>
+            <span className='sperator'>|</span>
+            <div className='stars'><ReactStars
                 value={averageRate}
                 count={5}
                 size={22}
@@ -24,7 +24,7 @@ export const SellerOverview = ({ seller, reviews }) => {
                 edit={false}
             /></div>
             <div style={{ color: '#FFB33E' }}>{reviews.length ? averageRate : 0}</div>
-            <div>{`(${reviews.length})`}</div>
+            <div className='reviews-count'>{`(${reviews.length})`}</div>
 
 
 

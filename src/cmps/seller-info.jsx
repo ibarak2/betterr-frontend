@@ -15,8 +15,8 @@ export const SellerInfo = ({ seller, reviews }) => {
                 <img src={seller.imgUrl}></img>
             </div>
             <div className="seller-details">
-                <a href={`/profile/${seller._id}`}>{seller.fullname}</a>
-                <div className='flex align-center'>
+                <b>{seller.fullname}</b>
+                <div className='flex align-center stars'>
                     <ReactStars
                         value={averageRate}
                         count={5}
