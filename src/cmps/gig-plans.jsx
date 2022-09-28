@@ -24,21 +24,25 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
         let rank
         let daysToMake
         let price
+        let planDescription
         if (plan === 'Basic') {
             rank = plans.basicTitle
             daysToMake = plans.basicDaysToMake
             price = plans.basicPrice
+            planDescription = plans.basicDescription
         } else if (plan === "Standard") {
             rank = plans.standardTitle
             daysToMake = plans.standardDaysToMake
             price = plans.standardPrice
+            planDescription = plans.standardDescription
         } else {
             rank = plans.premiumTitle
             daysToMake = plans.premiumDaysToMake
             price = plans.premiumPrice
+            planDescription = plans.premiumDescription
         }
 
-        onSelectPlan(rank, daysToMake, price)
+        onSelectPlan(rank, daysToMake, price, planDescription)
     }
 
 
@@ -251,7 +255,7 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
                 </Typography>
             </TabPanel>
             <div className='plans-action-btns'>
-                <button className='continue-plans-btn' onClick={() => onSelect()}>Continue <span>→</span></button>
+                <button className='continue-plans-btn' onClick={() => onSelect()}>Continue <span className='right-arrow'>→</span></button>
 
             </div>
         </Tabs>

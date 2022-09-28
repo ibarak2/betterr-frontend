@@ -26,6 +26,7 @@ export const GigDetails = () => {
     const [reviews, setReviews] = useState([])
     const [isSelected, setIsSelected] = useState({
         isOpen: false,
+        planTitle: '',
         plan: '',
         daysToMake: '',
         price: ''
@@ -57,9 +58,10 @@ export const GigDetails = () => {
         }
     }
 
-    const onSelectPlan = (plan, daysToMake, price) => {
+    const onSelectPlan = (plan, daysToMake, price, planTitle) => {
         setIsSelected({
             isOpen: true,
+            planTitle,
             plan,
             daysToMake,
             price
@@ -68,6 +70,7 @@ export const GigDetails = () => {
     }
 
     const onPurchase = (plan, daysToMake, price) => {
+
         if (!loggedinUser) {
             showErrorMsg("Log in First.")
             return
@@ -93,6 +96,7 @@ export const GigDetails = () => {
         showSuccessMsg("Order Recieved")
         setIsSelected({
             isOpen: false,
+            planTitle: '',
             plan: '',
             daysToMake: '',
             price: ''
@@ -102,6 +106,7 @@ export const GigDetails = () => {
     const onCancel = () => {
         setIsSelected({
             isOpen: false,
+            planTitle: '',
             plan: '',
             daysToMake: '',
             price: ''
@@ -214,7 +219,8 @@ export const GigDetails = () => {
                         </section>
                     }
                 </div>
-                {isSelected.isOpen && <PurchaseModal onPurchase={onPurchase} onCancel={onCancel} isSelected={isSelected} />}
+                {isSelected.isOpen &&
+                    <div className="black-screen"><PurchaseModal onPurchase={onPurchase} onCancel={onCancel} isSelected={isSelected} /></div>}
             </section>
         </CssVarsProvider>
 
