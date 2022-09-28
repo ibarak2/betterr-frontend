@@ -27,9 +27,15 @@
     border-radius: 4px;
     width: 60px;
     height: 3vh;
+    background-color: transparent;
+    border: 1px $clr2 solid;
+    color: $clr2;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
-      background-color: $clr3;
+      background-color: $clr2;
+      border: 1px $clr2 solid;
+      color: $clr1;
     }
   }
 }

@@ -14,7 +14,7 @@ export const SecondaryNavbar = () => {
   ]
 
   return (
-    <nav className="main-container secondary-navbar">
+    <nav className="secondary-navbar">
       <ul className="flex clean-list secondary-nav-routes">
         <li>
           <NavLink to="/explore?category=graphics-and-design">Graphics & Design</NavLink>

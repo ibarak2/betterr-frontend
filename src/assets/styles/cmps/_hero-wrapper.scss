@@ -9,7 +9,7 @@
     .hero-title {
       font-size: rem(50px);
       font-weight: 600;
-      margin: 7vh 0vh 1.7vh 0;
+      margin: 0vh 0vh 1.7vh 0;
       word-spacing: 3px;
       line-height: 56px;
       span {
@@ -93,13 +93,14 @@
       }
 
       .hero-form {
-        height: 7vh;
+        height: rem(48px);
         margin: 0.4vh 1.92px 15.36px;
         span {
           width: inherit;
           border-radius: 4px 0 0 4px;
           background-color: $clr1;
           padding-left: 17.28px;
+          margin: 0;
           .hero-search-icon {
             margin: auto;
             color: $clr4;
@@ -117,6 +118,7 @@
           border-radius: 0;
           border: 0;
           padding: rem(15px) rem(12px) rem(10px);
+          margin: 0;
           width: 512.64px;
         }
         .hero-search-input::placeholder {
@@ -129,8 +131,9 @@
         .btn-hero {
           border-radius: 0 4px 4px 0;
           font-weight: bold;
-          font-size: rem(19px);
+          font-size: rem(16px);
           width: 103.68px;
+          margin: 0;
         }
         .btn-hero:hover {
           background-color: $clr3;
