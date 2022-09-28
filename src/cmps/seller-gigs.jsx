@@ -42,7 +42,7 @@ export const SellerGigs = ({ gig, onDeleteGig }) => {
           </li>
         </ul>
         <div className="header-gig-card">
-          <a href="/user/gig-title">
+          <a href={`/gig/${gig._id}`}>
             <div>
               <figure className="no-image">
                 <img

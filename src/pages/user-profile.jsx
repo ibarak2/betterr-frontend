@@ -11,6 +11,7 @@ import { orderService } from '../services/order.service'
 export const UserProfile = () => {
 
   const [analytics, setAnalytics] = useState()
+  const [user, setUser] = useState()
   const gigsByOwner = useSelector((state) => state.gigModule.gigsByOwner)
   const loggedinUser = useSelector((state) => state.userModule.user)
 
@@ -19,6 +20,7 @@ export const UserProfile = () => {
   useEffect(() => {
     dispatch(loadGigsByOwner(loggedinUser._id))
     loadAnalytics()
+    loadUserInfo()
   }, [])
 
   const onDeleteGig = (gigId) => {
@@ -35,10 +37,19 @@ export const UserProfile = () => {
     }
   }
 
+  const loadUserInfo = async () => {
+    try {
+      const userInfo = await userService.getLoggedinUser()
+      setUser(userInfo)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <div className="user-profile-wrapper">
       <div className="flex user-profile">
-        {analytics && <EditProfile user={loggedinUser} analytics={analytics} />}
+        {analytics && <EditProfile user={user} analytics={analytics} />}
         <SellerGigsList gigsByOwner={gigsByOwner} onDeleteGig={onDeleteGig} />
       </div>
     </div>

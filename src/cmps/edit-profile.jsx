@@ -4,6 +4,8 @@ import { userService } from "../services/user.service"
 
 export function EditProfile({ user, analytics }) {
 
+  console.log('edit user', user);
+
   const [username, setUsername] = useState('')
 
   const onOpenModal = () => {
@@ -15,14 +17,14 @@ export function EditProfile({ user, analytics }) {
     console.log('username', username)
 
     const newName = await userService.update({
-      username,
+      username: user.username,
       userId: user._id
     })
 
     console.log('newName', newName)
 
     setUsername(newName)
-    // return newName
+    return newName
   }
 
   const handleFormChange = (ev) => {
@@ -196,7 +198,7 @@ export function EditProfile({ user, analytics }) {
         <form onSubmit={onChangeName}>
         <input
         type="text"
-        value={username.newName}
+        value={user.username}
         onChange={handleFormChange}
         name="fullname"
         autoComplete="off"

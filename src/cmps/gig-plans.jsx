@@ -12,6 +12,8 @@ import { chatService } from "../services/chat.service.js";
 
 export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
 
+    console.log('gig.owner', gig.owner)
+
     const [plan, setPlan] = useState('Basic')
 
     const handleChange = (ev) => {
