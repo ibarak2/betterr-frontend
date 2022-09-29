@@ -42,9 +42,9 @@ export function gigReducer(state = initialState, action) {
 
     case "SET_FILTER_BY":
       // NOT SURE
+      search = state.filterBy.search
       category = state.filterBy.category
-      filterBy = action.filterBy
-      filterBy.category = category
+      filterBy = { ...action.filterBy, category, search }
       return { ...state, filterBy }
 
     case "SET_CATEGORY":
