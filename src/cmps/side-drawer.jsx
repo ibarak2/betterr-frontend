@@ -6,14 +6,23 @@ import { useState, Fragment } from "react"
 import { NavLink, useSearchParams } from "react-router-dom"
 import { UserAvatar } from "./user-avatar"
 import { HamburgerIcon } from "../svg-icons"
+import { useEffect } from "react"
 
 export function SideDrawer({ loggedinUser }) {
   let anchor = "left"
   const [searchParams] = useSearchParams()
-  const [offset] = useState(0)
+  const [offset, setOffset] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState({
     left: false,
   })
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset)
+    //-- clean up code
+    window.removeEventListener("scroll", onScroll)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -86,4 +95,3 @@ export function SideDrawer({ loggedinUser }) {
     </Fragment>
   )
 }
-
