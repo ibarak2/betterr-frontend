@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react"
+import { useState } from "react"
 import { useFormRegister } from "../hooks/useFormRegister"
 
 export const Filter = ({ onChangeFilter }) => {
@@ -68,7 +68,8 @@ export const Filter = ({ onChangeFilter }) => {
     <section className="flex filter-options">
       {filters}
       {filterSettings.map((st) => (
-        <div className="open-listner"
+        <div
+          className="open-listner"
           onClick={st.state ? st.handler : undefined}
           style={{
             display: `${!st.state ? "none" : ""}`,

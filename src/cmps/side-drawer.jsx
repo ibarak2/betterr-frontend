@@ -1,33 +1,24 @@
-import Box from '@mui/material/Box'
-import Drawer from '@mui/material/Drawer'
-import List from '@mui/material/List'
-import Divider from '@mui/material/Divider'
-import MenuIcon from '@mui/icons-material/Menu'
-import { useState, Fragment, useEffect } from 'react'
-import { NavLink, useSearchParams } from 'react-router-dom'
+import Box from "@mui/material/Box"
+import Drawer from "@mui/material/Drawer"
+import List from "@mui/material/List"
+import Divider from "@mui/material/Divider"
+import { useState, Fragment } from "react"
+import { NavLink, useSearchParams } from "react-router-dom"
+import { UserAvatar } from "./user-avatar"
+import { HamburgerIcon } from "../svg-icons"
 
-export function SideDrawer() {
-  //---- states and vars ----//
-  let anchor = 'left'
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [offset, setOffset] = useState(0)
+export function SideDrawer({ loggedinUser }) {
+  let anchor = "left"
+  const [searchParams] = useSearchParams()
+  const [offset] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState({
     left: false,
   })
 
-  //---- functions ----//
-  useEffect(() => {
-    const onScroll = () => setOffset(window.pageYOffset)
-    //-- clean up code
-    window.removeEventListener('scroll', onScroll)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   const toggleDrawer = (anchor, open) => (event) => {
     if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
     ) {
       return
     }
@@ -36,16 +27,28 @@ export function SideDrawer() {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 272 }}
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 272 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
       className="side-nav"
     >
       <List>
-        <button className="btn side-nav-btn">Join Fiverr</button>
+        {loggedinUser ? (
+          <UserAvatar
+            height={36}
+            imgUrl={loggedinUser.imgUrl}
+            fullname={loggedinUser.fullname}
+          />
+        ) : (
+          <button className="btn side-nav-btn">Join Fiverr</button>
+        )}
         <div className="flex column side-nav-links">
-          <NavLink to="/?nav=home">Sign in</NavLink>
+          {loggedinUser ? (
+            <NavLink to="/manage-orders">Orders</NavLink>
+          ) : (
+            <NavLink to="/?nav=home">Sign in</NavLink>
+          )}
           <NavLink to="/explore">Explore</NavLink>
         </div>
       </List>
@@ -63,24 +66,15 @@ export function SideDrawer() {
     <Fragment>
       <div
         className={
-          searchParams.get('nav') !== 'home'
-            ? 'side-nav-burger'
+          searchParams.get("nav") !== "home"
+            ? "side-nav-burger"
             : offset > 0
-            ? 'side-nav-burger'
-            : 'side-nav-burger-top-homepage'
+            ? "side-nav-burger"
+            : "side-nav-burger-top-homepage"
         }
         onClick={toggleDrawer(anchor, true)}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="23"
-          height="19"
-          viewBox="0 0 23 19"
-        >
-          <rect y="16" width="23" height="3" rx="1.5" fill="#555"></rect>
-          <rect width="23" height="3" rx="1.5" fill="#555"></rect>
-          <rect y="8" width="23" height="3" rx="1.5" fill="#555"></rect>
-        </svg>
+        <HamburgerIcon />
       </div>
       <Drawer
         anchor={anchor}
@@ -92,3 +86,4 @@ export function SideDrawer() {
     </Fragment>
   )
 }
+
