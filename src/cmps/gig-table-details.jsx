@@ -24,14 +24,16 @@ export function GigTableDetails({ order, isBuyer, onAccept, onCancel, onReady, o
 
   // if (!order)
   //   return <div className="table-details table-row-header">No active</div>
+  console.log(order);
 
   return (
     <div className="flex align-center table-details table-row-header gig-table-details">
-      {!isBuyer && (
+      {/* {!isBuyer && ( */}
         <div className="subheader backoffice-checkbox">
-          <input type="checkbox" />
+          {/* <input type="checkbox" /> */}
+          <img className="backoffice-gig-img" src="https://res.cloudinary.com/dalkffrhf/image/upload/v1664440647/Fiverr-Sprint-4/imgs/gig%20img/SE-COVER_gaxuhs.jpg" alt="" />
         </div>
-      )}
+      {/* )} */}
       <div className="flex align-center subheader subheader-one user-details-container">
         <h3 className="buyer-name">{isBuyer ? order.seller.fullname : order.buyer.fullname}</h3>
         <p className="buyer-name">{order.gig.title}</p>

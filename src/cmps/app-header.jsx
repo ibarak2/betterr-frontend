@@ -19,9 +19,7 @@ export function AppHeader() {
 
   const [logSign, setLogSign] = useState()
   const [modalOpen, setModalOpen] = useState(false)
-  const [drawerOpen, setDrawerOpen] = useState({
-    left: false,
-  })
+  const [drawerOpen, setDrawerOpen] = useState({ left: false })
   const [offset, setOffset] = useState(0)
   const [searchParams, setSearchParams] = useSearchParams()
   const loggedinUser = useSelector((state) => state.userModule.user)
@@ -93,11 +91,7 @@ export function AppHeader() {
   }
   return (
     <header className="full app-header">
-      <LoginSignup
-        modalOpen={modalOpen}
-        handleCloseModal={handleCloseModal}
-        logSign={logSign}
-      />
+      <LoginSignup modalOpen={modalOpen} handleCloseModal={handleCloseModal} logSign={logSign} />
       <div className={appLogo()}>
         <div className="flex max-width-container main-header-wrapper">
           <div className="flex main-header-left">
@@ -145,7 +139,7 @@ export function AppHeader() {
               {loggedinUser ? (
                 <li>
                   <div className="flex logged-in">
-                    <NavLink to="/manage-orders/active-orders">Orders</NavLink>
+                    <NavLink to="/manage-orders/active-orders" className="nav-orders">Orders</NavLink>
                     <a onClick={logout}>Logout</a>
                     <NavLink
                       to={`/profile/${loggedinUser._id}`}
