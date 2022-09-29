@@ -15,7 +15,7 @@ export function GigDataTable({ orders, title, subheaders, isBuyer, onAccept, onC
   }
   return (
     <div className="data-table">
-      <div className="flex space-between table-row table-row-header">
+      <div className="flex table-row table-row-header table-sort-by-days">
         <div className="flex align-center table-cell subheader-one">
           <h1 className="table-header">{title}</h1>
         </div>
