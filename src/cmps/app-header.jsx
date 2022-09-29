@@ -77,20 +77,32 @@ export function AppHeader() {
   }
 
   const appLogo = () => {
-    return searchParams.get("nav") !== "home"
-      ? "main-container main-header header-white"
-      : offset > 0
-      ? "main-container main-header header-white"
-      : "main-container main-header"
+    let logoClass
+    if (searchParams.get("nav") !== "home") {
+      logoClass = "main-container main-header header-white"
+    } else if (offset > 0) {
+      logoClass = "main-container main-header header-white"
+    } else {
+      logoClass = "main-container main-header"
+    }
+    return logoClass
   }
 
   const appbarStyle = () => {
-    return searchParams.get("nav") !== "home"
-      ? "https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
-      : offset > 0
-      ? "https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
-      : "https://res.cloudinary.com/dalkffrhf/image/upload/v1663666624/Fiverr-Sprint-4/imgs/beterr./logo-white_fnqy6y.png"
+    let appbarLogoSrc
+    if (searchParams.get("nav") !== "home") {
+      appbarLogoSrc =
+        "https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
+    } else if (offset > 0) {
+      appbarLogoSrc =
+        "https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png"
+    } else {
+      appbarLogoSrc =
+        "https://res.cloudinary.com/dalkffrhf/image/upload/v1663666624/Fiverr-Sprint-4/imgs/beterr./logo-white_fnqy6y.png"
+    }
+    return appbarLogoSrc
   }
+
   return (
     <header className="full app-header">
       <LoginSignup
