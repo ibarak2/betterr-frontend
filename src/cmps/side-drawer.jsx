@@ -45,7 +45,7 @@ export function SideDrawer({ loggedinUser }) {
         )}
         <div className="flex column side-nav-links">
           {loggedinUser ? (
-            <NavLink to="/manage-orders">Orders</NavLink>
+            <NavLink to="/manage-orders/active-orders">Orders</NavLink>
           ) : (
             <NavLink to="/?nav=home">Sign in</NavLink>
           )}
