@@ -39,7 +39,7 @@ export const GigPreview = ({
           </div>
         </div>
         <div className="preview-title">
-          <Link to={`/gig/${_id}`}>{`${title}`}</Link>
+          <Link to={`/gig/${_id}`}>{`I will ${title}`}</Link>
         </div>
         <div className="stars">
           {/* ⭐rate */}

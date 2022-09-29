@@ -147,7 +147,7 @@ export const GigDetails = () => {
                 <div className='gig-details'>
                     <section className="gig-description">
                         <div className="gig-layout">
-                            <h1>{gig.title}</h1>
+                            <h1>I will {gig.title}</h1>
                             <SellerOverview seller={gig.owner} reviews={reviews} />
                             <div className="carousel-container">
                                 <GigImgsCarousel imgList={gig.imgUrls} />
