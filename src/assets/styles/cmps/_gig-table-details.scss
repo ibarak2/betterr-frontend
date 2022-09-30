@@ -34,10 +34,10 @@
     width: 100%;
     flex: 1;
     .gig-details-img {
-      max-height: inherit;
-      width: 100%;
-      object-fit: cover;
+      max-height: 71px;
+      max-width: 71px;
       flex: 1;
+      aspect-ratio: 16/9;
     }
     .order-text {
       flex: 3;
