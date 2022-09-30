@@ -4,14 +4,27 @@ import { SmallModal } from "./small-modal"
 import { GigTableDetails } from "./gig-table-details"
 import { sortListByDays } from "../services/back-office.service"
 import { useSelector } from "react-redux"
-export function GigDataTable({ orders, title, subheaders, isBuyer, onAccept, onCancel, onReady, onDelivered }) {
+export function GigDataTable({
+  orders,
+  title,
+  subheaders,
+  isBuyer,
+  onAccept,
+  onCancel,
+  onReady,
+  onDelivered,
+}) {
   const [daysOpen, setDaysOpen] = useState(false)
-
+  const [menuOpen, setMenuOpen] = useState(false)
   const showModal = () => {
     setDaysOpen(true)
   }
   const handleSelect = (ev) => {
     setDaysOpen(false)
+  }
+  const onOpenMenu = () => {
+    console.log("MENU", menuOpen)
+    setMenuOpen(!menuOpen)
   }
   return (
     <div className="data-table">
@@ -30,20 +43,31 @@ export function GigDataTable({ orders, title, subheaders, isBuyer, onAccept, onC
           />
         </div>
       </div>
-      <GigTableSubheader />
+      {/* <GigTableSubheader /> */}
 
-      {orders && orders.map((order, idx) => {
-        return <GigTableDetails
-          key={idx}
-          order={order}
-          isBuyer={isBuyer}
-          onAccept={onAccept}
-          onCancel={onCancel}
-          onReady={onReady}
-          onDelivered={onDelivered}
-        />
-      })}
-
+      {orders &&
+        orders.map((order, idx) => {
+          return (
+            <GigTableDetails
+              key={idx}
+              order={order}
+              isBuyer={isBuyer}
+              onAccept={onAccept}
+              onCancel={onCancel}
+              onReady={onReady}
+              onDelivered={onDelivered}
+              handleOpenMenu={onOpenMenu}
+              menuOpen={menuOpen}
+            />
+          )
+        })}
+      <div
+        className="open-listner"
+        onClick={menuOpen ? onOpenMenu : undefined}
+        style={{
+          display: `${!menuOpen ? "none" : ""}`,
+        }}
+      ></div>
     </div>
   )
 }

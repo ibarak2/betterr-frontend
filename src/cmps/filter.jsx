@@ -55,6 +55,7 @@ export const Filter = ({ onChangeFilter }) => {
         }}
       >
         <section>
+          <label htmlFor={filter.name}>{filter.text}</label>
           <input
             {...register(`${filter.name}`, `${filter.type}`)}
             placeholder={`${filter.placeholder}`}

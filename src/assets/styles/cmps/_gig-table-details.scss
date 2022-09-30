@@ -1,8 +1,146 @@
-.backoffice-checkbox {
-    width: 45px;
-    height: 32px;
+.gig-table-details {
+  border-top: 1px solid #e2e2e2;
+  padding: 8px 12px;
+  color: $clr7;
+  gap: 16px;
+  flex-direction: column;
+  flex-wrap: wrap;
 
-    .backoffice-gig-img {
-        width: 100%;
+  * {
+    margin: 0;
+  }
+  .details-container {
+    flex-direction: row;
+    padding: 12px 0;
+    width: 100%;
+  }
+  .order-text {
+    align-self: flex-start;
+    min-width: 80px;
+  }
+  .subheader {
+    font-size: rem(12px);
+    font-weight: 300;
+    text-transform: capitalize;
+    align-self: flex-start;
+  }
+  .info {
+    font-size: rem(14px);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .order-details {
+    gap: 12px;
+    max-height: 56px;
+    width: 100%;
+    flex: 1;
+    .gig-details-img {
+      max-height: inherit;
+      width: 100%;
+      object-fit: cover;
+      flex: 1;
     }
+    .order-text {
+      flex: 3;
+    }
+  }
+  .controls {
+    width: 100%;
+    flex-direction: row-reverse;
+    position: relative;
+    > button {
+      display: none;
+    }
+    span {
+      min-width: 46px;
+      padding-inline-start: 8px;
+      :hover {
+        cursor: pointer;
+        background-color: #e2e2e2;
+        border-radius: 50%;
+      }
+    }
+  }
+  .menu {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1000;
+    border: solid 1px $clr14;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: white;
+    border: solid 1px #e2e2e2;
+    font-weight: 300;
+    border-radius: 4px;
+    height: 100px;
+    width: 100px;
+    right: 50px;
+    top: 380px;
+  }
+}
+
+@media (max-width: 700px) {
+  .gig-table-details {
+    .controls {
+      justify-content: space-between;
+      > button {
+        display: inline;
+      }
+    }
+  }
+}
+
+@media (min-width: 701px) {
+  .gig-table-details {
+    flex-direction: row;
+    .details-container {
+      display: none;
+    }
+    .controls {
+      width: auto;
+      > button {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 940px) {
+  .gig-table-details {
+    gap: 16px;
+    .details-container {
+      display: flex;
+      width: auto;
+      gap: 16px;
+    }
+    .subheader {
+      font-size: rem(12px);
+    }
+    .info {
+      font-size: rem(14px);
+    }
+    .controls {
+      flex-direction: row;
+      > button {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (min-width: 1140px) {
+  .gig-table-details {
+    gap: 24px;
+    .details-container {
+      gap: 24px;
+    }
+    .subheader {
+      font-size: rem(14px);
+    }
+    .info {
+      font-size: rem(16px);
+    }
+  }
 }

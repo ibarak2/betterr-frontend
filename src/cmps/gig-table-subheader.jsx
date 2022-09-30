@@ -8,13 +8,8 @@ export function GigTableSubheader() {
   return (
     <div className="flex align-center subheader table-subheader">
       <div className="flex subheader-one">
-        {/* {!isBuyer && (
-          <div className="subheader">
-            <input type="checkbox" />
-          </div>
-        )} */}
         {subheaders.map((sh) => (
-          <div key={sh.txt} className={`subheader ${sh.class && sh.class}`}>
+          <div key={sh.txt} className={`subheader ${sh.class ? sh.class : ""}`}>
             {sh.txt ? sh.txt : ""}
           </div>
         ))}
