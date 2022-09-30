@@ -13,14 +13,40 @@ export const Filter = ({ onChangeFilter }) => {
     },
     onChangeFilter
   )
+  const BudgetInputs = (filter) => (
+    <section className="form-budget">
+      <label htmlFor={filter.name}>{filter.text}</label>
+      <input
+        {...register(`minPrice`, `number`)}
+        placeholder={`${filter.placeholder}`}
+      />
+      <label htmlFor={filter.name}>{filter.text}</label>
+      <input
+        {...register(`minPrice`, `number`)}
+        placeholder={`${filter.placeholder}`}
+      />
+    </section>
+  )
+  const DeliveryTime = () => (
+    <section className="form-budget form-delivery">
+      <label htmlFor={"express"}>{"Express 24H"}</label>
+      <input {...register(`express`, `radio`)} />
+      <label htmlFor={"threeDays"}>{"up to 3 days"}</label>
+      <input {...register(`threeDays`, `radio`)} />
+      <label htmlFor={"sevenDays"}>{"up to 7 days"}</label>
+      <input {...register(`sevenDays`, `radio`)} />
+      <label htmlFor={"any"}>{"Anytime "}</label>
+      <input {...register(`any`, `radio`)} />
+    </section>
+  )
   const filterSettings = [
     {
-      text: "Max Price",
+      text: "Budget",
       handler: () => setMaxPriceOpen(!maxPriceOpen),
       state: maxPriceOpen,
-      placeholder: "Max Price",
-      name: "basicPrice",
-      type: "number",
+      placeholder: "Any",
+      name: "Budget",
+      cmp: <BudgetInputs />,
     },
     {
       text: "Delivery Time",
@@ -28,7 +54,7 @@ export const Filter = ({ onChangeFilter }) => {
       state: maxDeliveryOpen,
       placeholder: "Delivery Time",
       name: "basicDaysToMake",
-      type: "number",
+      cmp: <DeliveryTime />,
     },
     {
       text: "Rating",
@@ -51,16 +77,17 @@ export const Filter = ({ onChangeFilter }) => {
       <form
         className="form-modal"
         style={{
-          display: `${filter.state ? "" : "none"}`,
+          display: `${filter.state ? "flex" : "none"}`,
         }}
       >
-        <section>
+        {filter.cmp}
+        {/* <section>
           <label htmlFor={filter.name}>{filter.text}</label>
           <input
             {...register(`${filter.name}`, `${filter.type}`)}
             placeholder={`${filter.placeholder}`}
           />
-        </section>
+        </section> */}
       </form>
     </div>
   ))
@@ -78,12 +105,12 @@ export const Filter = ({ onChangeFilter }) => {
         ></div>
       ))}
       <button
-        className="btn btn-reset-filter"
+        className="btn-reset-filter"
         onClick={() =>
           setFields({ basicPrice: "", basicDaysToMake: "", rate: "" })
         }
       >
-        reset
+        reset filter
       </button>
     </section>
   )

@@ -170,14 +170,14 @@ export function AppHeader() {
               ) : (
                 <div className="flex signin-signup">
                   <li>
-                    <a
+                    <a className='header-become-a-seller'
                       onClick={() => {
                         handleOpenModal('sign')
                       }}
                     >
                       Become a seller
                     </a>
-                    <a
+                    <a className='header-sign-in'
                       onClick={() => {
                         handleOpenModal('log')
                       }}
