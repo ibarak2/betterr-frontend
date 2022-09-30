@@ -77,7 +77,7 @@ export function GigTableDetails({
       </div>
 
       <div className="flex details-container">
-        <div className="flex column order-text">
+        <div className="flex column order-text due-on">
           <p className="subheader">Due On</p>
           <p className="info">{"17/10/22"}</p>
         </div>
@@ -87,7 +87,7 @@ export function GigTableDetails({
           <p className="info">${`${order.gig.price}`}</p>
         </div>
 
-        <div className="flex column order-text">
+        <div className="flex column order-text order-status">
           <p className="subheader">Order Status</p>
           <p className="info">{order.status}</p>
         </div>
