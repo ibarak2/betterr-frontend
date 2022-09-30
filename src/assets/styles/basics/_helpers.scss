@@ -63,4 +63,9 @@ Media helpers .square-ratio {
   transition: all 0.7s ease-in-out;
 }
 
-
+// open modal listner
+.open-listner {
+  z-index: 90;
+  inset: 0;
+  position: absolute;
+}
