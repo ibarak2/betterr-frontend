@@ -8,6 +8,10 @@
     left: 0;
     z-index: -10;
 
+    @media (max-width: 400px) {
+      height: 125vh;
+    }
+
     .hero-andrea {
       display: flex;
       width: 100%;
