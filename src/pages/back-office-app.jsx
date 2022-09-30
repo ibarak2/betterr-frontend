@@ -39,7 +39,10 @@ export const BackOfficeApp = () => {
       onLoadOrders()
     })
 
-    // return socketService.off("on-order-changed-status")
+    return () => {
+      socketService.off('on-order-changed-status')
+      socketService.off('new-order-recieved')
+    }
   }, [])
 
   const onLoadOrders = () => {

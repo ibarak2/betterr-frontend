@@ -48,7 +48,11 @@
     flex-direction: row-reverse;
     position: relative;
     > button {
+      border-radius: 4px;
       display: none;
+    }
+    & .cancel-btn {
+      background-color: red;
     }
     span {
       min-width: 46px;
