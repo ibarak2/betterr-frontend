@@ -20,6 +20,11 @@
       align-items: center;
       flex-wrap: wrap;
 
+      @media (max-width: 400px) {
+        flex-direction: column;
+        margin-bottom: 0.5rem;
+      }
+
       .footer-logo {
         width: rem(91px);
       }

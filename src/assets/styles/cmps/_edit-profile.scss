@@ -11,6 +11,11 @@
   margin-bottom: 30px;
   width: 400px;
 
+  @media (max-width: 400px) {
+    width: 350px;
+    margin: 0 auto 1rem;
+  }
+  
   .user-info {
     position: relative;
     background-color: #fff;
@@ -18,6 +23,7 @@
     padding: 30px;
     font-size: 14px;
     line-height: 130%;
+
 
     .user-online {
       position: absolute;
