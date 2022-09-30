@@ -66,8 +66,7 @@ function remove(userId) {
 async function update(user) {
     try {
         console.log('user', user)
-        const updatedUser = await httpService.put(`user/${user.userId}`, user)
-        console.log('updatedUser', updatedUser)
+        const updatedUser = await httpService.put(`user/${user._id}`, user)
         return updatedUser
     } catch (err) {
         console.log(err);

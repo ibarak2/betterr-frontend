@@ -23,11 +23,6 @@ export const UserProfile = () => {
     loadUserInfo()
   }, [])
 
-  const onDeleteGig = (gigId) => {
-    console.log(gigId);
-    dispatch(onRemoveGigOptimistic(gigId))
-  }
-
   const loadAnalytics = async () => {
     try {
       const analytics = await orderService.getAnalytics()
@@ -39,11 +34,15 @@ export const UserProfile = () => {
 
   const loadUserInfo = async () => {
     try {
-      const userInfo = await userService.getLoggedinUser()
-      setUser(userInfo)
+      setUser(loggedinUser)
     } catch (err) {
       console.log(err)
     }
+  }
+
+  const onDeleteGig = (gigId) => {
+    console.log(gigId);
+    dispatch(onRemoveGigOptimistic(gigId))
   }
 
   return (

@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react'
-import { useForm } from '../hooks/useForm'
-import { uploadService } from '../services/upload.service'
-import { UserMsg } from '../cmps/user-msg'
+
 
 export const EditBox = ({ onSubmitEdit, gig, handleChange, onAddingImg }) => {
   return (
