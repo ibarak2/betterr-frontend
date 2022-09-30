@@ -5,7 +5,9 @@ export const utilService = {
     delay,
     averageRating,
     getReviewDate,
-    getExploreTitle
+    getExploreTitle,
+    getOrderDate,
+    getClockTime
 }
 
 function makeId(length = 6) {
@@ -78,4 +80,17 @@ function getExploreTitle(category) {
 
 
     return title
+}
+
+function getOrderDate(createdAt, days) {
+    const newDate = createdAt + 1000 * 60 * 60 * 24 * days
+    return new Date(newDate).toLocaleDateString()
+}
+
+function getClockTime(createdAt) {
+    let hours = new Date(createdAt).getHours()
+    let minutes = new Date(createdAt).getMinutes()
+    if (minutes < 10) minutes = '0' + minutes
+    if (hours < 10) hours = '0' + hours
+    return `${hours}:${minutes}`
 }

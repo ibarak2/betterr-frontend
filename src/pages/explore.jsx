@@ -23,14 +23,13 @@ export const Explore = () => {
     dispatch(setFilterBy(filterBy))
     dispatch(loadGigs())
   }
-
   return (
     <div className="explore main-container">
       <h1 className="explore-title">
         {utilService.getExploreTitle(searchParams.get("category"))}
       </h1>
       <Filter onChangeFilter={onChangeFilter} />
-      {!gigs ? <Loading /> : <GigList gigs={gigs} />}
+      {!gigs.length ? <Loading /> : <GigList gigs={gigs} />}
       <Pageneation />
     </div>
   )

@@ -3,7 +3,7 @@ import { BackOffice } from "../cmps/back-office"
 import { GigDataTable } from "../cmps/gig-data-table"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { loadOrders, setOrderStatus } from "../store/order.actions"
+import { loadOrders, setOrderStatus, setOrderStatusLocal } from "../store/order.actions"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { socketService, SOCKET_EVENT_ORDER_CHANGE_STATUS } from "../services/socket.service"
 
@@ -32,7 +32,7 @@ export const BackOfficeApp = () => {
         showSuccessMsg(data.txt)
       }
 
-      dispatch(setOrderStatus(data.orderId, data.status))
+      dispatch(setOrderStatusLocal({ orderId: data.orderId, status: data.status }))
     })
     socketService.on('new-order-recieved', () => {
       showSuccessMsg('New Order Recieved!')
@@ -64,8 +64,7 @@ export const BackOfficeApp = () => {
       status: "in-progress"
     }
     try {
-      socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
-      dispatch(setOrderStatus(order._id, "in-progress"))
+      dispatch(setOrderStatus(miniOrder))
       showSuccessMsg("Order Accepted")
     } catch (err) {
       console.log(err);
@@ -80,9 +79,9 @@ export const BackOfficeApp = () => {
       txt: "Your Order is Ready",
       status: "ready"
     }
+
     try {
-      socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
-      dispatch(setOrderStatus(order._id, "ready"))
+      dispatch(setOrderStatus(miniOrder))
       showSuccessMsg("Order is Ready")
     } catch (err) {
       console.log(err);
@@ -98,8 +97,7 @@ export const BackOfficeApp = () => {
       status: "completed"
     }
     try {
-      socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
-      dispatch(setOrderStatus(order._id, "completed"))
+      dispatch(setOrderStatus(miniOrder))
       showSuccessMsg("Order Delivered")
     } catch (err) {
       console.log(err);
@@ -115,8 +113,7 @@ export const BackOfficeApp = () => {
       status: "cancelled"
     }
     try {
-      socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
-      dispatch(setOrderStatus(order._id, "cancelled"))
+      dispatch(setOrderStatus(miniOrder))
       showErrorMsg("Order Canceled")
     } catch (err) {
       console.log(err);

@@ -40,14 +40,16 @@ export function AppHeader() {
     window.removeEventListener('scroll', onScroll)
     window.addEventListener('scroll', onScroll, { passive: true })
 
-    socketService.on('new-order-recieved', showSuccessMsg)
-    socketService.on('on-order-changed-status', (data) => {
-      (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
-    })
+    // socketService.on('new-order-recieved', (data) => {
+    //   showSuccessMsg(data)
+    // })
+    // socketService.on('on-order-changed-status', (data) => {
+    //   (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
+    // })
 
     return () => {
-      socketService.off('new-order-recieved', showSuccessMsg)
-      socketService.off('on-order-changed-status')
+      // socketService.off('new-order-recieved')
+      // socketService.off('on-order-changed-status')
       window.removeEventListener('scroll', onScroll)
     }
   }, [])
@@ -109,9 +111,11 @@ export function AppHeader() {
               toggleDrawer={toggleDrawer}
               onOpenLogSign={handleOpenModal}
             />
-            <a href="/?nav=home" className="site-logo">
-              <img className="logo" src={appLogo()} alt="betterr." />
-            </a>
+            <NavLink to="/?nav=home">
+              <a className="site-logo">
+                <img className="logo" src={appLogo()} alt="betterr." />
+              </a>
+            </NavLink>
           </div>
 
           <div

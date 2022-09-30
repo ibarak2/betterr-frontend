@@ -14,15 +14,22 @@ export function getActionSetWatchedUser(user) {
   return { type: "SET_WATCHED_USER", user }
 }
 
-export function setOrderStatus(orderId, status) {
+export function setOrderStatus(miniOrder) {
   return async (dispatch) => {
     try {
-      const order = await orderService.updateStatus(orderId, status)
+      console.log(miniOrder);
+      const order = await orderService.updateStatus(miniOrder)
 
       dispatch({ type: "SET_ORDER_STATUS", order })
     } catch (err) {
       console.log(err)
     }
+  }
+}
+
+export function setOrderStatusLocal(miniOrder) {
+  return (dispatch) => {
+    dispatch({ type: "SET_ORDER_STATUS_LOCAL", miniOrder })
   }
 }
 

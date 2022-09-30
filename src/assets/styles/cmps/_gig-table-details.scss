@@ -9,13 +9,17 @@
     margin: 0;
   }
   .details-container {
-    flex-direction: row-reverse;
+    flex-direction: row;
     padding: 12px 0;
     width: 100%;
+    gap: 12px;
+    .price {
+      width: auto;
+    }
   }
   .order-text {
     align-self: flex-start;
-    min-width: 80px;
+    min-width: 45px;
   }
   .subheader {
     font-size: rem(12px);
@@ -34,6 +38,7 @@
     width: 100%;
     flex: 1;
     .gig-details-img {
+      border-radius: 4px;
       max-height: 71px;
       max-width: 71px;
       flex: 1;
@@ -45,14 +50,23 @@
   }
   .controls {
     width: 100%;
-    flex-direction: row-reverse;
+    flex-direction: row;
     position: relative;
     > button {
       border-radius: 4px;
       display: none;
+      &:hover {
+        background-color: darken($color: $clr2, $amount: 7%);
+      }
     }
     & .cancel-btn {
-      background-color: red;
+      background-color: transparent;
+      border: 1px solid $clr4;
+      color: $clr4;
+      &:hover {
+        background-color: $clr4;
+        color: $clr1;
+      }
     }
     span {
       min-width: 46px;
@@ -101,7 +115,7 @@
     .due-on {
       p {
         width: 100%;
-        text-align: end;
+        // text-align: end;
       }
     }
   }
