@@ -20,24 +20,6 @@
       margin: 0;
     }
   }
-
-  .btn-reset-filter {
-    font-family: inherit;
-    font-weight: 600;
-    border-radius: 4px;
-    width: 60px;
-    height: 3vh;
-    background-color: transparent;
-    border: 1px $clr2 solid;
-    color: $clr2;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      background-color: $clr2;
-      border: 1px $clr2 solid;
-      color: $clr1;
-    }
-  }
 }
 
 .filter-options {
@@ -49,17 +31,17 @@
     font-weight: 600;
     border-radius: 4px;
     background-color: $clr1;
-    border: 1px solid $clr5;
     color: $clr5;
     transition: all 0.3s ease-in-out;
     max-height: rem(38px);
-    padding: 6px 12px;
-    font-size: rem(16px);
+    font-size: rem(14px);
     margin: 0;
+    // margin-inline-start: auto;
     text-transform: capitalize;
+    align-self: center;
+    padding: 0;
     &:hover {
-      background-color: $clr5;
-      color: $clr1;
+      color: $clr2;
     }
   }
 }
@@ -111,6 +93,10 @@
       height: 40px;
       max-width: 190px;
       padding: 8px 12px;
+    }
+    .form-budget {
+      width: unset;
+      display: flex;
     }
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
