@@ -103,6 +103,7 @@ export function AppHeader() {
               loggedinUser={loggedinUser}
               setDrawerOpen={setDrawerOpen}
               toggleDrawer={toggleDrawer}
+              onOpenLogSign={handleOpenModal}
             />
             <a href="/?nav=home" className="site-logo">
               <img className="logo" src={appLogo()} alt="betterr." />

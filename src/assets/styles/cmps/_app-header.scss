@@ -37,6 +37,26 @@
     @media (min-width: 400px) {
       height: 80px;
     }
+
+    .nav-routes {
+      display: none;
+    }
+    .logged-in {
+      > *:not(:last-child) {
+        display: none;
+      }
+    }
+
+    @media (min-width: 950px) {
+      .nav-routes {
+        display: flex;
+      }
+      .logged-in {
+        > *:not(:last-child) {
+          display: flex;
+        }
+      }
+    }
   }
 
   .site-logo {
