@@ -24,12 +24,20 @@ export const BackOfficeApp = () => {
   useEffect(() => {
     socketService.on("on-order-changed-status", (data) => {
       console.log("data", data);
-      (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
+      if (data.status === 'cancelled') {
+        showErrorMsg(data.txt)
+      } else if (data.status === 'completed') {
+        showSuccessMsg(data.txt)
+      } else {
+        showSuccessMsg(data.txt)
+      }
+
       dispatch(setOrderStatus(data.orderId, data.status))
-      // onLoadOrders()
-
     })
-
+    socketService.on('new-order-recieved', () => {
+      showSuccessMsg('New Order Recieved!')
+      onLoadOrders()
+    })
 
     // return socketService.off("on-order-changed-status")
   }, [])
@@ -41,7 +49,6 @@ export const BackOfficeApp = () => {
   }
 
   const ToggleUserState = () => {
-    //dispatch(toggleIsBuyer())
     setIsBuyer(!isBuyer)
   }
 
@@ -53,11 +60,13 @@ export const BackOfficeApp = () => {
       txt: "Your Order Accepted",
       status: "in-progress"
     }
-
-    socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
-    dispatch(setOrderStatus(order._id, "in-progress"))
-
-    showSuccessMsg("Order Accepted")
+    try {
+      socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
+      dispatch(setOrderStatus(order._id, "in-progress"))
+      showSuccessMsg("Order Accepted")
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   // on order ready
@@ -68,11 +77,13 @@ export const BackOfficeApp = () => {
       txt: "Your Order is Ready",
       status: "ready"
     }
-
-    socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
-    dispatch(setOrderStatus(order._id, "ready"))
-
-    showSuccessMsg("Order is Ready")
+    try {
+      socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
+      dispatch(setOrderStatus(order._id, "ready"))
+      showSuccessMsg("Order is Ready")
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   // on delivered order
@@ -83,26 +94,30 @@ export const BackOfficeApp = () => {
       txt: "Order Delivered",
       status: "completed"
     }
-
-    socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
-    dispatch(setOrderStatus(order._id, "completed"))
-    showSuccessMsg("Order Delivered")
-    // onLoadOrders()
+    try {
+      socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
+      dispatch(setOrderStatus(order._id, "completed"))
+      showSuccessMsg("Order Delivered")
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   // on cancel order
-  const onCancel = (order) => {
+  const onCancel = async (order) => {
     const miniOrder = {
       userId: isBuyer ? order.seller._id : order.buyer._id,
       _id: order._id,
       txt: "Order Cancelled",
       status: "cancelled"
     }
-
-    socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
-    dispatch(setOrderStatus(order._id, "cancelled"))
-    showErrorMsg("Order Canceled")
-    // onLoadOrders()
+    try {
+      socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
+      dispatch(setOrderStatus(order._id, "cancelled"))
+      showErrorMsg("Order Canceled")
+    } catch (err) {
+      console.log(err);
+    }
   }
 
 
