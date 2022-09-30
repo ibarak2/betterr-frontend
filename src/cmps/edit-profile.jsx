@@ -1,39 +1,67 @@
 import { useEffect, useState } from "react"
+import { showSuccessMsg } from "../services/event-bus.service";
+import { uploadService } from "../services/upload.service";
 import { userService } from "../services/user.service"
+import { UserInfoModal } from "./user-info-modal";
 
 
 export function EditProfile({ user, analytics }) {
 
   console.log('edit user', user);
 
-  const [username, setUsername] = useState('')
+  const [modalOpen, setModalOpen] = useState(false)
+  const [userInfo, setUserInfo] = useState({
+    fullname: '',
+    imgUrl: ''
+  })
+
+  useEffect(() => {
+    onLoadUserInfo()
+  }, [])
+
+  const onLoadUserInfo = () => {
+    setUserInfo({
+      fullname: user.fullname,
+      imgUrl: user.imgUrl
+    })
+  }
+
+  const onUploadingImg = async (event) => {
+    const field = event.target.name
+    try {
+      const imgUrl = await uploadService.uploadImg(event)
+      await userService.update({ _id: user._id, imgUrl: imgUrl.url })
+      setUserInfo({ ...userInfo, [field]: imgUrl.url })
+      user.imgUrl = imgUrl.url
+      showSuccessMsg('Profile picture has changed successfully')
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const onOpenModal = () => {
-    console.log('open');
+    setModalOpen(true)
   }
 
-  const onChangeName = async (ev) => {
-    ev.preventDefault()
-    console.log('username', username)
-
-    const newName = await userService.update({
-      username: user.username,
-      userId: user._id
-    })
-
-    console.log('newName', newName)
-
-    setUsername(newName)
-    return newName
+  const onChangeName = async (field, fullname) => {
+    try {
+      await userService.update({ _id: user._id, fullname })
+      setUserInfo({ ...userInfo, [field]: fullname })
+      user.fullname = fullname
+      showSuccessMsg('Your Nickname has been changed successfully')
+      setModalOpen(false)
+    } catch (err) {
+      console.log(err);
+    }
   }
 
-  const handleFormChange = (ev) => {
-    const { name, value } = ev.target
-    setUsername((prevUsername) => ({ ...prevUsername, [name]: value }))
+  const handleCloseModal = () => {
+    setModalOpen(false)
   }
 
   return (
     <section className="user-info-wrapper">
+      <UserInfoModal modalOpen={modalOpen} onChangeName={onChangeName} handleCloseModal={handleCloseModal} />
       <div className="user-info">
         <div className="seller-card seller_card-package" data-reactroot="">
           <div className="user-online">
@@ -65,22 +93,23 @@ export function EditProfile({ user, analytics }) {
                   </div>
                   <input
                     type="file"
-                    accept="image/png,image/jpeg"
+                    accept="image/*"
                     id="profile_image"
                     className="hidden"
-                    name="profile[image]"
+                    name="imgUrl"
+                    onChange={(ev) => onUploadingImg(ev)}
                   />
                   <img
-                    src={user.imgUrl}
+                    src={userInfo.imgUrl}
                     className="profile-pict-img"
-                    alt={user.username}
+                    alt={userInfo.fullname}
                   />
                 </label>
               </div>
             </div>
             <div className="profile-username">
               <div className="username-container">
-                <b className="seller-link">{user.username}</b>
+                <b className="seller-link">{userInfo.fullname}</b>
               </div>
               <div className="change-name-wrapper">
                 <div className="pen-wrapper">
@@ -194,7 +223,7 @@ export function EditProfile({ user, analytics }) {
             </ul>
           </div>
         </div>
-      {/* <div className="username-modal">
+        {/* <div className="username-modal">
         <form onSubmit={onChangeName}>
         <input
         type="text"

@@ -71,13 +71,15 @@ export function GigTableDetails({
       <div className="flex align-center order-details">
         <img src="https://picsum.photos/200/300" className="gig-details-img" />
         <div className="flex column order-text">
-          <p className="subheader">{order.buyer.fullname}</p>
+          <p className="subheader">
+            {isBuyer ? order.seller.fullname : order.buyer.fullname}
+          </p>
           <p className="info">{order.gig.title}</p>
         </div>
       </div>
 
       <div className="flex details-container">
-        <div className="flex column order-text">
+        <div className="flex column order-text due-on">
           <p className="subheader">Due On</p>
           <p className="info">{"17/10/22"}</p>
         </div>
@@ -87,14 +89,32 @@ export function GigTableDetails({
           <p className="info">${`${order.gig.price}`}</p>
         </div>
 
-        <div className="flex column order-text">
+        <div className="flex column order-text order-status">
           <p className="subheader">Order Status</p>
           <p className="info">{order.status}</p>
         </div>
       </div>
 
       <div className="flex align-center controls">
-        <button> call to action</button>
+        {!isBuyer && order.status === "pending" && (
+          <button onClick={() => onAccept(order)}>Accept</button>
+        )}
+        {!isBuyer && order.status === "in-progress" && (
+          <button onClick={() => onReady(order)}>Ready</button>
+        )}
+        {isBuyer && order.status === "ready" && (
+          <button onClick={() => onDelivered(order)}>Delivered</button>
+        )}
+        {!(order.status === "cancelled" || order.status === "completed") && (
+          <button
+            className="cancel-btn"
+            onClick={() => {
+              onCancel(order)
+            }}
+          >
+            Cancel
+          </button>
+        )}
         <span onClick={menuOpen ? undefined : () => handleOpenMenu()}>
           <MoreHorizIcon />
         </span>
