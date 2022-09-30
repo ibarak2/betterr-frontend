@@ -51,12 +51,18 @@
     > button {
       display: none;
     }
-    :last-child {
+    span {
       min-width: 46px;
       padding-inline-start: 8px;
+      :hover {
+        cursor: pointer;
+        background-color: #e2e2e2;
+        border-radius: 50%;
+      }
     }
   }
   .menu {
+    cursor: pointer;
     position: absolute;
     z-index: 1000;
     border: solid 1px $clr14;
