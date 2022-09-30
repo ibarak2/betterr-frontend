@@ -22,6 +22,10 @@
         align-items: center;
         cursor: pointer;
         margin-right: 32px;
+
+        @media (max-width: 400px) {
+          margin: 0;
+        }
         .css-i4bv87-MuiSvgIcon-root {
           //--this is the side-nav svg class
           color: transparent;
@@ -120,6 +124,10 @@
   .nav {
     font-weight: 600;
     margin-left: 32px;
+
+    @media (max-width: 500px) {
+      margin: 0;
+    }
     .nav-routes .basic-nav-routes {
       display: none;
     }
@@ -145,6 +153,21 @@
       .signin-signup {
         li {
           cursor: pointer;
+          a {
+            margin: 0;
+            &.header-become-a-seller {
+              @media (max-width: 400px) {
+                display: none;
+              }
+              display: unset;
+            }
+            &.header-sign-in {
+              @media (max-width: 400px) {
+                display: none;
+              }
+              display: unset;
+            }
+          }
         }
         .nav-join {
           color: $clr1;
@@ -154,6 +177,10 @@
           transition: all 0.2s ease-in;
           margin: 0 0 0 20px;
           font-size: rem(16px);
+
+          // @media (max-width: 400px) {
+          //   margin: 0 0 0 10px;
+          // }
         }
         .nav-join:hover {
           color: $clr1;
