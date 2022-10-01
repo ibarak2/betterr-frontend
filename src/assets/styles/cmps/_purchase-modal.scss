@@ -1,147 +1,197 @@
-.purchase-modal-bg {
+// .purchase-modal-bg {
+//   position: absolute;
+//   z-index: 200;
+//   top: 0;
+//   left: 0;
+//   background-color: transparent;
+//   width: 100%;
+//   height: 2000px;
+
+//   .purchase-modal-wrapper {
+//     position: fixed;
+//     background-color: rgba(0, 0, 0, 0.274);
+
+//     width: 100%;
+//     height: 100%;
+
+//     .purchase-modal {
+//       display: grid;
+//       grid-template-columns: 24px repeat(2, 1fr) 24px;
+//       grid-template-rows: 50px min-content min-content 25px 40px 45px 90px 20px;
+//       border: 1px solid $clr6;
+//       border-radius: 2px;
+//       background: #fff;
+//       width: 90%;
+//       height: 90%;
+//       position: fixed;
+//       top: 50%;
+//       left: 50%;
+//       padding: 20px 0;
+//       z-index: 100;
+//       transform: translate(-50%, -50%);
+
+//       @media (min-width: 400px) {
+//         grid-template-columns: 15px 350px 1fr 15px;
+//         grid-template-rows: 50px repeat(2, min-content) repeat(2, 70px) 130px 40px;
+//         width: 50%;
+//         height: min-content;
+//         font-size: rem(20px);
+//         column-gap: 1rem;
+//       }
+
+//       & .price-summary {
+//         grid-area: 1 / 2 / 2 / 4;
+//         font-size: rem(22px);
+//         margin: 0;
+
+//         @media (min-width: 400px) { // summery
+//           font-size: rem(32px);
+//         }
+//       }
+//       & .gig-plan-img {
+//         grid-area: 2 / 2 / 3 / 4;
+//         width: 70%;
+//         height: 180px;
+//         margin: 0 auto 40px;
+//         box-shadow: 5px 5px 15px -4px rgba(0, 0, 0, 0.27);
+
+//         @media (min-width: 400px) { // img
+//           grid-area: 2 / 2 / 6 / 3;
+//           margin: 0;
+//           width: 100%;
+//           height: 300px;
+//         }
+//       }
+//       & .plan-title {
+//         grid-area: 3 / 2 / 4 / 4;
+//         font-size: rem(14px);
+//         margin-bottom: 25px;
+//         @media (min-width: 400px) { // gig title
+//           width: 100%;
+//           font-size: rem(20px);
+//           grid-area: 2 / 3 / 3 / 4;
+//         }
+//       }
+//       & .order-seperator {
+//         grid-area: 4 / 2 / 5 / 4;
+//         border-top: 1px solid $clr4;
+//         @media (min-width: 400px) { // seperator
+//           width: 100%;
+//           grid-area: 3 / 3 / 4 / 4;
+//         }
+//       }
+//       & .order-price {
+//         grid-area: 5 / 2 / 5 / 4;
+
+//         @media (min-width: 400px) { // price
+//           width: 100%;
+//           grid-area: 4 / 3 / 5 / 4;
+//         }
+//         & .price-title {
+//           font-weight: bold;
+//         }
+//         & .price {
+//           font-weight: bold;
+//         }
+//       }
+//       & .order-due-on {
+//         grid-area: 6 / 2 / 6 / 4;
+
+//         @media (min-width: 400px) { // due on
+//           width: 100%;
+//           grid-area: 5 / 3 / 6 / 4;
+//         }
+//       }
+//       & .order-btns {
+//         grid-area: 7 / 2 / 7 / 4;
+//         justify-content: flex-end;
+//         flex-direction: column;
+
+//         @media (min-width: 400px) { // btns
+//           grid-area: 6 / 3 / 7 / 4;
+//         }
+//         & .purchase-btn {
+//           border-radius: 2px;
+//           width: 100%;
+//           background-color: rgb(0, 0, 0);
+//           height: 40px;
+//           margin: 0 0 5px;
+//           &:hover {
+//             background-color: darken($color: #1dbf73, $amount: 7%);
+//           }
+//         }
+//         & .cancel-btn {
+//           border-radius: 2px;
+//           background-color: $clr4;
+//           color: $clr1;
+//           width: 100%;
+//           margin: 0;
+
+//           &:hover {
+//             background-color: $clr5;
+//             color: #fff;
+//           }
+//         }
+//       }
+//       & .the-small-words {
+//         grid-area: 8 / 2 / 8 / 4;
+//         font-size: rem(10px);
+//         margin: 0 auto 0;
+
+//         @media (min-width: 400px) { // small words
+//           grid-area: 7 / 3 / 8 / 4;
+//         }
+//       }
+//     }
+//   }
+// }
+
+.order-modal-wrapper {
   position: absolute;
-  z-index: 200;
-  top: 0;
+  min-height: 400px;
+  z-index: 99;
+  background-color: $clr1;
+  top: 81px;
   left: 0;
-  background-color: transparent;
-  width: 100%;
-  height: 2000px;
+  margin: 0 80px;
 
-  .purchase-modal-wrapper {
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.274);
+  .order-modal {
+    align-items: flex-start;
+    flex-wrap: wrap;
 
-    width: 100%;
-    height: 100%;
+    .order-modal-header-wrapper {
+      position: relative;
+      width: 100%;
 
-    .purchase-modal {
-      display: grid;
-      grid-template-columns: 24px repeat(2, 1fr) 24px;
-      grid-template-rows: 50px min-content min-content 25px 40px 45px 90px 20px;
-      border: 1px solid $clr6;
-      border-radius: 2px;
-      background: #fff;
-      width: 90%;
-      height: 90%;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      padding: 20px 0;
-      z-index: 100;
-      transform: translate(-50%, -50%);
+      .order-modal-header {
+        padding: 40px 0;
 
-      @media (min-width: 400px) {
-        grid-template-columns: 15px 350px 1fr 15px;
-        grid-template-rows: 50px repeat(2, min-content) repeat(2, 70px) 130px 40px;
-        width: 50%;
-        height: min-content;
-        font-size: rem(20px);
-        column-gap: 1rem;
-      }
-
-      & .price-summary {
-        grid-area: 1 / 2 / 2 / 4;
-        font-size: rem(22px);
-        margin: 0;
-
-        @media (min-width: 400px) { // summery
-          font-size: rem(32px);
-        }
-      }
-      & .gig-plan-img {
-        grid-area: 2 / 2 / 3 / 4;
-        width: 70%;
-        height: 180px;
-        margin: 0 auto 40px;
-        box-shadow: 5px 5px 15px -4px rgba(0, 0, 0, 0.27);
-
-        @media (min-width: 400px) { // img
-          grid-area: 2 / 2 / 6 / 3;
-          margin: 0;
+        .order-header {
           width: 100%;
-          height: 300px;
-        }
-      }
-      & .plan-title {
-        grid-area: 3 / 2 / 4 / 4;
-        font-size: rem(14px);
-        margin-bottom: 25px;
-        @media (min-width: 400px) { // gig title
-          width: 100%;
-          font-size: rem(20px);
-          grid-area: 2 / 3 / 3 / 4;
-        }
-      }
-      & .order-seperator {
-        grid-area: 4 / 2 / 5 / 4;
-        border-top: 1px solid $clr4;
-        @media (min-width: 400px) { // seperator
-          width: 100%;
-          grid-area: 3 / 3 / 4 / 4;
-        }
-      }
-      & .order-price {
-        grid-area: 5 / 2 / 5 / 4;
-
-        @media (min-width: 400px) { // price
-          width: 100%;
-          grid-area: 4 / 3 / 5 / 4;
-        }
-        & .price-title {
-          font-weight: bold;
-        }
-        & .price {
-          font-weight: bold;
-        }
-      }
-      & .order-due-on {
-        grid-area: 6 / 2 / 6 / 4;
-
-        @media (min-width: 400px) { // due on
-          width: 100%;
-          grid-area: 5 / 3 / 6 / 4;
-        }
-      }
-      & .order-btns {
-        grid-area: 7 / 2 / 7 / 4;
-        justify-content: flex-end;
-        flex-direction: column;
-
-        @media (min-width: 400px) { // btns
-          grid-area: 6 / 3 / 7 / 4;
-        }
-        & .purchase-btn {
-          border-radius: 2px;
-          width: 100%;
-          background-color: rgb(0, 0, 0);
-          height: 40px;
-          margin: 0 0 5px;
-          &:hover {
-            background-color: darken($color: #1dbf73, $amount: 7%);
+          .left h1 {
+            font-size: 34px;
+            line-height: 41px;
+            margin-bottom: 5px;
+            color: rgb(33, 33, 33);
+            white-space: nowrap;
           }
-        }
-        & .cancel-btn {
-          border-radius: 2px;
-          background-color: $clr4;
-          color: $clr1;
-          width: 100%;
-          margin: 0;
-
-          &:hover {
-            background-color: $clr5;
-            color: #fff;
+          .right {
+            align-items: center;
+            color: rgba(0, 0, 0, 0.87);
+            font-size: 14px;
+            p {
+              margin: 0 0 0 10px;
+            }
           }
         }
       }
-      & .the-small-words {
-        grid-area: 8 / 2 / 8 / 4;
-        font-size: rem(10px);
-        margin: 0 auto 0;
+    }
 
-        @media (min-width: 400px) { // small words
-          grid-area: 7 / 3 / 8 / 4;
-        }
-      }
+    .order-modal-details {
+      position: relative;
+      width: 770px;
+
+
     }
   }
 }
