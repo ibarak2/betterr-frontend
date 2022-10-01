@@ -16,16 +16,16 @@ export function HomePage() {
     if (window.location.href === "http://localhost:3000/") {
       navigate('/?nav=home')
     }
-    socketService.on('new-order-recieved', (data) => {
-      showSuccessMsg(data)
-    })
-    socketService.on('on-order-changed-status', (data) => {
-      (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
-    })
+    // socketService.on('new-order-recieved', (data) => {
+    //   showSuccessMsg(data)
+    // })
+    // socketService.on('on-order-changed-status', (data) => {
+    //   (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
+    // })
 
     return () => {
-      socketService.off('new-order-recieved')
-      socketService.off('on-order-changed-status')
+      // socketService.off('new-order-recieved')
+      // socketService.off('on-order-changed-status')
     }
   }, [])
 

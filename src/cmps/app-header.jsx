@@ -36,20 +36,21 @@ export function AppHeader() {
   }
 
   useEffect(() => {
+
     const onScroll = () => setOffset(window.pageYOffset)
     window.removeEventListener('scroll', onScroll)
     window.addEventListener('scroll', onScroll, { passive: true })
 
-    // socketService.on('new-order-recieved', (data) => {
-    //   showSuccessMsg(data)
-    // })
-    // socketService.on('on-order-changed-status', (data) => {
-    //   (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
-    // })
+    socketService.on('new-order-recieved', (data) => {
+      showSuccessMsg(data)
+    })
+    socketService.on('on-order-changed-status', (data) => {
+      (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
+    })
 
     return () => {
-      // socketService.off('new-order-recieved')
-      // socketService.off('on-order-changed-status')
+      socketService.off('new-order-recieved')
+      socketService.off('on-order-changed-status')
       window.removeEventListener('scroll', onScroll)
     }
   }, [])
@@ -129,6 +130,7 @@ export function AppHeader() {
           >
             <form className="flex" onSubmit={(ev) => onSearch(ev)}>
               <input
+                required
                 type="search"
                 className="header-search-input"
                 autoComplete="off"
