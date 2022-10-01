@@ -31,7 +31,7 @@ export const Explore = () => {
       </h1>
       <Filter onChangeFilter={onChangeFilter} />
       {!gigs ? <Loading /> : <GigList gigs={gigs} />}
-      <Pageneation />
+      {/* <Pageneation /> */}
     </div>
   )
 }
