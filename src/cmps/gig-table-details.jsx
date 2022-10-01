@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { SmallModal } from "./small-modal"
 import { UserAvatar } from "./user-avatar"
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz"
+import { utilService } from "../services/util.service.js"
 
 export function GigTableDetails({
   order,
@@ -69,7 +70,7 @@ export function GigTableDetails({
 
     <div className=" flex align-center gig-table-details">
       <div className="flex align-center order-details">
-        <img src="https://picsum.photos/200/300" className="gig-details-img" />
+        <img src={order.gig.imgUrl} className="gig-details-img" />
         <div className="flex column order-text">
           <p className="subheader">
             {isBuyer ? order.seller.fullname : order.buyer.fullname}
@@ -79,12 +80,17 @@ export function GigTableDetails({
       </div>
 
       <div className="flex details-container">
-        <div className="flex column order-text due-on">
-          <p className="subheader">Due On</p>
-          <p className="info">{"17/10/22"}</p>
+        <div className="flex column order-text recieved">
+          <p className="subheader">Recieved</p>
+          <p className="info">{`${new Date(order.createdAt).toLocaleDateString()} \n${utilService.getClockTime(order.createdAt)}`}</p>
         </div>
 
-        <div className="flex column order-text">
+        <div className="flex column order-text due-on">
+          <p className="subheader">Due On</p>
+          <p className="info">{`${utilService.getOrderDate(order.createdAt, order.gig.daysToMake)} \n${utilService.getClockTime(order.createdAt)}`}</p>
+        </div>
+
+        <div className="flex column order-text price">
           <p className="subheader">price</p>
           <p className="info">${`${order.gig.price}`}</p>
         </div>

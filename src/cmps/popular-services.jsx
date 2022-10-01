@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { NavLink } from 'react-router-dom'
 
 import Slider from 'react-slick'
 
@@ -151,19 +152,21 @@ export function PopularServices() {
         {slideObjs.map((obj) => {
           return (
             <div key={obj.small}>
-              <a className="slide-link" href={`${obj.href}`}>
-                <h4 className="slide-title">
-                  <small>{obj.small}</small>
-                  {obj.h4}
-                </h4>
-                <picture className="slide-pic">
-                  <source media="(min-width: 1060px)" srcSet={obj.xl} />
-                  <source media="(min-width: 800px)" srcSet={obj.l} />
-                  <source media="(min-width: 600px)" srcSet={obj.m} />
-                  <source media="(max-width: 599px)" srcSet={obj.s} />
-                  <img className="slide-img" src={obj.s} />
-                </picture>
-              </a>
+              <NavLink to={`${obj.href}`}>
+                <a className="slide-link">
+                  <h4 className="slide-title">
+                    <small>{obj.small}</small>
+                    {obj.h4}
+                  </h4>
+                  <picture className="slide-pic">
+                    <source media="(min-width: 1060px)" srcSet={obj.xl} />
+                    <source media="(min-width: 800px)" srcSet={obj.l} />
+                    <source media="(min-width: 600px)" srcSet={obj.m} />
+                    <source media="(max-width: 599px)" srcSet={obj.s} />
+                    <img className="slide-img" src={obj.s} />
+                  </picture>
+                </a>
+              </NavLink>
             </div>
           )
         })}

@@ -15,6 +15,7 @@ import { orderService } from "../services/order.service"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 import { useSelector } from "react-redux"
 import { PurchaseModal } from "../cmps/purchase-modal"
+import { Loading } from "../cmps/loading"
 
 
 
@@ -89,7 +90,8 @@ export const GigDetails = () => {
                 title: gig.title,
                 daysToMake,
                 price,
-                plan
+                plan,
+                imgUrl: gig.imgUrls[0]
             }
         }
         orderService.save(newOrder)
@@ -140,10 +142,9 @@ export const GigDetails = () => {
         }
     }
 
-    if (!gig) return <div>Loading</div>
     return (
         <CssVarsProvider>
-            <section className="main-gig-details">
+            {(!gig) ? <Loading /> : <section className="main-gig-details">
                 <div className='gig-details'>
                     <section className="gig-description">
                         <div className="gig-layout">
@@ -221,7 +222,7 @@ export const GigDetails = () => {
                 </div>
                 {isSelected.isOpen &&
                     <div className="purchase-modal-bg"><PurchaseModal onPurchase={onPurchase} onCancel={onCancel} isSelected={isSelected} gigImg={gig.imgUrls[0]} /></div>}
-            </section>
+            </section>}
         </CssVarsProvider>
 
     )

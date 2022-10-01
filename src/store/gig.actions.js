@@ -6,7 +6,6 @@ import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 export function loadGigs() {
   return async (dispatch, getState) => {
     try {
-
       const { filterBy } = getState().gigModule
       const gigs = await gigService.query(filterBy)
       dispatch({

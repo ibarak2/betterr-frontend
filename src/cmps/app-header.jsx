@@ -9,7 +9,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import { SideDrawer } from './side-drawer'
 import { userService } from '../services/user.service.js'
 import { socketService } from '../services/socket.service.js'
-import { showSuccessMsg } from '../services/event-bus.service.js'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { SearchIcon } from '../svg-icons.js'
 
 export function AppHeader() {
@@ -40,10 +40,16 @@ export function AppHeader() {
     window.removeEventListener('scroll', onScroll)
     window.addEventListener('scroll', onScroll, { passive: true })
 
-    socketService.on('new-order-recieved', showSuccessMsg)
+    // socketService.on('new-order-recieved', (data) => {
+    //   showSuccessMsg(data)
+    // })
+    // socketService.on('on-order-changed-status', (data) => {
+    //   (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
+    // })
 
     return () => {
-      socketService.off('new-order-recieved', showSuccessMsg)
+      // socketService.off('new-order-recieved')
+      // socketService.off('on-order-changed-status')
       window.removeEventListener('scroll', onScroll)
     }
   }, [])
@@ -78,7 +84,7 @@ export function AppHeader() {
     let mainHeaderClasses = 'main-container main-header'
     if (searchParams.get('nav') !== 'home' || offset > 0) {
       mainHeaderClasses += ' header-white'
-    } 
+    }
     return mainHeaderClasses
   }
 
@@ -105,9 +111,11 @@ export function AppHeader() {
               toggleDrawer={toggleDrawer}
               onOpenLogSign={handleOpenModal}
             />
-            <a href="/?nav=home" className="site-logo">
-              <img className="logo" src={appLogo()} alt="betterr." />
-            </a>
+            <NavLink to="/?nav=home">
+              <a className="site-logo">
+                <img className="logo" src={appLogo()} alt="betterr." />
+              </a>
+            </NavLink>
           </div>
 
           <div
@@ -115,8 +123,8 @@ export function AppHeader() {
               searchParams.get('nav') !== 'home'
                 ? 'header-search header-search-shown'
                 : offset >= 190
-                ? 'header-search header-search-shown'
-                : 'header-search'
+                  ? 'header-search header-search-shown'
+                  : 'header-search'
             }
           >
             <form className="flex" onSubmit={(ev) => onSearch(ev)}>
@@ -201,8 +209,8 @@ export function AppHeader() {
           searchParams.get('nav') !== 'home'
             ? 'main-container flex second-nav-shown second-nav'
             : offset >= 150
-            ? 'main-container flex second-nav-shown second-nav'
-            : 'main-container flex max-width-container second-nav'
+              ? 'main-container flex second-nav-shown second-nav'
+              : 'main-container flex max-width-container second-nav'
         }
       >
         <SecondaryNavbar />

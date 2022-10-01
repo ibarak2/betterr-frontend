@@ -178,7 +178,7 @@ export function EditProfile({ user, analytics }) {
                   Earned this month
                 </span>
                 <span className="current-revenue">
-                  <b>{analytics.earningsThisMonth}$</b>
+                  <b>${analytics.earningsThisMonth}</b>
                 </span>
               </li>
               <li className="flex monthley-revenue">
@@ -204,7 +204,7 @@ export function EditProfile({ user, analytics }) {
                   Avg. selling price
                 </span>
                 <span className="current-revenue">
-                  <b>{analytics.avgSellingPrice}$</b>
+                  <b>${(analytics.avgSellingPrice) ? analytics.avgSellingPrice.toFixed(2) : '0'}</b>
                 </span>
               </li>
               <li className="flex monthley-revenue">
@@ -217,7 +217,7 @@ export function EditProfile({ user, analytics }) {
                   Earnings to date
                 </span>
                 <span className="current-revenue">
-                  <b>{analytics.allEarnings}$</b>
+                  <b>${analytics.allEarnings}</b>
                 </span>
               </li>
             </ul>

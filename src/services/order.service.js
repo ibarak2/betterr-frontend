@@ -3,6 +3,7 @@ import { store } from "../store/store"
 import {
   socketService,
   SOCKET_EVENT_NEW_ORDER_REQUEST,
+  SOCKET_EVENT_ORDER_CHANGE_STATUS
 } from "./socket.service"
 import { getActionAddReview } from "../store/order.actions.js"
 import { showSuccessMsg } from "./event-bus.service.js"
@@ -52,11 +53,14 @@ async function save(order) {
   }
 }
 
-async function updateStatus(orderId, status) {
+async function updateStatus(miniOrder) {
+  const status = miniOrder.status
   try {
-    const savedOrder = await httpService.put(BASE_URL + `status/${orderId}`, {
+    const savedOrder = await httpService.put(BASE_URL + `status/${miniOrder._id}`, {
       status,
     })
+    socketService.emit(SOCKET_EVENT_ORDER_CHANGE_STATUS, miniOrder)
+
     return savedOrder
   } catch (err) {
     return err

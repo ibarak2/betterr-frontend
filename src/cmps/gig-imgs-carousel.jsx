@@ -38,7 +38,7 @@ export const GigImgsCarousel = ({ imgList }) => {
                 )}
             >
                 {imgList.map((img, idx) => {
-                    return <div key={idx} className='img'>
+                    return <div key={idx} >
                         <img
                             alt=""
                             src={img}
