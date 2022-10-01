@@ -80,24 +80,28 @@ export function GigTableDetails({
       </div>
 
       <div className="flex details-container">
-        <div className="flex column order-text recieved">
-          <p className="subheader">Recieved</p>
-          <p className="info">{`${new Date(order.createdAt).toLocaleDateString()} \n${utilService.getClockTime(order.createdAt)}`}</p>
+        <div className="flex ">
+          <div className="flex column order-text recieved">
+            <p className="subheader">Recieved</p>
+            <p className="info">{`${new Date(order.createdAt).toLocaleDateString()} \n${utilService.getClockTime(order.createdAt)}`}</p>
+          </div>
+
+          <div className="flex column order-text due-on">
+            <p className="subheader">Due On</p>
+            <p className="info">{`${utilService.getOrderDate(order.createdAt, order.gig.daysToMake)} \n${utilService.getClockTime(order.createdAt)}`}</p>
+          </div>
         </div>
 
-        <div className="flex column order-text due-on">
-          <p className="subheader">Due On</p>
-          <p className="info">{`${utilService.getOrderDate(order.createdAt, order.gig.daysToMake)} \n${utilService.getClockTime(order.createdAt)}`}</p>
-        </div>
+        <div className="flex status">
+          <div className="flex column order-text price">
+            <p className="subheader">price</p>
+            <p className="info">${`${order.gig.price}`}</p>
+          </div>
 
-        <div className="flex column order-text price">
-          <p className="subheader">price</p>
-          <p className="info">${`${order.gig.price}`}</p>
-        </div>
-
-        <div className="flex column order-text order-status">
-          <p className="subheader">Order Status</p>
-          <p className="info">{order.status}</p>
+          <div className="flex column order-text order-status">
+            <p className="subheader">Order Status</p>
+            <p className="info">{order.status}</p>
+          </div>
         </div>
       </div>
 
@@ -106,7 +110,7 @@ export function GigTableDetails({
           <button onClick={() => onAccept(order)}>Accept</button>
         )}
         {!isBuyer && order.status === "in-progress" && (
-          <button onClick={() => onReady(order)}>Ready</button>
+          <button className="ready-btn" onClick={() => onReady(order)}>Ready</button>
         )}
         {isBuyer && order.status === "ready" && (
           <button onClick={() => onDelivered(order)}>Delivered</button>

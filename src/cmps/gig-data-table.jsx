@@ -32,7 +32,7 @@ export function GigDataTable({
         <div className="flex align-center table-cell subheader-one">
           <h1 className="table-header">{title}</h1>
         </div>
-        <div className="flex align-center data-select-container table-cell subheader subheader-one">
+        {/* <div className="flex align-center data-select-container table-cell subheader subheader-one">
           <SmallModal
             onSelect={handleSelect}
             list={sortListByDays}
@@ -41,7 +41,7 @@ export function GigDataTable({
             txt={"LAST 7 DAYS"}
             handleOpenModal={showModal}
           />
-        </div>
+        </div> */}
       </div>
       {/* <GigTableSubheader /> */}
 

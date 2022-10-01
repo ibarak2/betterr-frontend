@@ -5,7 +5,7 @@ import { EditBox } from '../cmps/edit-box'
 import { useForm } from '../hooks/useForm'
 import { gigService } from '../services/gig.service'
 import { uploadService } from '../services/upload.service'
-import { addGig } from '../store/gig.actions'
+import { addGig, onRemoveGigOptimistic } from '../store/gig.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { UserMsg } from '../cmps/user-msg'
 
@@ -123,11 +123,16 @@ export const Edit = () => {
     }
   }
 
+  const onDeleteGig = (gigId) => {
+    dispatch(onRemoveGigOptimistic(gigId))
+  }
+
   return (
     <div className="edit">
 
       <EditBox
         onSubmitEdit={onSubmitEdit}
+        onDeleteGig={onDeleteGig}
         gig={gig}
         handleChange={handleChange}
         setGig={setGig}
