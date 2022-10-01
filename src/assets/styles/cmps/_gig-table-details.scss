@@ -9,17 +9,16 @@
     margin: 0;
   }
   .details-container {
-    flex-direction: row;
     padding: 12px 0;
+    justify-content: space-between;
+    flex-direction: column;
     width: 100%;
     gap: 12px;
-    .price {
-      width: auto;
+
+    .order-text {
+      align-self: flex-start;
+      width: 50%;
     }
-  }
-  .order-text {
-    align-self: flex-start;
-    min-width: 45px;
   }
   .subheader {
     font-size: rem(12px);
@@ -58,6 +57,9 @@
       &:hover {
         background-color: darken($color: $clr2, $amount: 7%);
       }
+    }
+    & .ready-btn {
+      background-color: rgb(12, 178, 255);
     }
     & .cancel-btn {
       background-color: transparent;
@@ -141,8 +143,14 @@
     gap: 16px;
     .details-container {
       display: flex;
+      flex-direction: row;
+      // justify-content: space-evenly;
       width: auto;
-      gap: 16px;
+      gap: 0;
+      & .order-text {
+        width: unset;
+        padding: 10px;
+      }
     }
     .subheader {
       font-size: rem(12px);
@@ -163,7 +171,6 @@
   .gig-table-details {
     gap: 24px;
     .details-container {
-      gap: 24px;
     }
     .subheader {
       font-size: rem(14px);

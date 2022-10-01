@@ -1,6 +1,6 @@
 
 
-export const EditBox = ({ onSubmitEdit, gig, handleChange, onAddingImg }) => {
+export const EditBox = ({ onSubmitEdit, onDeleteGig, gig, handleChange, onAddingImg }) => {
   return (
     <div className="edit-first-stage">
       <div className="gig-title form-input-group">
@@ -320,6 +320,7 @@ export const EditBox = ({ onSubmitEdit, gig, handleChange, onAddingImg }) => {
         </section>
       </div>
       <button onClick={() => onSubmitEdit(gig)}>Save</button>
+      {gig._id && <button className="delete-gig-btn" onClick={() => onDeleteGig(gig._id)}>Delete</button>}
     </div>
   )
 }
