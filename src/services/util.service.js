@@ -7,7 +7,8 @@ export const utilService = {
     getReviewDate,
     getExploreTitle,
     getOrderDate,
-    getClockTime
+    getClockTime,
+    numberWithCommas
 }
 
 function makeId(length = 6) {
@@ -69,14 +70,17 @@ const categories = [
     'Trending',
 ]
 function getExploreTitle(category) {
-    var title = (category === 'graphics-and-design') ? 'Graphics and Design' :
+    var title = (category === 'graphics-and-design') ? 'Graphics & Design' :
         (category === 'digital-marketing') ? 'Digital Marketing' :
-            (category === 'writing-and-translation') ? 'Writing and Translation' :
-                (category === 'video-and-animation') ? 'Video and Animation' :
-                    (category === 'music-and-audio') ? 'Music and Audio' :
-                        (category === 'business') ? 'Business' :
-                            (category === 'lifestyle') ? 'Lifestyle' :
-                                'Trending'
+            (category === 'writing-and-translation') ? 'Writing & Translation' :
+                (category === 'video-and-animation') ? 'Video & Animation' :
+                    (category === 'music-and-audio') ? 'Music & Audio' :
+                        (category === 'programming-and-tech') ? 'Programming & Tech' :
+                            (category === 'business') ? 'Business' :
+                                (category === 'lifestyle') ? 'Lifestyle' :
+                                    (category === 'trending') ? 'Trending' :
+                                        (category === null) ? 'Explore' :
+                                            `Results for "${category}"`
 
 
     return title
@@ -93,4 +97,8 @@ function getClockTime(createdAt) {
     if (minutes < 10) minutes = '0' + minutes
     if (hours < 10) hours = '0' + hours
     return `${hours}:${minutes}`
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

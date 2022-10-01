@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { showSuccessMsg } from "../services/event-bus.service";
 import { uploadService } from "../services/upload.service";
 import { userService } from "../services/user.service"
+import { utilService } from "../services/util.service";
 import { UserInfoModal } from "./user-info-modal";
 
 
@@ -178,7 +179,7 @@ export function EditProfile({ user, analytics }) {
                   Earned this month
                 </span>
                 <span className="current-revenue">
-                  <b>${analytics.earningsThisMonth}</b>
+                  <b>${utilService.numberWithCommas(analytics.earningsThisMonth)}</b>
                 </span>
               </li>
               <li className="flex monthley-revenue">
@@ -204,7 +205,7 @@ export function EditProfile({ user, analytics }) {
                   Avg. selling price
                 </span>
                 <span className="current-revenue">
-                  <b>${(analytics.avgSellingPrice) ? analytics.avgSellingPrice.toFixed(2) : '0'}</b>
+                  <b>${(analytics.avgSellingPrice) ? (analytics.avgSellingPrice.toFixed(2)) : '0'}</b>
                 </span>
               </li>
               <li className="flex monthley-revenue">
@@ -217,7 +218,7 @@ export function EditProfile({ user, analytics }) {
                   Earnings to date
                 </span>
                 <span className="current-revenue">
-                  <b>${analytics.allEarnings}</b>
+                  <b>${utilService.numberWithCommas(analytics.allEarnings)}</b>
                 </span>
               </li>
             </ul>

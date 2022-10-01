@@ -3,6 +3,12 @@
     font-size: rem(32px);
     margin-top: rem(24px);
   }
+  & .services-available {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 10px;
+    color: #74767e;
+  }
 
   & .gig-list {
     display: grid;
