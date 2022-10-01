@@ -247,14 +247,14 @@ export function Filter({ onChangeFilter }) {
         <span className="sort-by-title">Sort by</span>
         <div className={`floating-menu sort-by-floating ${isOpen.sort}`}>
         <div className="menu-title filter-menu" onClick={() => handleToggle("sort")}>
-          Recommended
+          Barak
           <span className="chevron-icon">
             <ChevronSvgIcon />
           </span>
         </div>
         <div className="menu-content sort-filter">
           <div className="labels-list">
-            <label htmlFor="recommended">Recommended</label>
+            <label htmlFor="recommended">Most Rated</label>
             <input type="radio" name="recommended" />
 
             <label htmlFor="newest-arrivals">Newest Arrivals</label>
