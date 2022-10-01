@@ -72,6 +72,10 @@
                     border-radius: 4px 4px 0 0;
                     transition: opacity 0.3s ease-in-out;
                     display: block;
+
+                    &:hover {
+                      opacity: 0.8;
+                    }
                   }
 
                   .slide-profile {

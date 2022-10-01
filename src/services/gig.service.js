@@ -17,7 +17,7 @@ export const gigService = {
 
 async function query(filterBy = {}) {
   try {
-    console.log("filterBy:", filterBy);
+    // console.log("filterBy:", filterBy);
     const gigs = await httpService.get(BASE_URL, { params: filterBy })
     return gigs
   } catch (err) {

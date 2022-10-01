@@ -18,7 +18,7 @@ export const PurchaseModal = ({ onPurchase, onCancel, isSelected, gigImg }) => {
                 <div className="order-seperator"></div>
                 <div className="flex space-between order-price">
                     <p className="price-title">Total</p>
-                    <span className="price">US${price}</span>
+                    <span className="price">USD${price}</span>
                 </div>
 
                 <div className="flex space-between order-due-on">

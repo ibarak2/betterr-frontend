@@ -153,7 +153,7 @@ export function PopularServices() {
           return (
             <div key={obj.small}>
               <NavLink to={`${obj.href}`}>
-                <a className="slide-link">
+                <div className="slide-link">
                   <h4 className="slide-title">
                     <small>{obj.small}</small>
                     {obj.h4}
@@ -165,7 +165,7 @@ export function PopularServices() {
                     <source media="(max-width: 599px)" srcSet={obj.s} />
                     <img className="slide-img" src={obj.s} />
                   </picture>
-                </a>
+                </div>
               </NavLink>
             </div>
           )

@@ -160,26 +160,28 @@ export function GetInspired() {
             {slideObjs.map((obj) => {
               return (
                 <div className="project-card" key={obj.small}>
-                  <a className="slide-link" href={'/explore'} target="_blank">
-                    <picture className="slide-pic">
-                      <source media="(min-width: 1060px)" srcSet={obj.xl} />
-                      <source media="(min-width: 800px)" srcSet={obj.l} />
-                      <source media="(min-width: 600px)" srcSet={obj.m} />
-                      <source media="(max-width: 599px)" srcSet={obj.s} />
-                      <img className="slide-img" src={obj.s} />
-                    </picture>
+                  <div className="slide-link">
+                    <a href="/explore" className="slide-pic-wrapper">
+                      <picture className="slide-pic">
+                        <source media="(min-width: 1060px)" srcSet={obj.xl} />
+                        <source media="(min-width: 800px)" srcSet={obj.l} />
+                        <source media="(min-width: 600px)" srcSet={obj.m} />
+                        <source media="(max-width: 599px)" srcSet={obj.s} />
+                        <img className="slide-img" src={obj.s} />
+                      </picture>
+                    </a>
                     <div className="flex slide-profile">
-                      <a href="" className="slide-profile-img">
+                      <a href="/explore" className="slide-profile-img">
                         <img src={obj.profilePic} />
                       </a>
                       <span className="slide-title">
                         <b>
                           <a href="/explore">{obj.title}</a>
                         </b>
-                        <a>{obj.small}</a>
+                        <a href="/explore">{obj.small}</a>
                       </span>
                     </div>
-                  </a>
+                  </div>
                 </div>
               )
             })}

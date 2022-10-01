@@ -111,10 +111,10 @@ export function AppHeader() {
               toggleDrawer={toggleDrawer}
               onOpenLogSign={handleOpenModal}
             />
-            <NavLink to="/?nav=home">
-              <a className="site-logo">
+            <NavLink to="/?nav=home" className="site-logo">
+              {/* <div > */}
                 <img className="logo" src={appLogo()} alt="betterr." />
-              </a>
+              {/* </div> */}
             </NavLink>
           </div>
 
