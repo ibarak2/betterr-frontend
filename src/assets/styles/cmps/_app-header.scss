@@ -125,7 +125,7 @@
     font-weight: 600;
     margin-left: 32px;
 
-    @media (max-width: 500px) {
+    @media (max-width: 1140px) {
       margin: 0;
     }
     .nav-routes .basic-nav-routes {
@@ -141,10 +141,11 @@
 
     .nav-list {
       align-items: center;
+
       li a {
         margin-left: 20px;
         color: $clr1;
-        font-size: rem(18px);
+        // font-size: rem(18px);
         cursor: pointer;
       }
       a:hover {
@@ -154,7 +155,6 @@
         li {
           cursor: pointer;
           a {
-            margin: 0;
             &.header-become-a-seller {
               @media (max-width: 400px) {
                 display: none;
@@ -177,10 +177,6 @@
           transition: all 0.2s ease-in;
           margin: 0 0 0 20px;
           font-size: rem(16px);
-
-          // @media (max-width: 400px) {
-          //   margin: 0 0 0 10px;
-          // }
         }
         .nav-join:hover {
           color: $clr1;
@@ -201,6 +197,30 @@
             height: 28px;
           }
         }
+      }
+
+      @media (max-width: 1140px) {
+        .nav-routes {
+          font-size: rem(14px);
+        }
+        .signin-signup {
+          margin-left: 7px;
+          li {
+            font-size: rem(14px);
+
+            a {
+              margin: 0 0 0 10px;
+              word-spacing: 0.001rem;
+            }
+          }
+          .nav-join {
+            font-size: rem(14px);
+            padding: 0.65vh 15px;
+            margin: 0 0 0 5px;
+          }
+        }
+
+
       }
     }
   }
