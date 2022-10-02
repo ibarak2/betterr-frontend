@@ -36,7 +36,6 @@ export const Explore = () => {
   const onChangeFilter = (filterBy) => {
     clearInterval(myInterval.current)
     myInterval.current = setTimeout(() => {
-      console.log("filterBy",filterBy);
       dispatch(setFilterBy(filterBy))
       dispatch(loadGigs())
     }, 500)
