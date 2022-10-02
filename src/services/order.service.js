@@ -1,25 +1,11 @@
 import { httpService } from "./http.service.js"
-import { store } from "../store/store"
 import {
   socketService,
   SOCKET_EVENT_NEW_ORDER_REQUEST,
   SOCKET_EVENT_ORDER_CHANGE_STATUS
 } from "./socket.service"
-import { getActionAddReview } from "../store/order.actions.js"
-import { showSuccessMsg } from "./event-bus.service.js"
 
 const BASE_URL = "order/"
-
-// const orderChannel = new BroadcastChannel("orderChannel")
-//   ; (() => {
-//     // reviewChannel.addEventListener('message', (ev) => {
-//     //     store.dispatch(ev.data)
-//     // })
-//     socketService.on(SOCKET_EVENT_NEW_ORDER_REQUEST, (order) => {
-//       console.log("GOT from socket", order)
-//       store.dispatch(getActionAddReview(order))
-//     })
-//   })()
 
 export const orderService = {
   query,
@@ -33,7 +19,7 @@ async function query(filter) {
     const orders = await httpService.get(BASE_URL, { params: filter })
     return orders
   } catch (err) {
-    return "order.service: cannot get orders"
+    return ("order.service: cannot get orders")
   }
 }
 
