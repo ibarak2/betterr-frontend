@@ -1,6 +1,4 @@
-// import { useState } from "react"
-// import { useFormRegister } from "../hooks/useFormRegister"
-
+import { useFormRegister } from "../hooks/useFormRegister"
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
 
@@ -136,74 +134,127 @@ const ChevronSvgIcon = () => {
 }
 
 export function Filter({ onChangeFilter }) {
-
+  const [register, setFields, fields] = useFormRegister(
+    {
+      minPrice: "",
+      maxPrice: "",
+      basicDaysToMake: "",
+      sortBy: "",
+    },
+    onChangeFilter
+  )
   const [isOpen, setIsOpen] = useState({
-    delivery: '',
-    budget: '',
-    sort: '',
+    delivery: "",
+    budget: "",
+    sort: "",
   })
 
   const handleToggle = (field) => {
-
-    if (field === 'delivery') {
+    if (field === "delivery") {
       setIsOpen({
-          delivery: 'delivery',
-          budget: '',
-          sort: '',
+        delivery: "filter-open",
+        budget: "",
+        sort: "",
       })
     }
-    if (field === 'budget'){
+    if (field === "budget") {
       setIsOpen({
-        delivery: '',
-        budget: 'budget',
-        sort: '',
+        delivery: "",
+        budget: "filter-open",
+        sort: "",
       })
     }
-    if (field === 'sort'){
+    if (field === "sort") {
       setIsOpen({
-        delivery: '',
-        budget: '',
-        sort: 'sort',
+        delivery: "",
+        budget: "",
+        sort: "filter-open",
+      })
+    }
+    if (field === "close") {
+      setIsOpen({
+        delivery: "",
+        budget: "",
+        sort: "",
       })
     }
   }
-
+  const handleClear = () => {
+    setFields({
+      minPrice: "",
+      maxPrice: "",
+      basicDaysToMake: "",
+      sortBy: "",
+    })
+    handleToggle("close")
+  }
   return (
-    <section className="flex space-between gigs-filter-main">
+    <section className="flex gigs-filter-main">
       <div className="flex left-filter-wrapper">
-        <div className={`floating-menu ${isOpen.delivery}`} >
-          <div className="menu-title filter-menu" onClick={() => handleToggle("delivery")}>
+        <div className={`floating-menu ${isOpen.delivery}`}>
+          <div
+            className="menu-title filter-menu"
+            onClick={() => handleToggle("delivery")}
+          >
             Delivery Time
             <span className="chevron-icon">
               <ChevronSvgIcon />
             </span>
           </div>
           <div className="menu-content">
-            <div className="flex radio-list">
+            <div
+              className="flex radio-list"
+              onClick={() => handleToggle("close")}
+            >
               <div className="flex radio-item-wrapper">
                 <label className="flex radio-item" htmlFor="24H">
-                  <input type="radio" id="24H" name="delivery-time" value="1" />
+                  <input
+                    {...register(`basicDaysToMake`, `radio`, "1")}
+                    type="radio"
+                    id="24H"
+                    name="basicDaysToMake"
+                    value="1"
+                  />
                   Express 24H
                 </label>
               </div>
 
               <div className="flex radio-item-wrapper">
                 <label className="flex radio-item" htmlFor="3D">
-                  <input type="radio" id="3D" name="delivery-time" value="3" />
+                  <input
+                    {...register(`basicDaysToMake`, `radio`, "3")}
+                    type="radio"
+                    id="3D"
+                    name="basicDaysToMake"
+                    value="3"
+                  />
                   Up to 3 days
                 </label>
               </div>
 
               <div className="flex radio-item-wrapper">
                 <label className="flex radio-item" htmlFor="7D">
-                  <input type="radio" id="7D" name="delivery-time" value="7" />
+                  <input
+                    {...register(`basicDaysToMake`, `radio`, "7")}
+                    type="radio"
+                    id="7D"
+                    name="basicDaysToMake"
+                    value="7"
+                  />
                   Up to 7 days
                 </label>
               </div>
 
               <div className="flex radio-item-wrapper">
                 <label className="flex radio-item" htmlFor="Any">
-                  <input type="radio" id="Any" name="delivery-time" value />
+                  <input
+                    {...register(`basicDaysToMake`, `radio`, "")}
+                    type="radio"
+                    id="Any"
+                    name="basicDaysToMake"
+                    value=""
+                    // defaultChecked
+                  />
                   Anytime
                 </label>
               </div>
@@ -211,32 +262,51 @@ export function Filter({ onChangeFilter }) {
           </div>
         </div>
 
-        <div className={`floating-menu ${isOpen.budget}`}  >
-          <div className="menu-title filter-menu" onClick={() => handleToggle("budget")}>
+        <div className={`floating-menu ${isOpen.budget}`}>
+          <div
+            className="menu-title filter-menu"
+            onClick={() => handleToggle("budget")}
+          >
             Budget
             <span className="chevron-icon">
               <ChevronSvgIcon />
             </span>
           </div>
-          <div className="menu-content">
+          <div className="menu-content budget-menu">
             <div className="flex budget-filter">
               <div className="input-wrapper">
                 <label>MIN.</label>
-                <input type="number" name="price-range" className="min-price" placeholder="Any" min="0" max="50000"/>
+                <input
+                  {...register(`minPrice`, `number`)}
+                  className="min-price"
+                  placeholder="Any"
+                  min="0"
+                  max="50000"
+                />
                 <i>$</i>
               </div>
 
               <div className="input-wrapper">
                 <label>MAX.</label>
-                <input type="number" name="price-range" className="max-price" placeholder="Any" min="0" max="50000"/>
+                <input
+                  {...register(`maxPrice`, `number`)}
+                  className="max-price"
+                  placeholder="Any"
+                  min="0"
+                  max="50000"
+                />
                 <i>$</i>
               </div>
             </div>
 
             <div className="button-row-wrapper">
               <div className="flex button-row">
-                <NavLink to={"/explore"} className="clear-all">Clear All</NavLink>
-                <NavLink to={"/explore"} className="apply">Apply</NavLink>
+                <span onClick={() => handleClear()} className="clear-all">
+                  Clear All
+                </span>
+                <span onClick={() => handleToggle("close")} className="apply">
+                  Apply
+                </span>
               </div>
             </div>
           </div>
@@ -244,26 +314,47 @@ export function Filter({ onChangeFilter }) {
       </div>
 
       <div className="flex right-filter-wrapper sort-by-wrapper">
-        <span className="sort-by-title">Sort by</span>
-        <div className={`floating-menu sort-by-floating ${isOpen.sort}`}>
-        <div className="menu-title filter-menu" onClick={() => handleToggle("sort")}>
-          Barak
-          <span className="chevron-icon">
-            <ChevronSvgIcon />
-          </span>
-        </div>
-        <div className="menu-content sort-filter">
-          <div className="labels-list">
-            <label htmlFor="recommended">Most Rated</label>
-            <input type="radio" name="recommended" />
-
-            <label htmlFor="newest-arrivals">Newest Arrivals</label>
-            <input type="radio" name="newest-arrivals" />
+        <span onClick={() => handleToggle("sort")} className="sort-by-title">
+          Sort by
+        </span>
+        <div
+          onClick={() => handleToggle("sort")}
+          className={`floating-menu sort-by-floating ${isOpen.sort}`}
+        >
+          <div className="menu-title filter-menu">
+            <span className="filter-menu-value">
+              {`${
+                fields.sortBy === "rating" ? "Most Rated" : "Newest Arrivals"
+              }`}
+            </span>
+            <span className="chevron-icon">
+              <ChevronSvgIcon />
+            </span>
           </div>
-
+          <div className="menu-content sort-filter">
+            <div className="labels-list" onClick={() => handleToggle("close")}>
+              <label htmlFor="recommended">Most Rated</label>
+              <input
+                {...register(`sortBy`, `radio`, "rating")}
+                id="recommended"
+                value="rating"
+              />
+              <label htmlFor="newest-arrivals">Newest Arrivals</label>
+              <input
+                {...register(`sortBy`, `radio`, "new-arrival")}
+                id="newest-arrivals"
+                value="new-arrival"
+              />
+            </div>
+          </div>
         </div>
       </div>
-      </div>
+      <div
+        onClick={() => handleToggle("close")}
+        className={
+          isOpen.budget || isOpen.delivery || isOpen.sort ? "open-listener" : ""
+        }
+      ></div>
     </section>
   )
 }
