@@ -59,6 +59,7 @@ export function Filter({ onChangeFilter }) {
       })
     }
   }
+
   const handleClear = () => {
     setFields({
       minPrice: "",
@@ -68,6 +69,7 @@ export function Filter({ onChangeFilter }) {
     })
     handleToggle("close")
   }
+
   return (
     <section className="flex gigs-filter-main">
       <div className="flex left-filter-wrapper">
@@ -202,9 +204,8 @@ export function Filter({ onChangeFilter }) {
         >
           <div className="menu-title filter-menu">
             <span className="filter-menu-value">
-              {`${
-                fields.sortBy === "rating" ? "Most Rated" : "Newest Arrivals"
-              }`}
+              {`${fields.sortBy === "rating" ? "Most Rated" : "Newest Arrivals"
+                }`}
             </span>
             <span className="chevron-icon">
               <ChevronSvgIcon />

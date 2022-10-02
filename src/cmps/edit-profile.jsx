@@ -8,8 +8,6 @@ import { UserInfoModal } from "./user-info-modal";
 
 export function EditProfile({ user, analytics }) {
 
-  console.log('edit user', user);
-
   const [modalOpen, setModalOpen] = useState(false)
   const [userInfo, setUserInfo] = useState({
     fullname: '',

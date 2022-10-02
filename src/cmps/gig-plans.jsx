@@ -51,7 +51,6 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
             <TabList
                 variant="outlined"
                 sx={(theme) => ({
-
                     borderRadius: 0,
                     [`& .${tabClasses.root}`]: {
                         fontWeight: "xl",
@@ -60,7 +59,6 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
                         position: "relative",
                         height: 55,
                         color: 'grey',
-
 
                         [`&.${tabClasses.selected}`]: {
                             bgcolor: "white",
@@ -110,7 +108,6 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
                     textAlign={'right'}
                     mr={2.5}
                     mt={-6}
-
                 >
                     <Typography
                         fontSize="sm"
@@ -127,7 +124,6 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
                     mt={2.5}
                     ml={2.5}
                     mr={2.5}
-
                 >
                     {plans.basicDescription}
                 </Typography>
@@ -136,7 +132,6 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
                     padding={1.5}
                     pb={1}
                     fontWeight="xl"
-
                 >
                     <span className='delivery-icon'><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path><path d="M9 4H7v5h5V7H9V4z"></path></svg></span>
                     {plans.basicDaysToMake}{(plans.basicDaysToMake <= 1) ? " Day Delivery" : " Days Delivery"}
@@ -175,7 +170,6 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
                     mt={2.5}
                     ml={2.5}
                     mr={2.5}
-
                 >
 
                     {plans.standardDescription}
@@ -230,7 +224,6 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
                     padding={1.5}
                     pb={1}
                     fontWeight="xl"
-
                 >
                     <span className='delivery-icon'><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path><path d="M9 4H7v5h5V7H9V4z"></path></svg></span>
 
