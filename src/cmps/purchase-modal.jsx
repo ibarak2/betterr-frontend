@@ -140,7 +140,7 @@ export const PurchaseModal = ({ onPurchase, onCancel, isSelected, gigImg }) => {
         </div>
 
         <div className="flex column btns-wrapper">
-            <button className="btn-checkout" onClick={onPurchase}>Order now</button>
+            <button className="btn-checkout" onClick={() => onPurchase(plan, daysToMake, price)}>Order now</button>
             <button className="btn-cancel" onClick={onCancel}>cancel</button>
         </div>
 

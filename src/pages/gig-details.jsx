@@ -142,6 +142,14 @@ export const GigDetails = () => {
         }
     }
 
+    const backgroundListener = () => {
+        if (isSelected.isOpen === true) {
+            return 'open-listener'
+        } else {
+            return ''
+        }
+    }
+
     return (
         <CssVarsProvider>
             {(!gig) ? <Loading /> : <section className="main-gig-details">
@@ -220,11 +228,11 @@ export const GigDetails = () => {
                         </section>
                     }
                 </div>
-                {/* {isSelected.isOpen && */}
+
                     <div className={`order-modal-wrapper ${isSelected.isOpen}`}>
                         <PurchaseModal onPurchase={onPurchase} onCancel={onCancel} isSelected={isSelected} gigImg={gig.imgUrls[0]} />
                     </div>
-                {/* } */}
+                    <div className={`${backgroundListener} background`} onClick={onCancel}></div>
             </section>}
         </CssVarsProvider>
 
