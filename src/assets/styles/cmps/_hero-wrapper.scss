@@ -122,9 +122,10 @@
         .hero-search-input {
           border-radius: 0;
           border: 0;
-          padding: rem(15px) rem(12px) rem(10px);
+          padding: 1rem rem(12px) 1rem;
           margin: 0;
           width: 512.64px;
+          font-size: 1rem;
         }
         .hero-search-input::placeholder {
           color: $clr4;

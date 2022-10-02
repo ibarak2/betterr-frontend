@@ -186,11 +186,8 @@
       }
       .logged-in {
         align-items: center;
-        a {
-          height: 28px;
-        }
         .header-avatar-wrapper {
-          height: 28px;
+          display: flex;
           .header-avatar {
             border-radius: 50%;
             width: 28px;
@@ -219,8 +216,6 @@
             margin: 0 0 0 5px;
           }
         }
-
-
       }
     }
   }
