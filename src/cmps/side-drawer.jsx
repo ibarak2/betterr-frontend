@@ -7,15 +7,12 @@ import { NavLink, useNavigate, useSearchParams } from 'react-router-dom'
 import { UserAvatar } from './user-avatar'
 import { HamburgerIcon } from '../svg-icons'
 import { useEffect } from 'react'
-import { onLogin, onLogout, onSignup } from '../store/user.actions.js'
+import { onLogout } from '../store/user.actions.js'
 import { useDispatch } from 'react-redux'
-import { LoginSignup } from './login-signup'
 
 export function SideDrawer({ loggedinUser, onOpenLogSign }) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [logSign, setLogSign] = useState()
-  const [modalOpen, setModalOpen] = useState(false)
 
   let anchor = 'left'
   const [searchParams] = useSearchParams()
@@ -26,7 +23,6 @@ export function SideDrawer({ loggedinUser, onOpenLogSign }) {
 
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
-    //-- clean up code
     window.removeEventListener('scroll', onScroll)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -42,31 +38,6 @@ export function SideDrawer({ loggedinUser, onOpenLogSign }) {
     setDrawerOpen({ ...drawerOpen, [anchor]: open })
   }
 
-  const handleCloseModal = (ev) => {
-    if (
-      ev === 'close-btn' ||
-      ev.target.className.includes('login-signup-close-modal-div')
-    ) {
-      setModalOpen(false)
-      setLogSign('')
-    }
-  }
-
-  const handleOpenModal = (logSign) => {
-    setLogSign(logSign)
-    setModalOpen(true)
-  }
-
-  const login = () => {
-    dispatch(onLogin())
-    navigate('/?nav=home')
-  }
-
-  const signup = () => {
-    dispatch(onSignup())
-    navigate('/?nav=home')
-  }
-
   const logout = () => {
     dispatch(onLogout())
     navigate('/?nav=home')
@@ -80,9 +51,6 @@ export function SideDrawer({ loggedinUser, onOpenLogSign }) {
       onKeyDown={toggleDrawer(anchor, false)}
       className="side-nav"
     >
-
-    
-
       <List>
         {loggedinUser ? (
           <UserAvatar

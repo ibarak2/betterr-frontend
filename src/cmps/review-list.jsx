@@ -1,13 +1,6 @@
-import { useEffectUpdate } from "../hooks/useEffectUpdate"
 import { Review } from "./review"
 
-
-
-
 export const ReviewList = ({ reviews }) => {
-    useEffectUpdate(() => {
-
-    }, [reviews])
 
     return (
         <div className="review-list">

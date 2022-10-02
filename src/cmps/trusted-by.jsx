@@ -1,6 +1,5 @@
 export function TrustedBy() {
 
-  //---- component rendering ----//
   return (
     <section className="main-container full trusted-by">
       <div className="flex trusted-by-wrapper">

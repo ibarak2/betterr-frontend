@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 
 export const SellerGigs = ({ gig, onDeleteGig }) => {
 
-
   const [gigSetting, setGigSettings] = useState('hidden')
 
   const onOpenModal = () => {
@@ -13,8 +12,6 @@ export const SellerGigs = ({ gig, onDeleteGig }) => {
   const onCloseModal = () => {
     setGigSettings('hidden')
   }
-
-
 
   return (
     <div className="gig-card-base seller-gig-card">

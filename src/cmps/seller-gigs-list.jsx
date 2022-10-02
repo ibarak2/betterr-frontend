@@ -3,9 +3,6 @@ import { SellerGigs } from "./seller-gigs"
 
 export function SellerGigsList({ gigsByOwner, onDeleteGig }) {
 
-
-
-
   return (
     <section className="seller-gigs-wrapper">
       <div className="seller-gigs">

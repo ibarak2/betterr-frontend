@@ -3,7 +3,7 @@ import Slider from 'react-slick'
 
 export function SimpleSlider({ imgUrls, gigId }) {
     
-  //---- settings and demodata ----//
+  //---- settings ----//
   const settings = {
     dots: true,
     infinite: true,
@@ -27,7 +27,6 @@ export function SimpleSlider({ imgUrls, gigId }) {
       </div>
     ),
   }
-  const imgs = ['1', '2', '3', '4', '5', '6']
 
   //---- carousel arrows btns ----//
   function NextArrow(props) {

@@ -1,17 +1,6 @@
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export const SecondaryNavbar = () => {
-
-  const categories = [
-    'Digital Marketing',
-    'Writing & Translation',
-    'Video & Animation',
-    'Music & Audio',
-    'Programming & Tech',
-    'Business',
-    'Lifestyle',
-    'Trending',
-  ]
 
   return (
     <nav className="secondary-navbar">

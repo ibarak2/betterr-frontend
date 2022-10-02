@@ -1,9 +1,6 @@
 import { useState } from "react"
 import { useEffectUpdate } from "../hooks/useEffectUpdate"
 
-
-
-
 export const ReviewsFilter = ({ onChangeSortBy }) => {
 
     const [sortBy, setSortBy] = useState('')

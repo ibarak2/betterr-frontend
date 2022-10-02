@@ -1,20 +1,13 @@
 import ReactStars from 'react-stars'
 import { utilService } from '../services/util.service'
 
-
-
-
 export const Review = ({ review }) => {
-
-
-
 
     return (
         <div className='review'>
             <div className="user-info">
                 <img src={review.imgUrl}></img>
                 <div className='flex column'>
-
                     <b>{review.fullname}</b>
                     <div className='review-stars-details flex align-center'>
                         <div><ReactStars
