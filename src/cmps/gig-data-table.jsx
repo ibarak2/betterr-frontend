@@ -62,7 +62,7 @@ export function GigDataTable({
           )
         })}
       <div
-        className="open-listner"
+        className="open-listener"
         onClick={menuOpen ? onOpenMenu : undefined}
         style={{
           display: `${!menuOpen ? "none" : ""}`,
