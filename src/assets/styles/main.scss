@@ -8,7 +8,6 @@
 @import "basics/helpers";
 @import "basics/layout";
 @import "basics/base";
-@import "basics/links";
 @import "basics/forms";
 
 // Views
@@ -21,7 +20,6 @@
 @import "views/back-office";
 @import "views/edit";
 @import "views/user-profile";
-@import "views/chat-app";
 
 // Components
 @import "cmps/login-signup";
@@ -29,7 +27,6 @@
 @import "cmps/app-footer";
 @import "cmps/user-msg";
 @import "cmps/gig-preview";
-@import "cmps/seller-overview";
 @import "cmps/seller-info";
 @import "cmps/hero-img";
 @import "cmps/reviews-container";

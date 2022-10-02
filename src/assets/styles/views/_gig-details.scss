@@ -34,13 +34,12 @@
 
   & .gig-description {
     width: 100%;
-    // margin-top: 35px;
+
     .gig-layout {
       max-width: 100%;
 
       .seller-overview {
         display: flex;
-        // gap: 10px;
         align-items: center;
         .fullname {
           margin-right: 10px;
@@ -82,9 +81,6 @@
     .delivery-icon {
       margin: 8px;
     }
-    // .plan-description {
-    //   transform: translate(72%, -90%) !important;
-    // }
   }
 
   & .mobile-plans {
