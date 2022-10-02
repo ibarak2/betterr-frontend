@@ -5,9 +5,8 @@ import { EditBox } from '../cmps/edit-box'
 import { useForm } from '../hooks/useForm'
 import { gigService } from '../services/gig.service'
 import { uploadService } from '../services/upload.service'
-import { addGig, onRemoveGigOptimistic } from '../store/gig.actions'
+import { onRemoveGigOptimistic } from '../store/gig.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { UserMsg } from '../cmps/user-msg'
 
 export const Edit = () => {
   const params = useParams()

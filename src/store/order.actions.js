@@ -1,7 +1,5 @@
-import { showSuccessMsg } from "../services/event-bus.service"
 import { orderService } from "../services/order.service"
 import { reviewService } from "../services/review.service"
-import { userService } from "../services/user.service"
 
 // Action Creators
 export function getActionRemoveReview(reviewId) {

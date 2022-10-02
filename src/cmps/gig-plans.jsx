@@ -5,14 +5,9 @@ import Tab, { tabClasses } from '@mui/joy/Tab';
 import TabPanel from '@mui/joy/TabPanel';
 import Typography from '@mui/joy/Typography';
 import { useState } from 'react';
-import { showErrorMsg } from '../services/event-bus.service'
-import { Link } from 'react-router-dom';
-import { userService } from '../services/user.service';
-import { chatService } from "../services/chat.service.js";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import { showSuccessMsg } from '../services/event-bus.service';
 
 export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
-
 
     const [plan, setPlan] = useState('Basic')
 
@@ -43,18 +38,6 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
         }
 
         onSelectPlan(rank, daysToMake, price, planDescription)
-    }
-
-
-    const onContact = () => {
-
-        console.log('gig', gig)
-        console.log('gigOwnerId', gig.owner._id)
-        console.log('buyerId', loggedinUser._id)
-
-        const newChat = { participents: [gig.owner._id, loggedinUser._id] }
-        chatService.save(newChat)
-
     }
 
     return (
@@ -256,7 +239,6 @@ export const GigPlans = ({ gig, plans, onSelectPlan, loggedinUser }) => {
             </TabPanel>
             <div className='plans-action-btns'>
                 <button className='continue-plans-btn' onClick={() => onSelect()}>Continue <span className='right-arrow'>→</span></button>
-
             </div>
         </Tabs>
     );

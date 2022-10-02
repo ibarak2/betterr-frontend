@@ -1,36 +1,3 @@
-// export const backofficeGigRoutes = [
-//   {
-//     path: "active-gigs",
-//     label: "Active Gigs",
-//     txt: "Active",
-//   },
-//   {
-//     path: "gig-pending-approval",
-//     label: "Gigs Pending Approval",
-//     txt: "Pending Approval",
-//   },
-//   {
-//     path: "gig-requires-modification",
-//     label: "Gigs That Require Modification",
-//     txt: "Require Modification",
-//   },
-//   {
-//     path: "gig-draft",
-//     label: "Gig Drafts",
-//     txt: "Draft",
-//   },
-//   {
-//     path: "gig-denied",
-//     label: "Gigs Denied",
-//     txt: "Denied",
-//   },
-//   {
-//     path: "gig-paused",
-//     label: "Gigs Paused",
-//     txt: "Paused",
-//   },
-// ]
-
 export const backofficeBuyerOrderRoutes = {
   routes: [
     {

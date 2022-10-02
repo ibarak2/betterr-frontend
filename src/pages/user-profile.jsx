@@ -1,8 +1,5 @@
 import { EditProfile } from '../cmps/edit-profile'
 import { SellerGigsList } from '../cmps/seller-gigs-list'
-import { userService } from '../services/user.service'
-import { gigService } from '../services/gig.service'
-import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { loadGigsByOwner, onRemoveGigOptimistic } from '../store/gig.actions'
@@ -41,7 +38,6 @@ export const UserProfile = () => {
   }
 
   const onDeleteGig = (gigId) => {
-    console.log(gigId);
     dispatch(onRemoveGigOptimistic(gigId))
   }
 

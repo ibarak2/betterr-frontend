@@ -1,11 +1,11 @@
-import { Routes, Route, useNavigate, useSearchParams } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import { BackOffice } from "../cmps/back-office"
 import { GigDataTable } from "../cmps/gig-data-table"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { loadOrders, setOrderStatus, setOrderStatusLocal } from "../store/order.actions"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
-import { socketService, SOCKET_EVENT_ORDER_CHANGE_STATUS } from "../services/socket.service"
+import { socketService } from "../services/socket.service"
 
 export const BackOfficeApp = () => {
 
@@ -23,7 +23,6 @@ export const BackOfficeApp = () => {
 
   useEffect(() => {
     socketService.on("on-order-changed-status", (data) => {
-      console.log("data", data);
       if (data.status === 'cancelled') {
         showErrorMsg(data.txt)
       } else if (data.status === 'completed') {

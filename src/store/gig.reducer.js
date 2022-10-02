@@ -1,16 +1,13 @@
 const initialState = {
   gigs: [],
-  cart: [],
   gigsByOwner: [],
   lastRemovedGig: null,
   filterBy: { maxPrice: "", daysToMake: "", rate: "", category: "", search: "" },
 }
 
 export function gigReducer(state = initialState, action) {
-  var newState = state
   var gigs
   var gigsByOwner
-  var cart
   var filterBy
   var category
   var search
@@ -54,16 +51,6 @@ export function gigReducer(state = initialState, action) {
     case "SET_SEARCH":
       filterBy = { ...state.filterBy, search: action.search }
       return { ...state, filterBy }
-
-    case "UNDO_REMOVE_CAR":
-      if (state.lastRemovedGig) {
-        return {
-          ...state,
-          gigs: [...state.gigs, state.lastRemovedGig],
-          lastRemovedGig: null,
-        }
-      }
-      break
 
     default:
       return state

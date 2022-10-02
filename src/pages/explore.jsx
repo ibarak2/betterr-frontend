@@ -11,27 +11,35 @@ import { Filter } from "../cmps/filter"
 import { useSearchParams } from "react-router-dom"
 import { Loading } from "../cmps/loading"
 import { utilService } from "../services/util.service"
-import { Pageneation } from "../cmps/pageneation"
-import { useEffectUpdate } from "../hooks/useEffectUpdate"
 
 export const Explore = () => {
   const gigs = useSelector((state) => state.gigModule.gigs)
   const [searchParams, setSearchParams] = useSearchParams()
   const dispatch = useDispatch()
+  const myInterval = useRef()
 
   useEffect(() => {
     dispatch(setCategory(searchParams.get("category")))
     dispatch(setSearch(searchParams.get("search")))
     onLoadGigs()
+
+    return ()=>{
+      clearTimeout(myInterval.current)
+    }
   }, [searchParams])
 
   const onLoadGigs = () => {
     dispatch(loadGigs())
   }
 
+
   const onChangeFilter = (filterBy) => {
-    dispatch(setFilterBy(filterBy))
-    dispatch(loadGigs())
+    clearInterval(myInterval.current)
+    myInterval.current = setTimeout(() => {
+      console.log("filterBy",filterBy);
+      dispatch(setFilterBy(filterBy))
+      dispatch(loadGigs())
+    }, 500)
   }
   return (
     <div className="explore main-container">
@@ -47,7 +55,6 @@ export const Explore = () => {
         {gigs.length} services available
       </span>
       {!gigs.length ? <Loading /> : <GigList gigs={gigs} />}
-      {/* <Pageneation /> */}
     </div>
   )
 }

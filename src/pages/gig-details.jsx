@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { gigService } from "../services/gig.service"
 import { GigPlans } from "../cmps/gig-plans"
 import { SellerInfo } from "../cmps/seller-info"
@@ -67,7 +67,6 @@ export const GigDetails = () => {
             daysToMake,
             price
         })
-        console.log(plan);
     }
 
     const onPurchase = (plan, daysToMake, price) => {
@@ -150,6 +149,10 @@ export const GigDetails = () => {
         }
     }
 
+    const onContact = () => {
+        showSuccessMsg('still in development...')
+    }
+
     return (
         <CssVarsProvider>
             {(!gig) ? <Loading /> : <section className="main-gig-details">
@@ -221,7 +224,7 @@ export const GigDetails = () => {
 
                             <GigPlans gig={gig} plans={gig.plans} onSelectPlan={onSelectPlan} loggedinUser={loggedinUser} />
                             <div className="contact-container">
-                                <button className='contact-plans-btn'>
+                                <button className='contact-plans-btn' onClick={onContact}>
                                     Contact Seller
                                 </button>
                             </div>
