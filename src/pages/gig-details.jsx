@@ -220,8 +220,11 @@ export const GigDetails = () => {
                         </section>
                     }
                 </div>
-                {isSelected.isOpen &&
-                    <div className="order-modal-wrapper"><PurchaseModal onPurchase={onPurchase} onCancel={onCancel} isSelected={isSelected} gigImg={gig.imgUrls[0]} /></div>}
+                {/* {isSelected.isOpen && */}
+                    <div className={`order-modal-wrapper ${isSelected.isOpen}`}>
+                        <PurchaseModal onPurchase={onPurchase} onCancel={onCancel} isSelected={isSelected} gigImg={gig.imgUrls[0]} />
+                    </div>
+                {/* } */}
             </section>}
         </CssVarsProvider>
 

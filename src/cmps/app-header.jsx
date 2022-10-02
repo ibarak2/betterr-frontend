@@ -45,6 +45,7 @@ export function AppHeader() {
       showSuccessMsg(data)
     })
     socketService.on('on-order-changed-status', (data) => {
+      console.log("Work");
       (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
     })
 
@@ -114,7 +115,7 @@ export function AppHeader() {
             />
             <NavLink to="/?nav=home" className="site-logo">
               {/* <div > */}
-                <img className="logo" src={appLogo()} alt="betterr." />
+              <img className="logo" src={appLogo()} alt="betterr." />
               {/* </div> */}
             </NavLink>
           </div>
