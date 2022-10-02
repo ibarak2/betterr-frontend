@@ -45,7 +45,6 @@ export const GigImgsCarousel = ({ imgList }) => {
                         />
                     </div>
                 })}
-
             </Carousel>
         </div>
     )

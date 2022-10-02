@@ -15,10 +15,12 @@ export const GigPreview = ({
   reviews,
   plans
 }) => {
+
   const [liked, setLiked] = useState()
   const handleLike = () => {
     setLiked(!liked)
   }
+
   return (
     <div className="gig-preview">
       <SimpleSlider imgUrls={imgUrls} gigId={_id} />

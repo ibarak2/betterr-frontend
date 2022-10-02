@@ -17,7 +17,6 @@ export function AddReview({ onAddReview, imgUrl }) {
         const field = ev.target.name
         const value = ev.target.value
 
-
         setReview({ ...review, [field]: value })
     }
 
@@ -29,7 +28,6 @@ export function AddReview({ onAddReview, imgUrl }) {
             txt: '',
             rate: 3,
         })
-
     }
 
     return (

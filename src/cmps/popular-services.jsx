@@ -1,8 +1,5 @@
-import React, { Component } from 'react'
-
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { NavLink } from 'react-router-dom'
-
 import Slider from 'react-slick'
 
 export function PopularServices() {

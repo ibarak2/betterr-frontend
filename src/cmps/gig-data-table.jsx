@@ -19,13 +19,16 @@ export function GigDataTable({
   const showModal = () => {
     setDaysOpen(true)
   }
+
   const handleSelect = (ev) => {
     setDaysOpen(false)
   }
+
   const onOpenMenu = () => {
     console.log("MENU", menuOpen)
     setMenuOpen(!menuOpen)
   }
+
   return (
     <div className="data-table">
       <div className="flex table-row table-row-header table-sort-by-days">

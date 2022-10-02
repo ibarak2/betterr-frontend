@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react"
-import { userService } from "../services/user.service"
-import { ImgUploader } from "../cmps/img-uploader"
 import CloseIcon from "@mui/icons-material/Close"
 import { useDispatch } from "react-redux"
 import { onLogin, onSignup } from "../store/user.actions"
 
 export function LoginSignup({ modalOpen, handleCloseModal, logSign }) {
+
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -19,8 +18,6 @@ export function LoginSignup({ modalOpen, handleCloseModal, logSign }) {
     if (logSign === 'log') setIsSignup(false)
     if (logSign === 'sign') setIsSignup(true)
   }, [logSign])
-
-
 
   const clearState = () => {
     setCredentials({
@@ -53,9 +50,6 @@ export function LoginSignup({ modalOpen, handleCloseModal, logSign }) {
     handleCloseModal("close-btn")
   }
 
-  const toggleSignup = () => {
-    setIsSignup(!isSignup)
-  }
   const onUploaded = (imgUrl) => {
     setCredentials({ ...credentials, imgUrl })
   }

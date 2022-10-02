@@ -11,7 +11,6 @@ export function BackOffice({ ToggleUserState, isBuyer }) {
     ToggleUserState()
   }
 
-
   return (
     <div className="main-container full back-office">
       <div className="manage-interface">
@@ -31,7 +30,6 @@ export function BackOffice({ ToggleUserState, isBuyer }) {
               </li>
             ))}
           </ul>
-          {/* {!isBuyer && <a className="add-gig-btn">create a new gig</a>} */}
         </nav>
         <Outlet />
       </div>

@@ -1,5 +1,3 @@
-
-
 export const EditBox = ({ onSubmitEdit, onDeleteGig, gig, handleChange, onAddingImg }) => {
   return (
     <div className="edit-first-stage">
