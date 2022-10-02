@@ -17,7 +17,8 @@ export function AppHeader() {
   //---- States ----//
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  const LOGO_PATH =
+    'https://res.cloudinary.com/dalkffrhf/image/upload/v1663666624/Fiverr-Sprint-4/imgs/beterr./'
   const [logSign, setLogSign] = useState()
   const [modalOpen, setModalOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState({ left: false })
@@ -37,7 +38,6 @@ export function AppHeader() {
   }
 
   useEffect(() => {
-
     const onScroll = () => setOffset(window.pageYOffset)
     window.removeEventListener('scroll', onScroll)
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -47,9 +47,7 @@ export function AppHeader() {
     })
 
     socketService.on("on-order-changed-status", (data) => {
-      console.log("data", data);
       (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
-
       dispatch(setOrderStatusLocal({ orderId: data.orderId, status: data.status }))
     })
 
@@ -95,12 +93,13 @@ export function AppHeader() {
   }
 
   const appLogo = () => {
-    let headerLogo = 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663666624/Fiverr-Sprint-4/imgs/beterr./logo-white_fnqy6y.png'
+    let headerLogo = LOGO_PATH + 'logo-white_fnqy6y.png'
     if (searchParams.get('nav') !== 'home' || offset > 0) {
-      headerLogo = 'https://res.cloudinary.com/dalkffrhf/image/upload/v1663246874/Fiverr-Sprint-4/imgs/beterr./logo_fw45hc.png'
+      headerLogo = LOGO_PATH + 'logo_fw45hc.png'
     }
     return headerLogo
   }
+
   return (
     <header className="full app-header">
       <LoginSignup
@@ -181,14 +180,16 @@ export function AppHeader() {
               ) : (
                 <div className="flex signin-signup">
                   <li>
-                    <a className='header-become-a-seller'
+                    <a
+                      className="header-become-a-seller"
                       onClick={() => {
                         handleOpenModal('sign')
                       }}
                     >
                       Become a seller
                     </a>
-                    <a className='header-sign-in'
+                    <a
+                      className="header-sign-in"
                       onClick={() => {
                         handleOpenModal('log')
                       }}

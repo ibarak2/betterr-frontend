@@ -1,12 +1,12 @@
 import { HomePage } from "./pages/home-page.jsx"
 import { AboutUs } from "./pages/about-us.jsx"
-import { ChatApp } from "./pages/chat-app.jsx"
 import { AdminApp } from "./pages/admin-app.jsx"
 import { GigDetails } from "./pages/gig-details.jsx"
 import { Explore } from "./pages/explore.jsx"
 import { Edit } from "./pages/edit.jsx"
 import { BackOfficeApp } from "./pages/back-office-app.jsx"
 import { UserProfile } from "./pages/user-profile.jsx"
+
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
@@ -35,11 +35,6 @@ const routes = [
         label: "Edit/Add",
     },
     {
-        path: "chat",
-        component: <ChatApp />,
-        label: "Chat",
-    },
-    {
         path: "about",
         component: <AboutUs />,
         label: "About us",
@@ -49,11 +44,6 @@ const routes = [
         component: <AdminApp />,
         label: "Admin Only",
     },
-    // {
-    //     path: "back-office/*",
-    //     component: <BackOfficeApp header={"Gigs"} />,
-    //     label: "Back Office",
-    // },
     {
         path: "manage-orders/*",
         component: <BackOfficeApp />,
