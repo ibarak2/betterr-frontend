@@ -10,16 +10,16 @@ import { showSuccessMsg } from "./event-bus.service.js"
 
 const BASE_URL = "order/"
 
-const orderChannel = new BroadcastChannel("orderChannel")
-  ; (() => {
-    // reviewChannel.addEventListener('message', (ev) => {
-    //     store.dispatch(ev.data)
-    // })
-    socketService.on(SOCKET_EVENT_NEW_ORDER_REQUEST, (order) => {
-      console.log("GOT from socket", order)
-      store.dispatch(getActionAddReview(order))
-    })
-  })()
+// const orderChannel = new BroadcastChannel("orderChannel")
+//   ; (() => {
+//     // reviewChannel.addEventListener('message', (ev) => {
+//     //     store.dispatch(ev.data)
+//     // })
+//     socketService.on(SOCKET_EVENT_NEW_ORDER_REQUEST, (order) => {
+//       console.log("GOT from socket", order)
+//       store.dispatch(getActionAddReview(order))
+//     })
+//   })()
 
 export const orderService = {
   query,

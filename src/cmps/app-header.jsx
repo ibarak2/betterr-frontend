@@ -11,6 +11,7 @@ import { userService } from '../services/user.service.js'
 import { socketService } from '../services/socket.service.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { SearchIcon } from '../svg-icons.js'
+import { setOrderStatusLocal } from '../store/order.actions.js'
 
 export function AppHeader() {
   //---- States ----//
@@ -44,9 +45,12 @@ export function AppHeader() {
     socketService.on('new-order-recieved', (data) => {
       showSuccessMsg(data)
     })
-    socketService.on('on-order-changed-status', (data) => {
-      console.log("Work");
+
+    socketService.on("on-order-changed-status", (data) => {
+      console.log("data", data);
       (data.status === 'cancelled') ? showErrorMsg(data.txt) : showSuccessMsg(data.txt)
+
+      dispatch(setOrderStatusLocal({ orderId: data.orderId, status: data.status }))
     })
 
     return () => {

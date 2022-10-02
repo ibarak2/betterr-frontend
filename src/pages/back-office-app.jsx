@@ -21,30 +21,6 @@ export const BackOfficeApp = () => {
     onLoadOrders()
   }, [isBuyer, window.location.pathname])
 
-  useEffect(() => {
-    socketService.on("on-order-changed-status", (data) => {
-      console.log("data", data);
-      if (data.status === 'cancelled') {
-        showErrorMsg(data.txt)
-      } else if (data.status === 'completed') {
-        showSuccessMsg(data.txt)
-      } else {
-        showSuccessMsg(data.txt)
-      }
-
-      dispatch(setOrderStatusLocal({ orderId: data.orderId, status: data.status }))
-    })
-    socketService.on('new-order-recieved', () => {
-      showSuccessMsg('New Order Recieved!')
-      onLoadOrders()
-    })
-
-    return () => {
-      // socketService.off('on-order-changed-status')
-      // socketService.off('new-order-recieved')
-    }
-  }, [])
-
   const onLoadOrders = () => {
     let filterBy = window.location.pathname
     filterBy = filterBy.split('/manage-orders/').pop()

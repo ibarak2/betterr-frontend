@@ -4,8 +4,6 @@ import { useSearchParams } from 'react-router-dom'
 import { chatService } from '../services/chat.service'
 import {
   socketService,
-  SOCKET_EMIT_SEND_MSG,
-  SOCKET_EVENT_ADD_MSG,
   //   SOCKET_EMIT_SET_TOPIC,
 } from '../services/socket.service'
 
@@ -25,13 +23,13 @@ export function ChatApp({ participents }) {
   //   let botTimeout
 
   useEffect(() => {
-    socketService.on('on-sent-msg', (data) => {
-      let newMsgs = chatRoom.msgs
-      newMsgs.push(data)
-      setChatRoom((prevState) => ({ ...prevState, msgs: newMsgs }))
-    })
+    // socketService.on('on-sent-msg', (data) => {
+    //   let newMsgs = chatRoom.msgs
+    //   newMsgs.push(data)
+    //   setChatRoom((prevState) => ({ ...prevState, msgs: newMsgs }))
+    // })
     return () => {
-      socketService.off('on-sent-msg')
+      // socketService.off('on-sent-msg')
       //   botTimeout && clearTimeout(botTimeout)
     }
   }, [])
@@ -67,7 +65,7 @@ export function ChatApp({ participents }) {
       chatRoomId: chatRoom._id,
     })
     // console.log(newMsg)
-    
+
     let newMsgs = chatRoom.msgs
     newMsgs.push(newMsg)
     setChatRoom((prevState) => ({ ...prevState, msgs: newMsgs }))
@@ -78,7 +76,6 @@ export function ChatApp({ participents }) {
       (participent) => participent !== loggedInUser._id
     )
     const miniTxt = { userId: recieverId[0], newMsg }
-    socketService.emit(SOCKET_EMIT_SEND_MSG, miniTxt)
   }
 
   const handleFormChange = (ev) => {

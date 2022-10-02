@@ -17,7 +17,6 @@ export function getActionSetWatchedUser(user) {
 export function setOrderStatus(miniOrder) {
   return async (dispatch) => {
     try {
-      console.log(miniOrder);
       const order = await orderService.updateStatus(miniOrder)
 
       dispatch({ type: "SET_ORDER_STATUS", order })

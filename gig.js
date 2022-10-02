@@ -12,7 +12,7 @@ const db = {
         "imgUrl": "url",
         "level": "basic/premium",
         "rate": 4, //-- avarage rate
-        "tags": [], 
+        "tags": [],
       },
       "daysToMake": 3,
       "description": "Make unique logo...",
@@ -21,7 +21,7 @@ const db = {
         "https://res.cloudinary.com/ibarak/image/upload/v1663222181/test1/zo7ydzobzs6tswah4lun.jpg"
       ],
       "category": "graphic-design", // changed from tags to category
-      "likedByUsers" : ['mini-user'] // ❤ for user-wishlist : use $in
+      "likedByUsers": ['mini-user'] // ❤ for user-wishlist : use $in
     }
   ],
 
@@ -97,7 +97,7 @@ function isPrimaryTag(tag) {
 // Gig Details
 // <pre>JSON, slowly improve
 
-// UserDetails 
+// UserDetails
 //  basic info
 //  orderedGigs => orderService.query({userId: 'u101'})
 //  ownedGigs => gigService.query({ownerId: 'u103'})
@@ -109,8 +109,8 @@ function isPrimaryTag(tag) {
 // Lastly: GigExplore, Filtering
 
 
-function loadApp() {
-  socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
-    showSuccessMsg(`Another order was just made, check it out ${order.gig._id}`)
-  })
-}
+// function loadApp() {
+//   socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
+//     showSuccessMsg(`Another order was just made, check it out ${order.gig._id}`)
+//   })
+// }
